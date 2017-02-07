@@ -1,0 +1,15 @@
+2017-02-07 15:25:04,195 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2017-02-07 15:25:25,180 [Worker-17] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: polytech.unice.si3.ihm:b:0.0.1-SNAPSHOT @ D:\Donnees\Informatique\Polytech\SI3S6\courses\IHM\project\firm\pom.xml.
+2017-02-07 15:25:25,613 [Worker-17] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /firm/src/main/java
+2017-02-07 15:25:25,614 [Worker-17] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /firm/src/main/resources
+2017-02-07 15:25:25,615 [Worker-17] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /firm/src/test/java
+2017-02-07 15:25:25,660 [Worker-17] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 1 sec
+2017-02-07 15:25:26,972 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-02-07 15:25:26,985 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2017-02-07 15:25:27,011 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-02-07 15:25:27,012 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Donnees\Informatique\Polytech\SI3S6\courses\IHM\project\firm\src\test\resources
+2017-02-07 15:26:19,495 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: polytech.unice.si3.ihm:firm:0.0.1-SNAPSHOT @ D:\Donnees\Informatique\Polytech\SI3S6\courses\IHM\project\firm\pom.xml.
+2017-02-07 15:26:19,754 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-02-07 15:26:19,756 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-02-07 15:26:19,758 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-02-07 15:26:19,758 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Donnees\Informatique\Polytech\SI3S6\courses\IHM\project\firm\src\test\resources

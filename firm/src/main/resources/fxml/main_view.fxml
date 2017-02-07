@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fx:id="logo" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../images/background.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="167.0" prefWidth="1148.0">
+                           <children>
+                              <ImageView fx:id="firmImageName" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/background.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="description" text="Label" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="6.0" right="6.0" top="6.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane prefHeight="541.0" prefWidth="1280.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER">
+                           <children>
+                              <ComboBox fx:id="searchType" prefWidth="150.0" />
+                              <HBox prefHeight="104.0" prefWidth="140.0">
+                                 <children>
+                                    <TextField fx:id="searchValue" />
+                                    <Button fx:id="searchButton" mnemonicParsing="false" text="Button" />
+                                 </children>
+                              </HBox>
+                              <AnchorPane>
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label fx:id="mallName" text="Label" />
+                                          <Label fx:id="shopAdress" text="Label" />
+                                          <Hyperlink fx:id="shopLink" text="Hyperlink" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <Button fx:id="shopsButton" mnemonicParsing="false" text="Button" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="456.0" prefWidth="925.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="carrouseImg1" fitHeight="150.0" fitWidth="935.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/background.jpg" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="16.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="carrouseImg2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/background.jpg" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="16.0" right="16.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fx:id="carrouseImg3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/background.jpg" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="16.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="488.0" prefWidth="195.0">
+                           <children>
+                              <Label fx:id="promo1" text="Label" />
+                              <Label fx:id="promo2" text="Label" />
+                              <Label fx:id="promo3" text="Label" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="6.0" right="6.0" top="6.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </AnchorPane>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1280.0">
+               <children>
+                  <Hyperlink fx:id="firmLink" text="Hyperlink" />
+               </children>
+               <padding>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
