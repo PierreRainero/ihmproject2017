@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.b.view;
+package polytech.unice.si3.ihm.firm.view;
 
 import java.io.IOException;
 
@@ -81,7 +81,7 @@ public class MainViewControler extends BasicControler {
         Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
         Scene scene = new Scene(rootNode, 410, 605);
-        scene.getStylesheets().add("/styles/caspian.css");
+        scene.getStylesheets().add("/styles/main.css");
         stage.setTitle("Enseigne du centre commercial");
         stage.setScene(scene);
         
@@ -105,7 +105,7 @@ public class MainViewControler extends BasicControler {
         Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
         Scene scene = new Scene(rootNode, 810, 585);
-        scene.getStylesheets().add("/styles/caspian.css");
+        scene.getStylesheets().add("/styles/main.css");
         stage.setTitle("Enseigne du centre commercial");
         stage.setScene(scene);
         
