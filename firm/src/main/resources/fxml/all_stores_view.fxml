@@ -70,12 +70,14 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" />
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1" />
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2" />
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
+                     <padding>
+                        <Insets left="6.0" />
+                     </padding>
                   </GridPane>
                </children>
                <VBox.margin>
