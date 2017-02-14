@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1276.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="Outils">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Quitter" />
+                        <MenuItem mnemonicParsing="false" text="Réinitialiser" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="En savoir plus">
+                  <items>
+                        <MenuItem mnemonicParsing="false" text="FAQ" />
+                    <MenuItem mnemonicParsing="false" text="Qui sommes-nous ?" />
+                        <MenuItem mnemonicParsing="false" text="Job expérience" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Langues">
+                  <items>
+                        <MenuItem mnemonicParsing="false" text="Anglais" />
+                    <MenuItem mnemonicParsing="false" text="Français" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <left>
+            <ImageView fitHeight="165.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@images.png" />
+               </image>
+            </ImageView>
+         </left>
+         <center>
+            <Label text="Cap Sophia" textFill="#9a1801" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Impact" size="64.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets right="50.0" />
+               </BorderPane.margin>
+            </Label>
+         </center>
+         <bottom>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="31.0" prefWidth="1276.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="&lt; Retour">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Label text="LES BONS PLANS">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="500.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </bottom>
+      </BorderPane>
+   </top>
+   <center>
+      <ScrollPane hbarPolicy="NEVER" prefHeight="720.0" prefWidth="1280.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+         <content>
+            <VBox prefHeight="547.0" prefWidth="1255.0">
+               <children>
+                  <Separator prefWidth="200.0" />
+                  <ImageView fitHeight="559.0" fitWidth="1261.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@valentines-day-fr.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="334.0" fitWidth="1287.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@early_booking_2016_family_fr.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="421.0" fitWidth="1292.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@micromania-bonnes-affaires-de.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
