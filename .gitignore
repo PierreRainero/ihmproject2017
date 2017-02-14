@@ -116,3 +116,4 @@ sonar-project.properties
 
 #Eclipse
 .metadata
+.recommenders
