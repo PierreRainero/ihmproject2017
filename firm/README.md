@@ -6,7 +6,7 @@
 
 ## Historique des features
 ### Week 06
- [x] Création du repo
- [x] Création du squelette de la vue client
- [ ] Mise en place du CSS
- [ ] Mise en place des controlleurs
+ - [x] Création du repo
+ - [x] Création du squelette de la vue client
+ - [ ] Mise en place du CSS
+ - [ ] Mise en place des controlleurs
