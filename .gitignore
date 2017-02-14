@@ -113,3 +113,6 @@ local.properties
 # Ignore sonarQube
 .sonar
 sonar-project.properties
+
+#Eclipse
+.metadata
