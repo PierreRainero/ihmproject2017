@@ -10,14 +10,13 @@ import java.util.*;
  * Created by SERRANO Simon on 17/02/2017.
  */
 public class Inventory {
-
-    Set<Product> products;
+    private List<Product> products;
 
     /**
      * Constructor for an inventory
      */
     public Inventory() {
-        products = new HashSet<Product>();
+        products = new ArrayList<Product>();
     }
 
     /**

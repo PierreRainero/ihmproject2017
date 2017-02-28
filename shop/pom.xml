@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>polytech.unice.si3.ihm</groupId>
-    <artifactId>firm</artifactId>
+    <artifactId>shop</artifactId>
     <name>b</name>
 
     <packaging>jar</packaging>
@@ -85,17 +85,7 @@
             <artifactId>log4j</artifactId>
             <version>1.2.16</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>RELEASE</version>
-        </dependency>
 
-        <dependency>
-        	<groupId>org.json</groupId>
-        	<artifactId>json</artifactId>
-        	<version>20160810</version>
-        </dependency>
     </dependencies>
 
 </project>
