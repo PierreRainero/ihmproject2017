@@ -112,9 +112,12 @@ public class MainViewController extends BasicController {
         stage.setTitle("Toutes les enseignes");
         stage.setScene(scene);
 
+        Firm firm = polytech.unice.si3.ihm.firm.json.ContentParser.getFirm();
 
         AllStoreController controller = loader.getController();
         controller.setCurrentStage(stage);
+        controller.setFirm(firm);
+        controller.changeListView();
         stage.show();
     }
 
