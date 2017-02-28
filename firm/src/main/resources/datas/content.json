@@ -1,4 +1,18 @@
 {
-    "name" : "MacroGamia",
-    "logo" : "@/images/Logoenseigne.png"
+	"name": "MacroGamia",
+	"description": "Vendez nous vos jeux à petits prix, nous les revendrons mais hors de prix.",
+	"logo": "@/images/Logoenseigne.png",
+	"link": "www.macrogamia.com",
+	"shops": [{
+		"name": "MacroGamia Nice",
+		"address": "30 Avenue Jean Médecin, 06000 Nice",
+		"mallname": "Nice Etoile",
+		"description": ""
+	}, {
+		"name": "MacroGamia Toulon",
+		"address": "Rue du Mûrier, 83000 Toulon",
+		"mallname": "Mayol",
+		"description": ""
+	}]
+
 }

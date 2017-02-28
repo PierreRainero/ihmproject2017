@@ -7,7 +7,6 @@ import java.util.*;
 /**
  * Class that represent the inventory of a store
  *
- * Created by SERRANO Simon on 17/02/2017.
  */
 public class Inventory {
     private List<Product> products;
