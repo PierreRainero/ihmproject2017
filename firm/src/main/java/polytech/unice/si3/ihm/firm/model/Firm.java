@@ -1,12 +1,5 @@
 package polytech.unice.si3.ihm.firm.model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.HBox;
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,5 +83,13 @@ public class Firm {
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * Getter for the list of stores of the firm
+     * @return the list of stores
+     */
+    public List<Store> getStores() {
+        return stores;
     }
 }

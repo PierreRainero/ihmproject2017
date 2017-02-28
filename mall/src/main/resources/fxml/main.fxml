@@ -88,7 +88,7 @@
             </Label>
             <ImageView fitHeight="175.0" fitWidth="167.0" layoutY="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1113.0" AnchorPane.topAnchor="25.0">
                <image>
-                  <Image url="@1439298561-yqdv2.png" />
+                  <Image url="@/images/fallout.png" />
                </image>
             </ImageView>
             <MenuBar prefHeight="27.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -220,37 +220,37 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#431243" height="136.0" stroke="BLACK" strokeType="INSIDE" width="133.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <ImageView fitHeight="80.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="6">
                            <image>
-                              <Image url="@micro.png" />
+                              <Image url="@/images/micromania.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="43.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@cama.png" />
+                              <Image url="@/images/camaieu.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="72.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="4">
                            <image>
-                              <Image url="@Apple_Logo_Png_09.png" />
+                              <Image url="@/images/apple.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="117.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
                            <image>
-                              <Image url="@LOGO-Credit-Agricole.png" />
+                              <Image url="@/images/credit_agricole.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="70.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@Fossil-Logo-EPS-vector-image.png" />
+                              <Image url="@/images/fossil.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="6">
                            <image>
-                              <Image url="@grand-optical.png" />
+                              <Image url="@/images/grand_optical.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="110.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="2">
                            <image>
-                              <Image url="@EFHC-Logo-Grande-Recre.png" />
+                              <Image url="@/images/Grande_recre.png" />
                            </image>
                         </ImageView>
                         <Label prefHeight="28.0" prefWidth="66.0" text=" Entrée" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="9">
