@@ -10,14 +10,12 @@ import java.io.File;
  * Created by SERRANO Simon on 17/02/2017.
  */
 public class Product {
-
     private String name;
     private String reference;
     private String description;
     private double price;
     private boolean promoted = false;
-    private Image image;
-
+    private String image;
 
     /**
      * Constructor for a product
@@ -76,8 +74,8 @@ public class Product {
      * Allow to change the image of a product
      * @param newImage the new image
      */
-    public void changeProductImage(File newImage){
-        image = new Image(newImage.getPath());
+    public void changeProductImage(String newImage){
+        image = newImage;
     }
 
     /**
@@ -93,7 +91,6 @@ public class Product {
     public String getName() {
         return name;
     }
-
 
     /**
      * Getter for the reference of the product
@@ -123,7 +120,7 @@ public class Product {
      * Getter for the image of the product
      * @return the image of the product
      */
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 }

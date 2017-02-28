@@ -2,19 +2,15 @@ package polytech.unice.si3.ihm.firm.view;
 
 import java.io.IOException;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import org.json.JSONObject;
 import polytech.unice.si3.ihm.firm.model.Firm;
 import polytech.unice.si3.ihm.firm.model.Store;
 
@@ -128,6 +124,12 @@ public class MainViewController extends BasicController {
     @FXML
     void search(MouseEvent event) {
 
+    }
+    
+    @Override
+    public void initContent(){
+    	//JSONObject jsonObject = new JSONObject("/datas/content.json");
+    	//System.out.println(jsonObject.get("name"));
     }
 
 }

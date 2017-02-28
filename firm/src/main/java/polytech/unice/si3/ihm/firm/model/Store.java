@@ -8,19 +8,18 @@ import javafx.scene.image.Image;
  * Created by SERRANO Simon on 17/02/2017.
  */
 public class Store {
-
     private String name;
     private String address;
     private String mallName;
     private String description;
-    private Image image;
+    private String image;
     private Inventory inventory;
 
     /**
      * Default constructor for a store
      */
     public Store() {
-        inventory = new Inventory();
+        this(null, null, null, null);
     }
 
     /**
@@ -102,7 +101,7 @@ public class Store {
         return description;
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 }
