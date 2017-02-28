@@ -6,5 +6,7 @@ package polytech.unice.si3.ihm.model;
 public class Place {
     String name;
     String imagePath;
+    int level;
     Coordinate coord;
+
 }

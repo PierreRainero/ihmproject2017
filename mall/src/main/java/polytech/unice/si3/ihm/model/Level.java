@@ -4,6 +4,33 @@ import java.util.*;
  * Created by Ken on 28/02/2017.
  */
 public class Level {
-    int number;
-    List Stores;
+    private int number;
+    private List<Store> stores;
+    private List<Place> places;
+
+    public Level(int number){
+        this.number = number;
+    }
+
+    public Level(int number,List<Store> stores, List<Place> places){
+        this.number = number;
+        this.stores = stores;
+        this.places = places;
+    }
+
+    public void addStore(Store store){
+        stores.add(store);
+    }
+
+    public void addPlace(Place place){
+        places.add(place);
+    }
+
+    public List<Store> getStores(){
+        return stores;
+    }
+
+    public List<Place> getPlaces(){
+        return places;
+    }
 }
