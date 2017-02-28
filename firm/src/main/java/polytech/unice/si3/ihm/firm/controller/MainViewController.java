@@ -1,5 +1,7 @@
-package polytech.unice.si3.ihm.firm.view;
+package polytech.unice.si3.ihm.firm.controller;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
@@ -10,9 +12,11 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 import polytech.unice.si3.ihm.firm.model.Firm;
 import polytech.unice.si3.ihm.firm.model.Store;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class MainViewController extends BasicController {
 
@@ -108,16 +112,9 @@ public class MainViewController extends BasicController {
         stage.setTitle("Toutes les enseignes");
         stage.setScene(scene);
 
-        Firm firm = new Firm("WEEWEE","Best Firm ever");
-        Store store1 = new Store("BouBOU", "71th street, Bamako", "HAHA", "Simple store for cat goodies");
-        Store store2 = new Store("JALLY", "96th street of Hillary.C, York New", "HEHE", "Simple store for dog goodies");
-        firm.addStore(store1);
-        firm.addStore(store2);
 
         AllStoreController controller = loader.getController();
         controller.setCurrentStage(stage);
-        controller.setFirm(firm);
-        controller.changeListView();
         stage.show();
     }
 
@@ -128,8 +125,7 @@ public class MainViewController extends BasicController {
     
     @Override
     public void initContent(){
-    	//JSONObject jsonObject = new JSONObject("/datas/content.json");
-    	//System.out.println(jsonObject.get("name"));
+
     }
 
 }

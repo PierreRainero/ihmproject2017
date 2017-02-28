@@ -11,9 +11,6 @@ import java.io.IOException;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by SERRANO Simon on 18/02/2017.
- */
 public class ProductTest {
 
     private Product productTest;
