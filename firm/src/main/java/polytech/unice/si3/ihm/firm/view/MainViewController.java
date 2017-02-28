@@ -1,21 +1,24 @@
-package polytech.unice.si3.ihm.b.view;
+package polytech.unice.si3.ihm.firm.view;
 
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import polytech.unice.si3.ihm.firm.model.Firm;
+import polytech.unice.si3.ihm.firm.model.Store;
 
-public class MainViewControler extends BasicControler {
+public class MainViewController extends BasicController {
 
     @FXML
     private ImageView logo;
@@ -81,12 +84,12 @@ public class MainViewControler extends BasicControler {
         Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
         Scene scene = new Scene(rootNode, 410, 605);
-        scene.getStylesheets().add("/styles/caspian.css");
-        stage.setTitle("Enseigne du centre commercial");
+        scene.getStylesheets().add("/styles/main.css");
+        stage.setTitle("Produit phare");
         stage.setScene(scene);
         
         
-        OneProductControler controller = loader.getController();
+        OneProductController controller = loader.getController();
         controller.setCurrentStage(stage);
         
         stage.show();
@@ -105,13 +108,20 @@ public class MainViewControler extends BasicControler {
         Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
         Scene scene = new Scene(rootNode, 810, 585);
-        scene.getStylesheets().add("/styles/caspian.css");
-        stage.setTitle("Enseigne du centre commercial");
+        scene.getStylesheets().add("/styles/main.css");
+        stage.setTitle("Toutes les enseignes");
         stage.setScene(scene);
-        
-        AllStoreControler controller = loader.getController();
+
+        Firm firm = new Firm("WEEWEE","Best Firm ever");
+        Store store1 = new Store("BouBOU", "71th street, Bamako", "HAHA", "Simple store for cat goodies");
+        Store store2 = new Store("JALLY", "96th street of Hillary.C, York New", "HEHE", "Simple store for dog goodies");
+        firm.addStore(store1);
+        firm.addStore(store2);
+
+        AllStoreController controller = loader.getController();
         controller.setCurrentStage(stage);
-        
+        controller.setFirm(firm);
+        controller.changeListView();
         stage.show();
     }
 

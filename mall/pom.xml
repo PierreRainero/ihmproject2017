@@ -4,15 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>polytech.unice.si3.ihm</groupId>
-    <artifactId>firm</artifactId>
-    <name>b</name>
+    <artifactId>mall</artifactId>
+    <name>mall</name>
 
     <packaging>jar</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
-        <name>roux</name>
+        <name>mall</name>
     </organization>
 
     <properties>
@@ -21,7 +21,7 @@
 
     <build>
 
-        <finalName>b</finalName>
+        <finalName>mall</finalName>
 
         <plugins>
 
@@ -31,7 +31,7 @@
                 <version>2.0</version>
                 <configuration>
 
-                    <mainClass>polytech.unice.si3.ihm.b.MainApp</mainClass>
+                    <mainClass>polytech.unice.si3.ihm.MainApp</mainClass>
 
                     <!-- only required if signing the jar file -->
                     <keyStoreAlias>example-user</keyStoreAlias>
@@ -84,11 +84,6 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.16</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>RELEASE</version>
         </dependency>
 
     </dependencies>

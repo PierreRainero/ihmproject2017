@@ -1,11 +1,11 @@
-package polytech.unice.si3.ihm.b;
+package polytech.unice.si3.ihm.firm;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import polytech.unice.si3.ihm.b.view.MainViewControler;
+import polytech.unice.si3.ihm.firm.view.MainViewController;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,11 +31,11 @@ public class MainApp extends Application {
 
         log.debug("Showing JFX scene");
         Scene scene = new Scene(rootNode, 1280, 720);
-        scene.getStylesheets().add("/styles/caspian.css");
+        scene.getStylesheets().add("/styles/main.css");
         stage.setTitle("Enseigne du centre commercial");
         stage.setScene(scene);
         
-        MainViewControler controller = loader.getController();
+        MainViewController controller = loader.getController();
         controller.setCurrentStage(stage);
         
         stage.show();
