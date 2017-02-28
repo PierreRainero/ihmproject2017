@@ -14,6 +14,9 @@ import javafx.scene.layout.HBox;
 import polytech.unice.si3.ihm.firm.model.Firm;
 import polytech.unice.si3.ihm.firm.model.Store;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AllStoreController extends BasicController {
 
     private Firm firm;
@@ -26,18 +29,51 @@ public class AllStoreController extends BasicController {
     private Button exit;
 
     @FXML
-    private ListView<String> stores = new ListView<String>();
+    private ListView<HBox> stores = new ListView<HBox>();
 
 
+    /**
+     * Method permitting to change the content of the listView
+     */
     public void changeListView(){
         stores.setOrientation(Orientation.VERTICAL);
-        ObservableList<String> storesInListView = FXCollections.observableArrayList();
-        for (Store store : firm.getStores()){
-            storesInListView.add(store.getName());
+        ObservableList<HBox> storesInListView = FXCollections.observableArrayList();
+        List<HBox> hBoxesOfStores = makeHboxOfStores();
+        for (HBox hbox : hBoxesOfStores){
+            storesInListView.add(hbox);
         }
         stores.setItems(storesInListView);
+    }
 
+    /**
+     * Allow to create a list of HBox from the stores
+     * @return the list of hboxes made from the stores
+     */
+    public List<HBox> makeHboxOfStores(){
+        List<HBox> listViewItems = new ArrayList<HBox>();
+        HBox hbox = new HBox();
+        Label storeName;
+        Label storeDescription;
+        Label storeAddress;
+        Label storeMallName;
+        ImageView storeImage;
+        for (Store store : firm.getStores()){
+            storeName = new Label(store.getName());
+            storeDescription = new Label(store.getDescription());
+            storeMallName = new Label(store.getMallName());
+            storeAddress = new Label(store.getAddress());
 
+            if (store.getImage()==null){
+                hbox.getChildren().addAll(storeName, storeMallName, storeAddress, storeDescription);
+            }
+            else {
+                storeImage = new ImageView(store.getImage());
+                hbox.getChildren().addAll(storeImage, storeName, storeMallName, storeAddress, storeDescription);
+            }
+
+            listViewItems.add(hbox);
+        }
+        return listViewItems;
     }
 
 
