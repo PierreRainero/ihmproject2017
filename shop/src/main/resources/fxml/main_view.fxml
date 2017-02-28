@@ -20,12 +20,12 @@
    <children>
       <AnchorPane layoutY="32.0" prefHeight="83.0" prefWidth="1280.0" style="-fx-background-color: #ddd;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
          <children>
-            <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="4.0">
+            <ImageView fx:id="logo" fitHeight="75.0" fitWidth="79.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="4.0">
                <image>
                   <Image url="@/images/logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="106.0" layoutY="18.0" text="Nom du magasin" AnchorPane.leftAnchor="106.0" AnchorPane.topAnchor="18.0">
+            <Label fx:id="nom" layoutX="106.0" layoutY="18.0" text="Nom du magasin" AnchorPane.leftAnchor="106.0" AnchorPane.topAnchor="18.0">
                <font>
                   <Font size="32.0" />
                </font>

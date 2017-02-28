@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import polytech.unice.si3.ihm.shop.model.Shop;
 import polytech.unice.si3.ihm.shop.view.MainViewController;
 
 public class MainApp extends Application {
@@ -15,6 +16,8 @@ public class MainApp extends Application {
     }
 
     public void start(Stage stage) throws Exception {
+        Shop shop = new Shop("My awesome shop !", "/images/produit.png");
+
         String fxmlFile = "/fxml/main_view.fxml";
         FXMLLoader loader = new FXMLLoader();
         Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
@@ -23,12 +26,13 @@ public class MainApp extends Application {
 
         Scene scene = new Scene(rootNode, 1280, 720);
         scene.getStylesheets().add("/styles/main.css");
-        stage.setTitle("Nom du shop");
+        stage.setTitle(shop.getName());
         stage.setScene(scene);
 
         MainViewController controller = loader.getController();
         controller.setCurrentStage(stage);
-        
+        controller.initialiseView(shop);
+
         stage.show();
     }
 }
