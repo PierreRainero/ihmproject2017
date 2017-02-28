@@ -19,7 +19,7 @@ public class Firm {
      * Default constructor for a firm
      */
     public Firm() {
-        this(null, null, null, null);
+        this(null, null, null, null, null);
     }
 
     /**
@@ -27,11 +27,12 @@ public class Firm {
      * @param name the name of the firm
      * @param description the description of the firm
      */
-    public Firm(String name, String description, String logo, String linkForMoreInfo) {
+    public Firm(String name, String description, String logo, String linkForMoreInfo, String banner) {
         this.name = name;
         this.description = description;
         this.logo = logo;
         this.linkForMoreInfo = linkForMoreInfo;
+        this.banner = banner;
         
         stores = new ArrayList<Store>();
     }
@@ -91,5 +92,9 @@ public class Firm {
      */
     public List<Store> getStores() {
         return stores;
+    }
+    
+    public String getLogo(){
+    	return logo;
     }
 }

@@ -1,5 +1,6 @@
 package polytech.unice.si3.ihm.firm.controller;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,6 +19,9 @@ import polytech.unice.si3.ihm.firm.model.Firm;
 import polytech.unice.si3.ihm.firm.model.Store;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import polytech.unice.si3.ihm.firm.exceptions.ContentException;
+import polytech.unice.si3.ihm.firm.json.ContentParser;
 
 public class MainViewController extends BasicController {
 
@@ -101,7 +106,7 @@ public class MainViewController extends BasicController {
     }
 
     @FXML
-    void openAllShops(MouseEvent event) throws IOException {
+    void openAllShops(MouseEvent event) throws IOException, ContentException {
     	Stage stage = new Stage();
         String fxmlFile = "/fxml/all_stores_view.fxml";
         FXMLLoader loader = new FXMLLoader();
@@ -112,7 +117,7 @@ public class MainViewController extends BasicController {
         stage.setTitle("Toutes les enseignes");
         stage.setScene(scene);
 
-        Firm firm = polytech.unice.si3.ihm.firm.json.ContentParser.getFirm();
+        Firm firm = ContentParser.getFirm();
 
         AllStoreController controller = loader.getController();
         controller.setCurrentStage(stage);
@@ -129,6 +134,12 @@ public class MainViewController extends BasicController {
     @Override
     public void initContent(){
 
+    }
+    
+    public void changeLogo(String url){
+    	File file = new File(url);
+        Image image = new Image(file.toURI().toString());
+    	logo.setImage(image);
     }
 
 }
