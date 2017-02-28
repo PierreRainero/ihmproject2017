@@ -26,4 +26,8 @@ public class BasicControler {
     void mouseExited(MouseEvent event) {
     	currentStage.getScene().getRoot().setCursor(Cursor.DEFAULT);
     }
+    
+    public void initContent(){
+    	throw new UnsupportedOperationException();
+    }
 }

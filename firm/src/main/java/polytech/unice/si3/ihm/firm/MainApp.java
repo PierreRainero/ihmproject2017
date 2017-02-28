@@ -37,6 +37,7 @@ public class MainApp extends Application {
         
         MainViewControler controller = loader.getController();
         controller.setCurrentStage(stage);
+        controller.initContent();
         
         stage.show();
     }

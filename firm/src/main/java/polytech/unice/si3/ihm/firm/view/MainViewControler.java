@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.json.JSONObject;
 
 public class MainViewControler extends BasicControler {
 
@@ -118,6 +119,12 @@ public class MainViewControler extends BasicControler {
     @FXML
     void search(MouseEvent event) {
 
+    }
+    
+    @Override
+    public void initContent(){
+    	//JSONObject jsonObject = new JSONObject("/datas/content.json");
+    	//System.out.println(jsonObject.get("name"));
     }
 
 }
