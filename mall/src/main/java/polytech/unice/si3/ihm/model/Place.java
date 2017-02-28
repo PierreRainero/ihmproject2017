@@ -4,9 +4,31 @@ package polytech.unice.si3.ihm.model;
  * Created by Ken on 28/02/2017.
  */
 public class Place {
-    String name;
-    String imagePath;
-    int level;
-    Coordinate coord;
+    private String name;
+    private String imagePath;
+    private int level;
+    private Coordinate coord;
 
+    public Place(String name,String imagePath,int level,Coordinate coord){
+        this.name = name;
+        this.imagePath = imagePath;
+        this.level = level;
+        this.coord = coord;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public Coordinate getCoord() {
+        return coord;
+    }
 }
