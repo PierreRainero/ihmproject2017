@@ -5,7 +5,7 @@ import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class BasicControler {
+public class BasicController {
 	protected Stage currentStage;
 	
     public void setCurrentStage(Stage stage){
@@ -13,7 +13,7 @@ public class BasicControler {
     }
     
     @FXML
-    void exit(MouseEvent event) {;
+    void exit(MouseEvent event) {
         currentStage.close();
     }
 
