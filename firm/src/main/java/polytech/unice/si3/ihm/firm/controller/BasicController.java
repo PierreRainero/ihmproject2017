@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.view;
+package polytech.unice.si3.ihm.firm.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;

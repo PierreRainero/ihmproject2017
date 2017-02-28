@@ -7,7 +7,6 @@ import java.io.File;
 /**
  * Class that represents a commercialized product
  *
- * Created by SERRANO Simon on 17/02/2017.
  */
 public class Product {
     private String name;
