@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import polytech.unice.si3.ihm.firm.view.MainViewController;
+import polytech.unice.si3.ihm.firm.controller.MainViewController;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

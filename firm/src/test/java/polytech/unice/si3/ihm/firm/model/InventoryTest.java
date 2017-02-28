@@ -8,9 +8,6 @@ import polytech.unice.si3.ihm.firm.exceptions.ProductIsNotInTheInventoryExceptio
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by SERRANO Simon on 18/02/2017.
- */
 public class InventoryTest {
 
     private Inventory inventory;

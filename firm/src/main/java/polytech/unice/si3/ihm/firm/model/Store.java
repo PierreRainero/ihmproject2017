@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 /**
  * Class that represent a store
  *
- * Created by SERRANO Simon on 17/02/2017.
  */
 public class Store {
     private String name;

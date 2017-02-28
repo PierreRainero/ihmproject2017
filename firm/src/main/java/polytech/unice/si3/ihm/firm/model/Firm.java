@@ -6,13 +6,12 @@ import java.util.List;
 /**
  * Class that represent a firm
  *
- * Created by SERRANO Simon on 18/02/2017.
  */
 public class Firm {
     private String name;
     private String description;
-    private String linkForMoreInfo;
     private String logo;
+    private String linkForMoreInfo;
     private String banner;
     private List<Store> stores;
 
@@ -20,7 +19,7 @@ public class Firm {
      * Default constructor for a firm
      */
     public Firm() {
-        this(null, null);
+        this(null, null, null, null);
     }
 
     /**
@@ -28,9 +27,12 @@ public class Firm {
      * @param name the name of the firm
      * @param description the description of the firm
      */
-    public Firm(String name, String description) {
+    public Firm(String name, String description, String logo, String linkForMoreInfo) {
         this.name = name;
         this.description = description;
+        this.logo = logo;
+        this.linkForMoreInfo = linkForMoreInfo;
+        
         stores = new ArrayList<Store>();
     }
 
