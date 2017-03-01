@@ -6,8 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import polytech.unice.si3.ihm.firm.controller.MainViewController;
-import polytech.unice.si3.ihm.firm.json.ContentParser;
 import polytech.unice.si3.ihm.firm.model.Firm;
+import polytech.unice.si3.ihm.firm.util.ContentParser;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,9 +40,7 @@ public class MainApp extends Application {
         
         MainViewController controller = loader.getController();
         controller.setCurrentStage(stage);
-        controller.initContent();
-        
-        controller.changeLogo(firm.getLogo());
+        controller.initContent(firm);
         
         stage.show();
     }

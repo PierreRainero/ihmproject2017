@@ -1,29 +1,25 @@
 package polytech.unice.si3.ihm.firm.controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.json.simple.JSONObject;
 import polytech.unice.si3.ihm.firm.model.Firm;
-import polytech.unice.si3.ihm.firm.model.Store;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import polytech.unice.si3.ihm.firm.util.ContentParser;
+import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 
 import polytech.unice.si3.ihm.firm.exceptions.ContentException;
-import polytech.unice.si3.ihm.firm.json.ContentParser;
 
 public class MainViewController extends BasicController {
+	private String linkToVisit;
 
     @FXML
     private ImageView logo;
@@ -104,6 +100,12 @@ public class MainViewController extends BasicController {
     void choseRightProduct(MouseEvent event) {
 
     }
+    
+    @FXML
+    void linkPressed(MouseEvent event) throws IOException {
+    	URI uri = URI.create(linkToVisit);
+    	Desktop.getDesktop().browse(uri);
+    }
 
     @FXML
     void openAllShops(MouseEvent event) throws IOException, ContentException {
@@ -132,14 +134,29 @@ public class MainViewController extends BasicController {
     }
     
     @Override
-    public void initContent(){
-
+    public void initContent(Object obj){
+    	Firm firm = null;
+    	if(obj instanceof Firm)
+    		firm = (Firm) obj;
+    	else
+    		return;
+    	
+    	updateLogo(firm.getLogo());
+    	updateFirmImageName(firm.getBanner());
+    	updateDescription(firm.getDescription());
+    	linkToVisit = firm.getLinkForMoreInfo();
     }
     
-    public void changeLogo(String url){
-    	File file = new File(url);
-        Image image = new Image(file.toURI().toString());
-    	logo.setImage(image);
+    private void updateLogo(String url){
+    	logo.setImage(ImageBuilder.getImage(url));
     }
-
+    
+    private void updateFirmImageName(String url){
+        firmImageName.setImage(ImageBuilder.getImage(url));
+    }
+    
+    private void updateDescription(String description){
+    	this.description.setText(description);
+    }
+    
 }
