@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import polytech.unice.si3.ihm.firm.controller.MainViewController;
+import polytech.unice.si3.ihm.firm.json.ContentParser;
+import polytech.unice.si3.ihm.firm.model.Firm;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +23,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
 
         log.info("Starting firm view");
+        Firm firm = ContentParser.getFirm();
 
         String fxmlFile = "/fxml/main_view.fxml";
         log.debug("Loading FXML for main view from: {}", fxmlFile);
@@ -38,6 +41,8 @@ public class MainApp extends Application {
         MainViewController controller = loader.getController();
         controller.setCurrentStage(stage);
         controller.initContent();
+        
+        controller.changeLogo(firm.getLogo());
         
         stage.show();
     }

@@ -1,41 +1,48 @@
 package polytech.unice.si3.ihm.firm.json;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
+import polytech.unice.si3.ihm.firm.exceptions.ContentException;
 import polytech.unice.si3.ihm.firm.model.Firm;
 import polytech.unice.si3.ihm.firm.model.Store;
 
 public class ContentParser {
 	
 	private ContentParser(){
-		
 	}
 	
-	public static Firm getFirm(){
+	public static Firm getFirm() throws ContentException{
     	JSONParser parser = new JSONParser();
     	JSONObject firmJson = null;
     	try {
 			Object obj = parser.parse(new FileReader(System.getProperties().get("user.dir")+"/src/main/resources/datas/content.json"));
 	    	firmJson = (JSONObject) obj;
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-    	Firm firm = new Firm((String)firmJson.get("name"), (String)firmJson.get("description"), (String)firmJson.get("logo"), (String)firmJson.get("link"));
+    	String name = null;
+    	String description = null;
+    	String logo = null;
+    	String link = null;
+    	String banner = null;
+    	
+    	try{
+        	name = (String)firmJson.get("name");
+        	description = (String)firmJson.get("description");
+        	logo = (String)firmJson.get("logo");
+        	link = (String)firmJson.get("link");
+        	banner = (String)firmJson.get("banner");
+    	}catch(Exception e){
+    		throw new ContentException("Incorrect JSONFile : "+System.getProperties().get("user.dir")+"/src/main/resources/datas/content.json");
+    	}
+
+    	Firm firm = new Firm(name, description, logo, link, banner);
+    	
     	JSONArray shops = (JSONArray)firmJson.get("shops");
     	for(int i=0; i<shops.size(); i++){
     		JSONObject tempoShop = (JSONObject) shops.get(i);
