@@ -54,7 +54,9 @@ public class AllStoreController extends BasicController {
                             VBox vbox = new VBox(new Label(store.getName()),
                                     new Label(store.getDescription()),
                                     new Label(store.getMallName()),
-                                    new Label(store.getAddress()));
+                                    new Label(store.getAddress()),
+                                    new Label(store.getCity()),
+                                    new Label(store.getCityNumber()));
                             HBox hBox;
                             if (store.getImage()==null){
                                 hBox = new HBox(new Label("No image"), vbox);

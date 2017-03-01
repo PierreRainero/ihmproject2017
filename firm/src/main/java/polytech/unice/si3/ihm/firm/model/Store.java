@@ -9,6 +9,8 @@ package polytech.unice.si3.ihm.firm.model;
 public class Store {
     private String name;
     private String address;
+    private String city;
+    private String cityNumber;
     private String mallName;
     private String description;
     private String image;
@@ -18,7 +20,7 @@ public class Store {
      * Default constructor for a store
      */
     public Store() {
-        this(null, null, null, null);
+        this(null, null, null, null, null, null);
     }
 
     /**
@@ -28,9 +30,11 @@ public class Store {
      * @param mallName the name of the mall where the store is
      * @param description the description of the store
      */
-    public Store(String name, String address, String mallName, String description) {
+    public Store(String name, String address, String city, String cityNumber, String mallName, String description) {
         this.name = name;
         this.address = address;
+        this.city=city;
+        this.cityNumber = cityNumber;
         this.mallName = mallName;
         this.description = description;
         inventory = new Inventory();
@@ -94,13 +98,34 @@ public class Store {
 
     /**
      * Getter for the description of the store
-     * @return
+     * @return the description
      */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Getter for the link of the store's image
+     * @return the link
+     */
     public String getImage() {
         return image;
     }
+
+    /**
+     * Getter for the city where the store is located
+     * @return the city
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * Getter for the number of the department where the store is located
+     * @return the cityNumber
+     */
+    public String getCityNumber() {
+        return cityNumber;
+    }
 }
+

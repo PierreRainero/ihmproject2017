@@ -6,12 +6,16 @@
 	"banner": "src/main/resources/images/baniere.png",
 	"shops": [{
 		"name": "MacroGamia Nice",
-		"address": "30 Avenue Jean M�decin, 06000 Nice",
+		"address": "30 Avenue Jean M�decin",
+		"city":"Nice",
+		"city number":"06000",
 		"mallname": "Nice Etoile",
 		"description": ""
 	}, {
 		"name": "MacroGamia Toulon",
-		"address": "Rue du M�rier, 83000 Toulon",
+		"address": "Rue du M�rier",
+		"city":"Toulon",
+		"city number":"83000",
 		"mallname": "Mayol",
 		"description": ""
 	}]
