@@ -5,20 +5,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
-import polytech.unice.si3.ihm.firm.model.Firm;
-import polytech.unice.si3.ihm.firm.model.Store;
-
-import java.util.ArrayList;
-import java.util.List;
+import polytech.unice.si3.ihm.firm.model.commercial.Firm;
+import polytech.unice.si3.ihm.firm.model.commercial.Store;
+import polytech.unice.si3.ihm.firm.model.sorting.SortingEnum;
 
 public class AllStoreController extends BasicController {
 
@@ -33,6 +27,9 @@ public class AllStoreController extends BasicController {
 
     @FXML
     private ListView<Store> stores;
+
+    @FXML
+    private ComboBox<String> sortingMethods;
 
 
     /**

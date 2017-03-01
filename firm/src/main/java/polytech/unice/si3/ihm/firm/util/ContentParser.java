@@ -7,8 +7,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import polytech.unice.si3.ihm.firm.exceptions.ContentException;
-import polytech.unice.si3.ihm.firm.model.Firm;
-import polytech.unice.si3.ihm.firm.model.Store;
+import polytech.unice.si3.ihm.firm.model.commercial.Firm;
+import polytech.unice.si3.ihm.firm.model.commercial.Store;
 
 public class ContentParser {
 	

@@ -1,6 +1,6 @@
 package polytech.unice.si3.ihm.firm.exceptions;
 
-import polytech.unice.si3.ihm.firm.model.Product;
+import polytech.unice.si3.ihm.firm.model.commercial.Product;
 
 
 public class ProductIsNotInTheInventoryException extends Exception {

@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.model;
+package polytech.unice.si3.ihm.firm.model.commercial;
 
 import java.util.ArrayList;
 import java.util.List;

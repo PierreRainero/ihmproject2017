@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import polytech.unice.si3.ihm.firm.controller.MainViewController;
-import polytech.unice.si3.ihm.firm.model.Firm;
+import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.util.ContentParser;
 
 import org.slf4j.Logger;

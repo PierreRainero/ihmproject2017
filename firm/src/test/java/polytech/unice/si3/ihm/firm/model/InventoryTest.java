@@ -3,6 +3,8 @@ package polytech.unice.si3.ihm.firm.model;
 import org.junit.Before;
 import org.junit.Test;
 import polytech.unice.si3.ihm.firm.exceptions.ProductIsNotInTheInventoryException;
+import polytech.unice.si3.ihm.firm.model.commercial.Inventory;
+import polytech.unice.si3.ihm.firm.model.commercial.Product;
 
 
 import static org.junit.Assert.assertFalse;
