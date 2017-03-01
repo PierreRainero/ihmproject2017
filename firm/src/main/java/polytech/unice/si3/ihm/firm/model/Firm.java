@@ -97,4 +97,13 @@ public class Firm {
     public String getLogo(){
     	return logo;
     }
+    
+    public String getBanner(){
+    	return banner;
+    }
+    
+    public String getLinkForMoreInfo(){
+    	return linkForMoreInfo;
+    }
+    
 }

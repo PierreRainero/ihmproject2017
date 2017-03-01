@@ -27,7 +27,7 @@ public class BasicController {
     	currentStage.getScene().getRoot().setCursor(Cursor.DEFAULT);
     }
     
-    public void initContent(){
+    public void initContent(Object object){
     	throw new UnsupportedOperationException();
     }
 }

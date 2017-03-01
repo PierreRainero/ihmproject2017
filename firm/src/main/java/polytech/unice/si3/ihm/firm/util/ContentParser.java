@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.json;
+package polytech.unice.si3.ihm.firm.util;
 
 import java.io.FileReader;
 
