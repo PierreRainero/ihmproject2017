@@ -36,7 +36,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
 
         MainViewController controller = loader.getController();
-        controller.setMainApp(this);
+        //controller.setMainApp(this);
 
         stage.show();
 
@@ -47,7 +47,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader();
         Parent node = null;
         try {
-            node = loader.load(getClass().getResourceAsStream(fxmlFile));
+            node = (Parent)loader.load(getClass().getResourceAsStream(fxmlFile));
         } catch (IOException e) {
             e.printStackTrace();
         }
