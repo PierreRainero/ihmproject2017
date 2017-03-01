@@ -1,8 +1,9 @@
 package polytech.unice.si3.ihm.model;
-import java.util.*;
-/**
- * Created by Ken on 28/02/2017.
- */
+
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+
 public class Mall {
     private String name;
     private Map<Integer,Level> levels;

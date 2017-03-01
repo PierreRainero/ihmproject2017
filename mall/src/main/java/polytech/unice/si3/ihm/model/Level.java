@@ -1,8 +1,7 @@
 package polytech.unice.si3.ihm.model;
-import java.util.*;
-/**
- * Created by Ken on 28/02/2017.
- */
+
+import java.util.List;
+
 public class Level {
     private int number;
     private List<Store> stores;
@@ -26,11 +25,21 @@ public class Level {
         places.add(place);
     }
 
+    public void displayStores() {
+        for (Store store : stores) {
+            store.displayStore();
+        }
+    }
+
     public List<Store> getStores(){
         return stores;
     }
 
     public List<Place> getPlaces(){
         return places;
+    }
+
+    public int getNumber() {
+        return number;
     }
 }

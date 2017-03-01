@@ -70,7 +70,7 @@
                   </Label>
                   <AnchorPane>
                      <children>
-                        <Button mnemonicParsing="false" onMouseClicked="#displayGoodDeals" prefHeight="25.0" prefWidth="148.0" text="Offres" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                        <Button fx:id="offers" mnemonicParsing="false" onMouseClicked="#displayGoodDeals" prefHeight="25.0" prefWidth="148.0" text="Offres" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
                      </children>
                   </AnchorPane>
                </children>
@@ -129,12 +129,12 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                      <Button mnemonicParsing="false" text="Wi-Fi" />
-                        <Button mnemonicParsing="false" text="Toilettes" />
-                        <Button mnemonicParsing="false" text="Ascenseurs" />
-                        <Button mnemonicParsing="false" text="Escaliers" />
-                        <Button mnemonicParsing="false" text="Restaurants" />
-                        <Button mnemonicParsing="false" text="Où suis-je ?" />
+                      <Button fx:id="wifi" mnemonicParsing="false" onMouseClicked="#displayWifi" text="Wi-Fi" />
+                        <Button fx:id="toilet" mnemonicParsing="false" onMouseClicked="#displayToilet" text="Toilettes" />
+                        <Button fx:id="elevators" mnemonicParsing="false" onMouseClicked="#displayElevators" text="Ascenseurs" />
+                        <Button fx:id="stairs" mnemonicParsing="false" onMouseClicked="#displayStairs" text="Escaliers" />
+                        <Button fx:id="restaurants" mnemonicParsing="false" onMouseClicked="#displayRestaurants" text="Restaurants" />
+                        <Button fx:id="whereAmI" mnemonicParsing="false" onMouseClicked="#displayPositionUser" text="Où suis-je ?" />
                     </items>
                   </ToolBar>
                </children>
@@ -148,11 +148,11 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                      <Button mnemonicParsing="false" text="Sous-sol" />
-                        <Button mnemonicParsing="false" text="RDC" />
-                        <Button mnemonicParsing="false" text="1er Etage" />
-                        <Button mnemonicParsing="false" text="2ème Etage" />
-                        <Button mnemonicParsing="false" text="3ème Etage" />
+                      <Button fx:id="basement" mnemonicParsing="false" onMouseClicked="#buildBasement" text="Sous-sol" />
+                        <Button fx:id="groundFloor" mnemonicParsing="false" onMouseClicked="#buildGroundFloor" text="RDC" />
+                        <Button fx:id="firstFloor" mnemonicParsing="false" onMouseClicked="#buildFirstFloor" text="1er Etage" />
+                        <Button fx:id="secondFloor" mnemonicParsing="false" onMouseClicked="#buildSecondFloor" text="2ème Etage" />
+                        <Button fx:id="thirdFloor" mnemonicParsing="false" onMouseClicked="#buildThirdFloor" text="3ème Etage" />
                     </items>
                   </ToolBar>
                </children>

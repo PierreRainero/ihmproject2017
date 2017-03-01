@@ -1,8 +1,5 @@
 package polytech.unice.si3.ihm.model;
 
-/**
- * Created by Ken on 28/02/2017.
- */
 public class Place {
     private String name;
     private String imagePath;
