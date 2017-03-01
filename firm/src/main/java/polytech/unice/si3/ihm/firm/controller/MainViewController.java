@@ -125,6 +125,7 @@ public class MainViewController extends BasicController {
         controller.setCurrentStage(stage);
         controller.setFirm(firm);
         controller.changeListView();
+        controller.populateCombobox();
         stage.show();
     }
 

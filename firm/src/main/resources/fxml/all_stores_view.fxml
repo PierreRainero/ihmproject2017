@@ -45,7 +45,7 @@
             </AnchorPane>
             <HBox maxHeight="150.0" maxWidth="810.0" prefHeight="35.0" prefWidth="810.0" spacing="550.0" VBox.vgrow="NEVER">
                <children>
-                  <ComboBox fx:id="sortingMethods" prefWidth="150.0" promptText="Tri --" HBox.hgrow="NEVER">
+                  <ComboBox fx:id="sortingMethods" onMouseClicked="#sortWithTheSelectedSortingMethod" prefWidth="150.0" promptText="Tri --" HBox.hgrow="NEVER">
                      <HBox.margin>
                         <Insets bottom="5.0" left="15.0" top="5.0" />
                      </HBox.margin>

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
@@ -30,6 +31,8 @@ public class AllStoreController extends BasicController {
 
     @FXML
     private ComboBox<String> sortingMethods;
+
+
 
 
     /**
@@ -88,6 +91,25 @@ public class AllStoreController extends BasicController {
         return stores;
     }
 
+    /**
+     * Allow to populate the combobox of sorting methods
+     */
+    public void populateCombobox(){
+        ObservableList<String> sortingMethodsList=FXCollections.observableArrayList();
+        for (SortingEnum sorting : SortingEnum.values()){
+            sortingMethodsList.add(sorting.getSortingName());
+        }
+        sortingMethods.setItems(sortingMethodsList);
+    }
+
+
+    /**
+     * Method that will call the corresponding sorting method depending on what has been chosen in the comboBox
+     * @param event the event
+     */
+    public void sortWithTheSelectedSortingMethod(MouseEvent event){
+        //TODO
+    }
 
 
 
