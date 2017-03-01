@@ -1,6 +1,6 @@
 package polytech.unice.si3.ihm.firm.model;
 
-import javafx.scene.image.Image;
+
 
 /**
  * Class that represent a store
