@@ -1,9 +1,7 @@
 package polytech.unice.si3.ihm.view;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 import polytech.unice.si3.ihm.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,10 +11,9 @@ import polytech.unice.si3.ihm.model.Coordinate;
 import polytech.unice.si3.ihm.model.Level;
 import polytech.unice.si3.ihm.model.Store;
 
-public class MainViewController {
+public class MainViewController extends MenuController {
 
     private MainApp mainApp;
-    private Stage stage;
 
     /**
      * The constructor.
@@ -47,18 +44,8 @@ public class MainViewController {
         mainApp.changeScene("/fxml/good_deals.fxml");
     }
 
-    public void loadStage(Stage stage) {
-        this.stage = stage;
-    }
-
     @FXML
     private Button offers;
-
-    @FXML
-    private MenuItem exitMenu;
-
-    @FXML
-    private MenuItem reset;
 
     @FXML
     private Button wifi;
@@ -132,11 +119,6 @@ public class MainViewController {
     }
 
     @FXML
-    void closeWindow(ActionEvent event) {
-        stage.close();
-    }
-
-    @FXML
     void displayElevators(MouseEvent event) {
 
     }
@@ -166,8 +148,9 @@ public class MainViewController {
 
     }
 
+    @Override
     @FXML
     void reset(ActionEvent event) {
-    grid.getChildren().clear();
+        grid.getChildren().clear();
     }
 }
