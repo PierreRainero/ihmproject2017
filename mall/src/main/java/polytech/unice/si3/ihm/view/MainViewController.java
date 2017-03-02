@@ -1,10 +1,9 @@
 package polytech.unice.si3.ihm.view;
 
-
-
-/**
- * Created by Ken on 28/02/2017.
- */
+import javafx.event.ActionEvent;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import polytech.unice.si3.ihm.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,6 +16,7 @@ import polytech.unice.si3.ihm.model.Store;
 public class MainViewController {
 
     private MainApp mainApp;
+    private Stage stage;
 
     /**
      * The constructor.
@@ -47,8 +47,18 @@ public class MainViewController {
         mainApp.changeScene("/fxml/good_deals.fxml");
     }
 
+    public void loadStage(Stage stage) {
+        this.stage = stage;
+    }
+
     @FXML
     private Button offers;
+
+    @FXML
+    private MenuItem exitMenu;
+
+    @FXML
+    private MenuItem reset;
 
     @FXML
     private Button wifi;
@@ -84,6 +94,9 @@ public class MainViewController {
     private Button thirdFloor;
 
     @FXML
+    private GridPane grid;
+
+    @FXML
     void buildBasement(MouseEvent event) {
 
     }
@@ -92,8 +105,10 @@ public class MainViewController {
     void buildFirstFloor(MouseEvent event) {
         Level fFloor = new Level(1);
         Store appleStore = new Store("Apple",  Color.web("0x323232"), "apple", new Coordinate(11, 4));
+        appleStore.setSize(203, 136);
         fFloor.addStore(appleStore);
-        fFloor.displayStores();
+        Drawer drawer = new Drawer(grid);
+        drawer.displayLevel(fFloor);
     }
 
     @FXML
@@ -109,6 +124,16 @@ public class MainViewController {
     @FXML
     void buildThirdFloor(MouseEvent event) {
 
+    }
+
+    @FXML
+    void clickGrid(MouseEvent event) {
+
+    }
+
+    @FXML
+    void closeWindow(ActionEvent event) {
+        stage.close();
     }
 
     @FXML
@@ -139,5 +164,10 @@ public class MainViewController {
     @FXML
     void displayWifi(MouseEvent event) {
 
+    }
+
+    @FXML
+    void reset(ActionEvent event) {
+    grid.getChildren().clear();
     }
 }

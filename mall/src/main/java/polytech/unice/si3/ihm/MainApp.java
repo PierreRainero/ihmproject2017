@@ -22,11 +22,13 @@ public class MainApp extends Application {
 
     public void start(Stage stage) throws Exception {
         this.stage = stage;
+
         log.info("Starting main");
+
         String fxmlFile = "/fxml/main.fxml";
         log.debug("Loading FXML for main view from: {}", fxmlFile);
         FXMLLoader loader = new FXMLLoader();
-        Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
+        Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
         log.debug("Showing JFX scene");
         Scene scene = new Scene(rootNode, 1280, 720);
@@ -36,18 +38,17 @@ public class MainApp extends Application {
         stage.setScene(scene);
 
         MainViewController controller = loader.getController();
-        controller.setMainApp(this);
+        controller.loadStage(stage);
 
         stage.show();
 
     }
 
     public void changeScene(String fxml){
-        String fxmlFile = fxml;
         FXMLLoader loader = new FXMLLoader();
         Parent node = null;
         try {
-            node = (Parent)loader.load(getClass().getResourceAsStream(fxmlFile));
+            node = loader.load(getClass().getResourceAsStream(fxml));
         } catch (IOException e) {
             e.printStackTrace();
         }
