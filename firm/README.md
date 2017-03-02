@@ -5,7 +5,25 @@
  - [Simon SERRANO](simon.serrano@etu.unice.fr)
 
 ## Historique des features
-### Week 06
+### Week 09
+ - [ ] Mise en place du CSS
+ - [ ] Mise en place des données : images
+ - [x] Mise à jours de la vue en fonction des données (textes et images)
+ - [x] Mise à jours des composants en fonction de la taille de la fenêtre
+ - [x] Liens fonctionnels
+ - [ ] Mise en place des annonces
+## Week 08
+ - [ ] Mise en place du CSS
+ - [x] Mise en place des données : fichier JSON
+ - [x] Chargement des données : fichier JSON
+ - [ ] Mise en place des données : images
+### Week 07
+ - [ ] Mise en place du CSS
+ - [x] Vue client globalement acceptable
+ - [x] Mise en place des controlleurs
+ - [ ] Mise en place des données : fichier JSON
+ - [ ] Mise en place des données : images
+ ### Week 06
  - [x] Création du repo
  - [x] Création du squelette de la vue client
  - [ ] Mise en place du CSS
