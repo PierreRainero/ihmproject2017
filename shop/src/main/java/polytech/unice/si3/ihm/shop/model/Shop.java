@@ -2,6 +2,7 @@ package polytech.unice.si3.ihm.shop.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Shop {
 
@@ -47,6 +48,14 @@ public class Shop {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Retourne la liste contenant les produits
+     * @return List contenant les différents produits contenus dans le magasin
+     */
+    public List<Product> getProduct(){
+        return this.products;
     }
 
     /**

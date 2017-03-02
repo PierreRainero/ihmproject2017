@@ -1,0 +1,33 @@
+{
+  "name": "MACROGAMIA",
+  "logo": "/images/logo.png",
+  "about": "Notre magasin vends et loue des biches",
+  "legalNotice": "CGU BULLSHIT",
+  "adress": "25 rue des cyprés",
+  "phone": "04XXXXXXXX",
+
+  "itemsList": [
+    {
+      "name": "Final Fantasy 15",
+      "imageURL": "img/FF15.jpg",
+      "price": "50",
+      "types": [
+        "jeu vidéo",
+        "RPG"
+      ]
+    },
+
+    {
+      "name": "Fifa 17",
+      "imageURL": "img/FIFA_17.jpg",
+      "price": "55",
+      "types": [
+        "jeu vidéo",
+        "Sport"
+      ]
+    }
+  ]
+
+  }
+
+}
