@@ -122,6 +122,7 @@ public class MainViewController extends BasicController {
         Firm firm = ContentParser.getFirm();
 
         AllStoreController controller = loader.getController();
+        controller.setScene(scene);
         controller.setCurrentStage(stage);
         controller.initContent(firm);
         stage.show();

@@ -25,14 +25,18 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="firmImageName" fitHeight="125.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>
-                     <image>
-                        <Image url="@/images/baniere.png" />
-                     </image>
-                  </ImageView>
+                     <children>
+                        <ImageView fx:id="firmImageName" fitHeight="125.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/baniere.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
             <AnchorPane prefHeight="411.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
@@ -43,16 +47,16 @@
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
             </AnchorPane>
-            <HBox maxHeight="150.0" maxWidth="810.0" prefHeight="35.0" prefWidth="810.0" spacing="550.0" VBox.vgrow="NEVER">
+            <HBox fx:id="botHbox" maxHeight="150.0" prefHeight="35.0" spacing="575.0" VBox.vgrow="NEVER">
                <children>
                   <ComboBox fx:id="sortingMethods" onAction="#sortWithTheSelectedSortingMethod" prefWidth="150.0" promptText="Tri --" HBox.hgrow="NEVER">
                      <HBox.margin>
-                        <Insets bottom="5.0" left="15.0" top="5.0" />
+                        <Insets bottom="5.0" left="15.0" />
                      </HBox.margin>
                   </ComboBox>
                   <Button fx:id="exit" alignment="BASELINE_RIGHT" mnemonicParsing="false" onMouseClicked="#exit" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" text="Quitter" HBox.hgrow="NEVER">
                      <HBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets />
                      </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />

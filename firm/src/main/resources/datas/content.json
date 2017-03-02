@@ -1,9 +1,9 @@
 {
 	"name": "MacroGamia",
 	"description": "Vendez nous vos jeux à petits prix, nous les revendrons mais hors de prix.",
-	"logo": "src/main/resources/images/Logoenseigne2.png",
+	"logo": "src/main/resources/images/logoMin.png",
 	"link": "www.macrogamia.com",
-	"banner": "src/main/resources/images/baniere.png",
+	"banner": "src/main/resources/images/logo.png",
 	"shops": [{
 		"name": "MacroGamia Nice",
 		"address": "30 Avenue Jean Médecin",
@@ -25,8 +25,8 @@
 		"address":"Rue Marie Curie",
 		"city":"Paris",
 		"city number":"75004",
-		"mallname":"Auchan les hoteliers",
-		"image":"",
+		"mallname":"Beaugrenelle",
+		"image":"src/main/resources/images/paris_beaugrenelle.png",
 		"description":""
 	}]
 

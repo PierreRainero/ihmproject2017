@@ -1,13 +1,15 @@
 package polytech.unice.si3.ihm.firm.controller;
 
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
@@ -20,8 +22,9 @@ import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 import java.util.List;
 
 public class AllStoreController extends BasicController {
-
     private Firm firm;
+    private Scene scene;
+    private int initialeWidth;
 
     @FXML
     private ImageView logo;
@@ -37,6 +40,9 @@ public class AllStoreController extends BasicController {
 
     @FXML
     private ComboBox<String> sortingMethods;
+    
+    @FXML
+    private HBox botHbox;
 
 
     /**
@@ -77,6 +83,7 @@ public class AllStoreController extends BasicController {
         initializeCombobox();
     	updateLogo(firm.getLogo());
     	updateFirmImageName(firm.getBanner());
+    	addResizeListener();
     }
 
     /**
@@ -181,8 +188,21 @@ public class AllStoreController extends BasicController {
     }
 
 
+    private void addResizeListener(){
+    	initialeWidth = (int) scene.getWidth();
+    	
+    	scene.widthProperty().addListener(new ChangeListener<Number>() {
+    	    public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
+    	    	double newSpace = 575 + newSceneWidth.doubleValue()-initialeWidth;
+    	    	if(newSpace<10.0)
+    	    		newSpace=10.;
+    	        botHbox.setSpacing(newSpace);
+    	    }
+    	});
+    }
 
-
-
+    public void setScene(Scene scene){
+    	this.scene = scene;
+    }
 
 }
