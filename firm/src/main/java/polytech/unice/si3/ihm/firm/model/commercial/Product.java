@@ -1,9 +1,5 @@
 package polytech.unice.si3.ihm.firm.model.commercial;
 
-import javafx.scene.image.Image;
-
-import java.io.File;
-
 /**
  * Class that represents a commercialized product
  *
@@ -23,8 +19,9 @@ public class Product {
      * @param description the description of the product
      * @param price the price of the product
      */
-    public Product(String name, String reference, String description, double price) {
+    public Product(String name, String image, String reference, String description, double price) {
         this.name = name;
+        this.image = image;
         this.reference = reference;
         this.description = description;
         this.price = price;

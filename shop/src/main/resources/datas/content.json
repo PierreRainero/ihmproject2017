@@ -29,7 +29,19 @@
         "jeu vidéo",
         "Sport"
       ]
+    },
+
+    {
+      "name":"Resident Evil : Rainero",
+      "imageURL":"/images/games/residentEvil.png",
+      "price": "125",
+      "description":"Resident Evil 7 Rainero marque le début d’une nouvelle ère dans la saga Resident Evil. Il revient aux racines du jeu et offre une nouvelle expérience de l’horreur, avec un nouveau personnage sans précédent : le duc Rainero. Le jeu se déroule dans un domaine au cœur de l’Amérique rurale et prend place après les tragiques évènements de Resident Evil 6. Les joueurs vont découvrir une nouvelle expérience dans les Resident Evil avec une jouabilité à la première personne.",
+      "types": [
+        "jeu vidéo",
+        "Horreur"
+      ]
     }
+
   ]
 
   }

@@ -5,14 +5,14 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="700.0" minWidth="1140.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.controller.MainViewController">
+<AnchorPane fx:id="mainContainer" minHeight="700.0" minWidth="1140.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.controller.MainViewController">
    <children>
       <VBox prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -24,17 +24,10 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
-                           <image>
-                              <Image url="@/images/Logoenseigne.png" />
-                           </image>
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="167.0" prefWidth="1194.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <ImageView fx:id="firmImageName" fitHeight="150.0" fitWidth="646.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                                 <image>
-                                    <Image url="@/images/baniere.png" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fx:id="firmImageName" fitHeight="150.0" fitWidth="646.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" />
                               <Label fx:id="description" text="&quot;Description possible en label aussi&quot;" VBox.vgrow="ALWAYS" />
                            </children>
                            <HBox.margin>
@@ -54,11 +47,11 @@
                      <children>
                         <VBox alignment="TOP_CENTER" maxWidth="250.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <ComboBox fx:id="searchType" prefHeight="29.0" prefWidth="180.0" promptText="Sélectionner le type" VBox.vgrow="ALWAYS" />
-                              <HBox prefHeight="104.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                              <ComboBox fx:id="searchType" prefHeight="29.0" prefWidth="199.0" promptText="Sélectionner le type" VBox.vgrow="ALWAYS" />
+                              <HBox fx:id="HboxSearch" prefHeight="104.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <TextField fx:id="searchValue" promptText="Tapez une ville, une région, une adresse ..." HBox.hgrow="ALWAYS" />
-                                    <Button fx:id="searchButton" mnemonicParsing="false" onMouseClicked="#search" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="26.0" prefWidth="57.0" text="Rechercher" HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="searchValue" maxHeight="34.0" minHeight="34.0" prefHeight="34.0" promptText="Tapez une ville, une région, une adresse ..." HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="searchButton" mnemonicParsing="false" onMouseClicked="#search" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="26.0" prefWidth="57.0" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
                               <AnchorPane VBox.vgrow="ALWAYS">
@@ -87,9 +80,6 @@
                                     <HBox alignment="CENTER" prefHeight="494.0" prefWidth="924.0">
                                        <children>
                                           <ImageView fx:id="carrouseImg1" fitHeight="350.0" fitWidth="220.0" onMouseClicked="#choseLeftProduct" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                                             <image>
-                                                <Image url="@/images/produit_phare_3.jpg" />
-                                             </image>
                                              <HBox.margin>
                                                 <Insets right="16.0" />
                                              </HBox.margin>
@@ -98,17 +88,11 @@
                                              <HBox.margin>
                                                 <Insets left="16.0" right="16.0" />
                                              </HBox.margin>
-                                             <image>
-                                                <Image url="@/images/produit_phare_1.png" />
-                                             </image>
                                           </ImageView>
                                           <ImageView fx:id="carrouseImg3" fitHeight="350.0" fitWidth="220.0" onMouseClicked="#choseRightProduct" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                              <HBox.margin>
                                                 <Insets left="16.0" />
                                              </HBox.margin>
-                                             <image>
-                                                <Image url="@/images/produit_phare_2.png" />
-                                             </image>
                                           </ImageView>
                                        </children>
                                     </HBox>
@@ -116,11 +100,9 @@
                               </VBox>
                            </children>
                         </VBox>
-                        <VBox maxWidth="250.0" HBox.hgrow="ALWAYS">
+                        <VBox maxWidth="250.0" minWidth="150.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label fx:id="promo1" text="Info/Promo de la semaine 1" VBox.vgrow="ALWAYS" />
-                              <Label fx:id="promo2" text="Info/Promo de la semaine 2" VBox.vgrow="ALWAYS" />
-                              <Label fx:id="promo3" text="Info/Promo de la semaine 3" VBox.vgrow="ALWAYS" />
+                              <ListView fx:id="ads" prefHeight="499.0" prefWidth="150.0" />
                            </children>
                         </VBox>
                      </children>
@@ -135,7 +117,7 @@
             </AnchorPane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1280.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Hyperlink fx:id="firmLink" text="Plus d'informations" HBox.hgrow="ALWAYS" />
+                  <Hyperlink fx:id="firmLink" onMouseClicked="#linkPressed" text="Plus d'informations" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />

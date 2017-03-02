@@ -60,7 +60,7 @@ public class JsonParser {
 
         createObjects(shop);
 
-        controller.initialiseCarousel(shop.getProduct().get(1), shop.getProduct().get(0), shop.getProduct().get(1));
+        controller.initialiseCarousel(shop.getProduct().get(1), shop.getProduct().get(0), shop.getProduct().get(2));
     }
 
     public void productPopup(Product product) throws IOException {

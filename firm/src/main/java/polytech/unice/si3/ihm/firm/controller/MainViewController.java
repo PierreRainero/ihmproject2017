@@ -4,6 +4,11 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.util.ContentParser;
@@ -61,16 +67,13 @@ public class MainViewController extends BasicController {
     private ImageView carrouseImg3;
 
     @FXML
-    private Label promo1;
-
-    @FXML
-    private Label promo2;
-
-    @FXML
-    private Label promo3;
+    private ListView<String> ads;
 
     @FXML
     private Hyperlink firmLink;
+    
+    @FXML
+    private HBox HboxSearch;
 
     @FXML
     void choseCenterProduct(MouseEvent event) {
@@ -122,6 +125,7 @@ public class MainViewController extends BasicController {
         Firm firm = ContentParser.getFirm();
 
         AllStoreController controller = loader.getController();
+        controller.setScene(scene);
         controller.setCurrentStage(stage);
         controller.initContent(firm);
         stage.show();
@@ -134,11 +138,21 @@ public class MainViewController extends BasicController {
     
     @Override
     public void initContent(Object obj){
+    	super.initContent(obj);
+    	
     	Firm firm = null;
     	if(obj instanceof Firm)
     		firm = (Firm) obj;
     	else
     		return;
+    	
+    	
+    	
+    	searchButton.setGraphic(new ImageView(ImageBuilder.getImage("src/main/resources/images/ic_search_black_24dp_2x.png", 25, 25)));
+    	addResizeListener();
+    	
+    	fillAds(firm);
+    	startCarousel(firm);
     	
     	updateLogo(firm.getLogo());
     	updateFirmImageName(firm.getBanner());
@@ -156,6 +170,39 @@ public class MainViewController extends BasicController {
     
     private void updateDescription(String description){
     	this.description.setText(description);
+    }
+    
+    private void fillAds(Firm firm){
+    	ListProperty<String> listProperty = new SimpleListProperty<>();
+    	ads.itemsProperty().bind(listProperty);
+    	listProperty.set(FXCollections.observableArrayList(firm.getAds()));
+    }
+    
+    private void startCarousel(Firm firm){
+    	if(firm.getProducts().size()>0)
+    		carrouseImg1.setImage(ImageBuilder.getImage(firm.getProducts().get(0).getImage()));
+    	if(firm.getProducts().size()>1)
+    		carrouseImg2.setImage(ImageBuilder.getImage(firm.getProducts().get(1).getImage()));
+    	if(firm.getProducts().size()>2)
+    		carrouseImg3.setImage(ImageBuilder.getImage(firm.getProducts().get(2).getImage()));
+    	
+    	carrouseImg2.setFitHeight(430.);
+    	carrouseImg2.setFitWidth(310.);
+    	
+    	carrouseImg1.setFitHeight(350.);
+    	carrouseImg1.setFitWidth(252.);
+    	carrouseImg3.setFitHeight(350.);
+    	carrouseImg3.setFitWidth(252.);
+    }
+    
+    
+    @Override
+    protected void addResizeListener(){
+    	scene.widthProperty().addListener(new ChangeListener<Number>() {
+    	    public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
+    	    	searchType.setPrefWidth(HboxSearch.getWidth());
+    	    }
+    	});
     }
     
 }

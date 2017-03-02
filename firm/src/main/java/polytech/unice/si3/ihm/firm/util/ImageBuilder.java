@@ -13,4 +13,9 @@ public class ImageBuilder {
     	File file = new File(url);
         return new Image(file.toURI().toString());
 	}
+	
+	public static Image getImage(String url, int width, int height) {
+    	File file = new File(url);
+        return new Image(file.toURI().toString(), width, height, false, false);
+	}
 }

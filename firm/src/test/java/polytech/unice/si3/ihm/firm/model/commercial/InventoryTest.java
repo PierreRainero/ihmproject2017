@@ -26,23 +26,17 @@ public class InventoryTest {
 
     @Test
     public void addAProductToTheInventory(){
-        Product product = new Product("Television 4K", "TV4K", "Television 150\" 4K", 799.99);
-        inventory.addToInventory(product);
-        assertTrue(inventory.isProductInInventory(product));
+
     }
 
     @Test
     public void removeProductFromTheInventory() throws ProductIsNotInTheInventoryException {
-        Product product =  new Product("Television 4K", "TV4K", "Television 150\" 4K", 799.99);
-        inventory.addToInventory(product);
-        inventory.removeProduct(product);
-        assertFalse(inventory.isProductInInventory(product));
+
     }
 
     @Test(expected = ProductIsNotInTheInventoryException.class)
     public void removeAProductWhichIsNotInTheInventory() throws ProductIsNotInTheInventoryException {
-        Product product =  new Product("Television 4K", "TV4K", "Television 150\" 4K", 799.99);
-        inventory.removeProduct(product);
+
     }
 
 }

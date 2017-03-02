@@ -33,6 +33,5 @@ public class MainApp extends Application {
         jsonParser.productPopup(product);
 
         stage.show();
-
     }
 }
