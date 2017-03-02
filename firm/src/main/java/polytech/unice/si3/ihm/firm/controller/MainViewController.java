@@ -123,8 +123,7 @@ public class MainViewController extends BasicController {
 
         AllStoreController controller = loader.getController();
         controller.setCurrentStage(stage);
-        controller.setFirm(firm);
-        controller.changeListView();
+        controller.initContent(firm);
         controller.populateCombobox();
         stage.show();
     }

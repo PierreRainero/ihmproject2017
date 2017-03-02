@@ -14,14 +14,16 @@ import javafx.util.Callback;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.model.commercial.Store;
 import polytech.unice.si3.ihm.firm.model.sorting.SortingEnum;
+import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 
 public class AllStoreController extends BasicController {
-
     private Firm firm;
+    
+    @FXML
+    private ImageView logo;
 
-    public void setFirm(Firm firm){
-        this.firm = firm;
-    }
+    @FXML
+    private ImageView firmImageName;
 
     @FXML
     private Button exit;
@@ -31,52 +33,6 @@ public class AllStoreController extends BasicController {
 
     @FXML
     private ComboBox<String> sortingMethods;
-
-
-
-
-    /**
-     * Method permitting to change the content of the listView
-     */
-    public void changeListView(){
-        ObservableList<Store> storesInListView = makeObservableList();
-        stores.setPlaceholder(new Label("List is empty"));
-        stores.setOrientation(Orientation.VERTICAL);
-        stores.setItems(storesInListView);
-        stores.setCellFactory(new Callback<ListView<Store>, ListCell<Store>>() {
-            public ListCell<Store> call(ListView<Store> param) {
-                return new ListCell<Store>(){
-
-                    @Override
-                    protected void updateItem(Store store, boolean empty){
-                        super.updateItem(store, empty);
-                        if (!empty){
-                            VBox vbox = new VBox(new Label(store.getName()),
-                                    new Label(store.getDescription()),
-                                    new Label(store.getMallName()),
-                                    new Label(store.getAddress()),
-                                    new Label(store.getCity()),
-                                    new Label(store.getCityNumber()));
-                            HBox hBox;
-                            if (store.getImage()==null){
-                                hBox = new HBox(new Label("No image"), vbox);
-                            }
-                            else{
-                                ImageView storeImage = new ImageView(store.getImage());
-                                storeImage.setPreserveRatio(true);
-                                storeImage.setFitHeight(50);
-                                storeImage.setFitWidth(50);
-                                hBox = new HBox(storeImage, vbox);
-                            }
-                            hBox.setSpacing(30.0);
-                            setGraphic(hBox);
-                        }
-                    }
-                };
-            }
-        });
-
-    }
 
 
     /**
@@ -110,7 +66,70 @@ public class AllStoreController extends BasicController {
     public void sortWithTheSelectedSortingMethod(MouseEvent event){
         //TODO
     }
+    
+    @Override
+    public void initContent(Object obj){
+    	Firm firm = null;
+    	if(obj instanceof Firm)
+    		firm = (Firm) obj;
+    	else
+    		return;
+    	
+    	this.firm = firm;
+    	changeListView();
+    	updateLogo(firm.getLogo());
+    	updateFirmImageName(firm.getBanner());
+    }
 
+    /**
+     * Method permitting to change the content of the listView
+     */
+    private void changeListView(){
+        ObservableList<Store> storesInListView = makeObservableList();
+        stores.setPlaceholder(new Label("List is empty"));
+        stores.setOrientation(Orientation.VERTICAL);
+        stores.setItems(storesInListView);
+        stores.setCellFactory(new Callback<ListView<Store>, ListCell<Store>>() {
+            public ListCell<Store> call(ListView<Store> param) {
+                return new ListCell<Store>(){
 
+                    @Override
+                    protected void updateItem(Store store, boolean empty){
+                        super.updateItem(store, empty);
+                        if (!empty){
+                            VBox vbox = new VBox(new Label(store.getName()),
+                                    new Label(store.getDescription()),
+                                    new Label(store.getMallName()),
+                                    new Label(store.getAddress()),
+                                    new Label(store.getCity()),
+                                    new Label(store.getCityNumber()));
+                            HBox hBox;
+                            if (store.getImage()==null){
+                                hBox = new HBox(new Label("No image"), vbox);
+                            }
+                            else{
+                                ImageView storeImage = new ImageView();
+                                storeImage.setImage(ImageBuilder.getImage(store.getImage()));
+                                storeImage.setPreserveRatio(true);
+                                storeImage.setFitHeight(120);
+                                storeImage.setFitWidth(120);
+                                hBox = new HBox(storeImage, vbox);
+                            }
+                            hBox.setSpacing(30.0);
+                            setGraphic(hBox);
+                        }
+                    }
+                };
+            }
+        });
+    }
+    
+    private void updateLogo(String url){
+    	logo.setImage(ImageBuilder.getImage(url));
+    }
+    
+    private void updateFirmImageName(String url){
+        firmImageName.setImage(ImageBuilder.getImage(url));
+    }
 
 }

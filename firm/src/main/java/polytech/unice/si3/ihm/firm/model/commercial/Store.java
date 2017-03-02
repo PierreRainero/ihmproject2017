@@ -20,7 +20,7 @@ public class Store {
      * Default constructor for a store
      */
     public Store() {
-        this(null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null);
     }
 
     /**
@@ -30,13 +30,14 @@ public class Store {
      * @param mallName the name of the mall where the store is
      * @param description the description of the store
      */
-    public Store(String name, String address, String city, String cityNumber, String mallName, String description) {
+    public Store(String name, String address, String city, String cityNumber, String mallName, String description, String image) {
         this.name = name;
         this.address = address;
         this.city=city;
         this.cityNumber = cityNumber;
         this.mallName = mallName;
         this.description = description;
+        this.image = image;
         inventory = new Inventory();
     }
 

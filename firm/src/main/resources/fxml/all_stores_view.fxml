@@ -17,7 +17,7 @@
          <children>
             <HBox prefHeight="91.0" prefWidth="800.0" VBox.vgrow="NEVER">
                <children>
-                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                  <ImageView fx:id="logo" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                      <image>
                         <Image url="@/images/Logoenseigne.png" />
                      </image>
@@ -25,7 +25,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="125.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                  <ImageView fx:id="firmImageName" fitHeight="125.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>

@@ -46,12 +46,13 @@ public class ContentParser {
     	JSONArray shops = (JSONArray)firmJson.get("shops");
     	for(int i=0; i<shops.size(); i++){
     		JSONObject tempoShop = (JSONObject) shops.get(i);
-    		firm.addStore(new Store((String)tempoShop.get("name"),
-									(String)tempoShop.get("address"),
+    		firm.addStore(new Store((String) tempoShop.get("name"),
+									(String) tempoShop.get("address"),
 									(String) tempoShop.get("city"),
-									(String)tempoShop.get("city number"),
-									(String)tempoShop.get("mallname"),
-									(String)tempoShop.get("description")));
+									(String) tempoShop.get("city number"),
+									(String) tempoShop.get("mallname"),
+									(String) tempoShop.get("description"),
+									(String) tempoShop.get("image")));	
     	}
     	
     	return firm;
