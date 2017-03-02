@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.json;
+package polytech.unice.si3.ihm.firm.util;
 
 import java.io.FileReader;
 
@@ -7,8 +7,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import polytech.unice.si3.ihm.firm.exceptions.ContentException;
-import polytech.unice.si3.ihm.firm.model.Firm;
-import polytech.unice.si3.ihm.firm.model.Store;
+import polytech.unice.si3.ihm.firm.model.commercial.Firm;
+import polytech.unice.si3.ihm.firm.model.commercial.Store;
 
 public class ContentParser {
 	
@@ -46,7 +46,13 @@ public class ContentParser {
     	JSONArray shops = (JSONArray)firmJson.get("shops");
     	for(int i=0; i<shops.size(); i++){
     		JSONObject tempoShop = (JSONObject) shops.get(i);
-    		firm.addStore(new Store((String)tempoShop.get("name"), (String)tempoShop.get("address"), (String)tempoShop.get("mallname"), (String)tempoShop.get("description")));
+    		firm.addStore(new Store((String) tempoShop.get("name"),
+									(String) tempoShop.get("address"),
+									(String) tempoShop.get("city"),
+									(String) tempoShop.get("city number"),
+									(String) tempoShop.get("mallname"),
+									(String) tempoShop.get("description"),
+									(String) tempoShop.get("image")));	
     	}
     	
     	return firm;

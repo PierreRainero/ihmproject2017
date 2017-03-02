@@ -1,13 +1,10 @@
-package polytech.unice.si3.ihm.firm.model;
+package polytech.unice.si3.ihm.firm.model.commercial;
 
-import javafx.scene.image.Image;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-
-import java.io.File;
-import java.io.IOException;
+import polytech.unice.si3.ihm.firm.model.commercial.Product;
 
 import static org.junit.Assert.*;
 

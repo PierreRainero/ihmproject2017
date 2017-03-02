@@ -14,13 +14,15 @@ public class ProductTest {
     Product p;
     String livre;
     String image;
+    String description;
 
     @Before
     public void init(){
         livre = "livre";
         image = "@/images/totoimg.png";
+        description = "Coucou je suis le livre.";
 
-        p = new Product(livre, image, 15);
+        p = new Product(livre, image, 15, description);
     }
 
     @Test

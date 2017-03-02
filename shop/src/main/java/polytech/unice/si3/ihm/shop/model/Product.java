@@ -11,6 +11,7 @@ import java.util.Optional;
 public class Product {
     private String name;
     private String imageURL;
+    private String description;
     private double price;
     private Optional<Promotion> promotion;
     private List<String> objectTypes;
@@ -21,12 +22,13 @@ public class Product {
      * @param imageURL url de l'image correspondant au produit
      * @param price prix du produit
      */
-    public Product(String name, String imageURL, double price){
+    public Product(String name, String imageURL, double price, String description){
         this.name = name;
         this.imageURL = imageURL;
         this.price = price;
         this.promotion = Optional.empty();
         this.objectTypes = new ArrayList<String>();
+        this.description = description;
     }
 
     /**
@@ -67,5 +69,9 @@ public class Product {
 
     public List<String> getObjectTypes(){
         return this.objectTypes;
+    }
+
+    public String getDescription(){
+        return this.description;
     }
 }

@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.model;
+package polytech.unice.si3.ihm.firm.model.commercial;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,4 +97,13 @@ public class Firm {
     public String getLogo(){
     	return logo;
     }
+    
+    public String getBanner(){
+    	return banner;
+    }
+    
+    public String getLinkForMoreInfo(){
+    	return linkForMoreInfo;
+    }
+    
 }

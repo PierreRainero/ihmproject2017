@@ -1,7 +1,9 @@
-package polytech.unice.si3.ihm.firm.model;
+package polytech.unice.si3.ihm.firm.model.commercial;
 
 import org.junit.Before;
 import org.junit.Test;
+import polytech.unice.si3.ihm.firm.model.commercial.Firm;
+import polytech.unice.si3.ihm.firm.model.commercial.Store;
 
 import static org.junit.Assert.assertEquals;
 

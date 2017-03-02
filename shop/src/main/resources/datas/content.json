@@ -1,6 +1,8 @@
 {
-  "name": "MACROGAMIA",
+  "name": "Macrogamia",
   "logo": "/images/logo.png",
+  "logoMin": "/images/logoMin79x75.png",
+  "logoText":"/images/logoText321x50.png",
   "about": "Notre magasin vends et loue des biches",
   "legalNotice": "CGU BULLSHIT",
   "adress": "25 rue des cyprés",
@@ -8,19 +10,21 @@
 
   "itemsList": [
     {
-      "name": "Final Fantasy 15",
-      "imageURL": "img/FF15.jpg",
+      "name": "Mosser Effect",
+      "imageURL": "/images/games/mosserEffect.png",
       "price": "50",
+      "description":"Incarnez le célébre commandant Mosser dans la galaxie d'Andromède , bien au-delà de la Voie Lactée . Là-bas, les joueurs mèneront notre combat pour un nouveau foyer en terrain hostile où NOUS sommes les aliens. Incarnez le Pionnier, leader d'une escouade d'explorateurs ayant reçu un entrainement militaire, avec de nombreuses possibilités de progression et de personnalisation. Il s'agit du prochain chapitre de l'histoire de l'humanité et les choix du joueur tout au long du jeu détermineront notre survie dans la galaxie Andromède. Alors que les mystères de la galaxie d'Andromède se révèleront à vous et que le dernier espoir de l'humanité repose sur vos épaules, jusqu'où pourrez-vous aller ? ",
       "types": [
         "jeu vidéo",
-        "RPG"
+        "FPS"
       ]
     },
 
     {
-      "name": "Fifa 17",
-      "imageURL": "img/FIFA_17.jpg",
+      "name": "Final Fantasy XV",
+      "imageURL": "/images/games/FF15.jpg",
       "price": "55",
+      "description":"Préparez-vous à entrer dans un monde dépassant l'imagination : plongez dans l'univers de FINAL FANTASY XV pour vivre une véritable épopée, ponctuée de combats intenses. Dans la peau de Noctis, le prince héritier du royaume de Lucis, à vous de renverser l'armée impériale, libérer votre patrie de l'envahisseur, et reconquérir le trône. Prenez la route aux côtés de vos fidèles compagnons pour un voyage inoubliable à travers les paysages époustouflants du monde d'Eos, peuplé de créatures colossales... et d'impitoyables ennemis. Au fil de votre périple, vous apprendrez à manier les armes et la magie, ainsi qu'à maîtriser le pouvoir de vos ancêtres, permettant de vous téléporter dans les airs en plein combat. Nouveaux venus et fans de longue date, accomplissez votre destin et découvrez un FINAL FANTASY d'un nouveau genre. Des combats intenses, riches en action : personnalisez le vaste arsenal d'armes à votre disposition et tirez parti des compétences de soutien uniques de chaque personnage au cours de combats en temps réel, faciles à prendre en main sans pour autant perdre en profondeur. Téléportez-vous sur le champ de bataille pour frapper vos ennemis par surprise, exécutez des coups spéciaux et lancez des sorts de plus en plus puissants à mesure que votre équipe gagne en expérience. Plongez dans un voyage sans limites : explorez l'arrière-pays en voiture aux côtés de vos amis ou aventurez-vous à pied au cœur d'un monde immense, peuplé de créatures merveilleuses, ponctué de grottes impénétrables et de villes où l'aventure vous tend les bras. Des liens d'amitié inaltérables : dans la peau de Noctis, vous verrez vos relations avec vos amis se renforcer à mesure que l'histoire vous rapprochent. Libérer sa patrie nécessite de la force, une bonne dose de courage, mais aussi et surtout un sentiment profond de solidarité. Effectuez des coups coopératifs en combat et émerveillez-vous devant l'esprit d'équipe de Noctis et ses compagnons.",
       "types": [
         "jeu vidéo",
         "Sport"

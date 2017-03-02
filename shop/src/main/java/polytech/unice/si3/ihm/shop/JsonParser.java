@@ -9,7 +9,9 @@ import org.json.JSONObject;
 import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
 import polytech.unice.si3.ihm.shop.view.MainViewController;
+import polytech.unice.si3.ihm.shop.view.ProductViewController;
 
+import javax.swing.text.html.ImageView;
 import java.io.*;
 
 public class JsonParser {
@@ -39,7 +41,7 @@ public class JsonParser {
 
     public void parseJson() throws Exception {
 
-        Shop shop = new Shop(input.get("name").toString(), input.get("logo").toString());
+        Shop shop = new Shop(input.get("name").toString(), input.get("logo").toString(), input.get("logoMin").toString(), input.get("logoText").toString());
 
         String fxmlFile = "/fxml/main_view.fxml";
         FXMLLoader loader = new FXMLLoader();
@@ -57,6 +59,26 @@ public class JsonParser {
         controller.initialiseView(shop);
 
         createObjects(shop);
+
+        controller.initialiseCarousel(shop.getProduct().get(1), shop.getProduct().get(0), shop.getProduct().get(1));
+    }
+
+    public void productPopup(Product product) throws IOException {
+        String fxmlFile = "/fxml/product_view.fxml";
+        FXMLLoader loader = new FXMLLoader();
+        Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
+        stage.setMinHeight(400);
+        stage.setMinWidth(500);
+
+        Scene scene = new Scene(rootNode, 500,600);
+        scene.getStylesheets().add("/styles/main.css");
+        stage.setTitle(product.getName());
+        stage.setScene(scene);
+
+        ProductViewController controller = loader.getController();
+        controller.setCurrentStage(stage);
+        controller.initialiseView(product);
+
     }
 
     private void createObjects(Shop shop) {
@@ -64,7 +86,7 @@ public class JsonParser {
         JSONObject jsonObject;
         for(int i=0;i<jsonArray.length();i++){
             jsonObject = jsonArray.getJSONObject(i);
-            shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price")));
+            shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price"), jsonObject.getString("description")));
         }
     }
 }
