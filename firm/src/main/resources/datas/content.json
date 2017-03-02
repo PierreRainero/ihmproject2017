@@ -1,12 +1,12 @@
 {
 	"name": "MacroGamia",
-	"description": "Vendez nous vos jeux à petits prix, nous les revendrons mais hors de prix.",
+	"description": "Vendez nous vos jeux Ã  petits prix, nous les revendrons mais hors de prix.",
 	"logo": "src/main/resources/images/Logoenseigne2.png",
 	"link": "www.macrogamia.com",
 	"banner": "src/main/resources/images/baniere.png",
 	"shops": [{
 		"name": "MacroGamia Nice",
-		"address": "30 Avenue Jean Médecin",
+		"address": "30 Avenue Jean MÃ©decin",
 		"city":"Nice",
 		"city number":"06000",
 		"mallname": "Nice Etoile",
@@ -20,6 +20,14 @@
 		"mallname": "Mayol",
 		"image": "src/main/resources/images/toulon_mayol.png",
 		"description": ""
+	}, {
+		"name":"MacroGamia Paris",
+		"address":"Rue Marie Curie",
+		"city":"Paris",
+		"city number":"75004",
+		"mallname":"Auchan les hoteliers",
+		"image":"",
+		"description":""
 	}]
 
 }
