@@ -7,6 +7,8 @@ public class Shop {
 
     private String name;
     private String logo;
+    private String logoMin;
+    private String logoText;
     private String about;
     private String legalNotice;
     private String adress;
@@ -17,9 +19,11 @@ public class Shop {
      * Constructeur d'un shop
      * @param name Nom du shop
      */
-    public Shop(String name, String logo) {
+    public Shop(String name, String logo, String logoMin, String logoText) {
         this.name = name;
         this.logo = logo;
+        this.logoMin = logoMin;
+        this.logoText = logoText;
         this.products = new ArrayList<Product>();
     }
 
@@ -95,6 +99,22 @@ public class Shop {
      */
     public String getLogo(){
         return this.logo;
+    }
+
+    /**
+     * Renvoie le logo minimal du shop
+     * @return le logo minimal du shop
+     */
+    public String getLogoMin(){
+        return this.logoMin;
+    }
+
+    /**
+     * Renvoie le texte du logo du shop
+     * @return le texte du logo du shop
+     */
+    public String getLogoText(){
+        return this.logoText;
     }
 
     /**
