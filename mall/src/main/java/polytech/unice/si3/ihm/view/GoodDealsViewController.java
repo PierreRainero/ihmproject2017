@@ -12,8 +12,6 @@ import java.io.IOException;
  * Created by Ken on 02/03/2017.
  */
 public class GoodDealsViewController extends MenuController {
-    private MainApp mainApp;
-
     /**
      * The constructor.
      * The constructor is called before the initialize() method.

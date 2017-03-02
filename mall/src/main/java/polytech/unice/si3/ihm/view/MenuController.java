@@ -4,10 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.MenuItem;
-import javafx.stage.Stage;
+import polytech.unice.si3.ihm.MainApp;
 
 public class MenuController {
-    protected Stage stage;
+    protected MainApp mainApp;
 
     @FXML
     private MenuItem exitMenu;
@@ -30,8 +30,11 @@ public class MenuController {
     @FXML
     private MenuItem frMenu;
 
-    public void loadStage(Stage stage) {
-        this.stage = stage;
+    /**
+     * Is called by the main application to give a reference back to itself.
+     */
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
     }
 
     @FXML
@@ -41,7 +44,7 @@ public class MenuController {
 
     @FXML
     void closeWindow(ActionEvent event) {
-        stage.close();
+        mainApp.getStage().close();
     }
 
     @FXML

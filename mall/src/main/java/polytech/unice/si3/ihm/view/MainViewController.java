@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
-import polytech.unice.si3.ihm.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -16,8 +15,6 @@ import polytech.unice.si3.ihm.model.Store;
 import java.io.IOException;
 
 public class MainViewController extends MenuController {
-
-    private MainApp mainApp;
 
     /**
      * The constructor.
@@ -33,15 +30,6 @@ public class MainViewController extends MenuController {
     @FXML
     private void initialize() {
 
-    }
-
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp
-     */
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
     }
 
     public void displayGoodDeals(){
