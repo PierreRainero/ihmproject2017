@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -23,8 +22,6 @@ import java.util.List;
 
 public class AllStoreController extends BasicController {
     private Firm firm;
-    private Scene scene;
-    private int initialeWidth;
 
     @FXML
     private ImageView logo;
@@ -188,7 +185,8 @@ public class AllStoreController extends BasicController {
     }
 
 
-    private void addResizeListener(){
+    @Override
+    protected void addResizeListener(){
     	initialeWidth = (int) scene.getWidth();
     	
     	scene.widthProperty().addListener(new ChangeListener<Number>() {
@@ -199,10 +197,6 @@ public class AllStoreController extends BasicController {
     	        botHbox.setSpacing(newSpace);
     	    }
     	});
-    }
-
-    public void setScene(Scene scene){
-    	this.scene = scene;
     }
 
 }

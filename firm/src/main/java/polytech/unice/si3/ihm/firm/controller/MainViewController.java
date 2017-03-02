@@ -4,6 +4,8 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.util.ContentParser;
@@ -71,6 +74,9 @@ public class MainViewController extends BasicController {
 
     @FXML
     private Hyperlink firmLink;
+    
+    @FXML
+    private HBox HboxSearch;
 
     @FXML
     void choseCenterProduct(MouseEvent event) {
@@ -141,6 +147,9 @@ public class MainViewController extends BasicController {
     	else
     		return;
     	
+    	searchButton.setGraphic(new ImageView(ImageBuilder.getImage("src/main/resources/images/ic_search_black_24dp_2x.png", 25, 25)));
+    	addResizeListener();
+    	
     	updateLogo(firm.getLogo());
     	updateFirmImageName(firm.getBanner());
     	updateDescription(firm.getDescription());
@@ -157,6 +166,15 @@ public class MainViewController extends BasicController {
     
     private void updateDescription(String description){
     	this.description.setText(description);
+    }
+    
+    @Override
+    protected void addResizeListener(){
+    	scene.widthProperty().addListener(new ChangeListener<Number>() {
+    	    public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
+    	    	searchType.setPrefWidth(HboxSearch.getWidth());
+    	    }
+    	});
     }
     
 }
