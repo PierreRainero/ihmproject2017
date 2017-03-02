@@ -7,10 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import polytech.unice.si3.ihm.view.GoodDealsViewController;
 import polytech.unice.si3.ihm.view.MainViewController;
-
-import java.io.IOException;
 
 public class MainApp extends Application {
 
@@ -45,7 +42,7 @@ public class MainApp extends Application {
         stage.show();
 
     }
-    
+
     public Stage getStage(){
         return stage;
     }

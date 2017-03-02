@@ -10,6 +10,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -86,30 +87,41 @@
          </bottom>
       </BorderPane>
    </top>
-   <center>
+   <bottom>
       <ScrollPane hbarPolicy="NEVER" prefHeight="720.0" prefWidth="1280.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
             <VBox prefHeight="547.0" prefWidth="1255.0">
                <children>
-                  <Separator prefWidth="200.0" />
-                  <ImageView fitHeight="559.0" fitWidth="1261.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/images/bons_plans_1.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="334.0" fitWidth="1287.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/images/bons_plans_2.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="421.0" fitWidth="1292.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/images/bons_plans_3.jpg" />
-                     </image>
-                  </ImageView>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="250.0" fitWidth="1265.0">
+                           <image>
+                              <Image url="@/images/bons_plans_1.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="250.0" fitWidth="1263.0">
+                           <image>
+                              <Image url="@/images/bons_plans_2.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="250.0" fitWidth="1261.0">
+                           <image>
+                              <Image url="@/images/bons_plans_3.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
             </VBox>
          </content>
       </ScrollPane>
-   </center>
+   </bottom>
 </BorderPane>
