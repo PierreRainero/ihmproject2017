@@ -128,5 +128,38 @@ public class Store {
     public String getCityNumber() {
         return cityNumber;
     }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Store store = (Store) o;
+
+        if (name != null ? !name.equals(store.name) : store.name != null) return false;
+        if (address != null ? !address.equals(store.address) : store.address != null) return false;
+        if (city != null ? !city.equals(store.city) : store.city != null) return false;
+        if (cityNumber != null ? !cityNumber.equals(store.cityNumber) : store.cityNumber != null) return false;
+        if (mallName != null ? !mallName.equals(store.mallName) : store.mallName != null) return false;
+        if (description != null ? !description.equals(store.description) : store.description != null) return false;
+        if (image != null ? !image.equals(store.image) : store.image != null) return false;
+        return inventory != null ? inventory.equals(store.inventory) : store.inventory == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (cityNumber != null ? cityNumber.hashCode() : 0);
+        result = 31 * result + (mallName != null ? mallName.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (image != null ? image.hashCode() : 0);
+        result = 31 * result + (inventory != null ? inventory.hashCode() : 0);
+        return result;
+    }
 }
 

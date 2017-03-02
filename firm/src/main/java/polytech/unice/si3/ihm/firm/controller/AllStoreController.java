@@ -13,8 +13,11 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.model.commercial.Store;
+import polytech.unice.si3.ihm.firm.model.sorting.SortListViewItemByCity;
 import polytech.unice.si3.ihm.firm.model.sorting.SortingEnum;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
+
+import java.util.List;
 
 public class AllStoreController extends BasicController {
 
@@ -71,6 +74,7 @@ public class AllStoreController extends BasicController {
 
     	this.firm = firm;
     	initializeListView();
+        initializeCombobox();
     	updateLogo(firm.getLogo());
     	updateFirmImageName(firm.getBanner());
     }
@@ -119,10 +123,27 @@ public class AllStoreController extends BasicController {
 
     }
 
+    /**
+     * Method that can change the order of the items in the list view
+     * @param newOrder the new order of the items
+     */
+    private void changeListViewOrder(List<Store> newOrder){
+        ObservableList<Store> storesInListView = FXCollections.observableArrayList(newOrder);
+        stores.setItems(storesInListView);
+    }
+
+    /**
+     * Allow to change the logo of the firm
+     * @param url the url to the image logo
+     */
     private void updateLogo(String url){
     	logo.setImage(ImageBuilder.getImage(url));
     }
 
+    /**
+     * Allow to change the image/banner of the firm
+     * @param url the url to the image
+     */
     private void updateFirmImageName(String url){
         firmImageName.setImage(ImageBuilder.getImage(url));
     }
@@ -136,7 +157,8 @@ public class AllStoreController extends BasicController {
         String value = sortingMethods.getValue();
 
         if (convertStringToSortingEnum(value).equals(SortingEnum.CITY)){
-            //TODO
+            SortListViewItemByCity sort = new SortListViewItemByCity(firm.getStores());
+            changeListViewOrder(sort.sortByCity());
         }
         else if (convertStringToSortingEnum(value).equals(SortingEnum.DEPARTMENT)){
             //TODO
@@ -157,6 +179,9 @@ public class AllStoreController extends BasicController {
         }
         return SortingEnum.DEFAULT;
     }
+
+
+
 
 
 
