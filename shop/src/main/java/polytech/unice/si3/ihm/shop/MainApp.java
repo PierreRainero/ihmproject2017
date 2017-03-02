@@ -32,6 +32,7 @@ public class MainApp extends Application {
         MainViewController controller = loader.getController();
         controller.setCurrentStage(stage);
         controller.initialiseView(shop);
+        controller.initialiseCarousel("/images/games/mosserEffect.png", "Mosser Effect : Andromeda", "/images/games/mosserEffect.png", "Mosser Effect : Andromeda", "/images/games/mosserEffect.png", "Mosser Effect : Andromeda");
 
         stage.show();
     }
