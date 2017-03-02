@@ -124,7 +124,7 @@ public class MainViewController extends BasicController {
         AllStoreController controller = loader.getController();
         controller.setCurrentStage(stage);
         controller.initContent(firm);
-        controller.populateCombobox();
+        controller.initializeCombobox();
         stage.show();
     }
 

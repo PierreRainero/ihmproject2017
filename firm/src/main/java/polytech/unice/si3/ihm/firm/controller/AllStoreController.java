@@ -17,8 +17,9 @@ import polytech.unice.si3.ihm.firm.model.sorting.SortingEnum;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 
 public class AllStoreController extends BasicController {
+
     private Firm firm;
-    
+
     @FXML
     private ImageView logo;
 
@@ -50,7 +51,7 @@ public class AllStoreController extends BasicController {
     /**
      * Allow to populate the combobox of sorting methods
      */
-    public void populateCombobox(){
+    public void initializeCombobox(){
         ObservableList<String> sortingMethodsList=FXCollections.observableArrayList();
         for (SortingEnum sorting : SortingEnum.values()){
             sortingMethodsList.add(sorting.getSortingName());
@@ -58,15 +59,8 @@ public class AllStoreController extends BasicController {
         sortingMethods.setItems(sortingMethodsList);
     }
 
-
-    /**
-     * Method that will call the corresponding sorting method depending on what has been chosen in the comboBox
-     * @param event the event
-     */
-    public void sortWithTheSelectedSortingMethod(MouseEvent event){
-        //TODO
-    }
     
+
     @Override
     public void initContent(Object obj){
     	Firm firm = null;
@@ -74,9 +68,9 @@ public class AllStoreController extends BasicController {
     		firm = (Firm) obj;
     	else
     		return;
-    	
+
     	this.firm = firm;
-    	changeListView();
+    	initializeListView();
     	updateLogo(firm.getLogo());
     	updateFirmImageName(firm.getBanner());
     }
@@ -84,7 +78,7 @@ public class AllStoreController extends BasicController {
     /**
      * Method permitting to change the content of the listView
      */
-    private void changeListView(){
+    private void initializeListView(){
         ObservableList<Store> storesInListView = makeObservableList();
         stores.setPlaceholder(new Label("List is empty"));
         stores.setOrientation(Orientation.VERTICAL);
@@ -122,14 +116,48 @@ public class AllStoreController extends BasicController {
                 };
             }
         });
+
     }
-    
+
     private void updateLogo(String url){
     	logo.setImage(ImageBuilder.getImage(url));
     }
-    
+
     private void updateFirmImageName(String url){
         firmImageName.setImage(ImageBuilder.getImage(url));
     }
+
+
+    /**
+     * Method that will call the corresponding sorting method depending on what has been chosen in the comboBox
+     */
+    @FXML
+    public void sortWithTheSelectedSortingMethod(){
+        String value = sortingMethods.getValue();
+
+        if (convertStringToSortingEnum(value).equals(SortingEnum.CITY)){
+            //TODO
+        }
+        else if (convertStringToSortingEnum(value).equals(SortingEnum.DEPARTMENT)){
+            //TODO
+        }
+        else if (convertStringToSortingEnum(value).equals(SortingEnum.REGION)){
+            //TODO
+        }
+    }
+
+    /**
+     * Method that converts a string in a SortingEnum object if the string is corresponding to one of the objects
+     * @param selected the string to convert
+     * @return the SortingEnum object corresponding to the string
+     */
+    public SortingEnum convertStringToSortingEnum(String selected){
+        for (SortingEnum sortingEnum : SortingEnum.values()){
+            if (selected.equals(sortingEnum.getSortingName())) return sortingEnum;
+        }
+        return SortingEnum.DEFAULT;
+    }
+
+
 
 }

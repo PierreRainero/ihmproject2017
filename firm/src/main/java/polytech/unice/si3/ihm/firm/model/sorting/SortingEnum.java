@@ -7,7 +7,8 @@ public enum SortingEnum {
 
     CITY("Trier par villes"),
     REGION("Trier par régions"),
-    DEPARTMENT("Trier par départements");
+    DEPARTMENT("Trier par départements"),
+    DEFAULT("Tri --");
 
 
     private String sortingName;
@@ -19,4 +20,6 @@ public enum SortingEnum {
     public String getSortingName() {
         return sortingName;
     }
+
+
 }
