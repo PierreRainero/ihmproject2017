@@ -24,21 +24,21 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Outils">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Quitter" />
+                    <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#closeWindow" text="Quitter" />
                         <MenuItem mnemonicParsing="false" text="Réinitialiser" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="En savoir plus">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="FAQ" />
-                    <MenuItem mnemonicParsing="false" text="Qui sommes-nous ?" />
-                        <MenuItem mnemonicParsing="false" text="Job expérience" />
+                        <MenuItem fx:id="faq" mnemonicParsing="false" onAction="#displayFaq" text="FAQ" />
+                    <MenuItem fx:id="aboutUs" mnemonicParsing="false" onAction="#displayMoreAboutUs" text="Qui sommes-nous ?" />
+                        <MenuItem fx:id="jobMenu" mnemonicParsing="false" onAction="#displayJobs" text="Job expérience" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Langues">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="Anglais" />
-                    <MenuItem mnemonicParsing="false" text="Français" />
+                        <MenuItem fx:id="enMen" mnemonicParsing="false" onAction="#translateInEnglish" text="Anglais" />
+                    <MenuItem fx:id="frMenu" mnemonicParsing="false" onAction="#translateInFrench" text="Français" />
                   </items>
                 </Menu>
               </menus>
