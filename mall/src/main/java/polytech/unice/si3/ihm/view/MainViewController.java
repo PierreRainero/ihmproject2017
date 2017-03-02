@@ -1,6 +1,9 @@
 package polytech.unice.si3.ihm.view;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -12,6 +15,8 @@ import javafx.scene.paint.Color;
 import polytech.unice.si3.ihm.model.Coordinate;
 import polytech.unice.si3.ihm.model.Level;
 import polytech.unice.si3.ihm.model.Store;
+
+import java.io.IOException;
 
 public class MainViewController {
 
@@ -44,7 +49,20 @@ public class MainViewController {
     }
 
     public void displayGoodDeals(){
-        mainApp.changeScene("/fxml/good_deals.fxml");
+        FXMLLoader loader = new FXMLLoader();
+        Parent node = null;
+        try {
+            node = loader.load(getClass().getResourceAsStream("/fxml/good_deals.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(node, 1280, 720);
+        mainApp.getStage().setScene(scene);
+
+        GoodDealsViewController controller = loader.getController();
+        controller.setMainApp(mainApp);
+
+        mainApp.getStage().show();
     }
 
     public void loadStage(Stage stage) {

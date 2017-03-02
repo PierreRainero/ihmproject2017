@@ -45,17 +45,8 @@ public class MainApp extends Application {
         stage.show();
 
     }
-
-    public void changeScene(String fxml){
-        FXMLLoader loader = new FXMLLoader();
-        Parent node = null;
-        try {
-            node = loader.load(getClass().getResourceAsStream(fxml));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene = new Scene(node, 1280, 720);
-        stage.setScene(scene);
-        stage.show();
+    
+    public Stage getStage(){
+        return stage;
     }
 }
