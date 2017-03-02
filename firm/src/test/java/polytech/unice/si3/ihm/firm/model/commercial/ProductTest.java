@@ -18,8 +18,6 @@ public class ProductTest {
 
     @Before
     public void init(){
-        productTest = new Product("disque vinyl", "DV1", "Disque vinyl de qualité", 17.99);
-        productTest1 = new Product("pot de peinture rouge", "PP1", "Pot de peinture pour bois", 4.99);
     }
 
     @Test

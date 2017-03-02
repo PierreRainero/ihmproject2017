@@ -29,6 +29,22 @@
 		"image":"src/main/resources/images/paris_beaugrenelle.png",
 		"description":""
 	}],
-	"advertisements": ["Le nouveau MOSSER EFFECT vient de sortir !\nLa critique s'enflamme !", "Resident Evil RAINERO à moitié prix avant le printemps"] 
-
+	"advertisements": [
+		"Le nouveau MOSSER EFFECT vient de sortir !\nLa critique s'enflamme !", 
+		"Resident Evil RAINERO à moitié prix avant le 20/03"
+	],
+	"products": [{
+		"name": "Mosser Effect",
+		"image": "src/main/resources/images/games/mosserEffect.png",
+		"reference": "MOSKICKur4SS",
+		"description": "",
+		"price": 59.99
+	},
+	 {
+		"name": "Resident Evil RAINERO",
+		"image": "src/main/resources/images/games/residentEvil.png",
+		"reference": "Pyatre4TheW",
+		"description": "",
+		"price": 22.50
+	}]
 }

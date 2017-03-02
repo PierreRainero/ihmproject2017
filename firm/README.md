@@ -13,7 +13,7 @@
  - [x] Liens fonctionnels
  - [x] Mise en place des annonces
 
-## Week 08
+### Week 08
  - [ ] Mise en place du CSS
  - [x] Mise en place des données : fichier JSON
  - [x] Chargement des données : fichier JSON
@@ -26,7 +26,7 @@
  - [ ] Mise en place des données : fichier JSON
  - [ ] Mise en place des données : images
  
- ### Week 06
+### Week 06
  - [x] Création du repo
  - [x] Création du squelette de la vue client
  - [ ] Mise en place du CSS

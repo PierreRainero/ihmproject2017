@@ -148,6 +148,7 @@ public class MainViewController extends BasicController {
     	addResizeListener();
     	
     	fillAds(firm);
+    	startCarousel(firm);
     	
     	updateLogo(firm.getLogo());
     	updateFirmImageName(firm.getBanner());
@@ -171,6 +172,23 @@ public class MainViewController extends BasicController {
     	ListProperty<String> listProperty = new SimpleListProperty<>();
     	ads.itemsProperty().bind(listProperty);
     	listProperty.set(FXCollections.observableArrayList(firm.getAds()));
+    }
+    
+    private void startCarousel(Firm firm){
+    	if(firm.getProducts().size()>0)
+    		carrouseImg1.setImage(ImageBuilder.getImage(firm.getProducts().get(0).getImage()));
+    	if(firm.getProducts().size()>1)
+    		carrouseImg2.setImage(ImageBuilder.getImage(firm.getProducts().get(1).getImage()));
+    	if(firm.getProducts().size()>2)
+    		carrouseImg3.setImage(ImageBuilder.getImage(firm.getProducts().get(2).getImage()));
+    	
+    	carrouseImg2.setFitHeight(430.);
+    	carrouseImg2.setFitWidth(310.);
+    	
+    	carrouseImg1.setFitHeight(350.);
+    	carrouseImg1.setFitWidth(252.);
+    	carrouseImg3.setFitHeight(350.);
+    	carrouseImg3.setFitWidth(252.);
     }
     
     

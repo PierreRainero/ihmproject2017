@@ -14,6 +14,7 @@ public class Firm {
     private String linkForMoreInfo;
     private String banner;
     private List<Store> stores;
+    private List<Product> products;
     private List<String> ads; 
 
     /**
@@ -36,6 +37,7 @@ public class Firm {
         this.banner = banner;
         
         stores = new ArrayList<Store>();
+        products = new ArrayList<Product>();
         ads = new ArrayList<String>();
     }
 
@@ -114,6 +116,14 @@ public class Firm {
     
     public void addAdvertisement(String ad){
     	ads.add(ad);
+    }
+    
+    public List<Product> getProducts() {
+        return products;
+    }
+    
+    public void addProduct(Product product){
+    	products.add(product);
     }
     
 }
