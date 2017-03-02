@@ -9,8 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import polytech.unice.si3.ihm.view.MainViewController;
 
-import java.io.IOException;
-
 public class MainApp extends Application {
 
     private static final Logger log = LoggerFactory.getLogger(MainApp.class);
@@ -38,22 +36,14 @@ public class MainApp extends Application {
         stage.setScene(scene);
 
         MainViewController controller = loader.getController();
+        controller.setMainApp(this);
         controller.loadStage(stage);
 
         stage.show();
 
     }
 
-    public void changeScene(String fxml){
-        FXMLLoader loader = new FXMLLoader();
-        Parent node = null;
-        try {
-            node = loader.load(getClass().getResourceAsStream(fxml));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene = new Scene(node, 1280, 720);
-        stage.setScene(scene);
-        stage.show();
+    public Stage getStage(){
+        return stage;
     }
 }
