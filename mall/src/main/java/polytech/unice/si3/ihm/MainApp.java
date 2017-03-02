@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import polytech.unice.si3.ihm.view.GoodDealsViewController;
 import polytech.unice.si3.ihm.view.MainViewController;
 
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class MainApp extends Application {
         String fxmlFile = "/fxml/main.fxml";
         log.debug("Loading FXML for main view from: {}", fxmlFile);
         FXMLLoader loader = new FXMLLoader();
-        Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
+        Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
         log.debug("Showing JFX scene");
         Scene scene = new Scene(rootNode, 1280, 720);
@@ -47,7 +48,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader();
         Parent node = null;
         try {
-            node = (Parent)loader.load(getClass().getResourceAsStream(fxmlFile));
+            node = loader.load(getClass().getResourceAsStream(fxmlFile));
         } catch (IOException e) {
             e.printStackTrace();
         }
