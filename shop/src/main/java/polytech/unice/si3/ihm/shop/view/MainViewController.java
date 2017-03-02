@@ -11,10 +11,10 @@ public class MainViewController extends BasicController {
     @FXML
     private ImageView logo;
     @FXML
-    private Label nom;
+    private ImageView nom;
 
     public void initialiseView(Shop shop){
-        this.logo.setImage(new Image(shop.getLogo()));
-        this.nom.setText(shop.getName());
+        this.logo.setImage(new Image(shop.getLogoMin()));
+        this.nom.setImage(new Image(shop.getLogoText()));
     }
 }

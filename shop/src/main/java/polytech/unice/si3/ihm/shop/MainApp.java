@@ -16,7 +16,7 @@ public class MainApp extends Application {
     }
 
     public void start(Stage stage) throws Exception {
-        Shop shop = new Shop("My awesome shop !", "/images/produit.png");
+        Shop shop = new Shop("Macrogamia", "/images/logo.png", "/images/logoMin79x75.png", "/images/logoText321x50.png");
 
         String fxmlFile = "/fxml/main_view.fxml";
         FXMLLoader loader = new FXMLLoader();
