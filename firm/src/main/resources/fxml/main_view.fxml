@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -116,11 +117,9 @@
                               </VBox>
                            </children>
                         </VBox>
-                        <VBox maxWidth="250.0" HBox.hgrow="ALWAYS">
+                        <VBox maxWidth="250.0" minWidth="150.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label fx:id="promo1" text="Info/Promo de la semaine 1" VBox.vgrow="ALWAYS" />
-                              <Label fx:id="promo2" text="Info/Promo de la semaine 2" VBox.vgrow="ALWAYS" />
-                              <Label fx:id="promo3" text="Info/Promo de la semaine 3" VBox.vgrow="ALWAYS" />
+                              <ListView fx:id="ads" prefHeight="499.0" prefWidth="150.0" />
                            </children>
                         </VBox>
                      </children>

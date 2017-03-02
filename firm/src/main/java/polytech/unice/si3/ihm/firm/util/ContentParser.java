@@ -30,6 +30,7 @@ public class ContentParser {
     	String logo = null;
     	String link = null;
     	String banner = null;
+    	JSONArray advertisements = null; 
     	
     	try{
         	name = (String)firmJson.get("name");
@@ -37,22 +38,31 @@ public class ContentParser {
         	logo = (String)firmJson.get("logo");
         	link = (String)firmJson.get("link");
         	banner = (String)firmJson.get("banner");
+        	advertisements = (JSONArray)firmJson.get("advertisements"); 
     	}catch(Exception e){
-    		throw new ContentException("Incorrect JSONFile : "+System.getProperties().get("user.dir")+"/src/main/resources/datas/content.json");
+    		throw new ContentException("Incorrect JSONFile - Problem with firm's infos : "+System.getProperties().get("user.dir")+"/src/main/resources/datas/content.json");
     	}
 
     	Firm firm = new Firm(name, description, logo, link, banner);
     	
-    	JSONArray shops = (JSONArray)firmJson.get("shops");
-    	for(int i=0; i<shops.size(); i++){
-    		JSONObject tempoShop = (JSONObject) shops.get(i);
-    		firm.addStore(new Store((String) tempoShop.get("name"),
-									(String) tempoShop.get("address"),
-									(String) tempoShop.get("city"),
-									(String) tempoShop.get("city number"),
-									(String) tempoShop.get("mallname"),
-									(String) tempoShop.get("description"),
-									(String) tempoShop.get("image")));	
+    	try{
+	    	JSONArray shops = (JSONArray)firmJson.get("shops");
+	    	for(int i=0; i<shops.size(); i++){
+	    		JSONObject tempoShop = (JSONObject) shops.get(i);
+	    		firm.addStore(new Store((String) tempoShop.get("name"),
+										(String) tempoShop.get("address"),
+										(String) tempoShop.get("city"),
+										(String) tempoShop.get("city number"),
+										(String) tempoShop.get("mallname"),
+										(String) tempoShop.get("description"),
+										(String) tempoShop.get("image")));	
+	    	}
+	    }catch(Exception e){
+	    	throw new ContentException("Incorrect JSONFile - Problem with shops infos : "+System.getProperties().get("user.dir")+"/src/main/resources/datas/content.json");
+	    }
+    	
+    	for(int i=0; i<advertisements.size(); i++){
+    		firm.addAdvertisement((String)advertisements.get(i));
     	}
     	
     	return firm;

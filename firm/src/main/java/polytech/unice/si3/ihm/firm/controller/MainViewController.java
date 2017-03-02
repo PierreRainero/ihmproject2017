@@ -4,8 +4,11 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -64,13 +67,7 @@ public class MainViewController extends BasicController {
     private ImageView carrouseImg3;
 
     @FXML
-    private Label promo1;
-
-    @FXML
-    private Label promo2;
-
-    @FXML
-    private Label promo3;
+    private ListView<String> ads;
 
     @FXML
     private Hyperlink firmLink;
@@ -150,6 +147,8 @@ public class MainViewController extends BasicController {
     	searchButton.setGraphic(new ImageView(ImageBuilder.getImage("src/main/resources/images/ic_search_black_24dp_2x.png", 25, 25)));
     	addResizeListener();
     	
+    	fillAds(firm);
+    	
     	updateLogo(firm.getLogo());
     	updateFirmImageName(firm.getBanner());
     	updateDescription(firm.getDescription());
@@ -167,6 +166,13 @@ public class MainViewController extends BasicController {
     private void updateDescription(String description){
     	this.description.setText(description);
     }
+    
+    private void fillAds(Firm firm){
+    	ListProperty<String> listProperty = new SimpleListProperty<>();
+    	ads.itemsProperty().bind(listProperty);
+    	listProperty.set(FXCollections.observableArrayList(firm.getAds()));
+    }
+    
     
     @Override
     protected void addResizeListener(){

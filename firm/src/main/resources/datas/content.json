@@ -28,6 +28,7 @@
 		"mallname":"Beaugrenelle",
 		"image":"src/main/resources/images/paris_beaugrenelle.png",
 		"description":""
-	}]
+	}],
+	"advertisements": ["Le nouveau MOSSER EFFECT vient de sortir !\nLa critique s'enflamme !", "Resident Evil RAINERO à moitié prix avant le printemps"] 
 
 }

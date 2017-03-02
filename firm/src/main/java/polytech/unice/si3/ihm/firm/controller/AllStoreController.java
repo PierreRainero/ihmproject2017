@@ -46,7 +46,7 @@ public class AllStoreController extends BasicController {
      * Method allowing to make an observable list of stores
      * @return the observable list of stores
      */
-    public ObservableList<Store> makeObservableList(){
+    private ObservableList<Store> makeObservableList(){
         ObservableList<Store> stores = FXCollections.observableArrayList();
         for (Store store : firm.getStores()){
             stores.addAll(store);

@@ -14,6 +14,7 @@ public class Firm {
     private String linkForMoreInfo;
     private String banner;
     private List<Store> stores;
+    private List<String> ads; 
 
     /**
      * Default constructor for a firm
@@ -35,6 +36,7 @@ public class Firm {
         this.banner = banner;
         
         stores = new ArrayList<Store>();
+        ads = new ArrayList<String>();
     }
 
     /**
@@ -104,6 +106,14 @@ public class Firm {
     
     public String getLinkForMoreInfo(){
     	return linkForMoreInfo;
+    }
+    
+    public List<String> getAds(){
+    	return ads;
+    }
+    
+    public void addAdvertisement(String ad){
+    	ads.add(ad);
     }
     
 }
