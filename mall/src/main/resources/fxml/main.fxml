@@ -95,8 +95,8 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Outils">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Quitter" />
-                        <MenuItem mnemonicParsing="false" text="Réinitialiser" />
+                    <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#closeWindow" text="Quitter" />
+                        <MenuItem fx:id="reset" mnemonicParsing="false" onAction="#reset" text="Réinitialiser" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="En savoir plus">
@@ -171,7 +171,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <GridPane prefHeight="448.0" prefWidth="1132.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <GridPane fx:id="grid" onMouseClicked="#clickGrid" prefHeight="448.0" prefWidth="1132.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

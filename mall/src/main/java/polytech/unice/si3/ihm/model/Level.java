@@ -1,5 +1,6 @@
 package polytech.unice.si3.ihm.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Level {
@@ -9,26 +10,16 @@ public class Level {
 
     public Level(int number){
         this.number = number;
+        this.stores = new ArrayList<Store>();
+        this.places = new ArrayList<Place>();
     }
 
-    public Level(int number,List<Store> stores, List<Place> places){
-        this.number = number;
-        this.stores = stores;
-        this.places = places;
-    }
-
-    public void addStore(Store store){
+    public void addStore(Store store) {
         stores.add(store);
     }
 
     public void addPlace(Place place){
         places.add(place);
-    }
-
-    public void displayStores() {
-        for (Store store : stores) {
-            store.displayStore();
-        }
     }
 
     public List<Store> getStores(){

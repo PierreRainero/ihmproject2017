@@ -7,17 +7,22 @@ public class Store {
     private Color color;
     private String webSitePath;
     private String imageName;
-    private Coordinate coord;
+    private Coordinate position;
+    private int width;
+    private int height;
 
-    public Store(String name, Color color, String imageName, Coordinate coord){
+    public Store(String name, Color color, String imageName, Coordinate coor){
         this.name = name;
         this.color = color;
         this.imageName = imageName;
-        this.coord = coord;
+        this.position = coor;
+        width = 50;
+        height = 50;
     }
 
-    public void displayStore() {
-
+    public void setSize(int width, int height) {
+        this.width = width;
+        this.height = height;
     }
 
     public String getName() {
@@ -36,8 +41,16 @@ public class Store {
         return imageName;
     }
 
-    public Coordinate getCoord() {
-        return coord;
+    public Coordinate getPosition() {
+        return position;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
 }
