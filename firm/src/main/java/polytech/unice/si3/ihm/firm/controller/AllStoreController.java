@@ -22,7 +22,7 @@ import java.util.List;
 
 public class AllStoreController extends BasicController {
     private Firm firm;
-
+    
     @FXML
     private ImageView logo;
 
@@ -69,6 +69,8 @@ public class AllStoreController extends BasicController {
 
     @Override
     public void initContent(Object obj){
+    	super.initContent(obj);
+    	
     	Firm firm = null;
     	if(obj instanceof Firm)
     		firm = (Firm) obj;

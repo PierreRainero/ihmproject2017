@@ -7,13 +7,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="700.0" minWidth="1140.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.controller.MainViewController">
+<AnchorPane fx:id="mainContainer" minHeight="700.0" minWidth="1140.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.controller.MainViewController">
    <children>
       <VBox prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -25,17 +24,10 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
-                           <image>
-                              <Image url="@/images/Logoenseigne.png" />
-                           </image>
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="167.0" prefWidth="1194.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <ImageView fx:id="firmImageName" fitHeight="150.0" fitWidth="646.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                                 <image>
-                                    <Image url="@/images/baniere.png" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fx:id="firmImageName" fitHeight="150.0" fitWidth="646.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" />
                               <Label fx:id="description" text="&quot;Description possible en label aussi&quot;" VBox.vgrow="ALWAYS" />
                            </children>
                            <HBox.margin>
@@ -88,9 +80,6 @@
                                     <HBox alignment="CENTER" prefHeight="494.0" prefWidth="924.0">
                                        <children>
                                           <ImageView fx:id="carrouseImg1" fitHeight="350.0" fitWidth="220.0" onMouseClicked="#choseLeftProduct" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                                             <image>
-                                                <Image url="@/images/produit_phare_3.jpg" />
-                                             </image>
                                              <HBox.margin>
                                                 <Insets right="16.0" />
                                              </HBox.margin>
@@ -99,17 +88,11 @@
                                              <HBox.margin>
                                                 <Insets left="16.0" right="16.0" />
                                              </HBox.margin>
-                                             <image>
-                                                <Image url="@/images/produit_phare_1.png" />
-                                             </image>
                                           </ImageView>
                                           <ImageView fx:id="carrouseImg3" fitHeight="350.0" fitWidth="220.0" onMouseClicked="#choseRightProduct" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                              <HBox.margin>
                                                 <Insets left="16.0" />
                                              </HBox.margin>
-                                             <image>
-                                                <Image url="@/images/produit_phare_2.png" />
-                                             </image>
                                           </ImageView>
                                        </children>
                                     </HBox>
