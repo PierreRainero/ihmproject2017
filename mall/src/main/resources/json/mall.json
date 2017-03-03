@@ -1,0 +1,5 @@
+{
+  "level1": [
+    { "name": "Apple", "color": "0x323232", "picture": "apple", "posX": 11, "posY": 4, "width": 203, "height": 136 }
+  ]
+}

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -29,7 +30,8 @@ public class MainViewController extends MenuController {
      */
     @FXML
     private void initialize() {
-
+        reset();
+        buildGroundFloor(null);
     }
 
     public void displayGoodDeals(){
@@ -86,18 +88,24 @@ public class MainViewController extends MenuController {
     private Button thirdFloor;
 
     @FXML
+    private Label labelFloor;
+
+    @FXML
     private GridPane grid;
 
     @FXML
     void buildBasement(MouseEvent event) {
-
+        reset();
+        labelFloor.setText("Sous-sol");
     }
 
     @FXML
     void buildFirstFloor(MouseEvent event) {
+        reset();
+        labelFloor.setText("Premier étage");
+
         Level fFloor = new Level(1);
-        Store appleStore = new Store("Apple",  Color.web("0x323232"), "apple", new Coordinate(11, 4));
-        appleStore.setSize(203, 136);
+        Store appleStore = new Store("Apple",  Color.web("0x323232"), "apple", new Coordinate(11, 4), 203, 136);
         fFloor.addStore(appleStore);
         Drawer drawer = new Drawer(grid);
         drawer.displayLevel(fFloor);
@@ -105,17 +113,21 @@ public class MainViewController extends MenuController {
 
     @FXML
     void buildGroundFloor(MouseEvent event) {
-
+        reset();
+        labelFloor.setText("Rez-de-chaussée");
     }
 
     @FXML
     void buildSecondFloor(MouseEvent event) {
+        reset();
+        labelFloor.setText("Deuxième étage");
 
     }
 
     @FXML
     void buildThirdFloor(MouseEvent event) {
-
+        reset();
+        labelFloor.setText("Troisième étage");
     }
 
     @FXML
@@ -156,6 +168,10 @@ public class MainViewController extends MenuController {
     @Override
     @FXML
     void reset(ActionEvent event) {
+        reset();
+    }
+
+    private void reset() {
         grid.getChildren().clear();
     }
 }

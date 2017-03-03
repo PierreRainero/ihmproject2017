@@ -11,16 +11,11 @@ public class Store {
     private int width;
     private int height;
 
-    public Store(String name, Color color, String imageName, Coordinate coor){
+    public Store(String name, Color color, String imageName, Coordinate coor, int width, int height){
         this.name = name;
         this.color = color;
         this.imageName = imageName;
         this.position = coor;
-        width = 50;
-        height = 50;
-    }
-
-    public void setSize(int width, int height) {
         this.width = width;
         this.height = height;
     }
