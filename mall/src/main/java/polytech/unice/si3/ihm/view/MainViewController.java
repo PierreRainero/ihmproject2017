@@ -1,19 +1,21 @@
 package polytech.unice.si3.ihm.view;
 
-import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import polytech.unice.si3.ihm.model.Category;
 import polytech.unice.si3.ihm.model.Mall;
 import java.io.IOException;
 
 public class MainViewController extends MenuController {
     private Mall mall;
+    private int currentLevel;
     /**
      * The constructor.
      * The constructor is called before the initialize() method.
@@ -28,7 +30,6 @@ public class MainViewController extends MenuController {
      */
     @FXML
     private void initialize() {
-        reset();
         buildGroundFloor(null);
     }
 
@@ -48,6 +49,30 @@ public class MainViewController extends MenuController {
 
         mainApp.getStage().show();
     }
+
+    @FXML
+    private Button culture;
+
+    @FXML
+    private Button decoration;
+
+    @FXML
+    private Button toys;
+
+    @FXML
+    private Button fashion;
+
+    @FXML
+    private Button services;
+
+    @FXML
+    private Button care;
+
+    @FXML
+    private Button sport;
+
+    @FXML
+    private Button technologies;
 
     @FXML
     private Button offers;
@@ -89,45 +114,40 @@ public class MainViewController extends MenuController {
     private Label labelFloor;
 
     @FXML
-    private GridPane grid;
+    private Pane canvas;
 
     @FXML
     void buildBasement(MouseEvent event) {
-        reset();
-        labelFloor.setText("Sous-sol");
+        buildFloor("Sous-sol", -1);
+    }
+
+    @FXML
+    void buildGroundFloor(Event event) {
+        buildFloor("Rez-de-chaussée", 0);
     }
 
     @FXML
     void buildFirstFloor(MouseEvent event) {
-        reset();
-        labelFloor.setText("Premier étage");
-
-        Drawer drawer = new Drawer(grid);
-        drawer.displayLevel(mall.getLevel(1));
-    }
-
-    @FXML
-    void buildGroundFloor(MouseEvent event) {
-        reset();
-        labelFloor.setText("Rez-de-chaussée");
+        buildFloor("Premier étage", 1);
     }
 
     @FXML
     void buildSecondFloor(MouseEvent event) {
-        reset();
-        labelFloor.setText("Deuxième étage");
-
+        buildFloor("Deuxième étage", 2);
     }
 
     @FXML
     void buildThirdFloor(MouseEvent event) {
-        reset();
-        labelFloor.setText("Troisième étage");
+        buildFloor("Troisième étage", 3);
     }
 
-    @FXML
-    void clickGrid(MouseEvent event) {
+    private void buildFloor(String floor, int i) {
+        canvas.getChildren().clear();
+        labelFloor.setText(floor);
+        currentLevel = i;
 
+        Drawer drawer = new Drawer(canvas);
+        drawer.displayLevel(mall.getLevel(i));
     }
 
     @FXML
@@ -160,13 +180,45 @@ public class MainViewController extends MenuController {
 
     }
 
-    @Override
     @FXML
-    void reset(ActionEvent event) {
-        reset();
+    void selectCare(MouseEvent event) {
+
     }
 
-    private void reset() {
-        grid.getChildren().clear();
+    @FXML
+    void selectCulture(MouseEvent event) {
+
+    }
+
+    @FXML
+    void selectDecoration(MouseEvent event) {
+
+    }
+
+    @FXML
+    void selectFashion(MouseEvent event) {
+
+    }
+
+    @FXML
+    void selectServices(MouseEvent event) {
+
+    }
+
+    @FXML
+    void selectSport(MouseEvent event) {
+
+    }
+
+    @FXML
+    void selectTechnologies(MouseEvent event) {
+        canvas.getChildren().clear();
+        Drawer drawer = new Drawer(canvas);
+        drawer.displayCategory(mall.getLevel(currentLevel), Category.TECHNOLOGY);
+    }
+
+    @FXML
+    void selectToys(MouseEvent event) {
+
     }
 }

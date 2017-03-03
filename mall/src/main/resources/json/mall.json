@@ -2,8 +2,14 @@
   "-1": [],
   "0": [],
   "1": [
-    { "name": "Apple", "color": "0x323232", "picture": "apple", "posX": 11, "posY": 4, "width": 203, "height": 136 },
-    { "name": "Crédit agricole", "color": "0xffa561", "picture": "credit_agricole", "posX": 2, "posY": 5, "width": 133, "height": 226 }
+    { "name": "Apple", "web": "apple.com/fr/", "category": "technology",
+      "picture": "apple", "picX": 11, "picY": 4, "picWid": 203, "picHei": 136,
+      "color": "0x323232",  "recX": 11, "recY": 4, "recWid": 203, "recHei": 136
+    },
+    { "name": "Crédit agricole", "web": "credit-agricole.fr", "category": "services"
+      "picture": "credit_agricole", "picX": 2, "picY": 5, "picWid": 133, "picHei": 226,
+      "color": "0xffa561",  "recX": 2, "recY": 5, "recWid": 133, "recHei": 226
+    },
   ],
   "2": [],
   "3": [],

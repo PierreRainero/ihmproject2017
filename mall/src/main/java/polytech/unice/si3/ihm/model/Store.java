@@ -1,59 +1,58 @@
 package polytech.unice.si3.ihm.model;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+
 
 public class Store {
     private String name;
+    private String webSite;
+    private Rectangle rec;
+    private ImageView iv;
+    private Category category;
     private Color color;
-    private String webSitePath;
-    private String imageName;
-    private Coordinate position;
-    private int width;
-    private int height;
 
-    public Store(String name, Color color, String imageName, Coordinate coor, int width, int height){
+    Store(String name, String webSite, String category) {
         this.name = name;
+        this.webSite = webSite;
+        this.category = Category.valueOf(category.toUpperCase());
+    }
+
+    void setPicture(String imageName, int x, int y, int width, int height) {
+        Image image = new Image("/images/"+imageName+".png");
+        iv = new ImageView();
+        iv.setImage(image);
+        iv.setFitWidth(width);
+        iv.setFitHeight(height);
+        iv.setX(x);
+        iv.setY(y);
+    }
+
+    void setRectangle(Color color, int x, int y, int width, int height) {
+        rec = new Rectangle(x, y, width, height);
         this.color = color;
-        this.imageName = imageName;
-        this.position = coor;
-        this.width = width;
-        this.height = height;
-    }
-
-    public void setPicture() {
-
-    }
-
-    public void setRectangle() {
-
     }
 
     public String getName() {
         return name;
     }
 
-    public Color getColor() {
-        return color;
+    public String getWebSite() {
+        return webSite;
     }
 
-    public String getWebSitePath() {
-        return webSitePath;
+    public Rectangle getRectangle() {
+        rec.setFill(color);
+        return rec;
     }
 
-    public String getImageName() {
-        return imageName;
+    public ImageView getPicture() {
+        return iv;
     }
 
-    public Coordinate getPosition() {
-        return position;
+    public Category getCategory() {
+        return category;
     }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
 }

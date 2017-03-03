@@ -28,9 +28,14 @@ public class Mall {
                 data = (JSONArray) root.get(""+i);
                 for (Object o : data) {
                     JSONObject info = (JSONObject) o;
-                    level.addStore(new Store((String) info.get("name"), Color.web((String) info.get("color")), (String) info.get("picture"),
-                            new Coordinate((((Long) info.get("posX")).intValue()), ((Long) info.get("posY")).intValue()),
-                            ((Long) info.get("width")).intValue(), ((Long) info.get("height")).intValue()));
+
+                    Store store = new Store((String) info.get("name"), (String) info.get("web"), (String) info.get("category"));
+                    store.setPicture((String) info.get("picture"), ((Long) info.get("picX")).intValue(), ((Long) info.get("picY")).intValue(),
+                            ((Long) info.get("picWid")).intValue(), ((Long) info.get("picHei")).intValue());
+                    store.setRectangle(Color.web((String) info.get("color")),((Long) info.get("recX")).intValue(), ((Long) info.get("recY")).intValue(),
+                            ((Long) info.get("recWid")).intValue(), ((Long) info.get("recHei")).intValue());
+
+                    level.addStore(store);
                 }
                 levels.put(i, level);
             }

@@ -14,13 +14,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.view.MainViewController">
    <left>
@@ -34,27 +30,37 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" text="Homme">
+                  <Button fx:id="culture" mnemonicParsing="false" onMouseClicked="#selectCulture" prefHeight="25.0" prefWidth="154.0" text="Culture">
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Femme">
+                  <Button fx:id="decoration" mnemonicParsing="false" onMouseClicked="#selectDecoration" prefHeight="25.0" prefWidth="147.0" text="Déco">
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Déco">
+                  <Button fx:id="toys" mnemonicParsing="false" onMouseClicked="#selectToys" prefHeight="25.0" prefWidth="156.0" text="Jouets">
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Bébé">
+                  <Button fx:id="fashion" mnemonicParsing="false" onMouseClicked="#selectFashion" prefHeight="25.0" prefWidth="147.0" text="Mode">
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Techno">
+                  <Button fx:id="services" mnemonicParsing="false" onMouseClicked="#selectServices" prefHeight="25.0" prefWidth="126.0" text="Services">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="care" mnemonicParsing="false" onMouseClicked="#selectCare" prefHeight="25.0" prefWidth="147.0" text="Soins">
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" text="Maison">
+                  <Button fx:id="sport" mnemonicParsing="false" onMouseClicked="#selectSport" prefHeight="25.0" prefWidth="126.0" text="Sport">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="technologies" mnemonicParsing="false" onMouseClicked="#selectTechnologies" prefHeight="25.0" prefWidth="126.0" text="Technologie">
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin>
@@ -96,7 +102,7 @@
                 <Menu mnemonicParsing="false" text="Outils">
                   <items>
                     <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#closeWindow" text="Quitter" />
-                        <MenuItem fx:id="reset" mnemonicParsing="false" onAction="#reset" text="Réinitialiser" />
+                        <MenuItem fx:id="reset" mnemonicParsing="false" onAction="#buildGroundFloor" text="Réinitialiser" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="En savoir plus">
@@ -118,11 +124,11 @@
       </AnchorPane>
    </top>
    <bottom>
-      <SplitPane dividerPositions="0.5" prefHeight="41.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.5438184663536776" prefHeight="45.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="39.0" prefWidth="669.0">
                <children>
-                  <ToolBar layoutX="-1.0" prefHeight="40.0" prefWidth="639.0">
+                  <ToolBar layoutX="-1.0" prefHeight="45.0" prefWidth="693.0">
                     <items>
                         <Label text="Points d'intérêt:">
                            <padding>
@@ -161,106 +167,22 @@
       </SplitPane>
    </bottom>
    <center>
-      <SplitPane dividerPositions="0.05450733752620545" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.07547169811320754" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                <children>
                   <Button layoutX="180.0" layoutY="-1.0" mnemonicParsing="false" text="Go!" />
                   <TextField layoutX="1.0" layoutY="-1.0" prefHeight="25.0" prefWidth="179.0" promptText="Trouver un magasin" />
-                  <Label fx:id="labelFloor" layoutX="560.0" layoutY="1.0" text="Rez-de-chaussée" textFill="#512626" />
+                  <Label fx:id="labelFloor" layoutX="560.0" layoutY="1.0" text="Rez-de-chaussée" textFill="#512626">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <GridPane fx:id="grid" onMouseClicked="#clickGrid" prefHeight="448.0" prefWidth="1132.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faffd6" height="226.0" stroke="WHITE" strokeType="INSIDE" width="472.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faffd6" height="138.0" stroke="#faffd6" strokeType="INSIDE" width="89.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e83e3e" height="48.0" stroke="BLACK" strokeType="INSIDE" width="266.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#49cd47" height="138.0" stroke="BLACK" strokeType="INSIDE" width="202.0" GridPane.columnIndex="9" GridPane.rowIndex="2" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#323232" height="136.0" stroke="BLACK" strokeType="INSIDE" width="203.0" GridPane.columnIndex="11" GridPane.rowIndex="4" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffa561" height="226.0" stroke="BLACK" strokeType="INSIDE" width="133.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a5d29" height="46.0" stroke="BLACK" strokeType="INSIDE" width="404.0" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f69ff" height="140.0" stroke="BLACK" strokeType="INSIDE" width="134.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  ↑" GridPane.columnIndex="4" GridPane.rowIndex="8">
-                           <font>
-                              <Font size="43.0" />
-                           </font>
-                        </Text>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#431243" height="136.0" stroke="BLACK" strokeType="INSIDE" width="133.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <ImageView fitHeight="80.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="6">
-                           <image>
-                              <Image url="@/images/micromania.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="43.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                           <image>
-                              <Image url="@/images/camaieu.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="72.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="12" GridPane.rowIndex="4">
-                           <image>
-                              <Image url="@/images/apple.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="117.0" fitWidth="171.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                           <image>
-                              <Image url="@/images/credit_agricole.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="70.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
-                           <image>
-                              <Image url="@/images/fossil.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="6">
-                           <image>
-                              <Image url="@/images/grand_optical.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="110.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="2">
-                           <image>
-                              <Image url="@/images/Grande_recre.png" />
-                           </image>
-                        </ImageView>
-                        <Label prefHeight="28.0" prefWidth="66.0" text=" Entrée" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="9">
-                           <font>
-                              <Font name="System Bold" size="19.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </GridPane>
+                  <Pane fx:id="canvas" layoutX="87.0" layoutY="31.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>
