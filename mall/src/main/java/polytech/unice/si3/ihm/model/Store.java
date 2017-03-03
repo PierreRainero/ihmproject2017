@@ -20,6 +20,14 @@ public class Store {
         this.height = height;
     }
 
+    public void setPicture() {
+
+    }
+
+    public void setRectangle() {
+
+    }
+
     public String getName() {
         return name;
     }

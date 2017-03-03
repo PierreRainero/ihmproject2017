@@ -9,19 +9,17 @@ import javafx.scene.layout.GridPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import polytech.unice.si3.ihm.model.Coordinate;
-import polytech.unice.si3.ihm.model.Level;
-import polytech.unice.si3.ihm.model.Store;
+import polytech.unice.si3.ihm.model.Mall;
 import java.io.IOException;
 
 public class MainViewController extends MenuController {
-
+    private Mall mall;
     /**
      * The constructor.
      * The constructor is called before the initialize() method.
      */
     public MainViewController() {
+        mall = new Mall("mall");
     }
 
     /**
@@ -104,11 +102,8 @@ public class MainViewController extends MenuController {
         reset();
         labelFloor.setText("Premier étage");
 
-        Level fFloor = new Level(1);
-        Store appleStore = new Store("Apple",  Color.web("0x323232"), "apple", new Coordinate(11, 4), 203, 136);
-        fFloor.addStore(appleStore);
         Drawer drawer = new Drawer(grid);
-        drawer.displayLevel(fFloor);
+        drawer.displayLevel(mall.getLevel(1));
     }
 
     @FXML
