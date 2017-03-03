@@ -37,14 +37,18 @@
 		"name": "Mosser Effect",
 		"image": "src/main/resources/images/games/mosserEffect.png",
 		"reference": "MOSKICKur4SS",
-		"description": "",
-		"price": 59.99
+		"description": "Mosser Effect est un jeu vidéo de science-réelle de type action-fuite, réalisé par l'équipe de développement canadienne Polytech et écrit par l'auteur canadien Drew Karpyshyn2, qui est déjà à l'origine de nombreux jeux estampillés Polytech dont Jane-Au-Secours et PolyPoint Wars: Revendez les tous. Disponible sur Xbox  et sur Windows.",
+		"price": 59.99,
+		"promoted": false,
+		"flagship": true
 	},
 	 {
 		"name": "Resident Evil RAINERO",
 		"image": "src/main/resources/images/games/residentEvil.png",
 		"reference": "Pyatre4TheW",
-		"description": "",
-		"price": 22.50
+		"description": "Rainero City, paisible petite ville, de plus de 2 habitants, du Middle West des États-Déunis, dont la stabilité économique ne repose que sur la boulangerie Umbrella Corporation, est le théâtre d'étranges disparitions. Des dizaines de personnes sont enlevées et ne sont jamais retrouvées. Les efforts de la police restent vains. Cependant, des témoins affirment avoir vu des groupes d'hippies, certains affirment que les victimes auraient été droguées.",
+		"price": 22.50,
+		"promoted": true,
+		"flagship": true
 	}]
 }

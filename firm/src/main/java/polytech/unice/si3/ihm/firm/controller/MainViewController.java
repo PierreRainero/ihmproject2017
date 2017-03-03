@@ -4,13 +4,13 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.util.ContentParser;
@@ -36,7 +37,8 @@ public class MainViewController extends BasicController {
 	private int indexLeft;
 	private int indexCenter;
 	private int indexRight;
-	private List<Product> products;
+	private List<Product> allProducts;
+	private List<Product> currentProducts;
 
     @FXML
     private ImageView logo;
@@ -91,8 +93,8 @@ public class MainViewController extends BasicController {
      * Actions when the center product is clicked
      * @param event event to catch
      */
-    void choseCenterProduct(MouseEvent event) {
-
+    void choseCenterProduct(MouseEvent event) throws IOException {
+    	choseProduct(indexCenter);
     }
 
     @FXML
@@ -101,21 +103,7 @@ public class MainViewController extends BasicController {
      * @param event event to catch
      */
     void choseLeftProduct(MouseEvent event) throws IOException {
-    	Stage stage = new Stage();
-        String fxmlFile = "/fxml/one_product_view.fxml";
-        FXMLLoader loader = new FXMLLoader();
-        Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-
-        Scene scene = new Scene(rootNode, 410, 605);
-        scene.getStylesheets().add("/styles/main.css");
-        stage.setTitle("Produit phare");
-        stage.setScene(scene);
-        
-        
-        OneProductController controller = loader.getController();
-        controller.setCurrentStage(stage);
-        
-        stage.show();
+    	choseProduct(indexLeft);
     }
 
     @FXML
@@ -123,8 +111,27 @@ public class MainViewController extends BasicController {
      * Actions when the right product is clicked
      * @param event event to catch
      */
-    void choseRightProduct(MouseEvent event) {
+    void choseRightProduct(MouseEvent event) throws IOException {
+    	choseProduct(indexRight);
+    }
+    
+    private void choseProduct(int index) throws IOException{
+    	Stage stage = new Stage();
+        String fxmlFile = "/fxml/one_product_view.fxml";
+        FXMLLoader loader = new FXMLLoader();
+        Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
+        stage.setMinHeight(420.0);
+        stage.setMinWidth(420.0);
 
+        Scene scene = new Scene(rootNode, 420, 450);
+        scene.getStylesheets().add("/styles/main.css");
+        stage.setTitle(currentProducts.get(index).getName());
+        stage.setScene(scene);
+        
+        OneProductController controller = loader.getController();
+        controller.setCurrentStage(stage);
+        controller.initContent(currentProducts.get(index));
+        stage.show();
     }
     
     @FXML
@@ -191,6 +198,11 @@ public class MainViewController extends BasicController {
      */
     public void initContent(Object obj){
     	super.initContent(obj);
+    	currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+            	Carousel.carouselState = false;
+            }
+        });
     	
     	Firm firm;
     	if(obj instanceof Firm)
@@ -249,27 +261,30 @@ public class MainViewController extends BasicController {
      * @param firm firm containing all products
      */
     private void startCarousel(Firm firm){
-    	products = firm.getProducts();
-    	if(!products.isEmpty())
-    		indexLeft = 0;
-    	else
+    	allProducts = firm.getProducts();
+    	
+    	if(allProducts.isEmpty())
     		return;
     	
-    	if(products.size()>1)
+    	currentProducts = allProducts;
+
+    	indexLeft = 0;
+    	
+    	if(allProducts.size()>1)
     		indexCenter = 1;
     	else{
     		indexCenter = 0;
     		indexRight = 0;
     	}
     	
-    	if(products.size()>2)
+    	if(allProducts.size()>2)
     		indexRight = 2;
     	else
     		indexRight = 0;
     	
-		carrouseImg1.setImage(ImageBuilder.getImage(products.get(indexLeft).getImage()));
-    	carrouseImg2.setImage(ImageBuilder.getImage(products.get(indexCenter).getImage()));
-		carrouseImg3.setImage(ImageBuilder.getImage(products.get(indexRight).getImage()));
+		carrouseImg1.setImage(ImageBuilder.getImage(allProducts.get(indexLeft).getImage()));
+    	carrouseImg2.setImage(ImageBuilder.getImage(allProducts.get(indexCenter).getImage()));
+		carrouseImg3.setImage(ImageBuilder.getImage(allProducts.get(indexRight).getImage()));
     	
     	carrouseImg2.setFitHeight(430.);
     	carrouseImg2.setFitWidth(310.);
@@ -282,14 +297,17 @@ public class MainViewController extends BasicController {
     	thread.start();
     }
     
+    /**
+     * Corresponds to a clock tick. Allows to make carousel move.
+     */
     public void tick(){
     	indexLeft = indexCenter;
     	indexCenter = indexRight;
-    	indexRight = indexRight+1>=products.size() ? 0 : indexRight+1;
+    	indexRight = indexRight+1>=currentProducts.size() ? 0 : indexRight+1;
     	
-		carrouseImg1.setImage(ImageBuilder.getImage(products.get(indexLeft).getImage()));
-    	carrouseImg2.setImage(ImageBuilder.getImage(products.get(indexCenter).getImage()));
-		carrouseImg3.setImage(ImageBuilder.getImage(products.get(indexRight).getImage()));
+		carrouseImg1.setImage(ImageBuilder.getImage(currentProducts.get(indexLeft).getImage()));
+    	carrouseImg2.setImage(ImageBuilder.getImage(currentProducts.get(indexCenter).getImage()));
+		carrouseImg3.setImage(ImageBuilder.getImage(currentProducts.get(indexRight).getImage()));
     }
     
 }

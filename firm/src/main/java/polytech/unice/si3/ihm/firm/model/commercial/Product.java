@@ -9,7 +9,8 @@ public class Product {
     private String reference;
     private String description;
     private double price;
-    private boolean promoted = false;
+    private boolean promoted;
+    private boolean flagship;
     private String image;
 
     /**
@@ -25,6 +26,8 @@ public class Product {
         this.reference = reference;
         this.description = description;
         this.price = price;
+        promoted = false;
+        flagship = false;
     }
 
 
@@ -118,5 +121,20 @@ public class Product {
      */
     public String getImage() {
         return image;
+    }
+    
+    /**
+     * Mark the product as flagship product
+     */
+    public void markProductAsFlagship(){
+    	flagship = true;
+    }
+    
+    /**
+     * Getter for the flagship of the product
+     * @return the flagship state of the product
+     */
+    public boolean isFlagship(){
+    	return flagship;
     }
 }

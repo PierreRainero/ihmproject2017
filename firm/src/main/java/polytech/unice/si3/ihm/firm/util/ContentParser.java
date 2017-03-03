@@ -127,11 +127,20 @@ public class ContentParser {
     	try{
 	    	for(int i=0; i<products.size(); i++){
 	    		JSONObject tempoProduct = (JSONObject) products.get(i);
-	    		firm.addProduct(new Product((String) tempoProduct.get("name"), 
-	    									(String) tempoProduct.get("image"), 
-	    									(String) tempoProduct.get("reference"), 
-	    									(String) tempoProduct.get("description"), 
-	    									(Double) tempoProduct.get("price")));	
+	    		
+	    		Product productToAdd = new Product((String) tempoProduct.get("name"), 
+						(String) tempoProduct.get("image"), 
+						(String) tempoProduct.get("reference"), 
+						(String) tempoProduct.get("description"), 
+						(double) tempoProduct.get("price"));
+	    		
+	    		if((boolean)tempoProduct.get("promoted"))
+	    			productToAdd.markProductAsPromoted();
+	    		
+	    		if((boolean)tempoProduct.get("flagship"))
+	    			productToAdd.markProductAsFlagship();
+	    			
+	    		firm.addProduct(productToAdd);		
 	    	}
 	    }catch(Exception e){
 	    	throw new ContentException("Incorrect JSONFile - Problem with products infos : "+PATH);
