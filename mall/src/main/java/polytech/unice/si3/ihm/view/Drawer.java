@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import polytech.unice.si3.ihm.model.Category;
 import polytech.unice.si3.ihm.model.Level;
+import polytech.unice.si3.ihm.model.Place;
 import polytech.unice.si3.ihm.model.Store;
 
 import java.util.List;
@@ -51,6 +52,15 @@ class Drawer {
             }
             canvas.getChildren().add(r);
             canvas.getChildren().add(store.getPicture());
+        }
+    }
+
+    void displayPlace(Level level, Place place) {
+        List<Place> places = level.getPlaces();
+        for (Place p : places) {
+            if (p.equals(place)) {
+                canvas.getChildren().add(p.getPicture());
+            }
         }
     }
 }

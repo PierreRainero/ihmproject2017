@@ -16,6 +16,8 @@ import javafx.scene.input.MouseEvent;
 import polytech.unice.si3.ihm.model.Category;
 import polytech.unice.si3.ihm.model.Level;
 import polytech.unice.si3.ihm.model.Mall;
+import polytech.unice.si3.ihm.model.Place;
+
 import java.io.IOException;
 
 public class MainViewController extends MenuController {
@@ -150,7 +152,7 @@ public class MainViewController extends MenuController {
     }
 
     private void buildFloor(String floor, int i) {
-        canvas.getChildren().clear();
+        reset();
         labelFloor.setText(floor);
         currentLevel = i;
 
@@ -160,32 +162,41 @@ public class MainViewController extends MenuController {
 
     @FXML
     void displayElevators(MouseEvent event) {
-
+        display(Place.ELEVATOR);
     }
 
     @FXML
     void displayPositionUser(MouseEvent event) {
-
+        display(Place.WHEREAMI);
     }
 
     @FXML
     void displayStairs(MouseEvent event) {
-
+        display(Place.STAIRS);
     }
 
     @FXML
     void displayToilet(MouseEvent event) {
-
+        display(Place.TOILET);
     }
 
     @FXML
     void displayWifi(MouseEvent event) {
+        display(Place.WIFI);
+    }
 
+    private void display(Place place) {
+        reset();
+        Drawer drawer = new Drawer(canvas);
+
+        Level level = mall.getLevel(currentLevel);
+        drawer.displayLevel(level);
+        drawer.displayPlace(level, place);
     }
 
     @FXML
     void search(Event event) {
-        canvas.getChildren().clear();
+        reset();
         Drawer drawer = new Drawer(canvas);
 
         Level level = mall.getLevel(currentLevel);
@@ -253,8 +264,12 @@ public class MainViewController extends MenuController {
     }
 
     private void selection(Category category) {
-        canvas.getChildren().clear();
+        reset();
         Drawer drawer = new Drawer(canvas);
         drawer.displayCategory(mall.getLevel(currentLevel), category);
+    }
+
+    private void reset() {
+        canvas.getChildren().clear();
     }
 }
