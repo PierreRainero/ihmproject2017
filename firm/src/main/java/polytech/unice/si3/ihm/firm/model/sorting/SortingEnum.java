@@ -1,15 +1,9 @@
 package polytech.unice.si3.ihm.firm.model.sorting;
 
 public enum SortingEnum {
-
-
-
-
     CITY("Trier par villes"),
     REGION("Trier par régions"),
-    DEPARTMENT("Trier par départements"),
-    DEFAULT("Tri --");
-
+    DEPARTMENT("Trier par départements");
 
     private String sortingName;
 

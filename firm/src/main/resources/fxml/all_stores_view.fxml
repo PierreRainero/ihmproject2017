@@ -41,7 +41,7 @@
             </AnchorPane>
             <HBox fx:id="botHbox" maxHeight="150.0" prefHeight="35.0" spacing="575.0" VBox.vgrow="NEVER">
                <children>
-                  <ComboBox fx:id="sortingMethods" onAction="#sortWithTheSelectedSortingMethod" prefWidth="150.0" promptText="Tri --" HBox.hgrow="NEVER">
+                  <ComboBox fx:id="sortingMethods" onAction="#sortWithTheSelectedSortingMethod" prefWidth="150.0" HBox.hgrow="NEVER">
                      <HBox.margin>
                         <Insets bottom="5.0" left="15.0" />
                      </HBox.margin>

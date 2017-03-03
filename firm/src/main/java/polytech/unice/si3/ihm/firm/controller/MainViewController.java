@@ -146,8 +146,6 @@ public class MainViewController extends BasicController {
     	else
     		return;
     	
-    	
-    	
     	searchButton.setGraphic(new ImageView(ImageBuilder.getImage("src/main/resources/images/ic_search_black_24dp_2x.png", 25, 25)));
     	addResizeListener();
     	

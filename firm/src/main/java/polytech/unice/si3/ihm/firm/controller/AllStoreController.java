@@ -22,6 +22,7 @@ import java.util.List;
 
 public class AllStoreController extends BasicController {
     private Firm firm;
+    private SortListViewItemByCity sorByCity;
     
     @FXML
     private ImageView logo;
@@ -63,6 +64,7 @@ public class AllStoreController extends BasicController {
             sortingMethodsList.add(sorting.getSortingName());
         }
         sortingMethods.setItems(sortingMethodsList);
+        sortingMethods.setPromptText(SortingEnum.CITY.getSortingName());
     }
 
     
@@ -126,7 +128,8 @@ public class AllStoreController extends BasicController {
                 };
             }
         });
-
+        sorByCity = new SortListViewItemByCity(firm.getStores());
+        changeListViewOrder(sorByCity.sort());
     }
 
     /**
@@ -163,8 +166,7 @@ public class AllStoreController extends BasicController {
         String value = sortingMethods.getValue();
 
         if (convertStringToSortingEnum(value).equals(SortingEnum.CITY)){
-            SortListViewItemByCity sort = new SortListViewItemByCity(firm.getStores());
-            changeListViewOrder(sort.sortByCity());
+            changeListViewOrder(sorByCity.sort());
         }
         else if (convertStringToSortingEnum(value).equals(SortingEnum.DEPARTMENT)){
             //TODO
@@ -183,7 +185,7 @@ public class AllStoreController extends BasicController {
         for (SortingEnum sortingEnum : SortingEnum.values()){
             if (selected.equals(sortingEnum.getSortingName())) return sortingEnum;
         }
-        return SortingEnum.DEFAULT;
+        return SortingEnum.CITY;
     }
 
 

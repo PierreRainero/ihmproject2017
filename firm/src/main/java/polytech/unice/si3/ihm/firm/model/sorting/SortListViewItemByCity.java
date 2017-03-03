@@ -21,7 +21,7 @@ public class SortListViewItemByCity {
      * Method that sort the stores by their city name
      * @return the list sorted
      */
-    public List<Store> sortByCity(){
+    public List<Store> sort(){
         Collections.sort(stores, new Comparator<Store>() {
             public int compare(Store o1, Store o2) {
                 return o1.getCity().compareTo(o2.getCity());

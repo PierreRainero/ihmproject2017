@@ -19,7 +19,7 @@ public class SortListViewItemByCityTest {
        stores.add(new Store("","","Toulon","83000","","",""));
 
        SortListViewItemByCity sort = new SortListViewItemByCity(stores);
-       assertEquals(stores, sort.sortByCity());
+       assertEquals(stores, sort.sort());
    }
 
    @Test
@@ -35,7 +35,7 @@ public class SortListViewItemByCityTest {
        expected.add(store1);
 
        SortListViewItemByCity sort = new SortListViewItemByCity(stores);
-       assertEquals(expected, sort.sortByCity());
+       assertEquals(expected, sort.sort());
 
    }
 

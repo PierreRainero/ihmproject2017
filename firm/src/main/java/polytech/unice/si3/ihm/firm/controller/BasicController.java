@@ -55,6 +55,6 @@ public class BasicController {
     }
     
     protected void addResizeListener(){
-    	throw new UnsupportedOperationException();
+    	return;
     }
 }
