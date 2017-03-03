@@ -48,7 +48,7 @@
                         <VBox alignment="TOP_CENTER" maxWidth="250.0" HBox.hgrow="ALWAYS">
                            <children>
                               <ComboBox fx:id="searchType" prefHeight="29.0" prefWidth="199.0" promptText="Sélectionner le type" VBox.vgrow="ALWAYS" />
-                              <HBox fx:id="HboxSearch" prefHeight="104.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                              <HBox fx:id="hboxSearch" prefHeight="104.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                  <children>
                                     <TextField fx:id="searchValue" maxHeight="34.0" minHeight="34.0" prefHeight="34.0" promptText="Tapez une ville, une région, une adresse ..." HBox.hgrow="ALWAYS" />
                                     <Button fx:id="searchButton" mnemonicParsing="false" onMouseClicked="#search" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="26.0" prefWidth="57.0" HBox.hgrow="ALWAYS" />

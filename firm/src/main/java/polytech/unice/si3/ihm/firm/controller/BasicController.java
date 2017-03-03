@@ -11,8 +11,10 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
-
+import polytech.unice.si3.ihm.firm.view.Carousel;
+import javafx.event.EventHandler;
 /**
  * 
  * Basic controller class - Skeleton for controlers
@@ -68,6 +70,11 @@ public class BasicController {
      * @param object object containing all datas to initialize the controls
      */
     public void initContent(Object object){
+    	currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+            	Carousel.carouselState = false;
+            }
+        });
     	mainContainer.setBackground(new Background(new BackgroundImage( ImageBuilder.getImage("src/main/resources/images/bg.png"), 
     																	BackgroundRepeat.REPEAT, 
     																	BackgroundRepeat.REPEAT, 

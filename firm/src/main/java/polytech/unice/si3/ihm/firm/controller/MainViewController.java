@@ -3,6 +3,8 @@ package polytech.unice.si3.ihm.firm.controller;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -19,8 +21,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
+import polytech.unice.si3.ihm.firm.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.util.ContentParser;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
+import polytech.unice.si3.ihm.firm.view.Carousel;
 
 /**
  * 
@@ -29,6 +33,10 @@ import polytech.unice.si3.ihm.firm.util.ImageBuilder;
  */
 public class MainViewController extends BasicController {
 	private String linkToVisit;
+	private int indexLeft;
+	private int indexCenter;
+	private int indexRight;
+	private List<Product> products;
 
     @FXML
     private ImageView logo;
@@ -169,6 +177,18 @@ public class MainViewController extends BasicController {
     /**
      * {@inheritDoc}
      */
+    protected void addResizeListener(){
+    	scene.widthProperty().addListener(new ChangeListener<Number>() {
+    	    public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
+    	    	searchType.setPrefWidth(hboxSearch.getWidth());
+    	    }
+    	});
+    }
+    
+    @Override
+    /**
+     * {@inheritDoc}
+     */
     public void initContent(Object obj){
     	super.initContent(obj);
     	
@@ -229,12 +249,27 @@ public class MainViewController extends BasicController {
      * @param firm firm containing all products
      */
     private void startCarousel(Firm firm){
-    	if(!firm.getProducts().isEmpty())
-    		carrouseImg1.setImage(ImageBuilder.getImage(firm.getProducts().get(0).getImage()));
-    	if(firm.getProducts().size()>1)
-    		carrouseImg2.setImage(ImageBuilder.getImage(firm.getProducts().get(1).getImage()));
-    	if(firm.getProducts().size()>2)
-    		carrouseImg3.setImage(ImageBuilder.getImage(firm.getProducts().get(2).getImage()));
+    	products = firm.getProducts();
+    	if(!products.isEmpty())
+    		indexLeft = 0;
+    	else
+    		return;
+    	
+    	if(products.size()>1)
+    		indexCenter = 1;
+    	else{
+    		indexCenter = 0;
+    		indexRight = 0;
+    	}
+    	
+    	if(products.size()>2)
+    		indexRight = 2;
+    	else
+    		indexRight = 0;
+    	
+		carrouseImg1.setImage(ImageBuilder.getImage(products.get(indexLeft).getImage()));
+    	carrouseImg2.setImage(ImageBuilder.getImage(products.get(indexCenter).getImage()));
+		carrouseImg3.setImage(ImageBuilder.getImage(products.get(indexRight).getImage()));
     	
     	carrouseImg2.setFitHeight(430.);
     	carrouseImg2.setFitWidth(310.);
@@ -243,19 +278,18 @@ public class MainViewController extends BasicController {
     	carrouseImg1.setFitWidth(252.);
     	carrouseImg3.setFitHeight(350.);
     	carrouseImg3.setFitWidth(252.);
+    	Thread thread = new Thread(new Carousel(this));
+    	thread.start();
     }
     
-    
-    @Override
-    /**
-     * {@inheritDoc}
-     */
-    protected void addResizeListener(){
-    	scene.widthProperty().addListener(new ChangeListener<Number>() {
-    	    public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
-    	    	searchType.setPrefWidth(hboxSearch.getWidth());
-    	    }
-    	});
+    public void tick(){
+    	indexLeft = indexCenter;
+    	indexCenter = indexRight;
+    	indexRight = indexRight+1>=products.size() ? 0 : indexRight+1;
+    	
+		carrouseImg1.setImage(ImageBuilder.getImage(products.get(indexLeft).getImage()));
+    	carrouseImg2.setImage(ImageBuilder.getImage(products.get(indexCenter).getImage()));
+		carrouseImg3.setImage(ImageBuilder.getImage(products.get(indexRight).getImage()));
     }
     
 }
