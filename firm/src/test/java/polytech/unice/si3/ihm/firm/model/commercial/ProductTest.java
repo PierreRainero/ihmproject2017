@@ -1,39 +1,28 @@
 package polytech.unice.si3.ihm.firm.model.commercial;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
 import polytech.unice.si3.ihm.firm.model.commercial.Product;
 
 import static org.junit.Assert.*;
 
 public class ProductTest {
-
     private Product productTest;
-    private Product productTest1;
-
-    @Rule
-    public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Before
-    public void init(){
+    public void defineContext(){
+    	productTest =  new Product("Product Test", "src/main/resources/images/games/mosserEffect.png", "T4sT", "descri", 2.);
     }
 
     @Test
     public void productIsPromoted(){
+    	assertFalse(productTest.isPromoted());
+    	
         productTest.markProductAsPromoted();
         assertTrue(productTest.isPromoted());
-        assertFalse(productTest1.isPromoted());
-    }
-
-    @Test
-    public void productIsNoMorePromoted(){
-        productTest.markProductAsPromoted();
+        
         productTest.unmarkProductAsPromoted();
-        productTest1.markProductAsPromoted();
         assertFalse(productTest.isPromoted());
-        assertTrue(productTest1.isPromoted());
     }
 
     @Test
@@ -57,7 +46,10 @@ public class ProductTest {
         assertEquals(expected, productTest.getPrice(), 0.50);
     }
 
-
-
-
+    @Test
+    public void changeProductImage(){
+        assertEquals("src/main/resources/images/games/mosserEffect.png", productTest.getImage());
+        productTest.changeProductImage("src/main/resources/images/games/residentEvil.png");
+        assertEquals("src/main/resources/images/games/residentEvil.png", productTest.getImage());
+    }
 }

@@ -18,17 +18,13 @@ public class Firm {
     private List<String> ads; 
 
     /**
-     * Default constructor for a firm
-     */
-    public Firm() {
-        this(null, null, null, null, null);
-    }
-
-    /**
      * Constructor for a firm
      * @param name the name of the firm
      * @param description the description of the firm
-     */
+	 * @param logo url to the logo
+	 * @param linkForMoreInfo website url
+	 * @param banner url to the banner
+	 */
     public Firm(String name, String description, String logo, String linkForMoreInfo, String banner) {
         this.name = name;
         this.description = description;
@@ -59,7 +55,7 @@ public class Firm {
 
 
     /**
-     * allow to know if the firm has at least one store
+     * Allow to know if the firm has at least one store
      * @return true if the firm has 0 stores
      */
     public boolean hasNoStores(){
@@ -98,30 +94,58 @@ public class Firm {
         return stores;
     }
     
+    /**
+     * Consultation accessor of logo
+     * @return url to the firm logo
+     */
     public String getLogo(){
     	return logo;
     }
     
+    /**
+     * Consultation accessor of banner
+     * @return url to the firm banner
+     */
     public String getBanner(){
     	return banner;
     }
     
+    /**
+     * Consultation accessor of website link
+     * @return url to the firm website url
+     */
     public String getLinkForMoreInfo(){
     	return linkForMoreInfo;
     }
     
+    /**
+     * Consultation accessor of ads
+     * @return list of all ads
+     */
     public List<String> getAds(){
     	return ads;
     }
     
+    /**
+     * Allows to add an ad in the firm
+     * @param ad ad to add
+     */
     public void addAdvertisement(String ad){
     	ads.add(ad);
     }
     
+    /**
+     * Consultation accessor of products
+     * @return url to the firm products
+     */
     public List<Product> getProducts() {
         return products;
     }
     
+    /**
+     * Allows to add a product in the firm
+     * @param product product to add
+     */
     public void addProduct(Product product){
     	products.add(product);
     }

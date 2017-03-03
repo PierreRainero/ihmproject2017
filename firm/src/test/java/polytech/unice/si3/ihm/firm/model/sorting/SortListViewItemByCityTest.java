@@ -1,6 +1,7 @@
 package polytech.unice.si3.ihm.firm.model.sorting;
 
 
+import org.junit.Before;
 import org.junit.Test;
 import polytech.unice.si3.ihm.firm.model.commercial.Store;
 
@@ -11,6 +12,10 @@ import static org.junit.Assert.assertEquals;
 
 
 public class SortListViewItemByCityTest {
+	
+    @Before
+    public void defineContext(){
+    }
 
    @Test
     public void sortTwoStoresAlreadySorted(){
@@ -38,7 +43,5 @@ public class SortListViewItemByCityTest {
        assertEquals(expected, sort.sort());
 
    }
-
-
 
 }

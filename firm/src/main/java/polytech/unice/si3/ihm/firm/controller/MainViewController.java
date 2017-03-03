@@ -22,8 +22,11 @@ import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.util.ContentParser;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 
-import polytech.unice.si3.ihm.firm.exceptions.ContentException;
-
+/**
+ * 
+ * Controler class for the home view
+ *
+ */
 public class MainViewController extends BasicController {
 	private String linkToVisit;
 
@@ -73,14 +76,22 @@ public class MainViewController extends BasicController {
     private Hyperlink firmLink;
     
     @FXML
-    private HBox HboxSearch;
+    private HBox hboxSearch;
 
     @FXML
+    /**
+     * Actions when the center product is clicked
+     * @param event event to catch
+     */
     void choseCenterProduct(MouseEvent event) {
 
     }
 
     @FXML
+    /**
+     * Actions when the left product is clicked
+     * @param event event to catch
+     */
     void choseLeftProduct(MouseEvent event) throws IOException {
     	Stage stage = new Stage();
         String fxmlFile = "/fxml/one_product_view.fxml";
@@ -100,18 +111,32 @@ public class MainViewController extends BasicController {
     }
 
     @FXML
+    /**
+     * Actions when the right product is clicked
+     * @param event event to catch
+     */
     void choseRightProduct(MouseEvent event) {
 
     }
     
     @FXML
+    /**
+     * Open the default browser with the firm url
+     * @param event event to catch
+     */
     void linkPressed(MouseEvent event) throws IOException {
     	URI uri = URI.create(linkToVisit);
     	Desktop.getDesktop().browse(uri);
     }
 
     @FXML
-    void openAllShops(MouseEvent event) throws IOException, ContentException {
+    /**
+     * Open a new window with all shops of the firm
+     * @param event event to catch
+     * @throws IOException
+     * @throws ContentException
+     */
+    void openAllShops(MouseEvent event) throws Exception {
     	Stage stage = new Stage();
         String fxmlFile = "/fxml/all_stores_view.fxml";
         FXMLLoader loader = new FXMLLoader();
@@ -132,15 +157,22 @@ public class MainViewController extends BasicController {
     }
 
     @FXML
+    /**
+     * Make a search
+     * @param event event to catch
+     */
     void search(MouseEvent event) {
 
     }
     
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void initContent(Object obj){
     	super.initContent(obj);
     	
-    	Firm firm = null;
+    	Firm firm;
     	if(obj instanceof Firm)
     		firm = (Firm) obj;
     	else
@@ -158,26 +190,46 @@ public class MainViewController extends BasicController {
     	linkToVisit = firm.getLinkForMoreInfo();
     }
     
+    /**
+     * Update the firm logo
+     * @param url url of the image
+     */
     private void updateLogo(String url){
     	logo.setImage(ImageBuilder.getImage(url));
     }
     
+    /**
+     * Update the firm banner
+     * @param url url of the image
+     */
     private void updateFirmImageName(String url){
         firmImageName.setImage(ImageBuilder.getImage(url));
     }
     
+    /**
+     * Update the firm description
+     * @param description description of the firm
+     */
     private void updateDescription(String description){
     	this.description.setText(description);
     }
     
+    /**
+     * Fill the ads listView with the model
+     * @param firm firm containing all ads
+     */
     private void fillAds(Firm firm){
     	ListProperty<String> listProperty = new SimpleListProperty<>();
     	ads.itemsProperty().bind(listProperty);
     	listProperty.set(FXCollections.observableArrayList(firm.getAds()));
     }
     
+    /**
+     * Initialize the carousel in the center
+     * @param firm firm containing all products
+     */
     private void startCarousel(Firm firm){
-    	if(firm.getProducts().size()>0)
+    	if(!firm.getProducts().isEmpty())
     		carrouseImg1.setImage(ImageBuilder.getImage(firm.getProducts().get(0).getImage()));
     	if(firm.getProducts().size()>1)
     		carrouseImg2.setImage(ImageBuilder.getImage(firm.getProducts().get(1).getImage()));
@@ -195,10 +247,13 @@ public class MainViewController extends BasicController {
     
     
     @Override
+    /**
+     * {@inheritDoc}
+     */
     protected void addResizeListener(){
     	scene.widthProperty().addListener(new ChangeListener<Number>() {
     	    public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
-    	    	searchType.setPrefWidth(HboxSearch.getWidth());
+    	    	searchType.setPrefWidth(hboxSearch.getWidth());
     	    }
     	});
     }

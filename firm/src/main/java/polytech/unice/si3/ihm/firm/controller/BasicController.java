@@ -13,6 +13,11 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 
+/**
+ * 
+ * Basic controller class - Skeleton for controlers
+ *
+ */
 public class BasicController {
 	protected Stage currentStage;
     protected Scene scene;
@@ -22,26 +27,46 @@ public class BasicController {
     @FXML
     private AnchorPane mainContainer;
 	
+    /**
+     * Modification accessor for the stage of the current view
+     * @param stage new stage to add
+     */
     public void setCurrentStage(Stage stage){
     	currentStage = stage;
     	scene = stage.getScene();
     }
     
     @FXML
+    /**
+     * Close the current stage (view)
+     * @param event event to catch
+     */
     void exit(MouseEvent event) {
         currentStage.close();
     }
 
     @FXML
+    /**
+     * Actions when the mouse is in a specific zone (by default change cursor to a hand)
+     * @param event event to catch
+     */
     void mouseEntered(MouseEvent event) {
     	currentStage.getScene().getRoot().setCursor(Cursor.HAND);
     }
 
     @FXML
+    /**
+     * Actions when the mouse is in a specific zone (by default change cursor to the default cursor)
+     * @param event event to catch
+     */
     void mouseExited(MouseEvent event) {
     	currentStage.getScene().getRoot().setCursor(Cursor.DEFAULT);
     }
     
+    /**
+     * Initialize all controls
+     * @param object object containing all datas to initialize the controls
+     */
     public void initContent(Object object){
     	mainContainer.setBackground(new Background(new BackgroundImage( ImageBuilder.getImage("src/main/resources/images/bg.png"), 
     																	BackgroundRepeat.REPEAT, 
@@ -50,10 +75,17 @@ public class BasicController {
     																	BackgroundSize.DEFAULT)));
     }
     
+    /**
+     * Modification accessor for the scene of the current view
+     * @param scene new scene to add
+     */
     public void setScene(Scene scene){
     	this.scene = scene;
     }
     
+    /**
+     * Allows to add listeners to catch when the window is resized
+     */
     protected void addResizeListener(){
     	return;
     }

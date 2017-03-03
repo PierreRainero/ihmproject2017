@@ -12,14 +12,29 @@ import polytech.unice.si3.ihm.firm.util.ContentParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 
+ * Main class - Allows to start the application
+ *
+ */
 public class MainApp extends Application {
-
+	/**
+	 * Log file of the application
+	 */
     private static final Logger log = LoggerFactory.getLogger(MainApp.class);
 
+    /**
+     * Main
+     * @param args line arguments at launch
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         launch(args);
     }
 
+    /**
+     * Start the view
+     */
     public void start(Stage stage) throws Exception {
 
         log.info("Starting firm view");
@@ -41,6 +56,7 @@ public class MainApp extends Application {
         MainViewController controller = loader.getController();
         controller.setCurrentStage(stage);
         controller.initContent(firm);
+        log.info("Content charged");
         
         stage.show();
     }

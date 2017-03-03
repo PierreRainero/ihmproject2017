@@ -5,8 +5,12 @@ import polytech.unice.si3.ihm.firm.model.commercial.Store;
 
 import java.util.*;
 
+/**
+ * 
+ * Class to sort shops by city
+ *
+ */
 public class SortListViewItemByCity {
-
     private List<Store> stores;
 
     /**

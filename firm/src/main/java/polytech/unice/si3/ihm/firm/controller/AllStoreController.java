@@ -20,6 +20,11 @@ import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 
 import java.util.List;
 
+/**
+ * 
+ * Controler class for the view grouping all stores of a firm
+ *
+ */
 public class AllStoreController extends BasicController {
     private Firm firm;
     private SortListViewItemByCity sorByCity;
@@ -48,11 +53,11 @@ public class AllStoreController extends BasicController {
      * @return the observable list of stores
      */
     private ObservableList<Store> makeObservableList(){
-        ObservableList<Store> stores = FXCollections.observableArrayList();
+        ObservableList<Store> storesList = FXCollections.observableArrayList();
         for (Store store : firm.getStores()){
-            stores.addAll(store);
+        	storesList.addAll(store);
         }
-        return stores;
+        return storesList;
     }
 
     /**
@@ -70,16 +75,17 @@ public class AllStoreController extends BasicController {
     
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void initContent(Object obj){
     	super.initContent(obj);
     	
-    	Firm firm = null;
     	if(obj instanceof Firm)
     		firm = (Firm) obj;
     	else
     		return;
 
-    	this.firm = firm;
     	initializeListView();
         initializeCombobox();
     	updateLogo(firm.getLogo());
@@ -169,10 +175,10 @@ public class AllStoreController extends BasicController {
             changeListViewOrder(sorByCity.sort());
         }
         else if (convertStringToSortingEnum(value).equals(SortingEnum.DEPARTMENT)){
-            //TODO
+            
         }
         else if (convertStringToSortingEnum(value).equals(SortingEnum.REGION)){
-            //TODO
+            
         }
     }
 
@@ -183,13 +189,17 @@ public class AllStoreController extends BasicController {
      */
     public SortingEnum convertStringToSortingEnum(String selected){
         for (SortingEnum sortingEnum : SortingEnum.values()){
-            if (selected.equals(sortingEnum.getSortingName())) return sortingEnum;
+            if (selected.equals(sortingEnum.getSortingName())) 
+            	return sortingEnum;
         }
         return SortingEnum.CITY;
     }
 
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     protected void addResizeListener(){
     	initialeWidth = (int) scene.getWidth();
     	
