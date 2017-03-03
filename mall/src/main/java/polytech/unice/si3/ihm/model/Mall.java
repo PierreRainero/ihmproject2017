@@ -24,7 +24,7 @@ public class Mall {
             JSONArray data;
             Level level;
             for (int i = -1; i <= 3; i++) {
-                level = new Level(i);
+                level = new Level();
                 data = (JSONArray) root.get(""+i);
                 for (Object o : data) {
                     JSONObject info = (JSONObject) o;

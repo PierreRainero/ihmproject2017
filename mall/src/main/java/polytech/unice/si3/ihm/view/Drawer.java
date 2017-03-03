@@ -38,4 +38,19 @@ class Drawer {
             canvas.getChildren().add(store.getPicture());
         }
     }
+
+    void highlightStore(Level level, String storeName) {
+        List<Store> stores = level.getStores();
+        for (Store store : stores) {
+            Rectangle r = store.getRectangle();
+            if (store.getName().equals(storeName)) {
+                r.setFill(Color.web("0xffff00"));
+            }
+            else {
+                r.setFill(Color.web("0x9f9bb1"));
+            }
+            canvas.getChildren().add(r);
+            canvas.getChildren().add(store.getPicture());
+        }
+    }
 }

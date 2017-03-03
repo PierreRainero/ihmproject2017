@@ -4,13 +4,11 @@ public class Place {
     private String name;
     private String imagePath;
     private int level;
-    private Coordinate coord;
 
-    public Place(String name,String imagePath,int level,Coordinate coord){
+    public Place(String name,String imagePath,int level){
         this.name = name;
         this.imagePath = imagePath;
         this.level = level;
-        this.coord = coord;
     }
 
     public String getName() {
@@ -23,9 +21,5 @@ public class Place {
 
     public int getLevel() {
         return level;
-    }
-
-    public Coordinate getCoord() {
-        return coord;
     }
 }

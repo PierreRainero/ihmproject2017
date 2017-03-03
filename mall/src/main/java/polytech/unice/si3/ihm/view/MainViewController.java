@@ -4,12 +4,17 @@ import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import polytech.unice.si3.ihm.model.Category;
+import polytech.unice.si3.ihm.model.Level;
 import polytech.unice.si3.ihm.model.Mall;
 import java.io.IOException;
 
@@ -69,7 +74,7 @@ public class MainViewController extends MenuController {
     private Button care;
 
     @FXML
-    private Button sport;
+    private Button restoration;
 
     @FXML
     private Button technologies;
@@ -90,9 +95,6 @@ public class MainViewController extends MenuController {
     private Button stairs;
 
     @FXML
-    private Button restaurants;
-
-    @FXML
     private Button whereAmI;
 
     @FXML
@@ -109,6 +111,12 @@ public class MainViewController extends MenuController {
 
     @FXML
     private Button thirdFloor;
+
+    @FXML
+    private Button searchButton;
+
+    @FXML
+    private TextField searchBar;
 
     @FXML
     private Label labelFloor;
@@ -161,11 +169,6 @@ public class MainViewController extends MenuController {
     }
 
     @FXML
-    void displayRestaurants(MouseEvent event) {
-
-    }
-
-    @FXML
     void displayStairs(MouseEvent event) {
 
     }
@@ -181,44 +184,77 @@ public class MainViewController extends MenuController {
     }
 
     @FXML
-    void selectCare(MouseEvent event) {
+    void search(Event event) {
+        canvas.getChildren().clear();
+        Drawer drawer = new Drawer(canvas);
 
+        Level level = mall.getLevel(currentLevel);
+        String search = searchBar.getText();
+        String store = level.lookForStore(search.toLowerCase().trim());
+        searchBar.clear();
+        if (!"not found".equals(store)) {
+            drawer.highlightStore(level, store);
+        }
+        else {
+            drawer.displayLevel(level);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Résultat de la recherche");
+            alert.setHeaderText(null);
+            alert.setContentText("Le magasin recherché \""+search+"\" n'a pas été trouvé. Essayez de nouveau en vérifiant son orthographe.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void searchEnter(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            search(event);
+        }
+    }
+
+    @FXML
+    void selectCare(MouseEvent event) {
+        selection(Category.CARE);
     }
 
     @FXML
     void selectCulture(MouseEvent event) {
-
+        selection(Category.CULTURE);
     }
 
     @FXML
     void selectDecoration(MouseEvent event) {
-
+        selection(Category.DECORATION);
     }
 
     @FXML
     void selectFashion(MouseEvent event) {
-
+        selection(Category.FASHION);
     }
 
     @FXML
     void selectServices(MouseEvent event) {
-
+        selection(Category.SERVICES);
     }
 
     @FXML
-    void selectSport(MouseEvent event) {
-
+    void selectRestoration(MouseEvent event) {
+        selection(Category.RESTORATION);
     }
 
     @FXML
     void selectTechnologies(MouseEvent event) {
-        canvas.getChildren().clear();
-        Drawer drawer = new Drawer(canvas);
-        drawer.displayCategory(mall.getLevel(currentLevel), Category.TECHNOLOGY);
+        selection(Category.TECHNOLOGY);
     }
 
     @FXML
     void selectToys(MouseEvent event) {
+        selection(Category.TOYS);
+    }
 
+    private void selection(Category category) {
+        canvas.getChildren().clear();
+        Drawer drawer = new Drawer(canvas);
+        drawer.displayCategory(mall.getLevel(currentLevel), category);
     }
 }

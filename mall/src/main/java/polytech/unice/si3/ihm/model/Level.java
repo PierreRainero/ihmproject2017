@@ -4,14 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Level {
-    private int number;
     private List<Store> stores;
     private List<Place> places;
 
-    public Level(int number){
-        this.number = number;
+    Level(){
         this.stores = new ArrayList<Store>();
         this.places = new ArrayList<Place>();
+    }
+
+    public String lookForStore(String nameStore) {
+        for (Store store : stores) {
+            if (store.getName().toLowerCase().equals(nameStore)) {
+                return store.getName();
+            }
+        }
+        return "not found";
     }
 
     public void addStore(Store store) {
@@ -28,9 +35,5 @@ public class Level {
 
     public List<Place> getPlaces(){
         return places;
-    }
-
-    public int getNumber() {
-        return number;
     }
 }

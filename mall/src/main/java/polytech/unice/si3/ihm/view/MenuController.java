@@ -38,11 +38,6 @@ public class MenuController {
     }
 
     @FXML
-    void reset(ActionEvent event) {
-
-    }
-
-    @FXML
     void closeWindow(ActionEvent event) {
         mainApp.getStage().close();
     }
