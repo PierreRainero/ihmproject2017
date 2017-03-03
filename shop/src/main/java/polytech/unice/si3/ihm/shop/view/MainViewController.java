@@ -4,9 +4,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import polytech.unice.si3.ihm.shop.MainApp;
+import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
 
+
 public class MainViewController extends BasicController {
+
+    private Product carouselLeft;
+    private Product carouselRight;
+    private Product carouselCenter;
 
     @FXML
     private ImageView logo;
@@ -18,6 +25,7 @@ public class MainViewController extends BasicController {
     private Label carouselLeftName;
     @FXML
     private ImageView carouselCenterImage;
+
     @FXML
     private Label carouselCenterName;
     @FXML
@@ -30,12 +38,66 @@ public class MainViewController extends BasicController {
         this.nom.setImage(new Image(shop.getLogoText()));
     }
 
-    public void initialiseCarousel(String leftImage, String leftName, String centerImage, String centerName, String rightImage, String rightName){
-        this.carouselLeftImage.setImage(new Image(leftImage));
-        this.carouselLeftName.setText(leftName);
-        this.carouselCenterImage.setImage(new Image(centerImage));
-        this.carouselCenterName.setText(centerName);
-        this.carouselRightImage.setImage(new Image(rightImage));
-        this.carouselRightName.setText(rightName);
+    public void initialiseCarousel(Product leftProduct, Product centerProduct, Product rightProduct){
+        this.carouselLeft = leftProduct;
+        this.carouselLeftImage.setImage(new Image(leftProduct.getImageURL()));
+        this.carouselLeftName.setText(leftProduct.getName());
+
+        this.carouselCenter = centerProduct;
+        this.carouselCenterImage.setImage(new Image(centerProduct.getImageURL()));
+        this.carouselCenterName.setText(centerProduct.getName());
+
+        this.carouselRight = rightProduct;
+        this.carouselRightImage.setImage(new Image(rightProduct.getImageURL()));
+        this.carouselRightName.setText(rightProduct.getName());
+
+        carouselCenterImage.setOnMouseClicked(event -> {
+            try {
+                MainApp.show(carouselCenter);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        carouselCenterImage.setOnMouseEntered(event -> {
+            mouseEntered(event);
+        });
+
+        carouselCenterImage.setOnMouseExited(event -> {
+            mouseExited(event);
+        });
+
+        carouselLeftImage.setOnMouseClicked(event -> {
+            try {
+                MainApp.show(carouselLeft);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        carouselLeftImage.setOnMouseEntered(event -> {
+            mouseEntered(event);
+        });
+
+        carouselLeftImage.setOnMouseExited(event -> {
+            mouseExited(event);
+        });
+
+        carouselRightImage.setOnMouseClicked(event -> {
+            try {
+                MainApp.show(carouselRight);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        carouselRightImage.setOnMouseEntered(event -> {
+            mouseEntered(event);
+        });
+
+        carouselRightImage.setOnMouseExited(event -> {
+            mouseExited(event);
+        });
     }
+
 }
