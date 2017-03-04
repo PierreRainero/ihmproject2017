@@ -17,6 +17,7 @@ import polytech.unice.si3.ihm.firm.model.commercial.Store;
 import polytech.unice.si3.ihm.firm.model.sorting.shop.SortListViewItemByCity;
 import polytech.unice.si3.ihm.firm.model.sorting.shop.SortingEnumShop;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
+import polytech.unice.si3.ihm.firm.util.Log;
 
 import java.util.List;
 
@@ -91,6 +92,8 @@ public class AllStoreController extends BasicController {
     	updateLogo(firm.getLogo());
     	updateFirmImageName(firm.getBanner());
     	addResizeListener();
+    	
+        Log.info(this.getClass(), "Content charged");
     }
 
     /**
@@ -145,6 +148,8 @@ public class AllStoreController extends BasicController {
     private void changeListViewOrder(List<Store> newOrder){
         ObservableList<Store> storesInListView = FXCollections.observableArrayList(newOrder);
         stores.setItems(storesInListView);
+        
+        Log.info(this.getClass(), "Shops order changed");
     }
 
     /**
@@ -168,7 +173,7 @@ public class AllStoreController extends BasicController {
      * Method that will call the corresponding sorting method depending on what has been chosen in the comboBox
      */
     @FXML
-    public void sortWithTheSelectedSortingMethod(){
+    private void sortWithTheSelectedSortingMethod(){
         String value = sortingMethods.getValue();
 
         if (SortingEnumShop.convertStringToSortingEnum(value).equals(SortingEnumShop.CITY)){

@@ -13,6 +13,7 @@
  - [x] Liens fonctionnels
  - [x] Mise en place des annonces
  - [x] Vue : Un produit sélectionné
+ - [x] Carousel
 
 ### Week 08
  - [ ] Mise en place du CSS

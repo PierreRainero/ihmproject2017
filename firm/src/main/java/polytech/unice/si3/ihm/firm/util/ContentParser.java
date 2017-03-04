@@ -20,8 +20,12 @@ import polytech.unice.si3.ihm.firm.model.commercial.Store;
  *
  */
 public class ContentParser {
-	private final static String PATH = System.getProperties().get("user.dir")+"/src/main/resources/datas/content.json";
-	private final static String INCORRECTJSON = "Incorrect JSONFile - Problem with firm's infos : "+PATH;
+	private static final String PATH = System.getProperties().get("user.dir")+"/src/main/resources/datas/content.json";
+	private static final String INCORRECTJSON = "Incorrect JSONFile - Problem with firm's infos : "+PATH;
+	
+	private static final String NAME = "name";
+	private static final String DESCRIPTION = "description";
+	private static final String IMAGE = "image";
 	
 	/**
 	 * Private constructor to hide the public one
@@ -37,9 +41,9 @@ public class ContentParser {
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
 	 */
-	public static Firm getFirm() throws ContentException, FileNotFoundException, IOException, ParseException{
+	public static Firm getFirm() throws ContentException, IOException, ParseException{
     	JSONParser parser = new JSONParser();
-    	JSONObject firmJson = null;
+    	JSONObject firmJson;
 
 		Object obj = parser.parse(new FileReader(PATH));
 	    firmJson = (JSONObject) obj;
@@ -66,12 +70,13 @@ public class ContentParser {
     	String banner = null;
     	
     	try{
-        	name = (String)firmJson.get("name");
-        	description = (String)firmJson.get("description");
+        	name = (String)firmJson.get(NAME);
+        	description = (String)firmJson.get(DESCRIPTION);
         	logo = (String)firmJson.get("logo");
         	link = (String)firmJson.get("link");
         	banner = (String)firmJson.get("banner");
     	}catch(Exception e){
+    		Log.error(ContentParser.class, INCORRECTJSON, e);
     		throw new ContentException(INCORRECTJSON);
     	}
 
@@ -90,22 +95,25 @@ public class ContentParser {
     	try{
         	shops = (JSONArray)firmJson.get("shops");
     	}catch(Exception e){
+    		Log.error(ContentParser.class, INCORRECTJSON, e);
     		throw new ContentException(INCORRECTJSON);
     	}
     	
     	try{
 	    	for(int i=0; i<shops.size(); i++){
 	    		JSONObject tempoShop = (JSONObject) shops.get(i);
-	    		firm.addStore(new Store((String) tempoShop.get("name"),
+	    		firm.addStore(new Store((String) tempoShop.get(NAME),
 										(String) tempoShop.get("address"),
 										(String) tempoShop.get("city"),
 										(String) tempoShop.get("city number"),
 										(String) tempoShop.get("mallname"),
-										(String) tempoShop.get("description"),
-										(String) tempoShop.get("image")));	
+										(String) tempoShop.get(DESCRIPTION),
+										(String) tempoShop.get(IMAGE)));	
 	    	}
 	    }catch(Exception e){
-	    	throw new ContentException("Incorrect JSONFile - Problem with shops infos : "+PATH);
+	    	String errorMsg = "Incorrect JSONFile - Problem with shops infos : "+PATH;
+	    	Log.error(ContentParser.class, errorMsg, e);
+	    	throw new ContentException(errorMsg);
 	    }
 	}
 	
@@ -121,6 +129,7 @@ public class ContentParser {
     	try{
         	products = (JSONArray)firmJson.get("products");
     	}catch(Exception e){
+    		Log.error(ContentParser.class, INCORRECTJSON, e);
     		throw new ContentException(INCORRECTJSON);
     	}
     	
@@ -128,10 +137,10 @@ public class ContentParser {
 	    	for(int i=0; i<products.size(); i++){
 	    		JSONObject tempoProduct = (JSONObject) products.get(i);
 	    		
-	    		Product productToAdd = new Product((String) tempoProduct.get("name"), 
-						(String) tempoProduct.get("image"), 
+	    		Product productToAdd = new Product((String) tempoProduct.get(NAME), 
+						(String) tempoProduct.get(IMAGE), 
 						(String) tempoProduct.get("reference"), 
-						(String) tempoProduct.get("description"), 
+						(String) tempoProduct.get(DESCRIPTION), 
 						(double) tempoProduct.get("price"));
 	    		
 	    		if((boolean)tempoProduct.get("promoted"))
@@ -143,7 +152,9 @@ public class ContentParser {
 	    		firm.addProduct(productToAdd);		
 	    	}
 	    }catch(Exception e){
-	    	throw new ContentException("Incorrect JSONFile - Problem with products infos : "+PATH);
+	    	String errorMsg = "Incorrect JSONFile - Problem with products infos : "+PATH;
+	    	Log.error(ContentParser.class, errorMsg, e);
+	    	throw new ContentException(errorMsg);
 	    }
 	}
 	
@@ -159,6 +170,7 @@ public class ContentParser {
     	try{
         	advertisements = (JSONArray)firmJson.get("advertisements"); 
     	}catch(Exception e){
+    		Log.error(ContentParser.class, INCORRECTJSON, e);
     		throw new ContentException(INCORRECTJSON);
     	}
     	

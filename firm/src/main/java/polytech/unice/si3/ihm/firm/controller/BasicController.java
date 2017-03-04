@@ -12,6 +12,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
+import polytech.unice.si3.ihm.firm.util.Log;
 /**
  * 
  * Basic controller class - Skeleton for controlers
@@ -42,6 +43,7 @@ public class BasicController {
      */
     void exit(MouseEvent event) {
         currentStage.close();
+        Log.info(this.getClass(), "Window closed");
     }
 
     @FXML

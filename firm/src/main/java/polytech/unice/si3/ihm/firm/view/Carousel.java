@@ -3,6 +3,7 @@ package polytech.unice.si3.ihm.firm.view;
 import java.util.concurrent.TimeUnit;
 
 import polytech.unice.si3.ihm.firm.controller.MainViewController;
+import polytech.unice.si3.ihm.firm.util.Log;
 
 /**
  * 
@@ -11,19 +12,20 @@ import polytech.unice.si3.ihm.firm.controller.MainViewController;
  */
 public class Carousel implements Runnable {
 	private MainViewController carouselController;
+	private Thread oldCarouselThread;
 	
 	/**
 	 * Put it on "false" to make the carousel stop
 	 */
-	public static boolean carouselState;
+	private static boolean carouselState;
 	
 	/**
 	 * Normal constructor
 	 * @param carouselController
 	 */
-	public Carousel(MainViewController carouselController){
+	public Carousel(MainViewController carouselController, Thread oldCarouselThread){
 		this.carouselController = carouselController;
-		carouselState = true;
+		this.oldCarouselThread = oldCarouselThread;
 	}
 	
 	@Override
@@ -31,16 +33,32 @@ public class Carousel implements Runnable {
      * {@inheritDoc}
      */
 	public void run(){
+		if(oldCarouselThread!=null)
+			try {
+				oldCarouselThread.join();
+			} catch (Exception e1) {
+				Log.error(this.getClass(), "Stop old thread failed", e1);
+			}
+		
+		setCarouselState(true);
 		int nbTick = 0;
-		while(carouselState){
+		while(isCarouselState()){
 			try {
 				TimeUnit.SECONDS.sleep(4);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				Log.error(this.getClass(), "Wait until next animation carousel failed", e);
 			}
 			carouselController.tick(nbTick);
 			nbTick = nbTick==2 ? 0 : nbTick+1;
 		}
+	}
+
+	public static boolean isCarouselState() {
+		return carouselState;
+	}
+
+	public static void setCarouselState(boolean carouselState) {
+		Carousel.carouselState = carouselState;
 	}
 
 }
