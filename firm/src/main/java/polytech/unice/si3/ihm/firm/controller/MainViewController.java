@@ -34,6 +34,8 @@ import polytech.unice.si3.ihm.firm.exceptions.ContentException;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.model.sorting.product.SortingEnumProduct;
+import polytech.unice.si3.ihm.firm.model.sorting.product.SortingListByFlagship;
+import polytech.unice.si3.ihm.firm.model.sorting.product.SortingListByPromo;
 import polytech.unice.si3.ihm.firm.util.ContentParser;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 import polytech.unice.si3.ihm.firm.util.Log;
@@ -108,6 +110,9 @@ public class MainViewController extends BasicController {
     
     @FXML
     private ComboBox<String> carouselType;
+    
+    @FXML
+    private ImageView loader;
 
     @FXML
     /**
@@ -276,6 +281,9 @@ public class MainViewController extends BasicController {
     	searchButton.setGraphic(new ImageView(ImageBuilder.getImage("src/main/resources/images/ic_search_black_24dp_2x.png", 25, 25)));
     	addResizeListener();
     	
+    	loader.setImage(ImageBuilder.getImage("src/main/resources/images/loader.gif", 25, 25));
+    	loader.setVisible(false);
+    	
     	fillAds(firm);
     	
     	allProducts = firm.getProducts();
@@ -345,16 +353,17 @@ public class MainViewController extends BasicController {
     private void sortWithTheSelectedSortingMethod(ActionEvent event) {
     	String value = carouselType.getValue();
     	
-        if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.ALL)){
+        if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.ALL))
         	currentProducts = allProducts;
-        	resetCarousel = true;
-        }
-        else if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.FLAGSHIP)){
-            
-        }
-        else if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.PROMOTED)){
-            
-        }
+        else if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.FLAGSHIP))
+        	currentProducts = (new SortingListByFlagship(allProducts)).sort();
+        else if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.PROMOTED))
+        	currentProducts = (new SortingListByPromo(allProducts)).sort();
+        else
+        	return;
+        
+        loader.setVisible(true);
+        resetCarousel = true;
     }
     
     /**
@@ -373,22 +382,18 @@ public class MainViewController extends BasicController {
     		return;
 
     	index[0] = 0;
+		index[1] = 0;
+		index[2] = 0;
     	
-    	if(allProducts.size()>1)
+    	if(currentProducts.size()>1)
     		index[1] = 1;
-    	else{
-    		index[1] = 0;
-    		index[2] = 0;
-    	}
     	
-    	if(allProducts.size()>2)
+    	if(currentProducts.size()>2)
     		index[2] = 2;
-    	else
-    		index[2] = 0;
-    	
-		carrouseImg1.setImage(ImageBuilder.getImage(allProducts.get(index[0]).getImage()));
-    	carrouseImg2.setImage(ImageBuilder.getImage(allProducts.get(index[1]).getImage()));
-		carrouseImg3.setImage(ImageBuilder.getImage(allProducts.get(index[2]).getImage()));
+
+		carrouseImg1.setImage(ImageBuilder.getImage(currentProducts.get(index[0]).getImage()));
+    	carrouseImg2.setImage(ImageBuilder.getImage(currentProducts.get(index[1]).getImage()));
+		carrouseImg3.setImage(ImageBuilder.getImage(currentProducts.get(index[2]).getImage()));
 		
     	carrouseImg2.setFitHeight(430.);
     	carrouseImg2.setFitWidth(310.);
@@ -480,6 +485,8 @@ public class MainViewController extends BasicController {
 	    	resetPosition();
 	    	resetSizes();
 		}
+		
+		loader.setVisible(false);
 		
     	if(resetCarousel)
     		startCarousel();

@@ -42,6 +42,7 @@ public class Carousel implements Runnable {
 		
 		setCarouselState(true);
 		int nbTick = 0;
+
 		while(isCarouselState()){
 			try {
 				TimeUnit.SECONDS.sleep(4);
@@ -53,10 +54,18 @@ public class Carousel implements Runnable {
 		}
 	}
 
+	/**
+	 * Getter of carousel state
+	 * @return carousel actual state
+	 */
 	public static boolean isCarouselState() {
 		return carouselState;
 	}
 
+	/**
+	 * Setter of carousel state
+	 * @param carouselState new carousel state
+	 */
 	public static void setCarouselState(boolean carouselState) {
 		Carousel.carouselState = carouselState;
 	}

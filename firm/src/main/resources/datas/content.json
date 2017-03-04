@@ -49,7 +49,7 @@
 		"description": "Rainero City, paisible petite ville, de plus de 2 habitants, du Middle West des États-Déunis, dont la stabilité économique ne repose que sur la boulangerie Umbrella Corporation, est le théâtre d'étranges disparitions. Des dizaines de personnes sont enlevées et ne sont jamais retrouvées. Les efforts de la police restent vains. Cependant, des témoins affirment avoir vu des groupes d'hippies, certains affirment que les victimes auraient été droguées.",
 		"price": 22.50,
 		"promoted": true,
-		"flagship": true
+		"flagship": false
 	},
 		 {
 		"name": "",
@@ -58,7 +58,7 @@
 		"description": "",
 		"price": 22.50,
 		"promoted": true,
-		"flagship": true
+		"flagship": false
 	},
 		 {
 		"name": "",
@@ -67,6 +67,6 @@
 		"description": "",
 		"price": 22.50,
 		"promoted": true,
-		"flagship": true
+		"flagship": false
 	}]
 }
