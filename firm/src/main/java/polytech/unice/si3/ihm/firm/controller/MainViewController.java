@@ -23,8 +23,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.transform.Scale;
-import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
@@ -41,12 +39,12 @@ import polytech.unice.si3.ihm.firm.view.Carousel;
  */
 public class MainViewController extends BasicController {
 	private String linkToVisit;
-	private int[] index;
-	private int[] shiftIndex;
 	private List<Product> allProducts;
 	private List<Product> currentProducts;
 	private ImageView[] carouselImages;
-	private Bounds[] initialPosition; 
+	private int[] index;
+	private int[] shiftIndex;
+	private int nbTick;
 
     @FXML
     private ImageView logo;
@@ -102,7 +100,17 @@ public class MainViewController extends BasicController {
      * @param event event to catch
      */
     void choseCenterProduct(MouseEvent event) throws IOException {
-    	choseProduct(index[1]);
+    	switch(nbTick){
+    		case -1: case 2:
+    			choseProduct(index[1]);
+    			break;
+    		case 0:
+    			choseProduct(index[0]);
+    			break;
+    		case 1:
+    			choseProduct(index[2]);
+    			break;
+    	}
     }
 
     @FXML
@@ -111,7 +119,17 @@ public class MainViewController extends BasicController {
      * @param event event to catch
      */
     void choseLeftProduct(MouseEvent event) throws IOException {
-    	choseProduct(index[0]);
+    	switch(nbTick){
+    	case -1: case 2:
+			choseProduct(index[0]);
+			break;
+		case 0:
+			choseProduct(index[2]);
+			break;
+		case 1:
+			choseProduct(index[1]);
+			break;
+	}
     }
 
     @FXML
@@ -120,7 +138,17 @@ public class MainViewController extends BasicController {
      * @param event event to catch
      */
     void choseRightProduct(MouseEvent event) throws IOException {
-    	choseProduct(index[2]);
+    	switch(nbTick){
+    	case -1: case 2:
+			choseProduct(index[2]);
+			break;
+		case 0:
+			choseProduct(index[1]);
+			break;
+		case 1:
+			choseProduct(index[0]);
+			break;
+	}
     }
     
     private void choseProduct(int index) throws IOException{
@@ -311,6 +339,8 @@ public class MainViewController extends BasicController {
     	
     	shiftIndex = new int[3];
     	
+    	nbTick = -1;
+    	
     	Thread thread = new Thread(new Carousel(this));
     	thread.start();
     }
@@ -319,12 +349,17 @@ public class MainViewController extends BasicController {
      * Corresponds to a clock tick. Allows to make carousel move.
      */
     public void tick(int nbTick){
+    	this.nbTick =nbTick;
     	incrementProducts();
-    	updateShifts(nbTick);
-    	move(nbTick);
+    	updateShifts();
+    	move();
     }
     
-    private void move(int nbTick){
+    /**
+     * Switch carousel images positions
+     * @param nbTick state (0,1,2), 0 = start position
+     */
+    private void move(){
     	Bounds boundsInScreenImg1 = carouselImages[0+shiftIndex[0]].localToScreen(carouselImages[0+shiftIndex[0]].getBoundsInLocal());
     	double boundsInScreenImg1X = boundsInScreenImg1.getMinX();
     	
@@ -377,13 +412,20 @@ public class MainViewController extends BasicController {
 
     }
     
+    /**
+     * Increment display products
+     */
     private void incrementProducts(){
     	index[0] = index[1];
     	index[1] = index[2];
     	index[2] = index[2]+1>=currentProducts.size() ? 0 : index[2]+1;
     }
     
-    private void updateShifts(int nbTick){
+    /**
+     * Update shift to switch images
+     * @param nbTick
+     */
+    private void updateShifts(){
     	if(nbTick==0){
         	shiftIndex[0] = 0;
         	shiftIndex[1] = 0;
@@ -406,50 +448,25 @@ public class MainViewController extends BasicController {
     	}
     }
     
-    public void initCarouselValues(){
-    	initialPosition = new Bounds[3];
-    	initialPosition[0] = carrouseImg1.localToScene(carrouseImg1.getBoundsInLocal());
-    	initialPosition[1] = carrouseImg2.localToScene(carrouseImg1.getBoundsInLocal());
-    	initialPosition[2] = carrouseImg3.localToScene(carrouseImg1.getBoundsInLocal());
-    }
-    
+    /**
+     * Reset initial sizes at end of state 2 (note necessary if scales are perfects)
+     */
     private void resetSizes(){
-    	System.out.println(carrouseImg1.localToScene(carrouseImg1.getBoundsInLocal()).getWidth());
     	carrouseImg1.setScaleX(1.);
     	carrouseImg1.setScaleY(1.);
     	carrouseImg2.setScaleX(1.);
     	carrouseImg2.setScaleY(1.);
     	carrouseImg3.setScaleX(1.);
     	carrouseImg3.setScaleY(1.);
-    	System.out.println(carrouseImg1.localToScene(carrouseImg1.getBoundsInLocal()).getWidth());
-    	
     }
     
+    /**
+     * Reset initial positions at end of state 2 (note necessary if translates are perfects)
+     */
     private void resetPosition(){
-    	System.out.println("g="+initialPosition[0].getMinX()+ " d="+carrouseImg1.localToScene(carrouseImg1.getBoundsInLocal()).getMinX());
     	carrouseImg1.setTranslateX(0.);
     	carrouseImg2.setTranslateX(0.);
     	carrouseImg3.setTranslateX(0.);
-    	System.out.println("g="+initialPosition[0].getMinX()+ " d="+carrouseImg1.localToScene(carrouseImg1.getBoundsInLocal()).getMinX());
-    	carrouseImg1.setX(0);
-    	carrouseImg1.setY(0);
-    	carrouseImg2.setX(0);
-    	carrouseImg2.setY(0);
-    	carrouseImg3.setX(0);
-    	carrouseImg3.setY(0);
-    	/*
-    	Translate translate = new Translate();
-    	System.out.println("g="+initialPosition[0].getMinX()+ " d="+carrouseImg1.localToScene(carrouseImg1.getBoundsInLocal()).getMinX());
-    	translate.setX(initialPosition[0].getMinX() - carrouseImg1.localToScene(carrouseImg1.getBoundsInLocal()).getMinX());
-    	carrouseImg1.getTransforms().addAll(translate);
-    	
-    	translate = new Translate();
-    	translate.setX(initialPosition[1].getMinX() - carrouseImg2.localToScene(carrouseImg2.getBoundsInLocal()).getMinX());
-    	carrouseImg2.getTransforms().addAll(translate);
-    	
-    	translate = new Translate();
-    	translate.setX(initialPosition[2].getMinX() - carrouseImg3.localToScene(carrouseImg3.getBoundsInLocal()).getMinX());
-    	carrouseImg3.getTransforms().addAll(translate);*/
     }
     
 }
