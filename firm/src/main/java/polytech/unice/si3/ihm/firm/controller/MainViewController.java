@@ -31,7 +31,6 @@ import javafx.util.Duration;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.model.sorting.product.SortingEnumProduct;
-import polytech.unice.si3.ihm.firm.model.sorting.shop.SortingEnumShop;
 import polytech.unice.si3.ihm.firm.util.ContentParser;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 import polytech.unice.si3.ihm.firm.view.Carousel;
@@ -319,13 +318,13 @@ public class MainViewController extends BasicController {
     void sortWithTheSelectedSortingMethod(ActionEvent event) {
     	String value = carouselType.getValue();
     	
-        if (SortingEnumShop.valueOf(value).equals(SortingEnumProduct.ALL)){
+        if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.ALL)){
             
         }
-        else if (SortingEnumShop.valueOf(value).equals(SortingEnumProduct.FLAGSHIP)){
+        else if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.FLAGSHIP)){
             
         }
-        else if (SortingEnumShop.valueOf(value).equals(SortingEnumProduct.PROMOTED)){
+        else if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.PROMOTED)){
             
         }
     }

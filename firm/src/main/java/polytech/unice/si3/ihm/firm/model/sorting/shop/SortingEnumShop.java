@@ -24,5 +24,18 @@ public enum SortingEnumShop {
         return sortingName;
     }
 
+    
+    /**
+     * Method that converts a string in a SortingEnum object if the string is corresponding to one of the objects
+     * @param selected the string to convert
+     * @return the SortingEnum object corresponding to the string
+     */
+    public static SortingEnumShop convertStringToSortingEnum(String selected){
+        for (SortingEnumShop sortingEnum : SortingEnumShop.values()){
+            if (selected.equals(sortingEnum.getSortingName())) 
+            	return sortingEnum;
+        }
+        return SortingEnumShop.CITY;
+    }
 
 }

@@ -171,28 +171,15 @@ public class AllStoreController extends BasicController {
     public void sortWithTheSelectedSortingMethod(){
         String value = sortingMethods.getValue();
 
-        if (convertStringToSortingEnum(value).equals(SortingEnumShop.CITY)){
+        if (SortingEnumShop.convertStringToSortingEnum(value).equals(SortingEnumShop.CITY)){
             changeListViewOrder(sorByCity.sort());
         }
-        else if (convertStringToSortingEnum(value).equals(SortingEnumShop.DEPARTMENT)){
+        else if (SortingEnumShop.convertStringToSortingEnum(value).equals(SortingEnumShop.DEPARTMENT)){
             
         }
-        else if (convertStringToSortingEnum(value).equals(SortingEnumShop.REGION)){
+        else if (SortingEnumShop.convertStringToSortingEnum(value).equals(SortingEnumShop.REGION)){
             
         }
-    }
-
-    /**
-     * Method that converts a string in a SortingEnum object if the string is corresponding to one of the objects
-     * @param selected the string to convert
-     * @return the SortingEnum object corresponding to the string
-     */
-    public SortingEnumShop convertStringToSortingEnum(String selected){
-        for (SortingEnumShop sortingEnum : SortingEnumShop.values()){
-            if (selected.equals(sortingEnum.getSortingName())) 
-            	return sortingEnum;
-        }
-        return SortingEnumShop.CITY;
     }
 
 
