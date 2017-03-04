@@ -12,6 +12,7 @@
  - [x] Mise à jours des composants en fonction de la taille de la fenêtre
  - [x] Liens fonctionnels
  - [x] Mise en place des annonces
+ - [x] Vue : Un produit sélectionné
 
 ### Week 08
  - [ ] Mise en place du CSS

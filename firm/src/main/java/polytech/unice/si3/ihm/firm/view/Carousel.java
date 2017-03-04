@@ -31,13 +31,15 @@ public class Carousel implements Runnable {
      * {@inheritDoc}
      */
 	public void run(){
+		int nbTick = 0;
 		while(carouselState){
 			try {
 				TimeUnit.SECONDS.sleep(4);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			carouselController.tick();
+			carouselController.tick(nbTick);
+			nbTick = nbTick==2 ? 0 : nbTick+1;
 		}
 	}
 

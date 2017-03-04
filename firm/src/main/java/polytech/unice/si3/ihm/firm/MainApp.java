@@ -59,5 +59,6 @@ public class MainApp extends Application {
         log.info("Content charged");
         
         stage.show();
+        controller.initCarouselValues();
     }
 }

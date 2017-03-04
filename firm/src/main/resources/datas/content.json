@@ -50,5 +50,23 @@
 		"price": 22.50,
 		"promoted": true,
 		"flagship": true
+	},
+		 {
+		"name": "",
+		"image": "src/main/resources/images/games/jeu3.png",
+		"reference": "",
+		"description": "",
+		"price": 22.50,
+		"promoted": true,
+		"flagship": true
+	},
+		 {
+		"name": "",
+		"image": "src/main/resources/images/games/jeu4.png",
+		"reference": "",
+		"description": "",
+		"price": 22.50,
+		"promoted": true,
+		"flagship": true
 	}]
 }
