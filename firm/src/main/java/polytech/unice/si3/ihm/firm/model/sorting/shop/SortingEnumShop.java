@@ -1,18 +1,18 @@
-package polytech.unice.si3.ihm.firm.model.sorting;
+package polytech.unice.si3.ihm.firm.model.sorting.shop;
 
 /**
  * 
- * Enum class for sorting
+ * Enum class for shops sortings
  *
  */
-public enum SortingEnum {
+public enum SortingEnumShop {
     CITY("Trier par villes"),
     REGION("Trier par régions"),
     DEPARTMENT("Trier par départements");
 
     private String sortingName;
 
-    SortingEnum(String sortingName) {
+    SortingEnumShop(String sortingName) {
         this.sortingName = sortingName;
     }
 

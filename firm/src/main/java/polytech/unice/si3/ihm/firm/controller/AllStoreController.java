@@ -14,8 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.model.commercial.Store;
-import polytech.unice.si3.ihm.firm.model.sorting.SortListViewItemByCity;
-import polytech.unice.si3.ihm.firm.model.sorting.SortingEnum;
+import polytech.unice.si3.ihm.firm.model.sorting.shop.SortListViewItemByCity;
+import polytech.unice.si3.ihm.firm.model.sorting.shop.SortingEnumShop;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 
 import java.util.List;
@@ -65,11 +65,11 @@ public class AllStoreController extends BasicController {
      */
     public void initializeCombobox(){
         ObservableList<String> sortingMethodsList=FXCollections.observableArrayList();
-        for (SortingEnum sorting : SortingEnum.values()){
+        for (SortingEnumShop sorting : SortingEnumShop.values()){
             sortingMethodsList.add(sorting.getSortingName());
         }
         sortingMethods.setItems(sortingMethodsList);
-        sortingMethods.setPromptText(SortingEnum.CITY.getSortingName());
+        sortingMethods.setPromptText(SortingEnumShop.CITY.getSortingName());
     }
 
     
@@ -171,13 +171,13 @@ public class AllStoreController extends BasicController {
     public void sortWithTheSelectedSortingMethod(){
         String value = sortingMethods.getValue();
 
-        if (convertStringToSortingEnum(value).equals(SortingEnum.CITY)){
+        if (convertStringToSortingEnum(value).equals(SortingEnumShop.CITY)){
             changeListViewOrder(sorByCity.sort());
         }
-        else if (convertStringToSortingEnum(value).equals(SortingEnum.DEPARTMENT)){
+        else if (convertStringToSortingEnum(value).equals(SortingEnumShop.DEPARTMENT)){
             
         }
-        else if (convertStringToSortingEnum(value).equals(SortingEnum.REGION)){
+        else if (convertStringToSortingEnum(value).equals(SortingEnumShop.REGION)){
             
         }
     }
@@ -187,12 +187,12 @@ public class AllStoreController extends BasicController {
      * @param selected the string to convert
      * @return the SortingEnum object corresponding to the string
      */
-    public SortingEnum convertStringToSortingEnum(String selected){
-        for (SortingEnum sortingEnum : SortingEnum.values()){
+    public SortingEnumShop convertStringToSortingEnum(String selected){
+        for (SortingEnumShop sortingEnum : SortingEnumShop.values()){
             if (selected.equals(sortingEnum.getSortingName())) 
             	return sortingEnum;
         }
-        return SortingEnum.CITY;
+        return SortingEnumShop.CITY;
     }
 
 

@@ -13,6 +13,8 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +30,8 @@ import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.model.commercial.Product;
+import polytech.unice.si3.ihm.firm.model.sorting.product.SortingEnumProduct;
+import polytech.unice.si3.ihm.firm.model.sorting.shop.SortingEnumShop;
 import polytech.unice.si3.ihm.firm.util.ContentParser;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 import polytech.unice.si3.ihm.firm.view.Carousel;
@@ -93,6 +97,9 @@ public class MainViewController extends BasicController {
     
     @FXML
     private HBox hboxSearch;
+    
+    @FXML
+    private ComboBox<String> carouselType;
 
     @FXML
     /**
@@ -234,11 +241,6 @@ public class MainViewController extends BasicController {
      */
     public void initContent(Object obj){
     	super.initContent(obj);
-    	currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-            	Carousel.carouselState = false;
-            }
-        });
     	
     	Firm firm;
     	if(obj instanceof Firm)
@@ -246,7 +248,14 @@ public class MainViewController extends BasicController {
     	else
     		return;
     	
+    	initializeCombobox();
     	index = new int[3];
+    	
+    	currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+            	Carousel.carouselState = false;
+            }
+        });
     	
     	searchButton.setGraphic(new ImageView(ImageBuilder.getImage("src/main/resources/images/ic_search_black_24dp_2x.png", 25, 25)));
     	addResizeListener();
@@ -292,6 +301,33 @@ public class MainViewController extends BasicController {
     	ListProperty<String> listProperty = new SimpleListProperty<>();
     	ads.itemsProperty().bind(listProperty);
     	listProperty.set(FXCollections.observableArrayList(firm.getAds()));
+    }
+    
+    /**
+     * Allow to populate the combobox of sorting methods
+     */
+    private void initializeCombobox(){
+        ObservableList<String> sortingMethodsList = FXCollections.observableArrayList();
+        for (SortingEnumProduct sorting : SortingEnumProduct.values()){
+            sortingMethodsList.add(sorting.getSortingName());
+        }
+        carouselType.setItems(sortingMethodsList);
+        carouselType.setPromptText(SortingEnumProduct.ALL.getSortingName());
+    }
+    
+    @FXML
+    void sortWithTheSelectedSortingMethod(ActionEvent event) {
+    	String value = carouselType.getValue();
+    	
+        if (SortingEnumShop.valueOf(value).equals(SortingEnumProduct.ALL)){
+            
+        }
+        else if (SortingEnumShop.valueOf(value).equals(SortingEnumProduct.FLAGSHIP)){
+            
+        }
+        else if (SortingEnumShop.valueOf(value).equals(SortingEnumProduct.PROMOTED)){
+            
+        }
     }
     
     /**
@@ -360,6 +396,8 @@ public class MainViewController extends BasicController {
      * @param nbTick state (0,1,2), 0 = start position
      */
     private void move(){
+    	int gap  = 27;
+    	
     	Bounds boundsInScreenImg1 = carouselImages[0+shiftIndex[0]].localToScreen(carouselImages[0+shiftIndex[0]].getBoundsInLocal());
     	double boundsInScreenImg1X = boundsInScreenImg1.getMinX();
     	
@@ -369,7 +407,7 @@ public class MainViewController extends BasicController {
     	double xDistanceBetween1And2 = boundsInScreenImg2X-boundsInScreenImg1X;
     	
     	TranslateTransition translateTransition1 = new TranslateTransition(Duration.millis(1750), carouselImages[1+shiftIndex[1]]);
-    	translateTransition1.setByX(-xDistanceBetween1And2-27);
+    	translateTransition1.setByX(-xDistanceBetween1And2-gap);
     	ScaleTransition scaleTransition1 = new ScaleTransition(Duration.millis(1750), carouselImages[1+shiftIndex[1]]);
     	scaleTransition1.setByX(-0.2);
     	scaleTransition1.setByY(-0.2);
@@ -381,7 +419,7 @@ public class MainViewController extends BasicController {
     	double xDistanceBetween2And3 = boundsInScreenImg3X-boundsInScreenImg2X;
     	
     	TranslateTransition translateTransition2 = new TranslateTransition(Duration.millis(1750), carouselImages[2+shiftIndex[2]]);
-    	translateTransition2.setByX(-xDistanceBetween2And3+27);
+    	translateTransition2.setByX(-xDistanceBetween2And3+gap);
     	ScaleTransition scaleTransition2 = new ScaleTransition(Duration.millis(1750), carouselImages[2+shiftIndex[2]]);
     	scaleTransition2.setByX(0.2);
     	scaleTransition2.setByY(0.2);

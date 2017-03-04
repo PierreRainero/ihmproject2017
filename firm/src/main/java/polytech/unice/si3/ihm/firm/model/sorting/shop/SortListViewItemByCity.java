@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.model.sorting;
+package polytech.unice.si3.ihm.firm.model.sorting.shop;
 
 
 import polytech.unice.si3.ihm.firm.model.commercial.Store;

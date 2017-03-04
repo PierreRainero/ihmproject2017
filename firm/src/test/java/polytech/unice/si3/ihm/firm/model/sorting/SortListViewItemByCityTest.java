@@ -4,6 +4,7 @@ package polytech.unice.si3.ihm.firm.model.sorting;
 import org.junit.Before;
 import org.junit.Test;
 import polytech.unice.si3.ihm.firm.model.commercial.Store;
+import polytech.unice.si3.ihm.firm.model.sorting.shop.SortListViewItemByCity;
 
 import java.util.ArrayList;
 import java.util.List;
