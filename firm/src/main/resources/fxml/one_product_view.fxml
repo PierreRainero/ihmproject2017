@@ -3,46 +3,72 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.view.OneProductController">
+<AnchorPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="450.0" minWidth="420.0" prefHeight="450.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.controller.OneProductController">
    <children>
       <HBox layoutX="92.0" layoutY="38.0" prefHeight="233.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="380.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/images/produit_phare_3.jpg" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="image" fitHeight="380.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="4.0" />
+               </HBox.margin></ImageView>
             <VBox prefHeight="600.0" prefWidth="332.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
                <children>
-                  <Label text="Nom du produit">
+                  <HBox>
+                     <children>
+                        <Label fx:id="libName" styleClass="boldLabels" text="Nom du produit :" wrapText="true" />
+                        <Label fx:id="name">
+                           <HBox.margin>
+                              <Insets left="6.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label fx:id="libRef" styleClass="boldLabels" text="Référence :" wrapText="true" />
+                        <Label fx:id="reference">
+                           <HBox.margin>
+                              <Insets left="6.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label fx:id="libPrice" styleClass="boldLabels" text="Prix :" wrapText="true" />
+                        <Label fx:id="price">
+                           <HBox.margin>
+                              <Insets left="6.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ImageView fx:id="promoted" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="4.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Label styleClass="boldLabels" text="Description du produit :" wrapText="true">
                      <VBox.margin>
-                        <Insets top="50.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Références :" />
-                  <Label text="Stock :" />
-                  <Label text="Description du produit">
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Button fx:id="exit" mnemonicParsing="false" onMouseClicked="#exit" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" text="Quitter">
-                     <VBox.margin>
-                        <Insets left="150.0" top="400.0" />
-                     </VBox.margin>
-                  </Button>
+                  <Label fx:id="description" />
                </children>
             </VBox>
          </children>
       </HBox>
+      <Button fx:id="exit" mnemonicParsing="false" onMouseClicked="#exit" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" text="Quitter" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="4.0" />
    </children>
+   <padding>
+      <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+   </padding>
 </AnchorPane>

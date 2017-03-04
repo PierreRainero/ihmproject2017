@@ -3,6 +3,7 @@ package polytech.unice.si3.ihm.shop.view;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 public class BasicController {
@@ -26,4 +27,5 @@ public class BasicController {
     void mouseExited(MouseEvent event) {
     	currentStage.getScene().getRoot().setCursor(Cursor.DEFAULT);
     }
+
 }
