@@ -14,8 +14,8 @@ public class SortListViewItemByDepartmentTest {
     @Test
     public void sortTwoStoresAlreadySorted(){
         List<Store> stores = new ArrayList<Store>();
-        stores.add(new Store("","","Nice","06000","","","",""));
-        stores.add(new Store("","","Toulon","83000","","","",""));
+        stores.add(new Store("","","Nice","06000","Alpes-Maritimes","","","",""));
+        stores.add(new Store("","","Toulon","83000","Var","","","",""));
 
         SortListViewItemByDepartment sort = new SortListViewItemByDepartment(stores);
         assertEquals(stores, sort.sort());
@@ -25,8 +25,8 @@ public class SortListViewItemByDepartmentTest {
     @Test
     public void sortTwoStoresNotAlreadySorted() {
         List<Store> stores = new ArrayList<Store>();
-        Store store1 = new Store("", "", "Toulon", "83000","", "", "", "");
-        Store store2 = new Store("", "", "Nice", "06000","", "", "", "");
+        Store store1 = new Store("", "", "Toulon", "83000","Var","", "", "", "");
+        Store store2 = new Store("", "", "Nice", "06000","Alpes-Maritimes","", "", "", "");
         stores.add(store1);
         stores.add(store2);
 

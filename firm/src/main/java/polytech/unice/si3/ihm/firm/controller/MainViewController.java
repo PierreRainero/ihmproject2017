@@ -6,6 +6,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 import org.json.simple.parser.ParseException;
 
 import javafx.animation.ScaleTransition;
@@ -33,6 +35,8 @@ import javafx.util.Duration;
 import polytech.unice.si3.ihm.firm.exceptions.ContentException;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.model.commercial.Product;
+import polytech.unice.si3.ihm.firm.model.commercial.Store;
+import polytech.unice.si3.ihm.firm.model.searching.*;
 import polytech.unice.si3.ihm.firm.model.sorting.product.SortingEnumProduct;
 import polytech.unice.si3.ihm.firm.model.sorting.product.SortingListByFlagship;
 import polytech.unice.si3.ihm.firm.model.sorting.product.SortingListByPromo;
@@ -48,6 +52,8 @@ import polytech.unice.si3.ihm.firm.view.Carousel;
  */
 public class MainViewController extends BasicController {
 	private String linkToVisit;
+
+	private Firm firm;
 	
 	private List<Product> allProducts;
 	private List<Product> currentProducts;
@@ -70,13 +76,16 @@ public class MainViewController extends BasicController {
     private Label description;
 
     @FXML
-    private ComboBox<?> searchType;
+    private ComboBox<String> searchType;
 
     @FXML
     private TextField searchValue;
 
     @FXML
     private Button searchButton;
+
+	@FXML
+	private ListView<Store> researchListView;
 
     @FXML
     private Label mallName;
@@ -242,7 +251,62 @@ public class MainViewController extends BasicController {
      */
     private void search(MouseEvent event) {
 
+		String searchValue = this.searchValue.getText();
+		String searchTypeValue = searchType.getValue();
+
+		researchListView.getItems().clear();
+
+		if (!this.searchValue.getText().trim().isEmpty()) {
+
+			if (searchTypeValue.equals(ResearchTypes.DEFAULT.getValue())) {
+				GeneralResearch research = new GeneralResearch(firm.getStores());
+				populateResearchListView(research.search(searchValue));
+
+				Log.info(this.getClass(), "Default research");
+			} else if (searchTypeValue.equals(ResearchTypes.CITY.getValue())) {
+				CityResearch research = new CityResearch(firm.getStores());
+				populateResearchListView(research.search(searchValue));
+
+				Log.info(this.getClass(), "City research");
+			} else if (searchTypeValue.equals(ResearchTypes.DEPARTMENT.getValue())) {
+				DepartmentResearch research = new DepartmentResearch(firm.getStores());
+				populateResearchListView(research.search(searchValue));
+
+				Log.info(this.getClass(), "Department research");
+			} else if (searchTypeValue.equals(ResearchTypes.MALLNAME.getValue())) {
+				MallNameResearch research = new MallNameResearch(firm.getStores());
+				populateResearchListView(research.search(searchValue));
+
+				Log.info(this.getClass(), "Mall name research");
+			} else if (searchTypeValue.equals(ResearchTypes.REGION.getValue())) {
+				RegionResearch research = new RegionResearch(firm.getStores());
+				populateResearchListView(research.search(searchValue));
+
+				Log.info(this.getClass(), "Region research");
+			} else if (searchTypeValue.equals(ResearchTypes.STORENAME.getValue())) {
+				StoreNameResearch research = new StoreNameResearch(firm.getStores());
+				populateResearchListView(research.search(searchValue));
+
+				Log.info(this.getClass(), "Store name research");
+			}
+
+			Log.info(this.getClass(), "Search button pressed");
+
+		}
+
+
+
     }
+
+    private void populateResearchListView(List<Store> result){
+		ObservableList<Store> storeObservableList;
+		if (result.isEmpty()) researchListView.setPlaceholder(new Label("Aucun magasin correspondant à la recherche"));
+		else{
+			storeObservableList = FXCollections.observableList(result);
+			researchListView.setItems(storeObservableList);
+		}
+		Log.info(this.getClass(), "research result appears in list view");
+	}
     
     @Override
     /**
@@ -263,7 +327,7 @@ public class MainViewController extends BasicController {
     public void initContent(Object obj){
     	super.initContent(obj);
     	
-    	Firm firm;
+
     	if(obj instanceof Firm)
     		firm = (Firm) obj;
     	else
@@ -280,6 +344,9 @@ public class MainViewController extends BasicController {
     	
     	searchButton.setGraphic(new ImageView(ImageBuilder.getImage("src/main/resources/images/ic_search_black_24dp_2x.png", 25, 25)));
     	addResizeListener();
+
+		initializeResearchComboBox();
+		initializeResearchListView();
     	
     	loader.setImage(ImageBuilder.getImage("src/main/resources/images/loader.gif", 25, 25));
     	loader.setVisible(false);
@@ -301,6 +368,42 @@ public class MainViewController extends BasicController {
     	
         Log.info(this.getClass(), "Content charged");
     }
+
+	/**
+	 * Allow to choose the type of the research
+	 */
+	private void initializeResearchComboBox(){
+		ObservableList<String> researchTypes = FXCollections.observableArrayList();
+		for (ResearchTypes research : ResearchTypes.values())
+			researchTypes.add(research.getValue());
+		searchType.setItems(researchTypes);
+		searchType.setValue(ResearchTypes.DEFAULT.getValue());
+	}
+
+	private void initializeResearchListView() {
+		researchListView.setCellFactory(new Callback<ListView<Store>, ListCell<Store>>() {
+			@Override
+			public ListCell<Store> call(ListView<Store> param) {
+				return new ListCell<Store>() {
+
+					@Override
+					protected void updateItem(Store store, boolean empty) {
+						super.updateItem(store, empty);
+						if (!empty) {
+							VBox vbox = new VBox(new Label(store.getName()),
+									new Label(store.getAddress()),
+									new Label(store.getCity()),
+									new Label(store.getCityNumber()));
+							setGraphic(vbox);
+						}
+						else{
+							setGraphic(null);
+						}
+					}
+				};
+			}
+		});
+	}
     
     /**
      * Update the firm logo

@@ -13,8 +13,8 @@ public class SortListViewItemByRegionTest {
     @Test
     public void sortTwoStoresAlreadySorted() {
         List<Store> stores = new ArrayList<Store>();
-        stores.add(new Store("", "", "Paris", "75004", "Ile de France", "", "", ""));
-        stores.add(new Store("", "", "Nice", "06000", "Provence-Alpes Cote d'Azur", "", "", ""));
+        stores.add(new Store("", "", "Paris", "75004", "", "Ile de France", "", "", ""));
+        stores.add(new Store("", "", "Nice", "06000", "", "Provence-Alpes Cote d'Azur", "", "", ""));
 
         SortListViewItemByRegion sort = new SortListViewItemByRegion(stores);
         assertEquals(stores, sort.sort());
@@ -24,8 +24,8 @@ public class SortListViewItemByRegionTest {
     @Test
     public void sortTwoStoresNotAlreadySorted() {
         List<Store> stores = new ArrayList<Store>();
-        Store store1 = new Store("", "", "Nice", "06000", "Provence-Alpes Cote d'Azur", "", "", "");
-        Store store2 = new Store("", "", "Paris", "75004", "Ile de France", "", "", "");
+        Store store1 = new Store("", "", "Nice", "06000", "", "Provence-Alpes Cote d'Azur", "", "", "");
+        Store store2 = new Store("", "", "Paris", "75004", "", "Ile de France", "", "", "");
         stores.add(store1);
         stores.add(store2);
 

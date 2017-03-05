@@ -48,19 +48,17 @@
                         <VBox alignment="TOP_CENTER" maxWidth="250.0" HBox.hgrow="ALWAYS">
                            <children>
                               <ComboBox fx:id="searchType" prefHeight="29.0" prefWidth="199.0" promptText="Sélectionner le type" VBox.vgrow="ALWAYS" />
-                              <HBox fx:id="hboxSearch" prefHeight="104.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                              <HBox fx:id="hboxSearch" prefHeight="0.0" prefWidth="196.0" VBox.vgrow="ALWAYS">
                                  <children>
                                     <TextField fx:id="searchValue" maxHeight="34.0" minHeight="34.0" prefHeight="34.0" promptText="Tapez une ville, une région, une adresse ..." HBox.hgrow="ALWAYS" />
                                     <Button fx:id="searchButton" mnemonicParsing="false" onMouseClicked="#search" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="26.0" prefWidth="57.0" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
-                              <AnchorPane VBox.vgrow="ALWAYS">
+                              <AnchorPane prefHeight="365.0" prefWidth="196.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <VBox prefHeight="200.0" prefWidth="169.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <VBox prefHeight="336.0" prefWidth="196.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Label fx:id="mallName" text="Nom du centre commercial où se trouve l'enseigne" VBox.vgrow="ALWAYS" />
-                                          <Label fx:id="shopAdress" text="Adresse du centre commercial" VBox.vgrow="ALWAYS" />
-                                          <Hyperlink fx:id="shopLink" text="Site internet du centre commercial" VBox.vgrow="ALWAYS" />
+                                          <ListView fx:id="researchListView" prefHeight="326.0" prefWidth="196.0" VBox.vgrow="ALWAYS" />
                                        </children>
                                     </VBox>
                                  </children>

@@ -30,7 +30,7 @@ public class SortListViewItemByDepartment {
         Collections.sort(stores, new Comparator<Store>() {
             @Override
             public int compare(Store o1, Store o2) {
-                return o1.getCityNumber().substring(0,2).compareTo(o2.getCityNumber().substring(0,2));
+                return o1.getDepartment().compareTo(o2.getDepartment());
             }
         });
         return stores;
