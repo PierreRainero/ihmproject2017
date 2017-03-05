@@ -37,8 +37,8 @@
       "picture": "leflore", "picX": 349, "picY": 294, "picWid": 130, "picHei": 66,
       "color": "0x793905", "recX": 345, "recY": 278, "recWid": 138, "recHei": 108
     },
-    { "type": "store", "name": "Micromania", "web": "micromania.fr", "category": "technology",
-      "picture": "micromania", "picX": 228, "picY": 281, "picWid": 68, "picHei": 68,
+    { "type": "store", "name": "Macrogamia", "web": "micromania.fr", "category": "technology",
+      "picture": "macrogamia", "picX": 224, "picY": 277, "picWid": 76, "picHei": 76,
       "color": "0x66ff33", "recX": 179, "recY": 278, "recWid": 166, "recHei": 74
     },
     { "type": "store", "name": "Maisons du monde", "web": "maisonsdumonde.com", "category": "decoration",

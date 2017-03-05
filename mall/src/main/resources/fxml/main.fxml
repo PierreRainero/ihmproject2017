@@ -242,7 +242,7 @@
                         </ImageView>
                         <ImageView fitHeight="68.0" fitWidth="68.0" layoutX="228.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/micromania.png" />
+                              <Image url="@/images/macrogamia.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="55.0" fitWidth="140.0" layoutX="66.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
