@@ -1,14 +1,65 @@
 {
-  "-1": [],
-  "0": [],
+  "0": [
+    { "type": "place", "name": "Ground", "picture": "ground", "posX": 80, "posY": 75, "width": 846, "height": 246 }
+    { "type": "store", "name": "Camaïeu", "web": "camaieu.fr", "category": "fashion",
+      "picture": "camaieu", "picX": 63, "picY": 68, "picWid": 132, "picHei": 45,
+      "color": "0xa4bdf0", "recX": 58, "recY": 21, "recWid": 142, "recHei": 146
+    },
+    { "type": "store", "name": "Grand Optical", "web": "grandoptical.com", "category": "care",
+      "picture": "grandoptical", "picX": 214, "picY": 57, "picWid": 236, "picHei": 76,
+      "color": "0x6ea92d",  "recX": 200, "recY": 58, "recWid": 262, "recHei": 76
+    },
+    { "type": "store", "name": "Hugo Boss", "web": "hugoboss.com/fr/home", "category": "fashion",
+      "picture": "hugoboss", "picX": 475, "picY": 48, "picWid": 126, "picHei": 58,
+      "color": "0xc8d7ff", "recX": 462, "recY": 20, "recWid": 150, "recHei": 114
+    },
+    { "type": "store", "name": "CIC", "web": "cic.fr", "category": "services",
+      "picture": "cic", "picX": 650, "picY": 66, "picWid": 83, "picHei": 46,
+      "color": "0xff4f25", "recX": 612, "recY": 57, "recWid": 152, "recHei": 64
+    },
+    { "type": "store", "name": "Sécurité", "web": ".securitasdirect.fr/Alarme", "category": "services",
+      "picture": "securite", "picX": 917, "picY": 59, "picWid": 61, "picHei": 68,
+      "color": "0xff4f25", "recX": 882, "recY": 57, "recWid": 130, "recHei": 76
+    },
+    { "type": "store", "name": "Fnac", "web": "fnac.com", "category": "culture",
+      "picture": "fnac", "picX": 893, "picY": 188, "picWid": 108, "picHei": 110,
+      "color": "0x9933ff", "recX": 882, "recY": 132, "recWid": 130, "recHei": 254
+    },
+    { "type": "store", "name": "Etam", "web": "etam.com", "category": "fashion",
+      "picture": "etam", "picX": 741, "picY": 296, "picWid": 124, "picHei": 39,
+      "color": "0x95b3f0", "recX": 726, "recY": 278, "recWid": 156, "recHei": 78
+    },
+    { "type": "store", "name": "Fossil", "web": "fossil.com/fr/fr.html", "category": "fashion",
+      "picture": "fossil", "picX": 594, "picY": 295, "picWid": 125, "picHei": 71,
+      "color": "0x5e8bcc", "recX": 586, "recY": 278, "recWid": 140, "recHei": 108
+    },
+    { "type": "store", "name": "Le Flore", "web": "brasserie-leflore-puteaux.fr", "category": "restoration",
+      "picture": "leflore", "picX": 349, "picY": 294, "picWid": 130, "picHei": 66,
+      "color": "0x793905", "recX": 345, "recY": 278, "recWid": 138, "recHei": 108
+    },
+    { "type": "store", "name": "Micromania", "web": "micromania.fr", "category": "technology",
+      "picture": "micromania", "picX": 228, "picY": 281, "picWid": 68, "picHei": 68,
+      "color": "0x66ff33", "recX": 179, "recY": 278, "recWid": 166, "recHei": 74
+    },
+    { "type": "store", "name": "Maisons du monde", "web": "maisonsdumonde.com", "category": "decoration",
+      "picture": "maisonsdumonde", "picX": 66, "picY": 288, "picWid": 105, "picHei": 55,
+      "color": "0xff9900", "recX": 58, "recY": 249, "recWid": 122, "recHei": 136
+    },
+    { "type": "place", "name": "Stairs", "picture": "escalator", "posX": 245, "posY": 187, "width": 200, "height": 50 }
+    { "type": "place", "name": "StairsLight", "picture": "escalatorjaune", "posX": 245, "posY": 187, "width": 200, "height": 50 }
+    { "type": "place", "name": "Elevator", "picture": "deuxascenseurs", "posX": 485, "posY": 177, "width": 89, "height": 60 }
+    { "type": "place", "name": "ElevatorLight", "picture": "ascenseurjaune", "posX": 485, "posY": 177, "width": 89, "height": 60 }
+    { "type": "place", "name": "RelaxingSpace", "picture": "detente", "posX": 580, "posY": 181, "width": 212, "height": 57 }
+
+  ],
   "1": [
     { "type": "store", "name": "Apple", "web": "apple.com/fr/", "category": "technology",
       "picture": "apple", "picX": 11, "picY": 4, "picWid": 203, "picHei": 136,
-      "color": "0x323232",  "recX": 11, "recY": 4, "recWid": 203, "recHei": 136
+      "color": "0x323232", "recX": 11, "recY": 4, "recWid": 203, "recHei": 136
     },
     { "type": "store", "name": "Crédit agricole", "web": "credit-agricole.fr", "category": "services",
       "picture": "credit_agricole", "picX": 2, "picY": 5, "picWid": 133, "picHei": 226,
-      "color": "0xffa561",  "recX": 2, "recY": 5, "recWid": 133, "recHei": 226
+      "color": "0xffa561", "recX": 2, "recY": 5, "recWid": 133, "recHei": 226
     },
     { "type": "place", "name": "Wifi", "picture": "wifi", "posX": 200, "posY": 200, "width": 100, "height": 100 }
   ],

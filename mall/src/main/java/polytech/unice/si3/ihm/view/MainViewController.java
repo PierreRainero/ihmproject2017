@@ -100,9 +100,6 @@ public class MainViewController extends MenuController {
     private Button whereAmI;
 
     @FXML
-    private Button basement;
-
-    @FXML
     private Button groundFloor;
 
     @FXML
@@ -125,11 +122,6 @@ public class MainViewController extends MenuController {
 
     @FXML
     private Pane canvas;
-
-    @FXML
-    void buildBasement(MouseEvent event) {
-        buildFloor("Sous-sol", -1);
-    }
 
     @FXML
     void buildGroundFloor(Event event) {
@@ -162,7 +154,7 @@ public class MainViewController extends MenuController {
 
     @FXML
     void displayElevators(MouseEvent event) {
-        display(Place.ELEVATOR);
+        display(Place.ELEVATORLIGHT);
     }
 
     @FXML
@@ -172,7 +164,7 @@ public class MainViewController extends MenuController {
 
     @FXML
     void displayStairs(MouseEvent event) {
-        display(Place.STAIRS);
+        display(Place.STAIRSLIGHT);
     }
 
     @FXML

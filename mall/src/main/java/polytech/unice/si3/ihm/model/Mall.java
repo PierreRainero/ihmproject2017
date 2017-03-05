@@ -23,7 +23,7 @@ public class Mall {
             JSONObject root = (JSONObject)parser.parse(new FileReader(getClass().getResource("/json/"+name+".json").getFile()));
             JSONArray data;
             Level level;
-            for (int i = -1; i <= 3; i++) {
+            for (int i = 0; i <= 3; i++) {
                 level = new Level();
                 data = (JSONArray) root.get(""+i);
                 for (Object o : data) {

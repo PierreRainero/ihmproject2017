@@ -19,6 +19,12 @@ class Drawer {
 
     void displayLevel(Level level) {
         List<Store> stores = level.getStores();
+        List<Place> places = level.getPlaces();
+        for (Place p : places) {
+            if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE) || p.equals(Place.STAIRS)) {
+                canvas.getChildren().add(p.getPicture());
+            }
+        }
         for (Store store : stores) {
             canvas.getChildren().add(store.getRectangle());
             canvas.getChildren().add(store.getPicture());
@@ -26,6 +32,12 @@ class Drawer {
     }
 
     void displayCategory(Level level, Category category) {
+        List<Place> places = level.getPlaces();
+        for (Place p : places) {
+            if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE) || p.equals(Place.STAIRS)) {
+                canvas.getChildren().add(p.getPicture());
+            }
+        }
         List<Store> stores = level.getStores();
         for (Store store : stores) {
             Rectangle r = store.getRectangle();
@@ -41,6 +53,12 @@ class Drawer {
     }
 
     void highlightStore(Level level, String storeName) {
+        List<Place> places = level.getPlaces();
+        for (Place p : places) {
+            if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE) || p.equals(Place.STAIRS)) {
+                canvas.getChildren().add(p.getPicture());
+            }
+        }
         List<Store> stores = level.getStores();
         for (Store store : stores) {
             Rectangle r = store.getRectangle();

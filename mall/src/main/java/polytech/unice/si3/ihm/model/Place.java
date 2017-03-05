@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public enum Place {
-    WIFI, TOILET, ELEVATOR, STAIRS, WHEREAMI;
+    WIFI, TOILET, ELEVATOR, STAIRS, WHEREAMI, GROUND, RELAXINGSPACE, ELEVATORLIGHT, STAIRSLIGHT;
 
     private ImageView iv;
 
