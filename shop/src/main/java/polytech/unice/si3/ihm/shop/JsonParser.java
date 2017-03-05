@@ -13,6 +13,8 @@ import polytech.unice.si3.ihm.shop.view.ProductViewController;
 
 import javax.swing.text.html.ImageView;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JsonParser {
     private JSONObject input;
@@ -86,7 +88,14 @@ public class JsonParser {
         JSONObject jsonObject;
         for(int i=0;i<jsonArray.length();i++){
             jsonObject = jsonArray.getJSONObject(i);
-            shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price"), jsonObject.getString("description")));
+            JSONArray productTypes = jsonObject.getJSONArray("types");
+            List<String> types = new ArrayList<>();
+
+            for(int j=0;j<productTypes.length();j++){
+                types.add(productTypes.get(j).toString());
+            }
+
+            shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price"), jsonObject.getString("description"), types));
         }
     }
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane styleClass="backgroundImage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.shop.view.MainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="backgroundImage" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.shop.view.MainViewController">
    <children>
       <AnchorPane layoutY="32.0" prefHeight="83.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -25,7 +25,7 @@
             <ImageView fx:id="nom" fitHeight="50.0" fitWidth="321.0" layoutX="105.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-      <BorderPane layoutY="83.0" prefHeight="637.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="83.0">
+      <BorderPane fx:id="shopContents" layoutY="83.0" prefHeight="637.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="83.0">
          <bottom>
             <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ddd;" BorderPane.alignment="CENTER">
                <children>
@@ -95,7 +95,7 @@
             </VBox>
          </bottom>
          <center>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="carouselContainer" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="carouselLeftButton" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="&lt;">
                      <HBox.margin>

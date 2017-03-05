@@ -14,6 +14,7 @@ public class Shop {
     private String legalNotice;
     private String adress;
     private String phone;
+    private List<String> types;
     private List<Product> products;
 
     /**
@@ -26,6 +27,7 @@ public class Shop {
         this.logoMin = logoMin;
         this.logoText = logoText;
         this.products = new ArrayList<Product>();
+        this.types = new ArrayList<>();
     }
 
     /**
@@ -36,6 +38,9 @@ public class Shop {
     public boolean addProduct(Product product){
         if(!this.products.contains(product)){
             this.products.add(product);
+            for(String type : product.getProductType())
+                if(!types.contains(type))
+                    this.types.add(type);
             return true;
         }
         return false;
@@ -60,6 +65,17 @@ public class Shop {
      */
     public List<Product> getProduct(){
         return this.products;
+    }
+
+    /**
+     * Retourne le produit ayant pour nom la string en argument
+     * @return product correspondant, null si il n'y en a aps
+     */
+    public Product getProduct(String productName){
+        for(Product product : products)
+            if(product.getName().equals(productName))
+                return product;
+        return null;
     }
 
     /**
@@ -156,5 +172,9 @@ public class Shop {
      */
     public String getPhone(){
         return this.phone;
+    }
+
+    public List<String> getTypes(){
+        return this.types;
     }
 }

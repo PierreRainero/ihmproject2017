@@ -5,3 +5,11 @@
 .halfOpacity{
     -fx-background-color: rgba(200,200,200,0.5);
 }
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}

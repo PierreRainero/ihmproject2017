@@ -14,7 +14,7 @@ public class Product {
     private String description;
     private double price;
     private Optional<Promotion> promotion;
-    private List<String> objectTypes;
+    private List<String> productTypes;
 
     /**
      * Constructeur normal de produit
@@ -22,12 +22,12 @@ public class Product {
      * @param imageURL url de l'image correspondant au produit
      * @param price prix du produit
      */
-    public Product(String name, String imageURL, double price, String description){
+    public Product(String name, String imageURL, double price, String description, List<String> productType){
         this.name = name;
         this.imageURL = imageURL;
         this.price = price;
         this.promotion = Optional.empty();
-        this.objectTypes = new ArrayList<String>();
+        this.productTypes = productType;
         this.description = description;
     }
 
@@ -63,12 +63,12 @@ public class Product {
         return this.imageURL;
     }
 
-    public void addObjectType(String s){
-        objectTypes.add(s);
-    }
+    /*public void addObjectType(String s){
+        productTypes.add(s);
+    }*/
 
-    public List<String> getObjectTypes(){
-        return this.objectTypes;
+    public List<String> getProductType(){
+        return this.productTypes;
     }
 
     public String getDescription(){
