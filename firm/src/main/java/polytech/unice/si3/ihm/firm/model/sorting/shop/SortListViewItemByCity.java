@@ -27,13 +27,12 @@ public class SortListViewItemByCity {
      */
     public List<Store> sort(){
         Collections.sort(stores, new Comparator<Store>() {
+            @Override
             public int compare(Store o1, Store o2) {
                 return o1.getCity().compareTo(o2.getCity());
             }
         });
         return stores;
-
-
     }
 
 

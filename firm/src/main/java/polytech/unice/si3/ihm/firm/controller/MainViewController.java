@@ -6,6 +6,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.json.simple.parser.ParseException;
+
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.ListProperty;
@@ -28,11 +30,15 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+import polytech.unice.si3.ihm.firm.exceptions.ContentException;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.model.sorting.product.SortingEnumProduct;
+import polytech.unice.si3.ihm.firm.model.sorting.product.SortingListByFlagship;
+import polytech.unice.si3.ihm.firm.model.sorting.product.SortingListByPromo;
 import polytech.unice.si3.ihm.firm.util.ContentParser;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
+import polytech.unice.si3.ihm.firm.util.Log;
 import polytech.unice.si3.ihm.firm.view.Carousel;
 
 /**
@@ -42,12 +48,17 @@ import polytech.unice.si3.ihm.firm.view.Carousel;
  */
 public class MainViewController extends BasicController {
 	private String linkToVisit;
+	
 	private List<Product> allProducts;
 	private List<Product> currentProducts;
+	
 	private ImageView[] carouselImages;
 	private int[] index;
 	private int[] shiftIndex;
 	private int nbTick;
+	
+	private Thread carouselThread;
+	private boolean resetCarousel;
 
     @FXML
     private ImageView logo;
@@ -99,13 +110,16 @@ public class MainViewController extends BasicController {
     
     @FXML
     private ComboBox<String> carouselType;
+    
+    @FXML
+    private ImageView loader;
 
     @FXML
     /**
      * Actions when the center product is clicked
      * @param event event to catch
      */
-    void choseCenterProduct(MouseEvent event) throws IOException {
+    private void choseCenterProduct(MouseEvent event) throws IOException {
     	switch(nbTick){
     		case -1: case 2:
     			choseProduct(index[1]);
@@ -116,6 +130,8 @@ public class MainViewController extends BasicController {
     		case 1:
     			choseProduct(index[2]);
     			break;
+    		default:
+    			return;
     	}
     }
 
@@ -124,18 +140,20 @@ public class MainViewController extends BasicController {
      * Actions when the left product is clicked
      * @param event event to catch
      */
-    void choseLeftProduct(MouseEvent event) throws IOException {
+    private void choseLeftProduct(MouseEvent event) throws IOException {
     	switch(nbTick){
-    	case -1: case 2:
-			choseProduct(index[0]);
-			break;
-		case 0:
-			choseProduct(index[2]);
-			break;
-		case 1:
-			choseProduct(index[1]);
-			break;
-	}
+	    	case -1: case 2:
+				choseProduct(index[0]);
+				break;
+			case 0:
+				choseProduct(index[2]);
+				break;
+			case 1:
+				choseProduct(index[1]);
+				break;
+			default:
+				return;
+    	}
     }
 
     @FXML
@@ -143,23 +161,26 @@ public class MainViewController extends BasicController {
      * Actions when the right product is clicked
      * @param event event to catch
      */
-    void choseRightProduct(MouseEvent event) throws IOException {
+    private void choseRightProduct(MouseEvent event) throws IOException {
     	switch(nbTick){
-    	case -1: case 2:
-			choseProduct(index[2]);
-			break;
-		case 0:
-			choseProduct(index[1]);
-			break;
-		case 1:
-			choseProduct(index[0]);
-			break;
-	}
+	    	case -1: case 2:
+				choseProduct(index[2]);
+				break;
+			case 0:
+				choseProduct(index[1]);
+				break;
+			case 1:
+				choseProduct(index[0]);
+				break;
+			default:
+				return;
+		}
     }
     
     private void choseProduct(int index) throws IOException{
     	Stage stage = new Stage();
         String fxmlFile = "/fxml/one_product_view.fxml";
+        Log.debug(this.getClass(), "Loading FXML for oneProduct view from: {}", fxmlFile);
         FXMLLoader loader = new FXMLLoader();
         Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
         stage.setMinHeight(420.0);
@@ -181,7 +202,7 @@ public class MainViewController extends BasicController {
      * Open the default browser with the firm url
      * @param event event to catch
      */
-    void linkPressed(MouseEvent event) throws IOException {
+    private void linkPressed(MouseEvent event) throws IOException {
     	URI uri = URI.create(linkToVisit);
     	Desktop.getDesktop().browse(uri);
     }
@@ -193,9 +214,10 @@ public class MainViewController extends BasicController {
      * @throws IOException
      * @throws ContentException
      */
-    void openAllShops(MouseEvent event) throws Exception {
+    private void openAllShops(MouseEvent event) throws IOException, ContentException, ParseException {
     	Stage stage = new Stage();
         String fxmlFile = "/fxml/all_stores_view.fxml";
+        Log.debug(this.getClass(), "Loading FXML for allShops view from: {}", fxmlFile);
         FXMLLoader loader = new FXMLLoader();
         Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
@@ -218,7 +240,7 @@ public class MainViewController extends BasicController {
      * Make a search
      * @param event event to catch
      */
-    void search(MouseEvent event) {
+    private void search(MouseEvent event) {
 
     }
     
@@ -247,25 +269,37 @@ public class MainViewController extends BasicController {
     	else
     		return;
     	
-    	initializeCombobox();
     	index = new int[3];
     	
     	currentStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
-            	Carousel.carouselState = false;
+            	Carousel.setCarouselState(false);
+            	Log.info(this.getClass(), "Window closed");
             }
         });
     	
     	searchButton.setGraphic(new ImageView(ImageBuilder.getImage("src/main/resources/images/ic_search_black_24dp_2x.png", 25, 25)));
     	addResizeListener();
     	
+    	loader.setImage(ImageBuilder.getImage("src/main/resources/images/loader.gif", 25, 25));
+    	loader.setVisible(false);
+    	
     	fillAds(firm);
-    	startCarousel(firm);
+    	
+    	allProducts = firm.getProducts();
+    	initializeCombobox();
+    	
+    	carouselImages = new ImageView[3];
+    	shiftIndex = new int[3];
+    	resetCarousel = false;
+    	startCarousel();
     	
     	updateLogo(firm.getLogo());
     	updateFirmImageName(firm.getBanner());
     	updateDescription(firm.getDescription());
     	linkToVisit = firm.getLinkForMoreInfo();
+    	
+        Log.info(this.getClass(), "Content charged");
     }
     
     /**
@@ -312,52 +346,54 @@ public class MainViewController extends BasicController {
         }
         carouselType.setItems(sortingMethodsList);
         carouselType.setPromptText(SortingEnumProduct.ALL.getSortingName());
+        currentProducts = allProducts;
     }
     
     @FXML
-    void sortWithTheSelectedSortingMethod(ActionEvent event) {
+    private void sortWithTheSelectedSortingMethod(ActionEvent event) {
     	String value = carouselType.getValue();
     	
-        if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.ALL)){
-            
-        }
-        else if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.FLAGSHIP)){
-            
-        }
-        else if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.PROMOTED)){
-            
-        }
+        if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.ALL))
+        	currentProducts = allProducts;
+        else if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.FLAGSHIP))
+        	currentProducts = (new SortingListByFlagship(allProducts)).sort();
+        else if (SortingEnumProduct.convertStringToSortingEnum(value).equals(SortingEnumProduct.PROMOTED))
+        	currentProducts = (new SortingListByPromo(allProducts)).sort();
+        else
+        	return;
+        
+        loader.setVisible(true);
+        resetCarousel = true;
     }
     
     /**
      * Initialize the carousel in the center
      * @param firm firm containing all products
      */
-    private void startCarousel(Firm firm){
-    	allProducts = firm.getProducts();
-    	
-    	if(allProducts.isEmpty())
-    		return;
-    	
-    	currentProducts = allProducts;
-
-    	index[0] = 0;
-    	
-    	if(allProducts.size()>1)
-    		index[1] = 1;
-    	else{
-    		index[1] = 0;
-    		index[2] = 0;
+	private void startCarousel(){
+    	if(resetCarousel){
+    		Carousel.setCarouselState(false);
+    		resetPosition();
+	    	resetSizes();
+	        Log.info(this.getClass(), "Carousel datas changed");
     	}
     	
-    	if(allProducts.size()>2)
-    		index[2] = 2;
-    	else
-    		index[2] = 0;
+    	if(currentProducts.isEmpty())
+    		return;
+
+    	index[0] = 0;
+		index[1] = 0;
+		index[2] = 0;
     	
-		carrouseImg1.setImage(ImageBuilder.getImage(allProducts.get(index[0]).getImage()));
-    	carrouseImg2.setImage(ImageBuilder.getImage(allProducts.get(index[1]).getImage()));
-		carrouseImg3.setImage(ImageBuilder.getImage(allProducts.get(index[2]).getImage()));
+    	if(currentProducts.size()>1)
+    		index[1] = 1;
+    	
+    	if(currentProducts.size()>2)
+    		index[2] = 2;
+
+		carrouseImg1.setImage(ImageBuilder.getImage(currentProducts.get(index[0]).getImage()));
+    	carrouseImg2.setImage(ImageBuilder.getImage(currentProducts.get(index[1]).getImage()));
+		carrouseImg3.setImage(ImageBuilder.getImage(currentProducts.get(index[2]).getImage()));
 		
     	carrouseImg2.setFitHeight(430.);
     	carrouseImg2.setFitWidth(310.);
@@ -367,24 +403,27 @@ public class MainViewController extends BasicController {
     	carrouseImg3.setFitHeight(350.);
     	carrouseImg3.setFitWidth(252.);
 		
-    	carouselImages = new ImageView[3];
     	carouselImages[0] = carrouseImg1;
     	carouselImages[1] = carrouseImg2;
     	carouselImages[2] = carrouseImg3;
     	
-    	shiftIndex = new int[3];
+    	shiftIndex[0] = 0;
+    	shiftIndex[1] = 0;
+    	shiftIndex[2] = 0;
     	
     	nbTick = -1;
     	
-    	Thread thread = new Thread(new Carousel(this));
-    	thread.start();
+    	resetCarousel = false;
+    	carouselThread = new Thread(new Carousel(this, carouselThread));
+    	carouselThread.start();
+    	Log.info(this.getClass(), "Carousel started");
     }
     
     /**
      * Corresponds to a clock tick. Allows to make carousel move.
      */
     public void tick(int nbTick){
-    	this.nbTick =nbTick;
+    	this.nbTick = nbTick;
     	incrementProducts();
     	updateShifts();
     	move();
@@ -437,8 +476,8 @@ public class MainViewController extends BasicController {
     	
 		try {
 			TimeUnit.MILLISECONDS.sleep(1760);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			Log.error(this.getClass(), "Animation carousel wait failed", e);
 		}
 		
 		
@@ -446,7 +485,11 @@ public class MainViewController extends BasicController {
 	    	resetPosition();
 	    	resetSizes();
 		}
-
+		
+		loader.setVisible(false);
+		
+    	if(resetCarousel)
+    		startCarousel();
     }
     
     /**

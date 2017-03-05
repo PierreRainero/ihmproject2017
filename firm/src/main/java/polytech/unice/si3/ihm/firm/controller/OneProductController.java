@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import polytech.unice.si3.ihm.firm.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
+import polytech.unice.si3.ihm.firm.util.Log;
 
 /**
  * 
@@ -64,6 +65,8 @@ public class OneProductController extends BasicController {
     	updateName(product.getName());
     	updateRefence(product.getReference());
     	updateDescription(product.getDescription());
+    	
+        Log.info(this.getClass(), "Content charged");
     }
     
     /**
