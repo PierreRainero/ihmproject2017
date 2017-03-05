@@ -53,4 +53,6 @@ public class GoodDealsViewController extends MenuController {
 
         mainApp.getStage().show();
     }
+
+
 }
