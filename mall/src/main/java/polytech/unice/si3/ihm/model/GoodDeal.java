@@ -5,11 +5,15 @@ import org.json.simple.parser.JSONParser;
 /**
  * Created by Ken on 04/03/2017.
  */
-public class GoodDeals {
+public class GoodDeal {
     private String imagePath;
     private JSONParser json;
 
-    public GoodDeals(String imagePath){
+    public GoodDeal(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public String getImagePath(){
+        return this.imagePath;
     }
 }

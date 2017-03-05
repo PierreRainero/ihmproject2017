@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane styleClass="backgroundImage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.shop.view.MainViewController">
+   <children>
+      <AnchorPane layoutY="32.0" prefHeight="83.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="logo" fitHeight="75.0" fitWidth="79.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="4.0">
+               <image>
+                  <Image url="@/images/logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="nom" fitHeight="50.0" fitWidth="321.0" layoutX="105.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+      <BorderPane layoutY="83.0" prefHeight="637.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="83.0">
+         <bottom>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #ddd;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Promotions">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="212.0" prefWidth="1280.0">
+                     <children>
+                        <Button fx:id="promoLeftButton" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="&lt;">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <ImageView fx:id="promoFirstImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/produit.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="promoSecondImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/produit.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="promoThirdImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/produit.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="promoFourthImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/produit.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="promoFifthImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/produit.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Button fx:id="promoRightButton" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="&gt;">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </bottom>
+         <center>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="carouselLeftButton" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="&lt;">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="carouselLeftImage" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/produit.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="carouselLeftName" text="Label">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="carouselCenterImage" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/produit.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="carouselCenterName" text="Label">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="carouselRightImage" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/produit.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="carouselRightName" text="Label">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Button fx:id="carouselRightButton" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="&gt;">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </center>
+         <top>
+            <BorderPane styleClass="halfOpacity" BorderPane.alignment="CENTER">
+               <left>
+                  <FlowPane alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" text="Qui sommes nous">
+                           <FlowPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </FlowPane.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Mentions légales">
+                           <FlowPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </FlowPane.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Où nous trouver">
+                           <FlowPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </FlowPane.margin>
+                        </Button>
+                     </children>
+                  </FlowPane>
+               </left>
+               <center>
+                  <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" prefWidth="353.0" prefWrapLength="0.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="searchImage" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/ic_search_black_24dp_2x.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="searchBar" promptText="Entrez votre recherche" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" text="Rechercher">
+                           <FlowPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </FlowPane.margin>
+                        </Button>
+                     </children>
+                  </FlowPane>
+               </center>
+            </BorderPane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

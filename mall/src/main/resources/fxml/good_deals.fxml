@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1276.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.view.GoodDealsViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1276.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.view.GoodDealsViewController">
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <top>
@@ -94,29 +94,17 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="250.0" fitWidth="1265.0">
-                           <image>
-                              <Image url="@/images/bons_plans_1.jpg" />
-                           </image>
-                        </ImageView>
+                        <ImageView fx:id="deal1" fitHeight="250.0" fitWidth="1265.0" onMousePressed="#displayStore1" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="250.0" fitWidth="1263.0">
-                           <image>
-                              <Image url="@/images/bons_plans_2.jpg" />
-                           </image>
-                        </ImageView>
+                        <ImageView fx:id="deal2" fitHeight="250.0" fitWidth="1263.0" onMousePressed="#displayStore2" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="250.0" fitWidth="1261.0">
-                           <image>
-                              <Image url="@/images/bons_plans_3.jpg" />
-                           </image>
-                        </ImageView>
+                        <ImageView fx:id="deal3" fitHeight="250.0" fitWidth="1261.0" onMouseClicked="#displayStore3" />
                      </children>
                   </AnchorPane>
                </children>
