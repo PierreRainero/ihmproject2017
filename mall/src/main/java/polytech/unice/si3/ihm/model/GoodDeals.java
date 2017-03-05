@@ -1,12 +1,13 @@
 package polytech.unice.si3.ihm.model;
 
-import polytech.unice.si3.ihm.shop.*;
+import org.json.simple.parser.JSONParser;
+//import polytech.unice.si3.ihm.shop.*;
 /**
  * Created by Ken on 04/03/2017.
  */
 public class GoodDeals {
     private String imagePath;
-    private JsonParser json;
+    private JSONParser json;
 
     public GoodDeals(String imagePath){
         this.imagePath = imagePath;
