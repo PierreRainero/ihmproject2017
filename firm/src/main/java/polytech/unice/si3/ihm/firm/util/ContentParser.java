@@ -106,9 +106,10 @@ public class ContentParser {
 										(String) tempoShop.get("address"),
 										(String) tempoShop.get("city"),
 										(String) tempoShop.get("city number"),
+										(String) tempoShop.get("region"),
 										(String) tempoShop.get("mallname"),
 										(String) tempoShop.get(DESCRIPTION),
-										(String) tempoShop.get(IMAGE)));	
+										(String) tempoShop.get(IMAGE)));
 	    	}
 	    }catch(Exception e){
 	    	String errorMsg = "Incorrect JSONFile - Problem with shops infos : "+PATH;

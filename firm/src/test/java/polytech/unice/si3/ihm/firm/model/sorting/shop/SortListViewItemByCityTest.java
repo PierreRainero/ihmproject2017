@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.model.sorting;
+package polytech.unice.si3.ihm.firm.model.sorting.shop;
 
 
 import org.junit.Before;
@@ -21,8 +21,8 @@ public class SortListViewItemByCityTest {
    @Test
     public void sortTwoStoresAlreadySorted(){
        List<Store> stores = new ArrayList<Store>();
-       stores.add(new Store("","","Nice","06000","","",""));
-       stores.add(new Store("","","Toulon","83000","","",""));
+       stores.add(new Store("","","Nice","06000","","","",""));
+       stores.add(new Store("","","Toulon","83000","","","",""));
 
        SortListViewItemByCity sort = new SortListViewItemByCity(stores);
        assertEquals(stores, sort.sort());
@@ -31,8 +31,8 @@ public class SortListViewItemByCityTest {
    @Test
     public void sortTwoStoresNotAlreadySorted(){
        List<Store> stores = new ArrayList<Store>();
-       Store store1 = new Store("","","Toulon","83000","","","");
-       Store store2 = new Store("","","Nice","06000","","","");
+       Store store1 = new Store("","","Toulon","83000","","","","");
+       Store store2 = new Store("","","Nice","06000","","","","");
        stores.add(store1);
        stores.add(store2);
 

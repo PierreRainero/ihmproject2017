@@ -331,7 +331,7 @@ public class MainViewController extends BasicController {
      * @param firm firm containing all ads
      */
     private void fillAds(Firm firm){
-    	ListProperty<String> listProperty = new SimpleListProperty<>();
+    	ListProperty<String> listProperty = new SimpleListProperty<String>();
     	ads.itemsProperty().bind(listProperty);
     	listProperty.set(FXCollections.observableArrayList(firm.getAds()));
     }
@@ -368,7 +368,6 @@ public class MainViewController extends BasicController {
     
     /**
      * Initialize the carousel in the center
-     * @param firm firm containing all products
      */
 	private void startCarousel(){
     	if(resetCarousel){
@@ -431,7 +430,6 @@ public class MainViewController extends BasicController {
     
     /**
      * Switch carousel images positions
-     * @param nbTick state (0,1,2), 0 = start position
      */
     private void move(){
     	int gap  = 27;
@@ -503,7 +501,6 @@ public class MainViewController extends BasicController {
     
     /**
      * Update shift to switch images
-     * @param nbTick
      */
     private void updateShifts(){
     	if(nbTick==0){

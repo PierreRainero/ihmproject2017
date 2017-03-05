@@ -15,7 +15,6 @@ public class SortingListByFlagship {
     
     /**
      * Constructor for the sorting by flagship
-     * @param stores the list of products
      */
     public SortingListByFlagship(List<Product> products) {
         this.products = products;
@@ -26,7 +25,7 @@ public class SortingListByFlagship {
      * @return the sorted list
      */
     public List<Product> sort(){
-    	List<Product> sortList = new ArrayList<>();
+    	List<Product> sortList = new ArrayList<Product>();
     	
     	for(Product product : products)
     		if(product.isFlagship())

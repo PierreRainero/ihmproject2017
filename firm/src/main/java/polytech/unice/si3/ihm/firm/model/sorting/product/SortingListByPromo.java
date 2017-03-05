@@ -15,7 +15,7 @@ public class SortingListByPromo {
     
     /**
      * Constructor for the sorting by promo
-     * @param stores the list of products
+     * @param products the list of products
      */
     public SortingListByPromo(List<Product> products) {
         this.products = products;
@@ -26,7 +26,7 @@ public class SortingListByPromo {
      * @return the sorted list
      */
     public List<Product> sort(){
-    	List<Product> sortList = new ArrayList<>();
+    	List<Product> sortList = new ArrayList<Product>();
     	
     	for(Product product : products)
     		if(product.isPromoted())

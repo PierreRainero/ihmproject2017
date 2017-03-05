@@ -32,9 +32,9 @@ public class Firm {
         this.linkForMoreInfo = linkForMoreInfo;
         this.banner = banner;
         
-        stores = new ArrayList<>();
-        products = new ArrayList<>();
-        ads = new ArrayList<>();
+        stores = new ArrayList<Store>();
+        products = new ArrayList<Product>();
+        ads = new ArrayList<String>();
     }
 
     /**
