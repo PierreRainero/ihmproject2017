@@ -20,6 +20,12 @@ public class JsonParser {
     private JSONObject input;
     private Stage stage;
 
+    /**
+     * Constructeur de JsonParser
+     * @param filePath url vers le fichier json utilisé pour créer le magasin
+     * @param stage stage général
+     * @throws Exception
+     */
     public JsonParser(String filePath, Stage stage) throws Exception {
         File file = new File(filePath);
         String jsonString = "";
@@ -41,6 +47,11 @@ public class JsonParser {
         this.stage = stage;
     }
 
+    /**
+     * Lance le "parsage" : création en fonction du fichier json en paramètre de la fênetre, du magasin et des
+     * différents produits
+     * @throws Exception
+     */
     public void parseJson() throws Exception {
 
         Shop shop = new Shop(input.get("name").toString(), input.get("logo").toString(), input.get("logoMin").toString(), input.get("logoText").toString());
@@ -62,9 +73,14 @@ public class JsonParser {
 
         createObjects(shop);
 
-        controller.initialiseCarousel(shop.getProduct().get(1), shop.getProduct().get(0), shop.getProduct().get(2));
+        controller.initialiseCarousel(shop);
     }
 
+    /**
+     * Permet d'afficher la popup correspondant à un produit
+     * @param product produit dont on veut afficher la popup
+     * @throws IOException
+     */
     public void productPopup(Product product) throws IOException {
         String fxmlFile = "/fxml/product_view.fxml";
         FXMLLoader loader = new FXMLLoader();
@@ -83,6 +99,10 @@ public class JsonParser {
 
     }
 
+    /**
+     * Créé les objets, et les ajoute dans le magasin (en fonction du fichier json en entrée)
+     * @param shop magasin que l'on gère
+     */
     private void createObjects(Shop shop) {
         JSONArray jsonArray = input.getJSONArray("itemsList");
         JSONObject jsonObject;
@@ -94,8 +114,7 @@ public class JsonParser {
             for(int j=0;j<productTypes.length();j++){
                 types.add(productTypes.get(j).toString());
             }
-
-            shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price"), jsonObject.getString("description"), types));
+            shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price"), jsonObject.getString("description"), types, jsonObject.getInt("sales")));
         }
     }
 }

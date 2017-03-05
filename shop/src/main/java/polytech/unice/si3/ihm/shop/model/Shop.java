@@ -79,6 +79,38 @@ public class Shop {
     }
 
     /**
+     * Permet de récupérer les trois produits les plus vendus dans le magasin.
+     * @return List contenant les trois produits ayant été le plus vendu, trié par nombre de ventes
+     */
+    public List<Product> getTopSales(){
+        List<Product> toKeep = new ArrayList<>();
+        toKeep.addAll(this.products);
+        while (toKeep.size()>3){
+            Product product = toKeep.get(0);
+            for(Product keep : toKeep){
+                if(keep.getSales() < product.getSales()){
+                    product = keep;
+                }
+            }
+            toKeep.remove(product);
+        }
+
+        List<Product> returned = new ArrayList<>();
+        while (toKeep.size()>0){
+            Product product = toKeep.get(0);
+            for(Product keep : toKeep){
+                if(keep.getSales() > product.getSales()){
+                    product = keep;
+                }
+            }
+            returned.add(product);
+            toKeep.remove(product);
+        }
+
+        return returned;
+    }
+
+    /**
      * Change la description du shop
      * @param about la nouvelle description du shop
      */

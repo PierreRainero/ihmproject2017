@@ -1,7 +1,5 @@
 package polytech.unice.si3.ihm.shop.model;
 
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +13,7 @@ public class Product {
     private double price;
     private Optional<Promotion> promotion;
     private List<String> productTypes;
+    private int sales;
 
     /**
      * Constructeur normal de produit
@@ -22,13 +21,14 @@ public class Product {
      * @param imageURL url de l'image correspondant au produit
      * @param price prix du produit
      */
-    public Product(String name, String imageURL, double price, String description, List<String> productType){
+    public Product(String name, String imageURL, double price, String description, List<String> productType, int sales){
         this.name = name;
         this.imageURL = imageURL;
         this.price = price;
         this.promotion = Optional.empty();
         this.productTypes = productType;
         this.description = description;
+        this.sales = sales;
     }
 
     /**
@@ -51,27 +51,51 @@ public class Product {
         }
     }
 
+    /**
+     * Permet de mettre un produit en promotion
+     * @param promotion taux de promotion en %
+     */
     public void setPromotion(Promotion promotion){
         this.promotion = Optional.of(promotion);
     }
 
+    /**
+     * Retourne le nom du produit
+     * @return nom du produit
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Retourne l'url de l'image du produit
+     * @return url de l'image du produit
+     */
     public String getImageURL() {
         return this.imageURL;
     }
 
-    /*public void addObjectType(String s){
-        productTypes.add(s);
-    }*/
-
+    /**
+     * Retourne une List contenant le(s) type(s) du produit
+     * @return type(s) du produit
+     */
     public List<String> getProductType(){
         return this.productTypes;
     }
 
+    /**
+     * Retourne la description du produit
+     * @return description du produit
+     */
     public String getDescription(){
         return this.description;
+    }
+
+    /**
+     * Retourne le noombre de ventes du produit
+     * @return nombre de ventes du produit
+     */
+    public int getSales(){
+        return this.sales;
     }
 }

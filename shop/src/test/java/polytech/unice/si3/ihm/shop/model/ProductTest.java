@@ -15,19 +15,22 @@ public class ProductTest {
     String livre;
     String image;
     String description;
-    String type;
+    String type0;
+    String type1;
 
     @Before
     public void init(){
         livre = "livre";
         image = "@/images/totoimg.png";
         description = "Coucou je suis le livre.";
-        type = "jeu vidéo";
+        type0 = "jeu vidéo";
+        type1 = "FPS";
 
         List<String> types = new ArrayList<>();
-        types.add(type);
+        types.add(type0);
+        types.add(type1);
 
-        p = new Product(livre, image, 15, description, types);
+        p = new Product(livre, image, 15, description, types, 1);
     }
 
     @Test
@@ -36,13 +39,16 @@ public class ProductTest {
         assertEquals(livre, p.getName());
         assertEquals(image, p.getImageURL());
         assertEquals(15.0, p.getPrice(), 0.01);
+        assertEquals(-1, p.getPromotedPrice(), 0.01);
         p.setPromotion(promo);
         assertEquals(7.5, p.getPromotedPrice(), 0.01);
         String disquedur = "disque dur";
-        /*List<String> list = new ArrayList<String>();
-        list.add(disquedur);
-        p.addObjectType(disquedur);
-        assertEquals(list, p.getObjectTypes());*/
+        List<String> list = new ArrayList<String>();
+        list.add(type0);
+        list.add(type1);
+        assertEquals(list, p.getProductType());
+        assertEquals(description, p.getDescription());
+        assertEquals(1, p.getSales());
     }
 
 

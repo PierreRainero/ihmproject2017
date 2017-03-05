@@ -17,7 +17,8 @@
       "types": [
         "jeu vidéo",
         "FPS"
-      ]
+      ],
+      "sales":"999999"
     },
 
     {
@@ -28,7 +29,8 @@
       "types": [
         "jeu vidéo",
         "RPG"
-      ]
+      ],
+      "sales":"5"
     },
 
     {
@@ -39,11 +41,9 @@
       "types": [
         "jeu vidéo",
         "Horreur"
-      ]
+      ],
+      "sales":"30"
     }
-
   ]
-
-  }
 
 }
