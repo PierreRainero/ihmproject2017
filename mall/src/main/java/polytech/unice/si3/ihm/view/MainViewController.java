@@ -1,6 +1,5 @@
 package polytech.unice.si3.ihm.view;
 
-import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,8 +10,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import polytech.unice.si3.ihm.model.Category;
 import polytech.unice.si3.ihm.model.Level;
 import polytech.unice.si3.ihm.model.Mall;
@@ -37,7 +34,7 @@ public class MainViewController extends MenuController {
      */
     @FXML
     private void initialize() {
-        buildGroundFloor(null);
+        buildGroundFloor();
     }
 
     public void displayGoodDeals(){
@@ -58,63 +55,6 @@ public class MainViewController extends MenuController {
     }
 
     @FXML
-    private Button culture;
-
-    @FXML
-    private Button decoration;
-
-    @FXML
-    private Button toys;
-
-    @FXML
-    private Button fashion;
-
-    @FXML
-    private Button services;
-
-    @FXML
-    private Button care;
-
-    @FXML
-    private Button restoration;
-
-    @FXML
-    private Button technologies;
-
-    @FXML
-    private Button offers;
-
-    @FXML
-    private Button wifi;
-
-    @FXML
-    private Button toilet;
-
-    @FXML
-    private Button elevators;
-
-    @FXML
-    private Button stairs;
-
-    @FXML
-    private Button whereAmI;
-
-    @FXML
-    private Button groundFloor;
-
-    @FXML
-    private Button firstFloor;
-
-    @FXML
-    private Button secondFloor;
-
-    @FXML
-    private Button thirdFloor;
-
-    @FXML
-    private Button searchButton;
-
-    @FXML
     private TextField searchBar;
 
     @FXML
@@ -124,22 +64,22 @@ public class MainViewController extends MenuController {
     private Pane canvas;
 
     @FXML
-    void buildGroundFloor(Event event) {
+    void buildGroundFloor() {
         buildFloor("Rez-de-chaussée", 0);
     }
 
     @FXML
-    void buildFirstFloor(MouseEvent event) {
+    void buildFirstFloor() {
         buildFloor("Premier étage", 1);
     }
 
     @FXML
-    void buildSecondFloor(MouseEvent event) {
+    void buildSecondFloor() {
         buildFloor("Deuxième étage", 2);
     }
 
     @FXML
-    void buildThirdFloor(MouseEvent event) {
+    void buildThirdFloor() {
         buildFloor("Troisième étage", 3);
     }
 
@@ -153,27 +93,27 @@ public class MainViewController extends MenuController {
     }
 
     @FXML
-    void displayElevators(MouseEvent event) {
+    void displayElevators() {
         display(Place.ELEVATORLIGHT);
     }
 
     @FXML
-    void displayPositionUser(MouseEvent event) {
+    void displayPositionUser() {
         display(Place.WHEREAMI);
     }
 
     @FXML
-    void displayStairs(MouseEvent event) {
+    void displayStairs() {
         display(Place.STAIRSLIGHT);
     }
 
     @FXML
-    void displayToilet(MouseEvent event) {
+    void displayToilet() {
         display(Place.TOILET);
     }
 
     @FXML
-    void displayWifi(MouseEvent event) {
+    void displayWifi() {
         display(Place.WIFI);
     }
 
@@ -187,7 +127,7 @@ public class MainViewController extends MenuController {
     }
 
     @FXML
-    void search(Event event) {
+    void search() {
         reset();
         Drawer drawer = new Drawer(canvas);
 
@@ -211,47 +151,47 @@ public class MainViewController extends MenuController {
     @FXML
     void searchEnter(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            search(event);
+            search();
         }
     }
 
     @FXML
-    void selectCare(MouseEvent event) {
+    void selectCare() {
         selection(Category.CARE);
     }
 
     @FXML
-    void selectCulture(MouseEvent event) {
+    void selectCulture() {
         selection(Category.CULTURE);
     }
 
     @FXML
-    void selectDecoration(MouseEvent event) {
+    void selectDecoration() {
         selection(Category.DECORATION);
     }
 
     @FXML
-    void selectFashion(MouseEvent event) {
+    void selectFashion() {
         selection(Category.FASHION);
     }
 
     @FXML
-    void selectServices(MouseEvent event) {
+    void selectServices() {
         selection(Category.SERVICES);
     }
 
     @FXML
-    void selectRestoration(MouseEvent event) {
+    void selectRestoration() {
         selection(Category.RESTORATION);
     }
 
     @FXML
-    void selectTechnologies(MouseEvent event) {
+    void selectTechnologies() {
         selection(Category.TECHNOLOGY);
     }
 
     @FXML
-    void selectToys(MouseEvent event) {
+    void selectToys() {
         selection(Category.TOYS);
     }
 

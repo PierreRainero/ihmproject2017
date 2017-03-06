@@ -5,7 +5,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-
 public class Store {
     private String name;
     private String webSite;

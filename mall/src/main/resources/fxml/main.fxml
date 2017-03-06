@@ -88,14 +88,9 @@
    <top>
       <AnchorPane prefHeight="136.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="573.0" layoutY="67.0" text="Cap Sophia" textFill="#001effc6" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="573.0" AnchorPane.rightAnchor="372.0" AnchorPane.topAnchor="67.0">
-               <font>
-                  <Font size="45.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="175.0" fitWidth="167.0" layoutY="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1113.0" AnchorPane.topAnchor="25.0">
+            <ImageView fitHeight="169.0" fitWidth="123.0" layoutY="31.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1157.0" AnchorPane.topAnchor="31.0">
                <image>
-                  <Image url="@/images/fallout.png" />
+                  <Image url="@/images/logoazur.png" />
                </image>
             </ImageView>
             <MenuBar prefHeight="27.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -121,6 +116,12 @@
                   </Menu>
               </menus>
             </MenuBar>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f89f56" height="168.0" layoutX="123.0" layoutY="32.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="1158.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="123.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
+            <ImageView fitHeight="191.0" fitWidth="716.0" layoutX="123.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="32.0">
+               <image>
+                  <Image url="@/images/agorazur.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </top>
