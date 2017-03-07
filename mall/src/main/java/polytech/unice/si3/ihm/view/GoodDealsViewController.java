@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import polytech.unice.si3.ihm.model.GoodDeal;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import polytech.unice.si3.ihm.model.Info;
 import polytech.unice.si3.ihm.shop.JsonParser;
 
 /**
@@ -33,7 +34,6 @@ public class GoodDealsViewController extends MenuController {
      */
     public GoodDealsViewController() {
         deals = new ArrayList<GoodDeal>();
-
     }
 
     /**
@@ -91,7 +91,6 @@ public class GoodDealsViewController extends MenuController {
 
         try {
             JSONObject js = (JSONObject)parser.parse(new FileReader(getClass().getResource("/json/deals.json").getFile()));
-
             GoodDeal gd1 = new GoodDeal("/images/"+(String)js.get("0"));
             GoodDeal gd2 = new GoodDeal("/images/"+(String)js.get("1"));
             GoodDeal gd3 = new GoodDeal("/images/"+(String)js.get("2"));
@@ -113,14 +112,22 @@ public class GoodDealsViewController extends MenuController {
     }
 
     public void displayStore1(){
-        displayAlert();
+        Info i = new Info("/json/macrogamia.json");
+        displayInfo(i);
     }
 
     public void displayStore2(){
-        displayAlert();
+        //displayInfo();
     }
 
     public void displayStore3(){
+        Info i = new Info("/json/saint_val.json");
+        displayInfo(i);
+    }
+
+
+
+    /*public void displayStore3(){
         try{
             Stage stage = new Stage();
             JsonParser js = new JsonParser("src/main/resources/datas/content.json",stage);
@@ -130,12 +137,31 @@ public class GoodDealsViewController extends MenuController {
         catch(Exception e){}
     }
 
-    @FXML
+    /*@FXML
     public void displayAlert(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setContentText("La page du magasin que vous souhaitez consulter est en cours de construction.");
         alert.showAndWait();
+    }*/
+
+    @FXML
+    public void displayInfo(Info info){
+        FXMLLoader loader = new FXMLLoader();
+        Parent node = null;
+        try {
+            node = loader.load(getClass().getResourceAsStream("/fxml/info.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(node, 1280, 720);
+        mainApp.getStage().setScene(scene);
+
+        InfoController controller = loader.getController();
+        controller.setMainApp(mainApp);
+        controller.setInfo(info);
+
+        mainApp.getStage().show();
     }
 
     @FXML

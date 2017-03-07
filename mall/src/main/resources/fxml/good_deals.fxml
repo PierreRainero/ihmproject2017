@@ -7,87 +7,17 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1276.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.view.GoodDealsViewController">
-   <top>
-      <BorderPane BorderPane.alignment="CENTER">
-         <top>
-            <MenuBar BorderPane.alignment="CENTER">
-              <menus>
-                <Menu mnemonicParsing="false" text="Outils">
-                  <items>
-                    <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#closeWindow" text="Quitter" />
-                        <MenuItem mnemonicParsing="false" text="Réinitialiser" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="En savoir plus">
-                  <items>
-                        <MenuItem fx:id="faq" mnemonicParsing="false" onAction="#displayFaq" text="FAQ" />
-                    <MenuItem fx:id="aboutUs" mnemonicParsing="false" onAction="#displayMoreAboutUs" text="Qui sommes-nous ?" />
-                        <MenuItem fx:id="jobMenu" mnemonicParsing="false" onAction="#displayJobs" text="Job expérience" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Langues">
-                  <items>
-                        <MenuItem fx:id="enMen" mnemonicParsing="false" onAction="#translateInEnglish" text="Anglais" />
-                    <MenuItem fx:id="frMenu" mnemonicParsing="false" onAction="#translateInFrench" text="Français" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-         </top>
-         <left>
-            <ImageView fitHeight="165.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-               <image>
-                  <Image url="@/images/ac.png" />
-               </image>
-            </ImageView>
-         </left>
-         <center>
-            <Label text="Cap Sophia" textFill="#9a1801" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Impact" size="64.0" />
-               </font>
-               <BorderPane.margin>
-                  <Insets right="50.0" />
-               </BorderPane.margin>
-            </Label>
-         </center>
-         <bottom>
-            <VBox BorderPane.alignment="CENTER">
-               <children>
-                  <Separator prefWidth="200.0" />
-                  <HBox prefHeight="31.0" prefWidth="1276.0">
-                     <children>
-                        <Button mnemonicParsing="false" onMouseClicked="#displayMain" text="&lt; Retour">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Label text="LES BONS PLANS">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="500.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </bottom>
-      </BorderPane>
-   </top>
-   <bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.view.GoodDealsViewController">
+   <center>
       <ScrollPane hbarPolicy="NEVER" prefHeight="720.0" prefWidth="1280.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
             <VBox prefHeight="547.0" prefWidth="1255.0">
@@ -111,5 +41,64 @@
             </VBox>
          </content>
       </ScrollPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="200.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar prefHeight="25.0" prefWidth="1280.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Outils">
+                  <items>
+                    <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#closeWindow" text="Quitter" />
+                        <MenuItem mnemonicParsing="false" text="Réinitialiser" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="En savoir plus">
+                  <items>
+                        <MenuItem fx:id="faq" mnemonicParsing="false" onAction="#displayFaq" text="FAQ" />
+                    <MenuItem fx:id="aboutUs" mnemonicParsing="false" onAction="#displayMoreAboutUs" text="Qui sommes-nous ?" />
+                        <MenuItem fx:id="jobMenu" mnemonicParsing="false" onAction="#displayJobs" text="Job expérience" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Langues">
+                  <items>
+                        <MenuItem fx:id="enMen" mnemonicParsing="false" onAction="#translateInEnglish" text="Anglais" />
+                    <MenuItem fx:id="frMenu" mnemonicParsing="false" onAction="#translateInFrench" text="Français" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ImageView fitHeight="181.0" fitWidth="157.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/logoazur.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f89f56" height="181.0" layoutX="125.0" layoutY="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1156.0" />
+            <ImageView fitHeight="191.0" fitWidth="716.0" layoutX="384.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/agorazur.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <bottom>
+      <HBox prefHeight="31.0" prefWidth="1276.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#displayMain" text="&lt; Retour">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Label text="LES BONS PLANS">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="500.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
    </bottom>
 </BorderPane>
