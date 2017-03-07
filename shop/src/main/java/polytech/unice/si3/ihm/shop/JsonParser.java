@@ -48,32 +48,42 @@ public class JsonParser {
     }
 
     /**
+     * Constructeur de JsonParser
+     * @param file fichier json utilisé pour créer le magasin
+     * @throws Exception
+     */
+    public JsonParser(File file) throws Exception {
+        String jsonString = "";
+        try{
+            InputStream ips=new FileInputStream(file);
+            InputStreamReader ipsr=new InputStreamReader(ips);
+            BufferedReader br=new BufferedReader(ipsr);
+            String line;
+            while ((line=br.readLine())!=null){
+                jsonString+=line+"\n";
+            }
+            br.close();
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
+
+        input = new JSONObject(jsonString);
+        this.stage = stage;
+    }
+
+    /**
      * Lance le "parsage" : création en fonction du fichier json en paramètre de la fênetre, du magasin et des
      * différents produits
      * @throws Exception
      */
-    public void parseJson() throws Exception {
-
+    public Shop parseJson() throws Exception {
         Shop shop = new Shop(input.get("name").toString(), input.get("logo").toString(), input.get("logoMin").toString(), input.get("logoText").toString());
-
-        String fxmlFile = "/fxml/main_view.fxml";
-        FXMLLoader loader = new FXMLLoader();
-        Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-        stage.setMinHeight(700.0);
-        stage.setMinWidth(1140.0);
-
-        Scene scene = new Scene(rootNode, 1280, 720);
-        scene.getStylesheets().add("/styles/main.css");
-        stage.setTitle(shop.getName());
-        stage.setScene(scene);
-
-        MainViewController controller = loader.getController();
-        controller.setCurrentStage(stage);
-        controller.initialiseView(shop);
-
-        createObjects(shop);
-
-        controller.initialiseCarousel(shop);
+        shop.setAbout(input.get("about").toString());
+        shop.setLegalNotice(input.get("legalNotice").toString());
+        shop.setAdress(input.get("adress").toString());
+        shop.setPhone(input.get("phone").toString());
+        return shop;
     }
 
     /**
@@ -103,7 +113,7 @@ public class JsonParser {
      * Créé les objets, et les ajoute dans le magasin (en fonction du fichier json en entrée)
      * @param shop magasin que l'on gère
      */
-    private void createObjects(Shop shop) {
+    public void createObjects(Shop shop) {
         JSONArray jsonArray = input.getJSONArray("itemsList");
         JSONObject jsonObject;
         for(int i=0;i<jsonArray.length();i++){
@@ -116,5 +126,9 @@ public class JsonParser {
             }
             shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price"), jsonObject.getString("description"), types, jsonObject.getInt("sales")));
         }
+    }
+
+    public JSONArray getItemsList(){
+        return input.getJSONArray("itemsList");
     }
 }

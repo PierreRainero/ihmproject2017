@@ -1,12 +1,10 @@
 package polytech.unice.si3.ihm.shop.view;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import polytech.unice.si3.ihm.shop.MainApp;
@@ -113,7 +111,6 @@ public class MainViewController extends BasicController {
      */
     public void createList(Shop shop){
         VBox vBox = displayAllShopProducts(shop);
-        System.out.println(vBox.getChildren().size());
         vBox = deleteNonSearchCorrespondingElements(vBox, shop, searchBar.getCharacters().toString());
         vBox = deleteNonFilteredCorrespondingElements(vBox, shop, filters);
         ScrollPane sc = new ScrollPane();
@@ -149,6 +146,7 @@ public class MainViewController extends BasicController {
 
             Label price = new Label("Prix : " + products.get(i).getPrice() + " €");
             price.setFont(new Font(35.0));
+            price.setPrefWidth(300);
 
             Label name = new Label(products.get(i).getName());
             name.setFont(new Font(30.0));
