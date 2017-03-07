@@ -14,12 +14,13 @@ public class Store {
     private String mallName;
     private String description;
     private String image;
-
+    private String region;
+    private String department;
     /**
      * Default constructor for a store
      */
     public Store() {
-        this(null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null, null);
     }
 
     /**
@@ -28,11 +29,14 @@ public class Store {
      * @param address the address of the store
      * @param city city name
      * @param cityNumber city number
+     * @param department the department where the store is located
+     * @param region the region where the store is located
      * @param mallName the name of the mall where the store is
      * @param description the description of the store
      * @param image url to the store image
+
      */
-    public Store(String name, String address, String city, String cityNumber, String mallName, String description, String image) {
+    public Store(String name, String address, String city, String cityNumber, String department, String region, String mallName, String description, String image) {
         this.name = name;
         this.address = address;
         this.city=city;
@@ -40,6 +44,8 @@ public class Store {
         this.mallName = mallName;
         this.description = description;
         this.image = image;
+        this.region = region;
+        this.department=department;
     }
 
     /**
@@ -123,11 +129,27 @@ public class Store {
     }
 
     /**
-     * Getter for the number of the department where the store is located
+     * Getter for the number of the city where the store is located
      * @return the cityNumber
      */
     public String getCityNumber() {
         return cityNumber;
+    }
+
+    /**
+     * Getter for the region where the store is located
+     * @return the region
+     */
+    public String getRegion() {
+        return region;
+    }
+
+    /**
+     * Getter for the department where the store is located
+     * @return the department
+     */
+    public String getDepartment() {
+        return department;
     }
 }
 

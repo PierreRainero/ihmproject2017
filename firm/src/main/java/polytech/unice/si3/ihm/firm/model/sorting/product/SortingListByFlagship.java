@@ -15,7 +15,6 @@ public class SortingListByFlagship {
     
     /**
      * Constructor for the sorting by flagship
-     * @param stores the list of products
      */
     public SortingListByFlagship(List<Product> products) {
         this.products = products;

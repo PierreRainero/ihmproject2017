@@ -15,6 +15,8 @@ import javafx.util.Callback;
 import polytech.unice.si3.ihm.firm.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.model.commercial.Store;
 import polytech.unice.si3.ihm.firm.model.sorting.shop.SortListViewItemByCity;
+import polytech.unice.si3.ihm.firm.model.sorting.shop.SortListViewItemByDepartment;
+import polytech.unice.si3.ihm.firm.model.sorting.shop.SortListViewItemByRegion;
 import polytech.unice.si3.ihm.firm.model.sorting.shop.SortingEnumShop;
 import polytech.unice.si3.ihm.firm.util.ImageBuilder;
 import polytech.unice.si3.ihm.firm.util.Log;
@@ -175,15 +177,19 @@ public class AllStoreController extends BasicController {
     @FXML
     private void sortWithTheSelectedSortingMethod(){
         String value = sortingMethods.getValue();
+        SortListViewItemByDepartment sortByDepartment;
+        SortListViewItemByRegion sortByRegion;
 
         if (SortingEnumShop.convertStringToSortingEnum(value).equals(SortingEnumShop.CITY)){
             changeListViewOrder(sorByCity.sort());
         }
         else if (SortingEnumShop.convertStringToSortingEnum(value).equals(SortingEnumShop.DEPARTMENT)){
-            
+            sortByDepartment = new SortListViewItemByDepartment(firm.getStores());
+            changeListViewOrder(sortByDepartment.sort());
         }
         else if (SortingEnumShop.convertStringToSortingEnum(value).equals(SortingEnumShop.REGION)){
-            
+            sortByRegion = new SortListViewItemByRegion(firm.getStores());
+            changeListViewOrder(sortByRegion.sort());
         }
     }
 
@@ -204,5 +210,7 @@ public class AllStoreController extends BasicController {
     	    }
     	});
     }
+
+
 
 }

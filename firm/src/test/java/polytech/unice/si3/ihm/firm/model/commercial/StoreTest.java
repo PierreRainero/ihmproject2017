@@ -10,7 +10,7 @@ public class StoreTest {
 	
     @Before
     public void defineContext(){
-    	store = new Store("Kebabier du coin", "Dans le coin justement", "Sophia", "00000", "PolyCenter", "Du chat de qualitay", "src/main/resources/images/nice_etoile.png");
+    	store = new Store("Kebabier du coin", "Dans le coin justement", "Sophia", "00000","Alpes-Maritimes","Provence-Alpes Cote d'Azur", "PolyCenter", "Du chat de qualitay", "src/main/resources/images/nice_etoile.png");
     }
     
     @Test

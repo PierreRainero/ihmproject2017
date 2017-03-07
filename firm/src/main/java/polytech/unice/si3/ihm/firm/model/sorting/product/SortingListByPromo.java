@@ -15,7 +15,7 @@ public class SortingListByPromo {
     
     /**
      * Constructor for the sorting by promo
-     * @param stores the list of products
+     * @param products the list of products
      */
     public SortingListByPromo(List<Product> products) {
         this.products = products;
