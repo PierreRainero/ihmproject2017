@@ -3,24 +3,17 @@ package polytech.unice.si3.ihm.shop.view;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import polytech.unice.si3.ihm.shop.JsonParser;
-import polytech.unice.si3.ihm.shop.MainApp;
-import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 
 public class ManagerViewController extends BasicController {
 
@@ -32,6 +25,10 @@ public class ManagerViewController extends BasicController {
     private MenuItem openMenuItem;
     @FXML
     private MenuItem saveMenuItem;
+    @FXML
+    private MenuItem saveAsMenuItem;
+    @FXML
+    private MenuItem newMenuItem;
     @FXML
     private TextField shopName;
     @FXML
@@ -73,6 +70,29 @@ public class ManagerViewController extends BasicController {
                 }
             }
         });
+        saveAsMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    saveAsFile(stage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        newMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                shopName.clear();
+                shopLogo.clear();
+                shopLogoMin.clear();
+                shopLogoText.clear();
+                shopDescription.clear();
+                shopMentions.clear();
+                shopAdresse.clear();
+                shopTelephone.clear();
+            }
+        });
     }
 
     private void loadFile(Stage stage) throws Exception {
@@ -101,6 +121,18 @@ public class ManagerViewController extends BasicController {
         }
     }
 
+    private void saveAsFile(Stage stage) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open json file");
+        fileChooser.getExtensionFilters().clear();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("JSON", "*.json")
+        );
+        jsonFile = fileChooser.showSaveDialog(stage);
+        if(jsonFile != null){
+            saveFile();
+        }
+    }
 
     private void saveFile() throws IOException {
         FileWriter fileWriter = new FileWriter(jsonFile, false);
