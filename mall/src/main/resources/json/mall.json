@@ -1,6 +1,6 @@
 {
   "0": [
-    { "type": "place", "name": "Ground", "picture": "ground", "posX": 80, "posY": 75, "width": 846, "height": 246 }
+    { "type": "place", "name": "Ground", "picture": "ground", "posX": 80, "posY": 75, "width": 846, "height": 246 },
     { "type": "store", "name": "Camaïeu", "web": "camaieu.fr", "category": "fashion",
       "picture": "camaieu", "picX": 63, "picY": 68, "picWid": 132, "picHei": 45,
       "color": "0xa4bdf0", "recX": 58, "recY": 21, "recWid": 142, "recHei": 146
@@ -45,10 +45,10 @@
       "picture": "maisonsdumonde", "picX": 66, "picY": 288, "picWid": 105, "picHei": 55,
       "color": "0xff9900", "recX": 58, "recY": 249, "recWid": 122, "recHei": 136
     },
-    { "type": "place", "name": "Stairs", "picture": "escalator", "posX": 245, "posY": 187, "width": 200, "height": 50 }
-    { "type": "place", "name": "StairsLight", "picture": "escalatorjaune", "posX": 245, "posY": 187, "width": 200, "height": 50 }
-    { "type": "place", "name": "Elevator", "picture": "deuxascenseurs", "posX": 485, "posY": 177, "width": 89, "height": 60 }
-    { "type": "place", "name": "ElevatorLight", "picture": "ascenseurjaune", "posX": 485, "posY": 177, "width": 89, "height": 60 }
+    { "type": "place", "name": "Stairs", "picture": "escalator", "posX": 245, "posY": 187, "width": 200, "height": 50 },
+    { "type": "place", "name": "StairsLight", "picture": "escalatorjaune", "posX": 245, "posY": 187, "width": 200, "height": 50 },
+    { "type": "place", "name": "Elevator", "picture": "deuxascenseurs", "posX": 485, "posY": 177, "width": 89, "height": 60 },
+    { "type": "place", "name": "ElevatorLight", "picture": "ascenseurjaune", "posX": 485, "posY": 177, "width": 89, "height": 60 },
     { "type": "place", "name": "RelaxingSpace", "picture": "detente", "posX": 580, "posY": 181, "width": 212, "height": 57 }
 
   ],
@@ -64,5 +64,5 @@
     { "type": "place", "name": "Wifi", "picture": "wifi", "posX": 200, "posY": 200, "width": 100, "height": 100 }
   ],
   "2": [],
-  "3": [],
+  "3": []
 }

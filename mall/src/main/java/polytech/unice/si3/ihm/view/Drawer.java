@@ -10,28 +10,51 @@ import polytech.unice.si3.ihm.model.Store;
 
 import java.util.List;
 
-class Drawer {
+/**
+ * Represents a floor by drawing the figures and the pictures.
+ *
+ * @author Guillaume Casagrande
+ */
+public class Drawer {
+    /**
+     * Canvas containing the drawings.
+     */
     private Pane canvas;
 
-    Drawer(Pane pane) {
+    /**
+     * Builds a Drawer class thanks to the pane of the scene.
+     */
+    public Drawer(Pane pane) {
         this.canvas = pane;
     }
 
-    void displayLevel(Level level) {
-        List<Store> stores = level.getStores();
+    /**
+     * Displays a level with the parameters by default.
+     *
+     * @param level The level to represent.
+     */
+    public void displayLevel(Level level) {
         List<Place> places = level.getPlaces();
         for (Place p : places) {
             if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE) || p.equals(Place.STAIRS)) {
                 canvas.getChildren().add(p.getPicture());
             }
         }
+        List<Store> stores = level.getStores();
         for (Store store : stores) {
             canvas.getChildren().add(store.getRectangle());
             canvas.getChildren().add(store.getPicture());
         }
     }
 
-    void displayCategory(Level level, Category category) {
+    /**
+     * Displays a level putting forward the stores of a category.
+     * The stores of the category become yellow, and the others, grey.
+     *
+     * @param level The level to represent.
+     * @param category The category chosen by the user.
+     */
+    public void displayCategory(Level level, Category category) {
         List<Place> places = level.getPlaces();
         for (Place p : places) {
             if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE) || p.equals(Place.STAIRS)) {
@@ -52,7 +75,14 @@ class Drawer {
         }
     }
 
-    void highlightStore(Level level, String storeName) {
+    /**
+     * Displays a level putting forward one store.
+     * The concerned store become yellow, and the others, grey.
+     *
+     * @param level
+     * @param storeName
+     */
+    public void highlightStore(Level level, String storeName) {
         List<Place> places = level.getPlaces();
         for (Place p : places) {
             if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE) || p.equals(Place.STAIRS)) {
@@ -73,7 +103,7 @@ class Drawer {
         }
     }
 
-    void displayPlace(Level level, Place place) {
+    public void displayPlace(Level level, Place place) {
         List<Place> places = level.getPlaces();
         for (Place p : places) {
             if (p.equals(place)) {

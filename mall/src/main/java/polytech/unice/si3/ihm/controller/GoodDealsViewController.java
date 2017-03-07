@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.view;
+package polytech.unice.si3.ihm.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
@@ -8,17 +8,13 @@ import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import polytech.unice.si3.ihm.MainApp;
 import java.io.*;
 import javafx.scene.image.ImageView;
 import polytech.unice.si3.ihm.model.GoodDeal;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import polytech.unice.si3.ihm.model.Info;
-import polytech.unice.si3.ihm.shop.JsonParser;
 
 /**
  * Created by Ken on 02/03/2017.
@@ -26,7 +22,6 @@ import polytech.unice.si3.ihm.shop.JsonParser;
 public class GoodDealsViewController extends MenuController {
     private List<GoodDeal> deals;
     private List<ImageView> imageDeals;
-    private MainApp mainApp;
 
     /**
      * The constructor.
@@ -49,15 +44,6 @@ public class GoodDealsViewController extends MenuController {
         buildDeals();
         printDeals();
         initCursor();
-    }
-
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp
-     */
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
     }
 
     @FXML

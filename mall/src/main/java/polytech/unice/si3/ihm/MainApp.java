@@ -7,10 +7,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import polytech.unice.si3.ihm.view.MainViewController;
+import polytech.unice.si3.ihm.controller.MainViewController;
 
+/**
+ * Launches the project : initializes the scene and the controller.
+ *
+ * @author Guillaume Casagrande, Ken Roulamellah
+ */
 public class MainApp extends Application {
-
     private static final Logger log = LoggerFactory.getLogger(MainApp.class);
     private Stage stage;
 
@@ -18,6 +22,9 @@ public class MainApp extends Application {
         launch(args);
     }
 
+    /**
+     * Generates the scene.
+     */
     public void start(Stage stage) throws Exception {
         this.stage = stage;
 
@@ -39,9 +46,11 @@ public class MainApp extends Application {
         controller.setMainApp(this);
 
         stage.show();
-
     }
 
+    /**
+     * Returns the stage to be modified in the controllers.
+     */
     public Stage getStage(){
         return stage;
     }
