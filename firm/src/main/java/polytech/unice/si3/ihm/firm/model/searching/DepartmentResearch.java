@@ -24,7 +24,7 @@ public class DepartmentResearch extends GeneralResearch {
         List<Store> result = new ArrayList<>();
 
         for (Store store: getStores())
-            if (store.getDepartment().equals(searchValue))
+            if (store.getDepartment().toLowerCase().equals(searchValue.toLowerCase()))
             	result.add(store);
 
         return result;
