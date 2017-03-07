@@ -23,18 +23,18 @@ public class GeneralResearch {
      * @return the list of store corresponding to the research
      */
     public List<Store> search(String searchValue){
+        String comparisonValue = searchValue.toLowerCase();
 
         List<Store> result = new ArrayList<>();
 
-        for (Store store : stores){
+        for (Store store : stores)
+            if (store.getCity().toLowerCase().equals(comparisonValue) ||
+                    store.getDepartment().toLowerCase().equals(comparisonValue) ||
+                    store.getRegion().toLowerCase().equals(comparisonValue) ||
+                    store.getName().toLowerCase().equals(comparisonValue) ||
+                    store.getMallName().toLowerCase().equals(comparisonValue))
+            	result.add(store);
 
-            if (store.getCity().equals(searchValue)) result.add(store);
-            else if (store.getDepartment().equals(searchValue)) result.add(store);
-            else if (store.getRegion().equals(searchValue)) result.add(store);
-            else if(store.getName().equals(searchValue)) result.add(store);
-            else if (store.getMallName().equals(searchValue)) result.add(store);
-
-        }
         return result;
 
     }

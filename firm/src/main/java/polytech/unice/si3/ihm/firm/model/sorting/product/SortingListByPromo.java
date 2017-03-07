@@ -26,7 +26,7 @@ public class SortingListByPromo {
      * @return the sorted list
      */
     public List<Product> sort(){
-    	List<Product> sortList = new ArrayList<Product>();
+    	List<Product> sortList = new ArrayList<>();
     	
     	for(Product product : products)
     		if(product.isPromoted())

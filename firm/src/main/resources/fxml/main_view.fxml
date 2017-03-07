@@ -48,7 +48,7 @@
                         <VBox alignment="TOP_CENTER" maxWidth="250.0" HBox.hgrow="ALWAYS">
                            <children>
                               <ComboBox fx:id="searchType" prefHeight="29.0" prefWidth="199.0" promptText="Sélectionner le type" VBox.vgrow="ALWAYS" />
-                              <HBox fx:id="hboxSearch" prefHeight="0.0" prefWidth="196.0" VBox.vgrow="ALWAYS">
+                              <HBox fx:id="hboxSearch" prefHeight="0.0" prefWidth="196.0" VBox.vgrow="NEVER">
                                  <children>
                                     <TextField fx:id="searchValue" maxHeight="34.0" minHeight="34.0" prefHeight="34.0" promptText="Tapez une ville, une région, une adresse ..." HBox.hgrow="ALWAYS" />
                                     <Button fx:id="searchButton" mnemonicParsing="false" onMouseClicked="#search" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="26.0" prefWidth="57.0" HBox.hgrow="ALWAYS" />
@@ -58,7 +58,10 @@
                                  <children>
                                     <VBox prefHeight="336.0" prefWidth="196.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <ListView fx:id="researchListView" prefHeight="326.0" prefWidth="196.0" VBox.vgrow="ALWAYS" />
+                                          <ListView fx:id="researchListView" prefHeight="326.0" prefWidth="196.0" VBox.vgrow="ALWAYS">
+                                             <VBox.margin>
+                                                <Insets top="6.0" />
+                                             </VBox.margin></ListView>
                                        </children>
                                     </VBox>
                                  </children>

@@ -111,7 +111,6 @@ public class MainViewController extends BasicController {
      */
     public void createList(Shop shop){
         VBox vBox = displayAllShopProducts(shop);
-        System.out.println(vBox.getChildren().size());
         vBox = deleteNonSearchCorrespondingElements(vBox, shop, searchBar.getCharacters().toString());
         vBox = deleteNonFilteredCorrespondingElements(vBox, shop, filters);
         ScrollPane sc = new ScrollPane();
@@ -147,6 +146,7 @@ public class MainViewController extends BasicController {
 
             Label price = new Label("Prix : " + products.get(i).getPrice() + " €");
             price.setFont(new Font(35.0));
+            price.setPrefWidth(300);
 
             Label name = new Label(products.get(i).getName());
             name.setFont(new Font(30.0));
