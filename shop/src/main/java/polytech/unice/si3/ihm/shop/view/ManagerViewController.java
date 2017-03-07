@@ -3,7 +3,9 @@ package polytech.unice.si3.ihm.shop.view;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.JSONArray;
@@ -45,6 +47,8 @@ public class ManagerViewController extends BasicController {
     private TextField shopAdresse;
     @FXML
     private TextField shopTelephone;
+    @FXML
+    private ScrollPane productsScrollPane;
 
     /**
      * Initialise la vue de base du ManagerViewController
@@ -118,6 +122,20 @@ public class ManagerViewController extends BasicController {
             shopMentions.setText(shop.getLegalNotice());
             shopAdresse.setText(shop.getAdress());
             shopTelephone.setText(shop.getPhone());
+            VBox vBox = new VBox();
+            vBox.setAlignment(Pos.CENTER);
+            vBox.setSpacing(10);
+            for(int i = 0; i < shop.getProduct().size(); i++){
+                Button button = new Button(shop.getProduct().get(i).getName());
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        //TODO : Ouvrir la page de modif de produit ici
+                    }
+                });
+                vBox.getChildren().add(button);
+            }
+            productsScrollPane.setContent(vBox);
         }
     }
 
