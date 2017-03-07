@@ -31,8 +31,6 @@ import java.util.List;
 public class AllStoreController extends BasicController {
     private Firm firm;
     private SortListViewItemByCity sorByCity;
-    private SortListViewItemByDepartment sortByDepartment;
-    private SortListViewItemByRegion sortByRegion;
     
     @FXML
     private ImageView logo;
@@ -179,6 +177,8 @@ public class AllStoreController extends BasicController {
     @FXML
     private void sortWithTheSelectedSortingMethod(){
         String value = sortingMethods.getValue();
+        SortListViewItemByDepartment sortByDepartment;
+        SortListViewItemByRegion sortByRegion;
 
         if (SortingEnumShop.convertStringToSortingEnum(value).equals(SortingEnumShop.CITY)){
             changeListViewOrder(sorByCity.sort());

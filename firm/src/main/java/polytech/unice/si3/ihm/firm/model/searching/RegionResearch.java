@@ -23,7 +23,8 @@ public class RegionResearch extends GeneralResearch {
         List<Store> result = new ArrayList<>();
 
         for (Store store: getStores())
-            if (store.getRegion().equals(searchValue)) result.add(store);
+            if (store.getRegion().equals(searchValue))
+            	result.add(store);
 
         return result;
     }

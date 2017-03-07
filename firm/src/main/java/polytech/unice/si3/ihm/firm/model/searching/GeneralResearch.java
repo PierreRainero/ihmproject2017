@@ -26,15 +26,10 @@ public class GeneralResearch {
 
         List<Store> result = new ArrayList<>();
 
-        for (Store store : stores){
+        for (Store store : stores)
+            if (store.getCity().equals(searchValue) || store.getDepartment().equals(searchValue) || store.getRegion().equals(searchValue) || store.getName().equals(searchValue) || store.getMallName().equals(searchValue)) 
+            	result.add(store);
 
-            if (store.getCity().equals(searchValue)) result.add(store);
-            else if (store.getDepartment().equals(searchValue)) result.add(store);
-            else if (store.getRegion().equals(searchValue)) result.add(store);
-            else if(store.getName().equals(searchValue)) result.add(store);
-            else if (store.getMallName().equals(searchValue)) result.add(store);
-
-        }
         return result;
 
     }
