@@ -8,17 +8,20 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.managing.controller.MainViewController">
    <children>
-      <VBox>
+      <VBox alignment="TOP_CENTER">
          <children>
-            <ImageView fitHeight="116.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="banner" fitHeight="116.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/logo.png" />
+               </image></ImageView>
             <TabPane prefHeight="604.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Ajouter un magasin">
@@ -129,16 +132,26 @@
                               <HBox>
                                  <children>
                                     <Label text="Image" />
-                                    <Button fx:id="shopImage" mnemonicParsing="false" text="Parcourir...">
+                                    <Button fx:id="shopImage" mnemonicParsing="false" onAction="#choseImage" text="Parcourir...">
                                        <HBox.margin>
                                           <Insets left="70.0" />
                                        </HBox.margin>
                                     </Button>
+                                    <Label fx:id="imageSelected" alignment="TOP_LEFT" contentDisplay="CENTER">
+                                       <HBox.margin>
+                                          <Insets left="6.0" top="4.0" />
+                                       </HBox.margin>
+                                    </Label>
                                  </children>
                                  <VBox.margin>
                                     <Insets top="4.0" />
                                  </VBox.margin>
                               </HBox>
+                              <Button fx:id="validShop" mnemonicParsing="false" text="Valider">
+                                 <VBox.margin>
+                                    <Insets left="250.0" />
+                                 </VBox.margin>
+                              </Button>
                            </children>
                            <padding>
                               <Insets left="6.0" top="6.0" />

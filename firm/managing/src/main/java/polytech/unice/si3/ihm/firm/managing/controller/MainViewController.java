@@ -1,11 +1,23 @@
 package polytech.unice.si3.ihm.firm.managing.controller;
+import java.io.File;
+import java.util.Optional;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class MainViewController {
+	private Optional<File> fileSelected;
+	
+    @FXML
+    private ImageView banner;
 
     @FXML
     private TextField shopName;
@@ -33,5 +45,28 @@ public class MainViewController {
 
     @FXML
     private Button shopImage;
+    
+    @FXML
+    private Label imageSelected;
+    
+    @FXML
+    private Button validShop;
+    
+
+    @FXML
+    private void choseImage(ActionEvent event) {
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Sélectionner une image");
+    	
+    	FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Images (*.jpg, *.png, *.gif)", "*.jpg", "*.png", "*.gif");
+    	fileChooser.getExtensionFilters().add(imageFilter);
+    	
+    	File tempo = fileChooser.showOpenDialog(new Stage());
+    	if(tempo!=null){
+    		fileSelected = Optional.of(tempo);
+    		imageSelected.setText(fileSelected.get().getName());
+    	}else
+    		fileSelected = Optional.empty();
+    }
 
 }

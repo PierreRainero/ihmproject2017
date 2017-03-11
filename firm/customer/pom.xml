@@ -9,12 +9,12 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-    <groupId>polytech.unice.si3.ihm</groupId>
+    <groupId>polytech.unice.si3.ihm.customer</groupId>
     <artifactId>customer</artifactId>
     <name>customer</name>
 
     <packaging>jar</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
