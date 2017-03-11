@@ -75,6 +75,12 @@
             <artifactId>log4j</artifactId>
         </dependency>
 
+        <!-- Simple Json -->
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+        </dependency>
+
          <!-- Junit -->
          <dependency>
             <groupId>junit</groupId>

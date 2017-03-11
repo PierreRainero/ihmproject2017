@@ -120,7 +120,6 @@ public class Store {
         return image;
     }
 
-
     /**
      * Allow to change the image url of the store
      * @param newAddress the new image
@@ -136,6 +135,14 @@ public class Store {
     public String getCity() {
         return city;
     }
+    
+    /**
+     * Allow to change the city of the store
+     * @param newAddress the new city
+     */
+    public void changeStoreCity(String city){
+    	this.city=city;
+    }
 
     /**
      * Getter for the number of the city where the store is located
@@ -143,6 +150,14 @@ public class Store {
      */
     public String getCityNumber() {
         return cityNumber;
+    }
+    
+    /**
+     * Allow to change the city number of the store
+     * @param newAddress the new city number
+     */
+    public void changeCityNumber(String cityNumber){
+    	this.cityNumber=cityNumber;
     }
 
     /**
@@ -152,6 +167,14 @@ public class Store {
     public String getRegion() {
         return region;
     }
+    
+    /**
+     * Allow to change the region name of the store
+     * @param newAddress the new region name
+     */
+    public void changeRegionName(String regionName){
+    	this.region=regionName;
+    }
 
     /**
      * Getter for the department where the store is located
@@ -159,6 +182,14 @@ public class Store {
      */
     public String getDepartment() {
         return department;
+    }
+    
+    /**
+     * Allow to change the departement of the store
+     * @param newAddress the new departement
+     */
+    public void changeDepartement(String depart){
+    	this.department=depart;
     }
 }
 

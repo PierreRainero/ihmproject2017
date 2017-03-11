@@ -1,15 +1,14 @@
 package polytech.unice.si3.ihm.firm.customer.json;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import polytech.unice.si3.ihm.firm.customer.exceptions.ContentException;
+import polytech.unice.si3.ihm.firm.common.json.JsonReceiver;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
@@ -28,10 +27,17 @@ public class ContentParser {
 	private static final String DESCRIPTION = "description";
 	private static final String IMAGE = "image";
 	
+	private JSONObject firmJson;
+	
+
 	/**
-	 * Private constructor to hide the public one
+	 * Normal constructor
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
 	 */
-	private ContentParser(){
+	public ContentParser() throws FileNotFoundException, IOException, ParseException{
+		firmJson = JsonReceiver.getJsonFirm(PATH);
 	}
 	
 	/**
@@ -42,13 +48,7 @@ public class ContentParser {
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
 	 */
-	public static Firm getFirm() throws ContentException, IOException, ParseException{
-    	JSONParser parser = new JSONParser();
-    	JSONObject firmJson;
-
-		Object obj = parser.parse(new FileReader(PATH));
-	    firmJson = (JSONObject) obj;
-
+	public Firm getFirm() throws ContentException, IOException, ParseException{
     	Firm firm = getSkeletonFirm(firmJson);
     	fillShopsInfos(firm, firmJson);
     	fillProductsInfos(firm, firmJson);
@@ -63,7 +63,7 @@ public class ContentParser {
 	 * @return firm to use
 	 * @throws ContentException
 	 */
-	private static Firm getSkeletonFirm(JSONObject firmJson) throws ContentException{
+	private Firm getSkeletonFirm(JSONObject firmJson) throws ContentException{
     	String name = null;
     	String description = null;
     	String logo = null;
@@ -90,7 +90,7 @@ public class ContentParser {
 	 * @param firmJson json containing all the datas required
 	 * @throws ContentException
 	 */
-	private static void fillShopsInfos(Firm firm, JSONObject firmJson) throws ContentException{
+	private void fillShopsInfos(Firm firm, JSONObject firmJson) throws ContentException{
     	JSONArray shops = null;
     	
     	try{
@@ -126,7 +126,7 @@ public class ContentParser {
 	 * @param firmJson json containing all the datas required
 	 * @throws ContentException
 	 */
-	private static void fillProductsInfos(Firm firm, JSONObject firmJson) throws ContentException{
+	private void fillProductsInfos(Firm firm, JSONObject firmJson) throws ContentException{
     	JSONArray products = null;
     	
     	try{
@@ -167,7 +167,7 @@ public class ContentParser {
 	 * @param firmJson json containing all the datas required
 	 * @throws ContentException
 	 */
-	private static void fillAds(Firm firm, JSONObject firmJson) throws ContentException{
+	private void fillAds(Firm firm, JSONObject firmJson) throws ContentException{
     	JSONArray advertisements = null; 
     	
     	try{
