@@ -12,10 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import polytech.unice.si3.ihm.firm.managing.json.JsonGeneratorShop;
+import polytech.unice.si3.ihm.firm.managing.json.JsonGeneratorStore;
 
 public class MainViewController {
-	private JsonGeneratorShop jsonToGenerate;
+	private JsonGeneratorStore jsonToGenerate;
 	
     @FXML
     private ImageView banner;
@@ -58,7 +58,7 @@ public class MainViewController {
 
     
     public void initContent(){
-    	jsonToGenerate = new JsonGeneratorShop();
+    	jsonToGenerate = new JsonGeneratorStore();
     	nameShopError.setVisible(false);
     }
 

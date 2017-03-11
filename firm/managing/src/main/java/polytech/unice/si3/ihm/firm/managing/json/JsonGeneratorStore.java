@@ -2,13 +2,16 @@ package polytech.unice.si3.ihm.firm.managing.json;
 
 import java.io.File;
 import java.util.Optional;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 
-public class JsonGeneratorShop {
+public class JsonGeneratorStore {
+	private Store store;
 	private Optional<File> fileSelected;
 	private String shopName;
 
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
+
 	}
 
 	public Optional<File> getFileSelected() {
@@ -19,7 +22,7 @@ public class JsonGeneratorShop {
 		this.fileSelected = fileSelected;
 	}
 
-	public JsonGeneratorShop(){
+	public JsonGeneratorStore(){
 		fileSelected = Optional.empty();
 	}
 	

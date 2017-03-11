@@ -3,7 +3,7 @@ package polytech.unice.si3.ihm.firm.customer.model.sorting.product;
 import java.util.ArrayList;
 import java.util.List;
 
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Product;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
 
 /**
  * 

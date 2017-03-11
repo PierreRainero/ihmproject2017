@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
-
     <groupId>polytech.unice.si3.ihm</groupId>
     <artifactId>firm</artifactId>
-    <name>firm</name>
-
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
+    <modelVersion>4.0.0</modelVersion>
     
-    <organization>
-        <!-- Used as the 'Vendor' for JNLP generation -->
-        <name>roux</name>
-    </organization>
-
+    
     <properties>
         <slf4j.version>1.6.1</slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,27 +15,9 @@
         <compiler.target>1.8</compiler.target>
     </properties>
 
-    <build>
-        <finalName>firm</finalName>
-        <plugins>
-            <plugin>
-                <groupId>com.zenjava</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>2.0</version>
-                <configuration>
-                    <mainClass>polytech.unice.si3.ihm.firm.MainApp</mainClass>
-                    <!-- only required if signing the jar file -->
-                    <keyStoreAlias>example-user</keyStoreAlias>
-                    <keyStorePassword>example-password</keyStorePassword>
-                    <allPermissions>true</allPermissions>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
-
+<dependencyManagement>
     <dependencies>
-    
         <!-- MigLayout -->
         <dependency>
             <groupId>com.miglayout</groupId>
@@ -78,15 +53,26 @@
             <artifactId>log4j</artifactId>
             <version>1.2.16</version>
         </dependency>
+
+        <!-- Simple Json -->
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <!-- Junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
         </dependency>
     </dependencies>
+</dependencyManagement>
 
   <modules>
-    <module>managing</module>
+    <module>common</module>
     <module>customer</module>
+    <module>managing</module>
   </modules>
 </project>

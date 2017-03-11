@@ -3,7 +3,7 @@ package polytech.unice.si3.ihm.firm.customer.model.searching;
 import java.util.ArrayList;
 import java.util.List;
 
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Store;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 
 public class StoreNameResearch extends GeneralResearch {
     /**

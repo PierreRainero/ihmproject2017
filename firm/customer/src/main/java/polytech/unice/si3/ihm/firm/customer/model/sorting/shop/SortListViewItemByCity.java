@@ -3,7 +3,7 @@ package polytech.unice.si3.ihm.firm.customer.model.sorting.shop;
 
 import java.util.*;
 
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Store;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 
 /**
  * 

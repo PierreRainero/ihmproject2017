@@ -1,9 +1,9 @@
-package polytech.unice.si3.ihm.firm.model.commercial;
+package polytech.unice.si3.ihm.firm.common.model.commercial;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Product;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
 
 import static org.junit.Assert.*;
 

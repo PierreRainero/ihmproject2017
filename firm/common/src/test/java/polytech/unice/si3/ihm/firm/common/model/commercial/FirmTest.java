@@ -1,13 +1,13 @@
-package polytech.unice.si3.ihm.firm.model.commercial;
+package polytech.unice.si3.ihm.firm.common.model.commercial;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Firm;
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Product;
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Store;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 
 public class FirmTest {
     private Firm firm;

@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Store;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 
 /**
  * Class to sort the stores by region

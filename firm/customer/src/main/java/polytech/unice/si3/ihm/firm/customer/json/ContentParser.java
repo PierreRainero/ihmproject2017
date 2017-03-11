@@ -10,9 +10,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import polytech.unice.si3.ihm.firm.customer.exceptions.ContentException;
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Firm;
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Product;
-import polytech.unice.si3.ihm.firm.customer.model.commercial.Store;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 import polytech.unice.si3.ihm.firm.customer.util.Log;
 
 /**
