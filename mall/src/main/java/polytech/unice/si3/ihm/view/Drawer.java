@@ -79,8 +79,8 @@ public class Drawer {
      * Displays a level putting forward one store.
      * The concerned store become yellow, and the others, grey.
      *
-     * @param level
-     * @param storeName
+     * @param level The level to represent.
+     * @param storeName The store chosen by the user.
      */
     public void highlightStore(Level level, String storeName) {
         List<Place> places = level.getPlaces();
@@ -103,6 +103,12 @@ public class Drawer {
         }
     }
 
+    /**
+     * Displays a place of a level.
+     *
+     * @param level The current level.
+     * @param place The place to represent (usually a "highlight" place).
+     */
     public void displayPlace(Level level, Place place) {
         List<Place> places = level.getPlaces();
         for (Place p : places) {

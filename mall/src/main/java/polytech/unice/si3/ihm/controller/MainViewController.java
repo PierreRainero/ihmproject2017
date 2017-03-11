@@ -63,14 +63,13 @@ public class MainViewController extends MenuController {
      */
     public void displayGoodDeals(){
         FXMLLoader loader = new FXMLLoader();
-        Parent node = null;
         try {
-            node = loader.load(getClass().getResourceAsStream("/fxml/good_deals.fxml"));
+            Parent node = loader.load(getClass().getResourceAsStream("/fxml/good_deals.fxml"));
+            Scene scene = new Scene(node, 1280, 720);
+            mainApp.getStage().setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene scene = new Scene(node, 1280, 720);
-        mainApp.getStage().setScene(scene);
 
         GoodDealsViewController controller = loader.getController();
         controller.setMainApp(mainApp);

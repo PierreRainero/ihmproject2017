@@ -38,9 +38,10 @@ public class MenuController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("FAQ");
         alert.setHeaderText("Foire aux questions");
-        alert.setContentText(" -  Quels sont les horaires d'ouverture du centre commercial ?\n" +
+        alert.setContentText(" -  Quels sont les horaires d'ouverture du centre commercial ?\n\n" +
                 "   Agorazur est ouvert du lundi au samedi, de 10 à 20h, et le dimanche de 11 à 19h.\n\n" +
-                " -  Je ne reçois pas de newsletter. Que faire pour les recevoir ?\n" +
+                "----------\n\n"+
+                " -  Je ne reçois pas de newsletter. Que faire pour les recevoir ?\n\n" +
                 "   Ces newsletters vous sont adressées à l’adresse e-mail que vous avez renseignée " +
                 "lors de votre inscription au programme. Vérifiez que les e-mails ne sont pas dans " +
                 "votre dossier SPAM ou vérifiez sur votre compte client que vous avez renseigné la bonne adresse e-mail.");
@@ -79,7 +80,7 @@ public class MenuController {
         alert.setHeaderText("Contact et localisation");
         alert.setContentText("CENTRE COMMERCIAL AGORAZUR\n" +
                 "Avenue Guiken Roulacasa\n" +
-                "06140 Biot\n" +
+                "06410 Biot\n" +
                 "Tel : 04.93.31.10.35");
 
         alert.showAndWait();
