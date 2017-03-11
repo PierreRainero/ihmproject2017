@@ -7,11 +7,14 @@ import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 public class JsonGeneratorStore {
 	private Store store;
 	private Optional<File> fileSelected;
-	private String shopName;
+	
+	public JsonGeneratorStore(){
+		fileSelected = Optional.empty();
+		store = new Store();
+	}
 
 	public void setShopName(String shopName) {
-		this.shopName = shopName;
-
+		store.changeStoreName(shopName);
 	}
 
 	public Optional<File> getFileSelected() {
@@ -21,12 +24,15 @@ public class JsonGeneratorStore {
 	public void setFileSelected(Optional<File> fileSelected) {
 		this.fileSelected = fileSelected;
 	}
-
-	public JsonGeneratorStore(){
-		fileSelected = Optional.empty();
-	}
 	
 	public void generate(){
-		
+		fixImageUrl();
+	}
+	
+	private void fixImageUrl(){
+		if(fileSelected.isPresent())
+			store.changeStoreImage(fileSelected.get().getAbsolutePath());
+		else
+			store.changeStoreImage("");
 	}
 }

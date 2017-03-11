@@ -13,7 +13,7 @@ import polytech.unice.si3.ihm.firm.customer.exceptions.ContentException;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
-import polytech.unice.si3.ihm.firm.customer.util.Log;
+import polytech.unice.si3.ihm.firm.common.util.Log;
 
 /**
  * 

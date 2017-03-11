@@ -5,8 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
-import polytech.unice.si3.ihm.firm.customer.util.ImageBuilder;
-import polytech.unice.si3.ihm.firm.customer.util.Log;
+import polytech.unice.si3.ihm.firm.common.util.ImageBuilder;
+import polytech.unice.si3.ihm.firm.common.util.Log;
 
 /**
  * 

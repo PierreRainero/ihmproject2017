@@ -11,8 +11,8 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
-import polytech.unice.si3.ihm.firm.customer.util.ImageBuilder;
-import polytech.unice.si3.ihm.firm.customer.util.Log;
+import polytech.unice.si3.ihm.firm.common.util.ImageBuilder;
+import polytech.unice.si3.ihm.firm.common.util.Log;
 /**
  * 
  * Basic controller class - Skeleton for controlers

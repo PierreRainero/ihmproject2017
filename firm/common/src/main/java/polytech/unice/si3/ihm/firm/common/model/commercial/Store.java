@@ -120,6 +120,15 @@ public class Store {
         return image;
     }
 
+
+    /**
+     * Allow to change the image url of the store
+     * @param newAddress the new image
+     */
+    public void changeStoreImage(String newImage){
+        image=newImage;
+    }
+    
     /**
      * Getter for the city where the store is located
      * @return the city

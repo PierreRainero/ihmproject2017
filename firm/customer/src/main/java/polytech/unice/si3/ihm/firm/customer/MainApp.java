@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import polytech.unice.si3.ihm.firm.customer.controller.MainViewController;
 import polytech.unice.si3.ihm.firm.customer.json.ContentParser;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
-import polytech.unice.si3.ihm.firm.customer.util.Log;
+import polytech.unice.si3.ihm.firm.common.util.Log;
 
 /**
  * 

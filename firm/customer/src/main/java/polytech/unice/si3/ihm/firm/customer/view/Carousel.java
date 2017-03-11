@@ -2,8 +2,8 @@ package polytech.unice.si3.ihm.firm.customer.view;
 
 import java.util.concurrent.TimeUnit;
 
+import polytech.unice.si3.ihm.firm.common.util.Log;
 import polytech.unice.si3.ihm.firm.customer.controller.MainViewController;
-import polytech.unice.si3.ihm.firm.customer.util.Log;
 
 /**
  * 

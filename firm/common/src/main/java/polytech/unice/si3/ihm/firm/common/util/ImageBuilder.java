@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.customer.util;
+package polytech.unice.si3.ihm.firm.common.util;
 
 import java.io.File;
 
