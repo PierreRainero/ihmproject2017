@@ -12,9 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import polytech.unice.si3.ihm.firm.managing.json.JsonGeneratorShop;
 
 public class MainViewController {
-	private Optional<File> fileSelected;
+	private JsonGeneratorShop jsonToGenerate;
 	
     @FXML
     private ImageView banner;
@@ -50,8 +51,16 @@ public class MainViewController {
     private Label imageSelected;
     
     @FXML
-    private Button validShop;
+    private Label nameShopError;
     
+    @FXML
+    private Button validShop;
+
+    
+    public void initContent(){
+    	jsonToGenerate = new JsonGeneratorShop();
+    	nameShopError.setVisible(false);
+    }
 
     @FXML
     private void choseImage(ActionEvent event) {
@@ -60,13 +69,26 @@ public class MainViewController {
     	
     	FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Images (*.jpg, *.png, *.gif)", "*.jpg", "*.png", "*.gif");
     	fileChooser.getExtensionFilters().add(imageFilter);
-    	
+   
     	File tempo = fileChooser.showOpenDialog(new Stage());
-    	if(tempo!=null){
-    		fileSelected = Optional.of(tempo);
-    		imageSelected.setText(fileSelected.get().getName());
-    	}else
-    		fileSelected = Optional.empty();
+    	
+    	if(tempo!=null)
+    		jsonToGenerate.setFileSelected(Optional.of(tempo));
+    	
+    	if(jsonToGenerate.getFileSelected().isPresent())
+    		imageSelected.setText(jsonToGenerate.getFileSelected().get().getName());
+    }
+    
+    @FXML
+    private void validNewShop(ActionEvent event) {
+    	if(shopName.getText().isEmpty()){
+    		nameShopError.setVisible(true);
+    		return;
+    	}
+    	jsonToGenerate.setShopName(shopName.getText());
+    	nameShopError.setVisible(false);
+    	
+    	
     }
 
 }

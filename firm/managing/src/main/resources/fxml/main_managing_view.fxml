@@ -36,6 +36,11 @@
                                           <Insets left="78.0" />
                                        </HBox.margin>
                                     </TextField>
+                                    <Label fx:id="nameShopError" text="Nom manquant" textFill="RED">
+                                       <HBox.margin>
+                                          <Insets left="6.0" top="4.0" />
+                                       </HBox.margin>
+                                    </Label>
                                  </children>
                               </HBox>
                               <HBox>
@@ -147,7 +152,7 @@
                                     <Insets top="4.0" />
                                  </VBox.margin>
                               </HBox>
-                              <Button fx:id="validShop" mnemonicParsing="false" text="Valider">
+                              <Button fx:id="validShop" mnemonicParsing="false" onAction="#validNewShop" text="Valider">
                                  <VBox.margin>
                                     <Insets left="250.0" />
                                  </VBox.margin>

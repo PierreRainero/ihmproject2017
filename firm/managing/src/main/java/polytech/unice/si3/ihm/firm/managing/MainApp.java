@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import polytech.unice.si3.ihm.firm.managing.controller.MainViewController;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,6 +34,8 @@ public class MainApp extends Application {
         stage.setTitle("Enseigne : Gestionnaire");
         stage.setScene(scene);
         stage.setResizable(false);
+        ((MainViewController) loader.getController()).initContent();
+        
         stage.show();
     }
 }
