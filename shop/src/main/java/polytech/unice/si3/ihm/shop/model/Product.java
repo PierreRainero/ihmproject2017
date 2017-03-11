@@ -98,4 +98,31 @@ public class Product {
     public int getSales(){
         return this.sales;
     }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setImageURL(String imageURL){
+        this.imageURL = imageURL;
+    }
+
+    public void setPrice(double price){
+        this.price = price;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public void setProductTypes(List<String> productTypes){
+        this.productTypes.clear();
+        for(String entry : productTypes){
+            this.productTypes.add(entry);
+        }
+    }
+
+    public void setSales(int sales){
+        this.sales = sales;
+    }
 }

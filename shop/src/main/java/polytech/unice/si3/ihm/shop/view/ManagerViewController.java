@@ -3,7 +3,10 @@ package polytech.unice.si3.ihm.shop.view;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -11,6 +14,7 @@ import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import polytech.unice.si3.ihm.shop.JsonParser;
+import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
 
 import java.io.File;
@@ -125,18 +129,42 @@ public class ManagerViewController extends BasicController {
             VBox vBox = new VBox();
             vBox.setAlignment(Pos.CENTER);
             vBox.setSpacing(10);
-            for(int i = 0; i < shop.getProduct().size(); i++){
-                Button button = new Button(shop.getProduct().get(i).getName());
+            for(int i = 0; i < shop.getProducts().size(); i++){
+                final Product product = shop.getProducts().get(i);
+                Button button = new Button(product.getName());
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        //TODO : Ouvrir la page de modif de produit ici
+                        try {
+                            openModifProduct(product);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
                 vBox.getChildren().add(button);
             }
             productsScrollPane.setContent(vBox);
         }
+    }
+
+    private void openModifProduct(Product product) throws IOException {
+        Stage stage = new Stage();
+        String fxmlFile = "/fxml/product_modif_view.fxml";
+        FXMLLoader loader = new FXMLLoader();
+        Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
+        stage.setMinHeight(400);
+        stage.setMinWidth(500);
+
+        Scene scene = new Scene(rootNode, 500,600);
+        scene.getStylesheets().add("/styles/main.css");
+        stage.setTitle("Modification de " + product.getName());
+        stage.setScene(scene);
+
+        ProductModifViewController controller = loader.getController();
+        controller.setCurrentStage(stage);
+        controller.initialiseView(product);
+        stage.show();
     }
 
     private void saveAsFile(Stage stage) throws IOException {
@@ -163,7 +191,10 @@ public class ManagerViewController extends BasicController {
         content.put("legalNotice",shopMentions.getText());
         content.put("adress",shopAdresse.getText());
         content.put("phone",shopTelephone.getText());
+
+        //TODO : Mettre les produits du shop au lieu de ça
         content.put("itemsList", itemsList);
+
         fileWriter.write(content.toString());
         fileWriter.close();
     }
