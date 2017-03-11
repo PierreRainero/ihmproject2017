@@ -30,7 +30,7 @@ public class MainApp extends Application {
      * Start the view
      */
     public void start(Stage stage) throws Exception {
-        Log.info(this.getClass(), "Starting firm view");
+        Log.info(this.getClass(), "Starting firm customer view");
         Firm firm = ContentParser.getFirm();
 
         String fxmlFile = "/fxml/main_view.fxml";
