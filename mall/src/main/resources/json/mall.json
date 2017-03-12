@@ -51,6 +51,11 @@
     { "type": "place", "name": "StairsLight", "picture": "escalatorjaune", "posX": 245, "posY": 187, "width": 200, "height": 50 },
     { "type": "place", "name": "Elevator", "picture": "deuxascenseurs", "posX": 485, "posY": 177, "width": 89, "height": 60 },
     { "type": "place", "name": "ElevatorLight", "picture": "ascenseurjaune", "posX": 485, "posY": 177, "width": 89, "height": 60 },
+    { "type": "place", "name": "Wifi0", "picture": "wifi", "posX": 180, "posY": 223, "width": 60, "height": 55 },
+    { "type": "place", "name": "Whereami", "picture": "pointinfo", "posX": 413, "posY": 137, "width": 70, "height": 72 },
+    { "type": "place", "name": "EntranceNorth", "picture": "entreenord", "posX": 786, "posY": 40, "width": 72, "height": 95 },
+    { "type": "place", "name": "EntranceSouth", "picture": "entreesud", "posX": 499, "posY": 270, "width": 72, "height": 95 },
+    { "type": "place", "name": "EntranceWest", "picture": "entreeouest", "posX": 35, "posY": 177, "width": 122, "height": 61 }
   ],
 
   "1": [
@@ -96,7 +101,10 @@
     { "type": "place", "name": "Stairs", "picture": "escalator", "posX": 245, "posY": 187, "width": 200, "height": 50 },
     { "type": "place", "name": "StairsLight", "picture": "escalatorjaune", "posX": 245, "posY": 187, "width": 200, "height": 50 },
     { "type": "place", "name": "Elevator", "picture": "deuxascenseurs", "posX": 485, "posY": 177, "width": 89, "height": 60 },
-    { "type": "place", "name": "ElevatorLight", "picture": "ascenseurjaune", "posX": 485, "posY": 177, "width": 89, "height": 60 }
+    { "type": "place", "name": "ElevatorLight", "picture": "ascenseurjaune", "posX": 485, "posY": 177, "width": 89, "height": 60 },
+    { "type": "place", "name": "Wifi0", "picture": "wifi", "posX": 180, "posY": 223, "width": 60, "height": 55 },
+    { "type": "place", "name": "Wifi1", "picture": "wifi", "posX": 802, "posY": 212, "width": 60, "height": 55 },
+    { "type": "place", "name": "Whereami", "picture": "pointinfo", "posX": 413, "posY": 137, "width": 70, "height": 72 }
   ],
 
   "2": [
@@ -152,8 +160,34 @@
     { "type": "place", "name": "Stairs", "picture": "escalator", "posX": 245, "posY": 187, "width": 200, "height": 50 },
     { "type": "place", "name": "StairsLight", "picture": "escalatorjaune", "posX": 245, "posY": 187, "width": 200, "height": 50 },
     { "type": "place", "name": "Elevator", "picture": "deuxascenseurs", "posX": 485, "posY": 177, "width": 89, "height": 60 },
-    { "type": "place", "name": "ElevatorLight", "picture": "ascenseurjaune", "posX": 485, "posY": 177, "width": 89, "height": 60 }
+    { "type": "place", "name": "ElevatorLight", "picture": "ascenseurjaune", "posX": 485, "posY": 177, "width": 89, "height": 60 },
+    { "type": "place", "name": "Wifi1", "picture": "wifi", "posX": 802, "posY": 212, "width": 60, "height": 55 },
+    { "type": "place", "name": "Wifi2", "picture": "wifi", "posX": 396, "posY": 136, "width": 60, "height": 55 },
+    { "type": "place", "name": "Whereami", "picture": "pointinfo", "posX": 413, "posY": 137, "width": 70, "height": 72 }
   ],
 
-  "3": []
+  "3": [
+    { "type": "place", "name": "GroundFloor", "picture": "ground", "posX": 46, "posY": 19, "width": 880, "height": 368 },
+    { "type": "place", "name": "RelaxingSpaceFloor", "picture": "detenteetage", "posX": 580, "posY": 181, "width": 212, "height": 57 },
+    { "type": "place", "name": "Terrace", "picture": "terrasse", "posX": 93, "posY": 18, "width": 92, "height": 368 },
+
+    { "type": "store", "name": "Flunch", "web": "flunch.fr", "category": "restoration",
+      "picture": "flunch", "picX": 314, "picY": 39, "picWid": 157, "picHei": 74,
+      "color": "0xa44801", "recX": 180, "recY": 18, "recWid": 448, "recHei": 116
+    },
+    { "type": "store", "name": "Gaumont", "web": "cinemasgaumontpathe.com", "category": "culture",
+      "picture": "gaumont", "picX": 692, "picY": 100, "picWid": 250, "picHei": 200,
+      "color": "0xc081ff", "recX": 628, "recY": 18, "recWid": 384, "recHei": 368
+    },
+    { "type": "store", "name": "Galeries Lafayette", "web": "galerieslafayette.com", "category": "fashion",
+      "picture": "lafayette", "picX": 289, "picY": 296, "picWid": 200, "picHei": 70,
+      "color": "0x4bd0ff", "recX": 179, "recY": 278, "recWid": 450, "recHei": 108
+    },
+    { "type": "place", "name": "Stairs", "picture": "escalator", "posX": 245, "posY": 187, "width": 200, "height": 50 },
+    { "type": "place", "name": "StairsLight", "picture": "escalatorjaune", "posX": 245, "posY": 187, "width": 200, "height": 50 },
+    { "type": "place", "name": "Elevator", "picture": "deuxascenseurs", "posX": 485, "posY": 177, "width": 89, "height": 60 },
+    { "type": "place", "name": "ElevatorLight", "picture": "ascenseurjaune", "posX": 485, "posY": 177, "width": 89, "height": 60 },
+    { "type": "place", "name": "Wifi3", "picture": "wifi", "posX": 168, "posY": 175, "width": 60, "height": 55 },
+    { "type": "place", "name": "Whereami", "picture": "pointinfo", "posX": 413, "posY": 137, "width": 70, "height": 72 }
+  ]
 }

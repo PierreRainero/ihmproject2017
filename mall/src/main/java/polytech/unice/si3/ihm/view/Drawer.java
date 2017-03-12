@@ -36,8 +36,9 @@ public class Drawer {
     public void displayLevel(Level level) {
         List<Place> places = level.getPlaces();
         for (Place p : places) {
-            if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE)
-                    || p.equals(Place.STAIRS) || p.equals(Place.TOILET) || p.equals(Place.RELAXINGSPACEFLOOR)) {
+            if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE) || p.equals(Place.TERRACE)
+                    || p.equals(Place.STAIRS) || p.equals(Place.TOILET) || p.equals(Place.RELAXINGSPACEFLOOR) || p.equals(Place.GROUNDFLOOR)
+                    || p.equals(Place.ENTRANCENORTH) || p.equals(Place.ENTRANCESOUTH) || p.equals(Place.ENTRANCEWEST)) {
                 canvas.getChildren().add(p.getPicture());
             }
         }
@@ -58,8 +59,9 @@ public class Drawer {
     public void displayCategory(Level level, Category category) {
         List<Place> places = level.getPlaces();
         for (Place p : places) {
-            if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE)
-                    || p.equals(Place.STAIRS) || p.equals(Place.TOILET) || p.equals(Place.RELAXINGSPACEFLOOR)) {
+            if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE) || p.equals(Place.TERRACE)
+                    || p.equals(Place.STAIRS) || p.equals(Place.TOILET) || p.equals(Place.RELAXINGSPACEFLOOR) || p.equals(Place.GROUNDFLOOR)
+                    || p.equals(Place.ENTRANCENORTH) || p.equals(Place.ENTRANCESOUTH) || p.equals(Place.ENTRANCEWEST)) {
                 canvas.getChildren().add(p.getPicture());
             }
         }
@@ -87,8 +89,9 @@ public class Drawer {
     public void highlightStore(Level level, String storeName) {
         List<Place> places = level.getPlaces();
         for (Place p : places) {
-            if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE)
-                    || p.equals(Place.STAIRS) || p.equals(Place.TOILET) || p.equals(Place.RELAXINGSPACEFLOOR)) {
+            if (p.equals(Place.GROUND) || p.equals(Place.ELEVATOR) || p.equals(Place.RELAXINGSPACE) || p.equals(Place.TERRACE)
+                    || p.equals(Place.STAIRS) || p.equals(Place.TOILET) || p.equals(Place.RELAXINGSPACEFLOOR) || p.equals(Place.GROUNDFLOOR)
+                    || p.equals(Place.ENTRANCENORTH) || p.equals(Place.ENTRANCESOUTH) || p.equals(Place.ENTRANCEWEST)) {
                 canvas.getChildren().add(p.getPicture());
             }
         }
@@ -114,6 +117,14 @@ public class Drawer {
      */
     public void displayPlace(Level level, Place place) {
         List<Place> places = level.getPlaces();
+        if (place.equals(Place.WIFI)) {
+            for (Place p : places) {
+                if (p.equals(Place.WIFI0) || p.equals(Place.WIFI1) || p.equals(Place.WIFI2) || p.equals(Place.WIFI3)) {
+                    canvas.getChildren().add(p.getPicture());
+                }
+            }
+            return;
+        }
         for (Place p : places) {
             if (p.equals(place)) {
                 canvas.getChildren().add(p.getPicture());
