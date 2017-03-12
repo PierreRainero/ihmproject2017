@@ -168,7 +168,6 @@ public class MainViewController extends BasicController {
     private VBox displayAllShopProducts(Shop shop){
         VBox vBox = new VBox();
         vBox.setSpacing(10);
-<<<<<<< HEAD
 
         List<Product> products = new ArrayList<>();
 
@@ -186,10 +185,6 @@ public class MainViewController extends BasicController {
                 break;
         }
 
-
-=======
-        List<Product> products = shop.getProducts();
->>>>>>> 8dd856d265bcf2fa13c9378f0e8e01b36026d68a
         for(int i=0;i<products.size();i++){
             HBox hBox = new HBox();
             hBox.setSpacing(5);

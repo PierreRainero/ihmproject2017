@@ -115,9 +115,13 @@ public class Product {
         this.description = description;
     }
 
-    public void setProductTypes(List<String> productTypes){
+    public void setProductTypes(List<SuperType> productTypes){
         this.productTypes.clear();
-        for(String entry : productTypes){
+        for(SuperType entry : productTypes){
+            SuperType superType = new SuperType(entry.name);
+            for(String string : entry.getTypes()){
+                superType.addType(string);
+            }
             this.productTypes.add(entry);
         }
     }
