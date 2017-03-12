@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
  * @author Guillaume Casagrande
  */
 public enum Place {
-    WIFI, TOILET, ELEVATOR, STAIRS, WHEREAMI, GROUND, RELAXINGSPACE, ELEVATORLIGHT, STAIRSLIGHT;
+    WIFI, TOILET, ELEVATOR, STAIRS, WHEREAMI, GROUND, RELAXINGSPACE, RELAXINGSPACEFLOOR, ELEVATORLIGHT, STAIRSLIGHT, TOILETLIGHT;
 
     /**
      * Representation of the place.

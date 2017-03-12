@@ -61,6 +61,7 @@ public class Store {
      */
     void setRectangle(Color color, int x, int y, int width, int height) {
         rec = new Rectangle(x, y, width, height);
+        rec.setStroke(Color.BLACK);
         this.color = color;
     }
 

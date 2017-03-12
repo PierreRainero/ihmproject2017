@@ -135,7 +135,7 @@ public class MainViewController extends MenuController {
 
     @FXML
     void displayToilet() {
-        display(Place.TOILET);
+        display(Place.TOILETLIGHT);
     }
 
     @FXML
@@ -252,7 +252,8 @@ public class MainViewController extends MenuController {
     /**
      * Empties the canvas: removes all the pictures
      */
-    private void reset() {
+    @FXML
+    void reset() {
         canvas.getChildren().clear();
     }
 }
