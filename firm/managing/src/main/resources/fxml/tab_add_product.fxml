@@ -39,7 +39,7 @@
             </HBox>
             <HBox prefHeight="25.0" prefWidth="500.0">
                <children>
-                  <Label text="Référence du produit :">
+                  <Label text="Référence du produit*">
                      <HBox.margin>
                         <Insets left="45.0" top="9.0" />
                      </HBox.margin>
@@ -77,7 +77,7 @@
                         <Insets left="45.0" top="9.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="productPriceTextField">
+                  <TextField fx:id="productPriceTextField" onKeyReleased="#calculatePrice">
                      <HBox.margin>
                         <Insets left="114.0" top="5.0" />
                      </HBox.margin>
@@ -106,7 +106,7 @@
             </HBox>
             <HBox prefHeight="32.0" prefWidth="500.0">
                <children>
-                  <Label text="Promouvoir*">
+                  <Label text="Promouvoir">
                      <HBox.margin>
                         <Insets left="45.0" top="22.0" />
                      </HBox.margin>
@@ -125,7 +125,7 @@
                         </RadioButton>
                      </children>
                      <HBox.margin>
-                        <Insets left="72.0" />
+                        <Insets left="78.0" />
                      </HBox.margin>
                   </VBox>
                   <Label fx:id="productPromoteChoiceMissing" text="Séléction manquante" textFill="RED">
@@ -142,7 +142,7 @@
                         <Insets left="45.0" top="9.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="productReduction" onAction="#calculatePrice" prefHeight="25.0" prefWidth="46.0">
+                  <TextField fx:id="productReduction" onKeyReleased="#calculatePrice" prefHeight="25.0" prefWidth="46.0">
                      <HBox.margin>
                         <Insets left="85.0" top="5.0" />
                      </HBox.margin>
@@ -169,7 +169,7 @@
                         <Insets left="50.0" top="80.0" />
                      </HBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" text="Valider">
+                  <Button mnemonicParsing="false" onMouseClicked="#validateFormular" text="Valider">
                      <HBox.margin>
                         <Insets left="245.0" top="80.0" />
                      </HBox.margin>
