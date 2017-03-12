@@ -11,7 +11,33 @@ public class Product {
     private double price;
     private boolean promoted = false;
     private boolean flagship = false;
-    private String image;
+    private String image ="";
+
+
+
+    public Product(){
+        this(null,null,0.0);
+    }
+
+    /**
+     * Constructor for mandatory parameter of a product
+     * @param name the name
+     * @param reference the reference
+     * @param price the price
+     */
+    public Product(String name, String reference, double price) {
+        this.name = name;
+        this.reference = reference;
+        this.price = price;
+    }
+
+
+    public Product(String name, String reference, String description, double price) {
+        this.name = name;
+        this.reference = reference;
+        this.description = description;
+        this.price = price;
+    }
 
     /**
      * Constructor for a product

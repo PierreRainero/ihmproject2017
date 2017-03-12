@@ -7,7 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.managing.content.ReductionPercentage;
+import polytech.unice.si3.ihm.firm.managing.json.JsonGeneratorProduct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -184,8 +186,22 @@ public class AddProductController {
     void validateFormular(MouseEvent event) {
 
         if (allValidated()){
-            System.out.println("YESS");
+            Product product = new Product();
+            if (productReduction.getText().trim().isEmpty() || productReduction.getText().trim().equals("")){
+                product = new Product(productNameTextField.getText(),
+                        productReferenceTextField.getText(),
+                        reduction.calculatePrice(Double.parseDouble(productPriceTextField.getText()),0));
+            }else {
+                product = new Product(productNameTextField.getText(),
+                        productReferenceTextField.getText(),
+                        reduction.calculatePrice(Double.parseDouble(productPriceTextField.getText()), Double.parseDouble(productReduction.getText())));
+            }
+            JsonGeneratorProduct gen = new JsonGeneratorProduct(product);
         }
+        if (allValidated() && (!productDescriptionTextArea.getText().trim().isEmpty() || !productDescriptionTextArea.getText().trim().equals(""))){
+
+        }
+
 
 
     }

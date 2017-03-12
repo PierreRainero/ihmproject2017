@@ -19,7 +19,7 @@ public class ReductionPercentage {
      * Method that calculate the price depending on the percentage of the reduction
      * @return the new price
      */
-    public int calculatePrice(int price, int percentage){
+    public double calculatePrice(double price, double percentage){
         return price - (price*percentage)/100;
     }
 
