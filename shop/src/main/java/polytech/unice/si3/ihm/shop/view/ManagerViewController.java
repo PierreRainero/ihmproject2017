@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import polytech.unice.si3.ihm.shop.JsonParser;
 import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
+import polytech.unice.si3.ihm.shop.model.SuperType;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,7 +26,6 @@ public class ManagerViewController extends BasicController {
 
     private Shop shop;
     private File jsonFile;
-    private JSONArray itemsList;
 
     @FXML
     private MenuItem openMenuItem;
@@ -115,7 +115,6 @@ public class ManagerViewController extends BasicController {
             JsonParser jsonParser = new JsonParser(jsonFile);
             shop = jsonParser.parseJson();
             jsonParser.createObjects(shop);
-            itemsList = jsonParser.getItemsList();
         }
         if(shop != null){
             shopName.setText(shop.getName());
@@ -191,11 +190,27 @@ public class ManagerViewController extends BasicController {
         content.put("legalNotice",shopMentions.getText());
         content.put("adress",shopAdresse.getText());
         content.put("phone",shopTelephone.getText());
-
-        //TODO : Mettre les produits du shop au lieu de ça
-        content.put("itemsList", itemsList);
+        content.put("itemsList", getItemList());
 
         fileWriter.write(content.toString());
         fileWriter.close();
+    }
+
+    private JSONArray getItemList(){
+        JSONArray array = new JSONArray();
+        for(int i = 0; i < shop.getProducts().size(); i++){
+            JSONObject object = new JSONObject();
+            object.put("name", shop.getProducts().get(i).getName());
+            object.put("imageURL", shop.getProducts().get(i).getImageURL());
+            object.put("price", shop.getProducts().get(i).getPrice());
+            object.put("description", shop.getProducts().get(i).getDescription());
+            JSONObject types = new JSONObject();
+            for(SuperType superType : shop.getProducts().get(i).getProductType())
+                types.put(superType.getName(), superType.getTypes());
+            object.put("types", types);
+            object.put("sales", shop.getProducts().get(i).getSales());
+            array.put(object);
+        }
+        return array;
     }
 }
