@@ -9,8 +9,8 @@ public class Product {
     private String reference;
     private String description;
     private double price;
-    private boolean promoted;
-    private boolean flagship;
+    private boolean promoted = false;
+    private boolean flagship = false;
     private String image;
 
     /**
@@ -26,8 +26,6 @@ public class Product {
         this.reference = reference;
         this.description = description;
         this.price = price;
-        promoted = false;
-        flagship = false;
     }
 
 

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.managing.controller.AddProductController">
+   <children>
+      <VBox prefHeight="542.0" prefWidth="500.0">
+         <children>
+            <HBox prefHeight="67.0" prefWidth="500.0">
+               <children>
+                  <Label text="Nom*">
+                     <HBox.margin>
+                        <Insets left="45.0" top="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="productNameTextField">
+                     <HBox.margin>
+                        <Insets left="106.0" top="47.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label fx:id="productNameMissing" text="Nom manquant" textFill="RED">
+                     <HBox.margin>
+                        <Insets left="35.0" top="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="500.0">
+               <children>
+                  <Label text="Référence du produit :">
+                     <HBox.margin>
+                        <Insets left="45.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="productReferenceTextField">
+                     <HBox.margin>
+                        <Insets left="20.0" top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label fx:id="productReferenceMissing" text="Référence manquante" textFill="RED">
+                     <HBox.margin>
+                        <Insets left="35.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Description">
+                     <HBox.margin>
+                        <Insets left="45.0" top="25.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextArea fx:id="productDescriptionTextArea" prefHeight="61.0" prefWidth="256.0">
+                     <HBox.margin>
+                        <Insets left="78.0" top="5.0" />
+                     </HBox.margin>
+                  </TextArea>
+               </children>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="500.0">
+               <children>
+                  <Label text="Prix*">
+                     <HBox.margin>
+                        <Insets left="45.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="productPriceTextField">
+                     <HBox.margin>
+                        <Insets left="114.0" top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label fx:id="productPriceMissing" text="Prix manquant" textFill="RED">
+                     <HBox.margin>
+                        <Insets left="35.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="20.0" prefWidth="500.0">
+               <children>
+                  <Label text="Image">
+                     <HBox.margin>
+                        <Insets left="45.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="productImageSelectionButton" mnemonicParsing="false" onMouseClicked="#searchComputer" text="Parcourir...">
+                     <HBox.margin>
+                        <Insets left="106.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label fx:id="productImageSelected" />
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="500.0">
+               <children>
+                  <Label text="Promouvoir*">
+                     <HBox.margin>
+                        <Insets left="45.0" top="22.0" />
+                     </HBox.margin>
+                  </Label>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="productPromoteYesButton" mnemonicParsing="false" text="Oui">
+                           <VBox.margin>
+                              <Insets top="9.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="productPromoteNoButton" mnemonicParsing="false" text="Non">
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="72.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Label fx:id="productPromoteChoiceMissing" text="Séléction manquante" textFill="RED">
+                     <HBox.margin>
+                        <Insets left="140.0" top="22.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="22.0" prefWidth="542.0">
+               <children>
+                  <Label text="Reduction">
+                     <HBox.margin>
+                        <Insets left="45.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="productReduction" onAction="#calculatePrice" prefHeight="25.0" prefWidth="46.0">
+                     <HBox.margin>
+                        <Insets left="85.0" top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text="\%">
+                     <HBox.margin>
+                        <Insets top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="newPriceAfterReduction" text="Nouveau prix :">
+                     <HBox.margin>
+                        <Insets left="35.0" top="9.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="80.0" prefWidth="500.0">
+               <children>
+                  <Label text="*  indique un champ requis">
+                     <font>
+                        <Font name="System Italic" size="10.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="80.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button mnemonicParsing="false" text="Valider">
+                     <HBox.margin>
+                        <Insets left="245.0" top="80.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</Pane>
