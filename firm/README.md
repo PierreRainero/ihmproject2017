@@ -5,6 +5,11 @@
  - [Simon SERRANO](simon.serrano@etu.unice.fr)
 
 ## Historique des features
+### Week 10
+ - [x] Mise en place du CSS
+ - [ ] Mise en place des données : images
+ - [ ] Vue gestionnaire
+
 ### Week 09
  - [ ] Mise en place du CSS
  - [ ] Mise en place des données : images
@@ -14,6 +19,8 @@
  - [x] Mise en place des annonces
  - [x] Vue : Un produit sélectionné
  - [x] Carousel
+ - [x] Tri des magasins
+ - [x] Recherche de magasins
 
 ### Week 08
  - [ ] Mise en place du CSS

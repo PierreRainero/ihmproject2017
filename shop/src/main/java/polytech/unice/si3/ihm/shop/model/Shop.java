@@ -106,7 +106,7 @@ public class Shop {
      * Retourne la liste contenant les produits
      * @return List contenant les différents produits contenus dans le magasin
      */
-    public List<Product> getProduct(){
+    public List<Product> getProducts(){
         return this.products;
     }
 

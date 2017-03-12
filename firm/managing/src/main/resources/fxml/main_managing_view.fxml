@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.managing.controller.MainViewController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="500.0">
+         <children>
+            <ImageView fx:id="banner" fitHeight="116.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" />
+            <TabPane prefHeight="611.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Ajouter un magasin">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="500.0">
+                           <children>
+                              <fx:include source="tab_add_store.fxml" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Ajouter un produit">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
