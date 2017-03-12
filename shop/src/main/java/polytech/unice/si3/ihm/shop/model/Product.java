@@ -12,7 +12,7 @@ public class Product {
     private String description;
     private double price;
     private Optional<Promotion> promotion;
-    private List<String> productTypes;
+    private List<SuperType> productTypes;
     private int sales;
 
     /**
@@ -21,7 +21,7 @@ public class Product {
      * @param imageURL url de l'image correspondant au produit
      * @param price prix du produit
      */
-    public Product(String name, String imageURL, double price, String description, List<String> productType, int sales){
+    public Product(String name, String imageURL, double price, String description, List<SuperType> productType, int sales){
         this.name = name;
         this.imageURL = imageURL;
         this.price = price;
@@ -79,7 +79,7 @@ public class Product {
      * Retourne une List contenant le(s) type(s) du produit
      * @return type(s) du produit
      */
-    public List<String> getProductType(){
+    public List<SuperType> getProductType(){
         return this.productTypes;
     }
 

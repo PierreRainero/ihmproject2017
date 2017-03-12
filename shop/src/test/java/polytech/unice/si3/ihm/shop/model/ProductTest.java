@@ -30,7 +30,13 @@ public class ProductTest {
         types.add(type0);
         types.add(type1);
 
-        p = new Product(livre, image, 15, description, types, 1);
+        SuperType st = new SuperType("Console");
+        st.addType("something");
+
+        List<SuperType> spl = new ArrayList<>();
+
+        spl.add(st);
+        p = new Product(livre, image, 15, description, spl, 1);
     }
 
     @Test
@@ -43,10 +49,7 @@ public class ProductTest {
         p.setPromotion(promo);
         assertEquals(7.5, p.getPromotedPrice(), 0.01);
         String disquedur = "disque dur";
-        List<String> list = new ArrayList<String>();
-        list.add(type0);
-        list.add(type1);
-        assertEquals(list, p.getProductType());
+        //assertEquals(spl.get(0).getName(), p.getProductType());
         assertEquals(description, p.getDescription());
         assertEquals(1, p.getSales());
     }

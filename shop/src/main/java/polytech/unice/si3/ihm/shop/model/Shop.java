@@ -1,8 +1,6 @@
 package polytech.unice.si3.ihm.shop.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Shop {
 
@@ -14,7 +12,7 @@ public class Shop {
     private String legalNotice;
     private String adress;
     private String phone;
-    private List<String> types;
+    private List<SuperType> types;
     private List<Product> products;
 
     /**
@@ -26,7 +24,7 @@ public class Shop {
         this.logo = logo;
         this.logoMin = logoMin;
         this.logoText = logoText;
-        this.products = new ArrayList<Product>();
+        this.products = new ArrayList<>();
         this.types = new ArrayList<>();
     }
 
@@ -38,12 +36,57 @@ public class Shop {
     public boolean addProduct(Product product){
         if(!this.products.contains(product)){
             this.products.add(product);
-            for(String type : product.getProductType())
-                if(!types.contains(type))
-                    this.types.add(type);
+            checkIfProductTypeKnown(product.getProductType());
             return true;
         }
         return false;
+    }
+
+    /**
+     * Ajoute les types et SuperType qui n'ont pas encore été ajoutés.
+     * @param productType List de types présents dans le produit
+     */
+    public void checkIfProductTypeKnown(List<SuperType> productType){
+        boolean alreadyInList;
+        for(SuperType type : productType){
+            int size = types.size();
+            alreadyInList = false;
+
+            for(int j=0;j<size;j++){
+                if(type.getName().equals(types.get(j).getName())){
+                    alreadyInList = true;
+                }
+            }
+            if(!alreadyInList){
+                SuperType st = new SuperType(type.name);
+                for(String str : type.getTypes()){
+                    st.addType(new String(str));
+                }
+                this.types.add(st);
+            }else{
+                int index = getStringIndex(type.getName());
+                for(String subTypes : type.getTypes()){
+                    if(!types.get(index).getTypes().contains(subTypes)){
+                        types.get(index).addType(subTypes);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Retourne la position d'un type, en fonction d'une string.
+     * @param superTypeName nom du type recherché
+     * @return
+     */
+    private int getStringIndex(String superTypeName){
+        int i=0;
+        for(SuperType superType : types){
+            if(superType.getName().equals(superTypeName))
+                return i;
+            i++;
+        }
+        return -1;
     }
 
     /**
@@ -65,6 +108,54 @@ public class Shop {
      */
     public List<Product> getProduct(){
         return this.products;
+    }
+
+    /**
+     * Retourne la liste contenant les produits, triée par ordre croissant
+     * @return List contenant les différents produits contenus dans le magasin triés par ordre croissant
+     */
+    public List<Product> getProducstByCroissantPrice(){
+        this.products.sort((p1, p2) -> {
+            if(p1.getPrice()>p2.getPrice())
+                return 1;
+            else if(p1.getPrice()<p2.getPrice())
+                return -1;
+            else
+                return 0;
+        });
+        return products;
+    }
+
+    /**
+     * Retourne la liste contenant les produits, triée par ordre décroissant
+     * @return List contenant les différents produits contenus dans le magasin trié par ordre croissant
+     */
+    public List<Product> getProducstByDeCroissantPrice(){
+        this.products.sort((p1, p2) -> {
+            if(p1.getPrice()<p2.getPrice())
+                return 1;
+            else if(p1.getPrice()>p2.getPrice())
+                return -1;
+            else
+                return 0;
+        });
+        return products;
+    }
+
+    /**
+     * Retourne la liste contenant les produits, triée par nombre de ventes
+     * @return List contenant les différents produits contenus dans le magasin trié par nombre de ventes
+     */
+    public List<Product> getProductsByPopularity(){
+        this.products.sort((p1, p2) -> {
+            if(p1.getSales()>p2.getSales())
+                return 1;
+            else if(p1.getPrice()<p2.getPrice())
+                return -1;
+            else
+                return 0;
+        });
+        return products;
     }
 
     /**
@@ -206,7 +297,7 @@ public class Shop {
         return this.phone;
     }
 
-    public List<String> getTypes(){
+    public List<SuperType> getTypes(){
         return this.types;
     }
 }

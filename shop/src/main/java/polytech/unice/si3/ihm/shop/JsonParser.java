@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
+import polytech.unice.si3.ihm.shop.model.SuperType;
 import polytech.unice.si3.ihm.shop.view.MainViewController;
 import polytech.unice.si3.ihm.shop.view.ProductViewController;
 
@@ -116,15 +117,26 @@ public class JsonParser {
     public void createObjects(Shop shop) {
         JSONArray jsonArray = input.getJSONArray("itemsList");
         JSONObject jsonObject;
+
+        SuperType superType;
+
+        List<SuperType> itemTypeList;
+
         for(int i=0;i<jsonArray.length();i++){
             jsonObject = jsonArray.getJSONObject(i);
-            JSONArray productTypes = jsonObject.getJSONArray("types");
-            List<String> types = new ArrayList<>();
+            JSONObject productTypes = jsonObject.getJSONObject("types");
+            itemTypeList = new ArrayList<>();
 
-            for(int j=0;j<productTypes.length();j++){
-                types.add(productTypes.get(j).toString());
+            for(int j=0;j<productTypes.names().length();j++){
+                String currentProductType = productTypes.names().get(j).toString();
+                superType = new SuperType(currentProductType);
+                for(int k=0;k<productTypes.getJSONArray(superType.getName()).length();k++){
+                    if(!superType.getTypes().contains(productTypes.getJSONArray(superType.getName()).get(k).toString()))
+                        superType.addType(productTypes.getJSONArray(superType.getName()).get(k).toString());
+                }
+                itemTypeList.add(superType);
             }
-            shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price"), jsonObject.getString("description"), types, jsonObject.getInt("sales")));
+            shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price"), jsonObject.getString("description"), itemTypeList, jsonObject.getInt("sales")));
         }
     }
 

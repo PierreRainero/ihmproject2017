@@ -1,8 +1,13 @@
 package polytech.unice.si3.ihm.shop.view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -10,6 +15,7 @@ import javafx.scene.text.Font;
 import polytech.unice.si3.ihm.shop.MainApp;
 import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
+import polytech.unice.si3.ihm.shop.model.SuperType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +52,10 @@ public class MainViewController extends BasicController {
     private BorderPane shopContents;
     @FXML
     private VBox filters;
+    @FXML
+    private ComboBox filterChoice;
+    @FXML
+    private Label sortLabel;
 
     /**
      * Initialise la vue de base du MainViewController
@@ -55,16 +65,16 @@ public class MainViewController extends BasicController {
         this.logo.setImage(new Image(shop.getLogoMin()));
         this.nom.setImage(new Image(shop.getLogoText()));
 
+        filterChoice.setVisible(false);
+        sortLabel.setVisible(false);
+
         this.searchBar.setOnKeyReleased(event -> {
             if(shopContents.getCenter().toString().contains("carouselContainer")){
                 switchToResearch(shop);
             }
-
             createList(shop);
-
             event.consume();
         });
-
     }
 
     /**
@@ -79,6 +89,19 @@ public class MainViewController extends BasicController {
         }
 
         this.filters = createFilters(shop);
+
+        filterChoice.setVisible(true);
+        sortLabel.setVisible(true);
+        sortLabel.setText("Trier par : ");
+        ObservableList<String> options =
+                FXCollections.observableArrayList(
+                        "Prix : par ordre croissant","Prix : par ordre décroissant","Popularité"
+                );
+        filterChoice.setValue("Popularité");
+        filterChoice.setItems(options);
+        filterChoice.setOnAction(event -> {
+            createList(shop);
+        });
     }
 
     /**
@@ -91,16 +114,32 @@ public class MainViewController extends BasicController {
         VBox vBox = new VBox();
         vBox.setSpacing(5);
         vBox.setPrefWidth(200);
-        Label label = new Label("Affiner par : ");
+        Label label = new Label("Choisissez un type de produit : ");
         vBox.getChildren().add(label);
-        for(int i=0;i<shop.getTypes().size();i++){
+
+        for(SuperType superType : shop.getTypes()){
             CheckBox checkBox = new CheckBox();
-            checkBox.setText(shop.getTypes().get(i));
+            checkBox.setText(superType.getName());
+            checkBox.setFont(new Font(15.0));
             vBox.getChildren().add(checkBox);
+            checkBox.setTranslateX(5);
             checkBox.setOnMouseClicked(event -> {
                 createList(shop);
             });
+
+            for(String str : superType.getTypes()){
+                CheckBox checkBox1 = new CheckBox();
+                checkBox1.setFont(new Font(10.0));
+                checkBox1.setText(str);
+                checkBox1.setTranslateX(25);
+                vBox.getChildren().add(checkBox1);
+                checkBox1.setOnMouseClicked(event -> {
+                    createList(shop);
+                });
+            }
         }
+
+
         return vBox;
     }
 
@@ -113,6 +152,7 @@ public class MainViewController extends BasicController {
         VBox vBox = displayAllShopProducts(shop);
         vBox = deleteNonSearchCorrespondingElements(vBox, shop, searchBar.getCharacters().toString());
         vBox = deleteNonFilteredCorrespondingElements(vBox, shop, filters);
+        /*vBox = *///applySort(vBox, shop);
         ScrollPane sc = new ScrollPane();
         sc.setContent(vBox);
 
@@ -128,7 +168,24 @@ public class MainViewController extends BasicController {
     private VBox displayAllShopProducts(Shop shop){
         VBox vBox = new VBox();
         vBox.setSpacing(10);
-        List<Product> products = shop.getProduct();
+
+        List<Product> products = new ArrayList<>();
+
+        switch (filterChoice.getValue().toString()){
+            case "Popularité":
+                products = shop.getProductsByPopularity();
+                break;
+            case "Prix : par ordre croissant":
+                products = shop.getProducstByCroissantPrice();
+                break;
+            case "Prix : par ordre décroissant":
+                products = shop.getProducstByDeCroissantPrice();
+                break;
+            default:
+                break;
+        }
+
+
         for(int i=0;i<products.size();i++){
             HBox hBox = new HBox();
             hBox.setSpacing(5);
@@ -209,38 +266,63 @@ public class MainViewController extends BasicController {
      * @return
      */
     private VBox deleteNonFilteredCorrespondingElements(VBox gamesDisplayed, Shop shop, VBox filters){
-
-        List<Integer> toRemove = new ArrayList<>();
-        List<Integer> toKeep = new ArrayList<>();
-
         for(int i=1;i<filters.getChildren().size();i++){
             CheckBox checkBox = (CheckBox) filters.getChildren().get(i);
-            if(checkBox.selectedProperty().get()){
-                for(int j=0; j<gamesDisplayed.getChildren().size();j++){
-                    HBox hBox = (HBox) gamesDisplayed.getChildren().get(j);
-                    for(int k=0;k<hBox.getChildren().size();k++){
-                        if(hBox.getChildren().get(k).getClass().equals(new VBox().getClass())){
-                            VBox vBox = (VBox) hBox.getChildren().get(k);
-                            Label name = (Label) vBox.getChildren().get(0);
-                            Product product = shop.getProduct(name.getText());
-                            if(product.getProductType().contains(checkBox.getText())){
-                                toKeep.add(j);
-                            }else
-                                toRemove.add(j);
-                        }
-                    }
-                }
-
+            if(checkBox.isSelected()){
+                removeElements(gamesDisplayed, checkBox.getText(), shop);
             }
         }
-        toRemove.removeAll(toKeep);
+        return gamesDisplayed;
+    }
+
+    /**
+     * Retire les produits ne correspondant pas
+     * @param gamesDisplayed vertical box contenant les différents restants à afficher
+     * @param checkBoxName nom de la checkbox
+     * @param shop magasin que l'on gère
+     */
+    private void removeElements(VBox gamesDisplayed, String checkBoxName, Shop shop){
+        List<Integer> toRemove = new ArrayList<>();
+
+        for(int j=0; j<gamesDisplayed.getChildren().size();j++){
+            HBox hBox = (HBox) gamesDisplayed.getChildren().get(j);
+            for(int k=0;k<hBox.getChildren().size();k++){
+                if(hBox.getChildren().get(k).getClass().equals(new VBox().getClass())){
+                    VBox vBox = (VBox) hBox.getChildren().get(k);
+                    Label name = (Label) vBox.getChildren().get(0);
+                    Product product = shop.getProduct(name.getText());
+                    int index = searchOccurence(product.getProductType(), checkBoxName);
+                    if(index==-1){
+                        toRemove.add(j);
+                    }
+                }
+            }
+        }
         for(int i=gamesDisplayed.getChildren().size();i>=0;i--){
             if(toRemove.contains(i))
                 gamesDisplayed.getChildren().remove(i);
         }
-
-        return gamesDisplayed;
     }
+
+    /**
+     * Recherche si un produit précis est contenu dans les types et sous types de l'objet
+     * @param productType List contenant les types de l'objet
+     * @param checkBoxText nom checkbox
+     * @return
+     */
+    private int searchOccurence(List<SuperType> productType, String checkBoxText){
+        int i=0;
+        for(SuperType st : productType){
+            for(String str : st.getTypes()){
+                if(str.equals(checkBoxText) || st.getName().equals(checkBoxText))
+                    return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+
+
 
     /**
      * Permets l'affichage des trois meilleurs produits (ceux le plus vendu dans le magasin)
