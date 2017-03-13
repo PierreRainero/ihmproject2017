@@ -88,7 +88,7 @@ public class MainViewController extends BasicController {
 
         this.about.setOnAction(event -> {
             try {
-                openTextView("Qui sommes nous", shop.getAbout());
+                openTextView("Qui sommes nous", shop.getAbout(), true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -96,7 +96,7 @@ public class MainViewController extends BasicController {
 
         this.legalNotice.setOnAction(event -> {
             try {
-                openTextView("Mentions légales", shop.getLegalNotice());
+                openTextView("Mentions légales", shop.getLegalNotice(), false);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -104,7 +104,7 @@ public class MainViewController extends BasicController {
 
         this.adress.setOnAction(event -> {
             try {
-                openTextView("Où nous trouver", shop.getAdress());
+                openTextView("Où nous trouver", shop.getAdress(), true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -119,19 +119,19 @@ public class MainViewController extends BasicController {
         });
     }
 
-    private void openTextView(String title, String content) throws IOException {
+    private void openTextView(String title, String content, boolean centerText) throws IOException {
         Stage stage = new Stage();
         String fxmlFile = "/fxml/text_view.fxml";
         FXMLLoader loader = new FXMLLoader();
         Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
-        Scene scene = new Scene(rootNode, 500,100);
+        Scene scene = new Scene(rootNode, 500,400);
         scene.getStylesheets().add("/styles/main.css");
         stage.setScene(scene);
 
         TextViewController controller = loader.getController();
         controller.setCurrentStage(stage);
-        controller.initialiseView(title, content);
+        controller.initialiseView(title, content, centerText);
         stage.show();
     }
 
