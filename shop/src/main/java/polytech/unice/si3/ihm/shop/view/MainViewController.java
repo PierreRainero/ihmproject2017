@@ -2,8 +2,13 @@ package polytech.unice.si3.ihm.shop.view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -12,11 +17,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import polytech.unice.si3.ihm.shop.MainApp;
 import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
 import polytech.unice.si3.ihm.shop.model.SuperType;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +63,12 @@ public class MainViewController extends BasicController {
     private ComboBox filterChoice;
     @FXML
     private Label sortLabel;
+    @FXML
+    private Button about;
+    @FXML
+    private Button legalNotice;
+    @FXML
+    private Button adress;
 
     /**
      * Initialise la vue de base du MainViewController
@@ -75,6 +88,55 @@ public class MainViewController extends BasicController {
             createList(shop);
             event.consume();
         });
+
+        this.about.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    openTextView("Qui sommes nous", shop.getAbout());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        this.legalNotice.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    openTextView("Mentions légales", shop.getLegalNotice());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        this.adress.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    openTextView("Où nous trouver", shop.getAdress());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private void openTextView(String title, String content) throws IOException {
+        Stage stage = new Stage();
+        String fxmlFile = "/fxml/text_view.fxml";
+        FXMLLoader loader = new FXMLLoader();
+        Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
+
+        Scene scene = new Scene(rootNode, 500,100);
+        scene.getStylesheets().add("/styles/main.css");
+        stage.setScene(scene);
+
+        TextViewController controller = loader.getController();
+        controller.setCurrentStage(stage);
+        controller.initialiseView(title, content);
+        stage.show();
     }
 
     /**

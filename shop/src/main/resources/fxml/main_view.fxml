@@ -174,19 +174,19 @@
          <top>
             <BorderPane styleClass="halfOpacity" BorderPane.alignment="CENTER">
                <left>
-                  <FlowPane alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+                  <FlowPane alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="469.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" text="Qui sommes nous">
+                        <Button fx:id="about" mnemonicParsing="false" text="Qui sommes nous">
                            <FlowPane.margin>
                               <Insets left="5.0" right="5.0" />
                            </FlowPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Mentions légales">
+                        <Button fx:id="legalNotice" mnemonicParsing="false" text="Mentions légales">
                            <FlowPane.margin>
                               <Insets left="5.0" right="5.0" />
                            </FlowPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Où nous trouver">
+                        <Button fx:id="adress" mnemonicParsing="false" text="Où nous trouver">
                            <FlowPane.margin>
                               <Insets left="5.0" right="5.0" />
                            </FlowPane.margin>
@@ -195,7 +195,7 @@
                   </FlowPane>
                </left>
                <center>
-                  <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" prefWidth="353.0" prefWrapLength="0.0" BorderPane.alignment="CENTER">
+                  <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" prefHeight="62.0" prefWidth="782.0" prefWrapLength="0.0" BorderPane.alignment="CENTER">
                      <children>
                         <Label fx:id="sortLabel" text="Label">
                            <FlowPane.margin>
