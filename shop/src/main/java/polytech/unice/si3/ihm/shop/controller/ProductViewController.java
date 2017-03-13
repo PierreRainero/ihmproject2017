@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.shop.view;
+package polytech.unice.si3.ihm.shop.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.shop.view;
+package polytech.unice.si3.ihm.shop.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import polytech.unice.si3.ihm.shop.JsonParser;
+import polytech.unice.si3.ihm.shop.model.JsonParser;
 import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Promotion;
 import polytech.unice.si3.ihm.shop.model.Shop;

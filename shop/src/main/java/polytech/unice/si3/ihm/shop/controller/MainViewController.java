@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.shop.view;
+package polytech.unice.si3.ihm.shop.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,8 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import polytech.unice.si3.ihm.shop.JsonParser;
-import polytech.unice.si3.ihm.shop.MainApp;
 import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
 import polytech.unice.si3.ihm.shop.model.SuperType;
@@ -295,13 +293,9 @@ public class MainViewController extends BasicController {
                 }
             });
 
-            hBox.setOnMouseEntered(event -> {
-                mouseEntered(event);
-            });
+            hBox.setOnMouseEntered(event -> mouseEntered(event));
 
-            hBox.setOnMouseExited(event -> {
-                mouseExited(event);
-            });
+            hBox.setOnMouseExited(event -> mouseExited(event));
 
             vBox.getChildren().add(hBox);
         }

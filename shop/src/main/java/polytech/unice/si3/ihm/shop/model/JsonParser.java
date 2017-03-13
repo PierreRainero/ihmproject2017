@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.shop;
+package polytech.unice.si3.ihm.shop.model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
