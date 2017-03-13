@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import polytech.unice.si3.ihm.shop.JsonParser;
 import polytech.unice.si3.ihm.shop.MainApp;
 import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
@@ -110,6 +111,14 @@ public class MainViewController extends BasicController {
                 e.printStackTrace();
             }
         });
+
+        this.logo.setOnMouseClicked(event ->{
+            this.currentStage.close();
+        });
+
+        this.nom.setOnMouseClicked(event ->{
+
+        });
     }
 
     private void openTextView(String title, String content) throws IOException {
@@ -149,12 +158,6 @@ public class MainViewController extends BasicController {
      * @param shop magasin dont on à la gestion
      */
     public void switchToResearch(Shop shop){
-        int childrens = carouselContainer.getChildren().size();
-
-        for(int i=0;i<childrens;i++){
-            carouselContainer.getChildren().remove(0);
-        }
-
         this.filters = createFilters(shop);
 
         filterChoice.setVisible(true);
@@ -236,25 +239,25 @@ public class MainViewController extends BasicController {
         VBox vBox = new VBox();
         vBox.setSpacing(10);
 
-        List<Product> products = new ArrayList<>();
-
         switch (filterChoice.getValue().toString()){
             case "Popularité":
-                products = shop.getProductsByPopularity();
+                shop.sortByPopularity();
                 break;
             case "Prix : par ordre croissant":
-                products = shop.getProducstByCroissantPrice();
+                shop.sortByCroissantPrice();
                 break;
             case "Prix : par ordre décroissant":
-                products = shop.getProducstByDeCroissantPrice();
+                shop.sortByCroissantPrice();
                 break;
             default:
                 break;
         }
 
+        List<Product> products = shop.getProducts();
+
         for(int i=0;i<products.size();i++){
             HBox hBox = new HBox();
-            hBox.setSpacing(5);
+            hBox.setSpacing(10);
             hBox.setAlignment(Pos.CENTER);
             VBox vBox1 = new VBox();
             vBox1.setPrefWidth(500);
@@ -267,9 +270,14 @@ public class MainViewController extends BasicController {
             gameDescription.setWrapText(true);
             gameDescription.setMaxHeight(150);
 
-            Label price = new Label("Prix : " + products.get(i).getPrice() + " €");
-            price.setFont(new Font(35.0));
-            price.setPrefWidth(300);
+            Label price = new Label("Prix: " + products.get(i).getPrice() + " €");
+
+            if(products.get(i).getPromotion()!=0){
+                price = new Label("Promotion : " + products.get(i).getPromotedPrice() + " €" + "\nau lieu de " + products.get(i).getPrice() + "€\n(-" + products.get(i).getPromotion() + "%)"  );
+            }
+
+            price.setFont(new Font(25.0));
+            price.setPrefWidth(400);
 
             Label name = new Label(products.get(i).getName());
             name.setFont(new Font(30.0));
@@ -467,5 +475,13 @@ public class MainViewController extends BasicController {
         carouselRightImage.setOnMouseExited(event -> {
             mouseExited(event);
         });
+
+        logo.setOnMouseEntered(event -> mouseEntered(event));
+
+        logo.setOnMouseExited(event -> mouseExited(event));
+
+        nom.setOnMouseEntered(event -> mouseEntered(event));
+
+        nom.setOnMouseExited(event -> mouseExited(event));
     }
 }

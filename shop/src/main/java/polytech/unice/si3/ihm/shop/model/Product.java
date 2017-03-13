@@ -1,7 +1,6 @@
 package polytech.unice.si3.ihm.shop.model;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  *
@@ -11,7 +10,7 @@ public class Product {
     private String imageURL;
     private String description;
     private double price;
-    private Optional<Promotion> promotion;
+    private Promotion promotion;
     private List<SuperType> productTypes;
     private int sales;
 
@@ -21,14 +20,14 @@ public class Product {
      * @param imageURL url de l'image correspondant au produit
      * @param price prix du produit
      */
-    public Product(String name, String imageURL, double price, String description, List<SuperType> productType, int sales){
+    public Product(String name, String imageURL, double price, String description, List<SuperType> productType, int sales, Promotion promotion){
         this.name = name;
         this.imageURL = imageURL;
         this.price = price;
-        this.promotion = Optional.empty();
         this.productTypes = productType;
         this.description = description;
         this.sales = sales;
+        this.promotion = promotion;
     }
 
     /**
@@ -43,12 +42,14 @@ public class Product {
      * Retourne le prix avec promotion de l'objet
      * @return prix de l'objet avec promotion, -1 si il n'est pas en promotion
      */
+    public double getPromotion(){
+        return promotion.getPercent();
+    }
+
     public double getPromotedPrice(){
-        if(this.promotion.isPresent()){
-            return this.price * promotion.get().getPercent();
-        }else {
-            return -1;
-        }
+        double result = this.price - this.price * this.promotion.getValue();
+        result=(double)((int)(result*100))/100;
+        return result;
     }
 
     /**
@@ -56,7 +57,7 @@ public class Product {
      * @param promotion taux de promotion en %
      */
     public void setPromotion(Promotion promotion){
-        this.promotion = Optional.of(promotion);
+        this.promotion = promotion;
     }
 
     /**
