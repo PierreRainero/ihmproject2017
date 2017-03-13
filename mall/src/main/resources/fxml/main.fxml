@@ -19,7 +19,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.view.MainViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.controller.MainViewController">
    <left>
       <VBox prefHeight="479.0" prefWidth="146.0" BorderPane.alignment="CENTER">
          <children>
@@ -185,85 +185,70 @@
                   <Pane fx:id="canvas" layoutX="1.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffb9" height="246.0" layoutX="80.0" layoutY="75.0" stroke="TRANSPARENT" strokeType="INSIDE" width="846.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a4bdf0" height="146.0" layoutX="58.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="142.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ea92d" height="76.0" layoutX="200.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="262.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c8d7ff" height="114.0" layoutX="462.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff4f25" height="64.0" layoutX="612.0" layoutY="57.0" stroke="BLACK" strokeType="INSIDE" width="152.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff4f25" height="76.0" layoutX="882.0" layoutY="57.0" stroke="BLACK" strokeType="INSIDE" width="130.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9933ff" height="254.0" layoutX="882.0" layoutY="132.0" stroke="BLACK" strokeType="INSIDE" width="130.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#95b3f0" height="78.0" layoutX="726.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5e8bcc" height="108.0" layoutX="586.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#793905" height="108.0" layoutX="345.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="138.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66ff33" height="74.0" layoutX="179.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="166.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff9900" height="136.0" layoutX="58.0" layoutY="249.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
-                        <ImageView fitHeight="45.0" fitWidth="132.0" layoutX="63.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#793905" height="116.0" layoutX="180.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="114.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c081ff" height="62.0" layoutX="672.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="210.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="368.0" layoutX="882.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="130.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66ff33" height="78.0" layoutX="726.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#007fac" height="108.0" layoutX="526.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6ea92d" height="108.0" layoutX="313.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="214.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4bd0ff" height="74.0" layoutX="179.0" layoutY="278.0" stroke="BLACK" strokeType="INSIDE" width="136.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c081ff" height="366.0" layoutX="58.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#81deff" height="116.0" layoutX="294.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="114.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff9900" height="116.0" layoutX="408.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="114.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00b3f2" height="116.0" layoutX="522.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" width="114.0" />
+                        <ImageView fitHeight="86.0" fitWidth="84.0" layoutX="195.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/camaieu.png" />
+                              <Image url="@/images/starbucks.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="76.0" fitWidth="236.0" layoutX="214.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="71.0" fitWidth="128.0" layoutX="293.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/grandoptical.png" />
+                              <Image url="@/images/nafnaf.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="58.0" fitWidth="136.0" layoutX="475.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="66.0" fitWidth="106.0" layoutX="526.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/hugoboss.png" />
+                              <Image url="@/images/lancel.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="46.0" fitWidth="83.0" layoutX="650.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="53.0" fitWidth="112.0" layoutX="723.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/cic.png" />
+                              <Image url="@/images/courir.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="68.0" fitWidth="61.0" layoutX="917.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="95.0" fitWidth="124.0" layoutX="885.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/securite.png" />
+                              <Image url="@/images/granderecre.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="120.0" fitWidth="108.0" layoutX="893.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="320.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/fnac.png" />
+                              <Image url="@/images/marionnaud.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="49.0" fitWidth="124.0" layoutX="741.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="28.0" fitWidth="214.0" layoutX="186.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/etam.png" />
+                              <Image url="@/images/bata.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="71.0" fitWidth="132.0" layoutX="594.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="90.0" fitWidth="108.0" layoutX="65.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/fossil.png" />
+                              <Image url="@/images/cultura.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="66.0" fitWidth="135.0" layoutX="349.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="59.0" fitWidth="176.0" layoutX="543.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/leflore.png" />
+                              <Image url="@/images/histoiredor.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="68.0" fitWidth="68.0" layoutX="228.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="84.0" fitWidth="64.0" layoutX="772.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/macrogamia.png" />
+                              <Image url="@/images/sfr.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="55.0" fitWidth="140.0" layoutX="66.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="246.0" layoutX="636.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/images/maisonsdumonde.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="245.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/escalator.PNG" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="60.0" fitWidth="89.0" layoutX="493.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/deuxascenseurs.PNG" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="57.0" fitWidth="212.0" layoutX="580.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/detente.PNG" />
+                              <Image url="@/images/toilettegris.PNG" />
                            </image>
                         </ImageView>
                      </children></Pane>

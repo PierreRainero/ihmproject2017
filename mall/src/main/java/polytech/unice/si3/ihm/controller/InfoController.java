@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.view;
+package polytech.unice.si3.ihm.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import polytech.unice.si3.ihm.MainApp;
 import polytech.unice.si3.ihm.model.Info;
 import java.io.IOException;
-import javafx.application.HostServices;
+
 
 /**
  * Created by Ken on 07/03/2017.
@@ -32,8 +32,6 @@ public class InfoController extends MenuController {
     @FXML
     private Hyperlink site;
 
-    private MainApp mainApp;
-
 
     /**
      * The constructor.
@@ -47,15 +45,6 @@ public class InfoController extends MenuController {
      */
     @FXML
     private void initialize() {
-    }
-
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp
-     */
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
     }
 
     public void displayDeals(){

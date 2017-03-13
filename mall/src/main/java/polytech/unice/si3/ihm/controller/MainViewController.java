@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.view;
+package polytech.unice.si3.ihm.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,45 +14,25 @@ import polytech.unice.si3.ihm.model.Category;
 import polytech.unice.si3.ihm.model.Level;
 import polytech.unice.si3.ihm.model.Mall;
 import polytech.unice.si3.ihm.model.Place;
+import polytech.unice.si3.ihm.view.Drawer;
 
 import java.io.IOException;
 
+/**
+ * Interprets the user's interactions and modifies the scene.
+ *
+ * @author Guillaume Casagrande
+ */
 public class MainViewController extends MenuController {
+    /**
+     * Stores all the levels.
+     */
     private Mall mall;
+
+    /**
+     * Keeps the number of the level opened.
+     */
     private int currentLevel;
-    /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
-     */
-    public MainViewController() {
-        mall = new Mall("mall");
-    }
-
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
-    @FXML
-    private void initialize() {
-        buildGroundFloor();
-    }
-
-    public void displayGoodDeals(){
-        FXMLLoader loader = new FXMLLoader();
-        Parent node = null;
-        try {
-            node = loader.load(getClass().getResourceAsStream("/fxml/good_deals.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene = new Scene(node, 1280, 720);
-        mainApp.getStage().setScene(scene);
-
-        GoodDealsViewController controller = loader.getController();
-        controller.setMainApp(mainApp);
-
-        mainApp.getStage().show();
-    }
 
     @FXML
     private TextField searchBar;
@@ -63,6 +43,43 @@ public class MainViewController extends MenuController {
     @FXML
     private Pane canvas;
 
+    /**
+     * Constructs the MainViewController object.
+     */
+    public MainViewController() {
+        mall = new Mall("mall");
+    }
+
+    /**
+     * Initializes the map by drawing the ground floor.
+     */
+    @FXML
+    private void initialize() {
+        buildGroundFloor();
+    }
+
+    /**
+     * Opens the scene corresponding to good deals.
+     */
+    public void displayGoodDeals(){
+        FXMLLoader loader = new FXMLLoader();
+        try {
+            Parent node = loader.load(getClass().getResourceAsStream("/fxml/good_deals.fxml"));
+            Scene scene = new Scene(node, 1280, 720);
+            mainApp.getStage().setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        GoodDealsViewController controller = loader.getController();
+        controller.setMainApp(mainApp);
+
+        mainApp.getStage().show();
+    }
+
+    /**
+     * Constructs a specific floor when the user presses the button corresponding to the levels..
+     */
     @FXML
     void buildGroundFloor() {
         buildFloor("Rez-de-chaussée", 0);
@@ -83,6 +100,12 @@ public class MainViewController extends MenuController {
         buildFloor("Troisième étage", 3);
     }
 
+    /**
+     * Constructs a floor.
+     *
+     * @param floor The name of the floor to display.
+     * @param i The number of the level.
+     */
     private void buildFloor(String floor, int i) {
         reset();
         labelFloor.setText(floor);
@@ -92,6 +115,9 @@ public class MainViewController extends MenuController {
         drawer.displayLevel(mall.getLevel(i));
     }
 
+    /**
+     * Displays a specific point of interest when the user clicks on the corresponding button.
+     */
     @FXML
     void displayElevators() {
         display(Place.ELEVATORLIGHT);
@@ -109,7 +135,7 @@ public class MainViewController extends MenuController {
 
     @FXML
     void displayToilet() {
-        display(Place.TOILET);
+        display(Place.TOILETLIGHT);
     }
 
     @FXML
@@ -117,6 +143,11 @@ public class MainViewController extends MenuController {
         display(Place.WIFI);
     }
 
+    /**
+     * Display a point of interest.
+     *
+     * @param place The type of point of interest to highlight.
+     */
     private void display(Place place) {
         reset();
         Drawer drawer = new Drawer(canvas);
@@ -126,6 +157,10 @@ public class MainViewController extends MenuController {
         drawer.displayPlace(level, place);
     }
 
+    /**
+     * Manages the search of a store in the level when the user clicks on the "Go!" button.
+     * Verifies if the name given in the text box can link with a store of the current level.
+     */
     @FXML
     void search() {
         reset();
@@ -148,6 +183,11 @@ public class MainViewController extends MenuController {
         }
     }
 
+    /**
+     * Launches the search when the user presses the key "Enter".
+     *
+     * @param event The key pressed y the user.
+     */
     @FXML
     void searchEnter(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
@@ -155,6 +195,9 @@ public class MainViewController extends MenuController {
         }
     }
 
+    /**
+     * Highlights the store corresponding to a specific category.
+     */
     @FXML
     void selectCare() {
         selection(Category.CARE);
@@ -195,13 +238,22 @@ public class MainViewController extends MenuController {
         selection(Category.TOYS);
     }
 
+    /**
+     * Highlights the store corresponding to a category when the user presses a "Category" button.
+     *
+     * @param category The name of the category of store to highlight.
+     */
     private void selection(Category category) {
         reset();
         Drawer drawer = new Drawer(canvas);
         drawer.displayCategory(mall.getLevel(currentLevel), category);
     }
 
-    private void reset() {
+    /**
+     * Empties the canvas: removes all the pictures
+     */
+    @FXML
+    void reset() {
         canvas.getChildren().clear();
     }
 }
