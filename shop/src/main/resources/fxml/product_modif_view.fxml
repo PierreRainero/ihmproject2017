@@ -49,6 +49,12 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </TextField>
+            <Label text="Promotion (laisser vide si aucune promotion)" />
+            <TextField fx:id="promotions" promptText="Promotion (laisser vide si aucune promotion)">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </TextField>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button fx:id="deleteButton" mnemonicParsing="false" text="Supprimer ce produit">

@@ -5,7 +5,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Orientation;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -14,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.json.simple.parser.ParseException;
 import polytech.unice.si3.ihm.firm.common.exceptions.ContentException;
@@ -61,7 +65,30 @@ public class ModifyStoreController {
     }
 
     @FXML
-    void openModifyView(MouseEvent event) {
+    void openModifyView(MouseEvent event) throws IOException {
+        if (!modifyStoreListview.getSelectionModel().isEmpty()){
+            Stage stage = new Stage();
+            String fxmlFile = "/fxml/modify_store_window.fxml";
+            Log.debug(this.getClass(), "Loading FXML for one store view from: {}", fxmlFile);
+            FXMLLoader fxloader = new FXMLLoader();
+            Parent rootNode = fxloader.load(getClass().getResourceAsStream(fxmlFile));
+            stage.setMinWidth(600.0);
+            stage.setMaxWidth(600.0);
+            stage.setMinHeight(400.0);
+            stage.setMaxHeight(400.0);
+
+            Scene scene = new Scene(rootNode, 420, 450);
+            scene.getStylesheets().add("/styles/main.css");
+            stage.setTitle(modifyStoreListview.getSelectionModel().getSelectedItem().getName());
+            stage.setScene(scene);
+
+
+            Store store = modifyStoreListview.getSelectionModel().getSelectedItem();
+            ModifyStoreWindowController controller = fxloader.getController();
+            controller.setStore(store);
+            stage.show();
+        }
+
 
     }
 

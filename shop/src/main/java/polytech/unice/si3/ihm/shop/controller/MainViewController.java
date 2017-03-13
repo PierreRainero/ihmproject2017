@@ -66,6 +66,26 @@ public class MainViewController extends BasicController {
     private Button legalNotice;
     @FXML
     private Button adress;
+    @FXML
+    private ImageView promoFirstImage;
+    @FXML
+    private ImageView promoSecondImage;
+    @FXML
+    private ImageView promoThirdImage;
+    @FXML
+    private ImageView promoFourthImage;
+    @FXML
+    private ImageView promoFifthImage;
+    @FXML
+    private Label promoFirstText;
+    @FXML
+    private Label promoSecondText;
+    @FXML
+    private Label promoThirdText;
+    @FXML
+    private Label promoFourthText;
+    @FXML
+    private Label promoFifthText;
 
     /**
      * Initialise la vue de base du MainViewController
@@ -88,7 +108,7 @@ public class MainViewController extends BasicController {
 
         this.about.setOnAction(event -> {
             try {
-                openTextView("Qui sommes nous", shop.getAbout());
+                openTextView("Qui sommes nous", shop.getAbout(), true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -96,7 +116,7 @@ public class MainViewController extends BasicController {
 
         this.legalNotice.setOnAction(event -> {
             try {
-                openTextView("Mentions légales", shop.getLegalNotice());
+                openTextView("Mentions légales", shop.getLegalNotice(), false);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -104,7 +124,7 @@ public class MainViewController extends BasicController {
 
         this.adress.setOnAction(event -> {
             try {
-                openTextView("Où nous trouver", shop.getAdress());
+                openTextView("Où nous trouver", shop.getAdress(), true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -119,19 +139,19 @@ public class MainViewController extends BasicController {
         });
     }
 
-    private void openTextView(String title, String content) throws IOException {
+    private void openTextView(String title, String content, boolean centerText) throws IOException {
         Stage stage = new Stage();
         String fxmlFile = "/fxml/text_view.fxml";
         FXMLLoader loader = new FXMLLoader();
         Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
-        Scene scene = new Scene(rootNode, 500,100);
+        Scene scene = new Scene(rootNode, 500,400);
         scene.getStylesheets().add("/styles/main.css");
         stage.setScene(scene);
 
         TextViewController controller = loader.getController();
         controller.setCurrentStage(stage);
-        controller.initialiseView(title, content);
+        controller.initialiseView(title, content, centerText);
         stage.show();
     }
 
@@ -397,7 +417,6 @@ public class MainViewController extends BasicController {
      * @param shop magasin contenant les différents produits
      */
     public void initialiseCarousel(Shop shop){
-
         Product centerProduct = null;
         Product leftProduct = null;
         Product rightProduct = null;
@@ -477,5 +496,71 @@ public class MainViewController extends BasicController {
         nom.setOnMouseEntered(event -> mouseEntered(event));
 
         nom.setOnMouseExited(event -> mouseExited(event));
+    }
+
+    public void initializePromotions(Shop shop){
+        List<Product> productsInPromo = new ArrayList<>();
+
+        List<Product> topSales = shop.getTopSales();
+        for(int i=0;i<topSales.size();i++){
+            if(topSales.get(i).getPromotion() != 0)
+                productsInPromo.add(topSales.get(i));
+        }
+
+        if(productsInPromo.size() > 0) {
+            this.promoFirstImage.setImage(new Image(productsInPromo.get(0).getImageURL()));
+            this.promoFirstText.setText("-" + productsInPromo.get(0).getPromotion() + "%");
+            this.promoFirstImage.setOnMouseClicked(event -> {
+                try {
+                    openProductView(productsInPromo.get(0));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        if(productsInPromo.size() > 1) {
+            this.promoSecondImage.setImage(new Image(productsInPromo.get(1).getImageURL()));
+            this.promoSecondText.setText("-" + productsInPromo.get(1).getPromotion() + "%");
+            this.promoSecondImage.setOnMouseClicked(event -> {
+                try {
+                    openProductView(productsInPromo.get(1));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        if(productsInPromo.size() > 2) {
+            this.promoThirdImage.setImage(new Image(productsInPromo.get(2).getImageURL()));
+            this.promoThirdText.setText("-" + productsInPromo.get(2).getPromotion() + "%");
+            this.promoThirdImage.setOnMouseClicked(event -> {
+                try {
+                    openProductView(productsInPromo.get(2));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        if(productsInPromo.size() > 3) {
+            this.promoFourthImage.setImage(new Image(productsInPromo.get(3).getImageURL()));
+            this.promoFourthText.setText("-" + productsInPromo.get(3).getPromotion() + "%");
+            this.promoFourthImage.setOnMouseClicked(event -> {
+                try {
+                    openProductView(productsInPromo.get(3));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        if(productsInPromo.size() > 4) {
+            this.promoFifthImage.setImage(new Image(productsInPromo.get(4).getImageURL()));
+            this.promoFifthText.setText("-" + productsInPromo.get(4).getPromotion() + "%");
+            this.promoFifthImage.setOnMouseClicked(event -> {
+                try {
+                    openProductView(productsInPromo.get(4));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 }

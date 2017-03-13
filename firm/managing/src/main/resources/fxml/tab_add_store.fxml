@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <Pane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.managing.controller.AddStoreController">
    <children>
@@ -16,30 +17,36 @@
          <children>
             <HBox>
                <children>
-                  <Label text="Nom*" />
+                  <Label text="Nom*">
+                     <HBox.margin>
+                        <Insets left="50.0" top="40.0" />
+                     </HBox.margin></Label>
                   <TextField fx:id="shopName">
                      <HBox.margin>
-                        <Insets left="78.0" />
+                        <Insets left="78.0" top="36.0" />
                      </HBox.margin>
                   </TextField>
                   <Label fx:id="nameShopError" text="Nom manquant" textFill="RED">
                      <HBox.margin>
-                        <Insets left="6.0" top="4.0" />
+                        <Insets left="15.0" top="40.0" />
                      </HBox.margin>
                   </Label>
                </children>
             </HBox>
             <HBox>
                <children>
-                  <Label text="Adresse*" />
+                  <Label text="Adresse*">
+                     <HBox.margin>
+                        <Insets left="50.0" top="9.0" />
+                     </HBox.margin></Label>
                   <TextField fx:id="shopAddress">
                      <HBox.margin>
-                        <Insets left="62.0" />
+                        <Insets left="63.0" top="4.0" />
                      </HBox.margin>
                   </TextField>
                   <Label fx:id="adressShopError" text="Adresse manquante" textFill="RED">
                      <HBox.margin>
-                        <Insets left="6.0" top="4.0" />
+                        <Insets left="15.0" top="9.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -49,15 +56,18 @@
             </HBox>
             <HBox>
                <children>
-                  <Label text="Ville*" />
+                  <Label text="Ville*">
+                     <HBox.margin>
+                        <Insets left="50.0" top="9.0" />
+                     </HBox.margin></Label>
                   <TextField fx:id="shopCity">
                      <HBox.margin>
-                        <Insets left="82.0" />
+                        <Insets left="82.0" top="4.0" />
                      </HBox.margin>
                   </TextField>
                   <Label fx:id="cityShopError" text="Ville manquante" textFill="RED">
                      <HBox.margin>
-                        <Insets left="6.0" top="4.0" />
+                        <Insets left="15.0" top="9.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -67,15 +77,18 @@
             </HBox>
             <HBox>
                <children>
-                  <Label text="Code postal*" />
+                  <Label text="Code postal*">
+                     <HBox.margin>
+                        <Insets left="50.0" top="9.0" />
+                     </HBox.margin></Label>
                   <TextField fx:id="shopCodePostal">
                      <HBox.margin>
-                        <Insets left="40.0" />
+                        <Insets left="41.0" top="4.0" />
                      </HBox.margin>
                   </TextField>
                   <Label fx:id="postalShopError" text="Code invalide ou manquant" textFill="RED">
                      <HBox.margin>
-                        <Insets left="6.0" top="4.0" />
+                        <Insets left="15.0" top="9.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -85,15 +98,18 @@
             </HBox>
             <HBox>
                <children>
-                  <Label text="Département*" />
+                  <Label text="Département*">
+                     <HBox.margin>
+                        <Insets left="50.0" top="9.0" />
+                     </HBox.margin></Label>
                   <TextField fx:id="shopDepart">
                      <HBox.margin>
-                        <Insets left="34.0" />
+                        <Insets left="35.0" top="4.0" />
                      </HBox.margin>
                   </TextField>
                   <Label fx:id="departShopError" text="Département manquant" textFill="RED">
                      <HBox.margin>
-                        <Insets left="6.0" top="4.0" />
+                        <Insets left="15.0" top="9.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -103,10 +119,13 @@
             </HBox>
             <HBox>
                <children>
-                  <Label text="Région*" />
+                  <Label text="Région*">
+                     <HBox.margin>
+                        <Insets left="50.0" top="9.0" />
+                     </HBox.margin></Label>
                   <ComboBox fx:id="shopRegion" prefWidth="150.0">
                      <HBox.margin>
-                        <Insets left="66.0" />
+                        <Insets left="67.0" top="4.0" />
                      </HBox.margin>
                   </ComboBox>
                </children>
@@ -116,15 +135,18 @@
             </HBox>
             <HBox>
                <children>
-                  <Label text="Centre commercial*" />
+                  <Label text="Centre commercial*">
+                     <HBox.margin>
+                        <Insets left="50.0" top="9.0" />
+                     </HBox.margin></Label>
                   <TextField fx:id="shopMallName">
                      <HBox.margin>
-                        <Insets left="4.0" />
+                        <Insets left="5.0" top="4.0" />
                      </HBox.margin>
                   </TextField>
                   <Label fx:id="mallShopError" text="Centre manquant" textFill="RED">
                      <HBox.margin>
-                        <Insets left="6.0" top="4.0" />
+                        <Insets left="16.0" top="9.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -134,10 +156,13 @@
             </HBox>
             <HBox>
                <children>
-                  <Label text="Description" />
-                  <TextArea fx:id="shopDescription" prefHeight="200.0" prefWidth="200.0">
+                  <Label text="Description">
                      <HBox.margin>
-                        <Insets left="48.0" />
+                        <Insets left="50.0" top="31.0" />
+                     </HBox.margin></Label>
+                  <TextArea fx:id="shopDescription" prefHeight="80.0" prefWidth="200.0">
+                     <HBox.margin>
+                        <Insets left="48.0" top="4.0" />
                      </HBox.margin>
                   </TextArea>
                </children>
@@ -147,10 +172,13 @@
             </HBox>
             <HBox>
                <children>
-                  <Label text="Image" />
+                  <Label text="Image">
+                     <HBox.margin>
+                        <Insets left="50.0" top="9.0" />
+                     </HBox.margin></Label>
                   <Button fx:id="shopImage" mnemonicParsing="false" onAction="#choseImage" text="Parcourir...">
                      <HBox.margin>
-                        <Insets left="74.0" />
+                        <Insets left="76.0" top="4.0" />
                      </HBox.margin>
                   </Button>
                   <Label fx:id="imageSelected" alignment="TOP_LEFT" contentDisplay="CENTER">
@@ -163,11 +191,26 @@
                   <Insets top="4.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="validShop" mnemonicParsing="false" onAction="#validNewShop" text="Valider">
+            <HBox prefHeight="105.0" prefWidth="494.0">
                <VBox.margin>
-                  <Insets left="254.0" />
+                  <Insets />
                </VBox.margin>
-            </Button>
+               <children>
+                  <Label text="* indique un champ requis">
+                     <font>
+                        <Font name="System Italic" size="10.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="70.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="validShop" mnemonicParsing="false" onAction="#validNewShop" text="Valider">
+                     <HBox.margin>
+                        <Insets left="260.0" top="60.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
          <padding>
             <Insets left="6.0" top="6.0" />
