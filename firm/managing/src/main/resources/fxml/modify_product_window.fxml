@@ -86,7 +86,7 @@
                         <Insets left="77.0" top="28.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" onMouseClicked="#searchComputer" text="Parcourir...">
+                  <Button fx:id="searchComputerButton" mnemonicParsing="false" onMouseClicked="#searchComputer" text="Parcourir...">
                      <HBox.margin>
                         <Insets left="2.0" top="28.0" />
                      </HBox.margin>

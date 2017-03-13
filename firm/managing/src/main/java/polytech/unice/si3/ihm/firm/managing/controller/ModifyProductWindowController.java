@@ -16,6 +16,8 @@ public class ModifyProductWindowController {
     @FXML
     private Button saveButton;
 
+    @FXML
+    private Button searchComputerButton;
 
     @FXML
     private Label productNameMissing;
