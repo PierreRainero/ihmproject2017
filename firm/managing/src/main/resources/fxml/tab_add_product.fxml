@@ -96,12 +96,16 @@
                         <Insets left="45.0" top="9.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="productImageSelectionButton" mnemonicParsing="false" onMouseClicked="#searchComputer" text="Parcourir...">
+                  <TextField fx:id="imagePath">
                      <HBox.margin>
                         <Insets left="106.0" top="5.0" />
                      </HBox.margin>
+                  </TextField>
+                  <Button fx:id="productImageSelectionButton" mnemonicParsing="false" onMouseClicked="#searchComputer" text="Parcourir...">
+                     <HBox.margin>
+                        <Insets left="2.0" top="5.0" />
+                     </HBox.margin>
                   </Button>
-                  <Label fx:id="productImageSelected" />
                </children>
             </HBox>
             <HBox prefHeight="32.0" prefWidth="500.0">

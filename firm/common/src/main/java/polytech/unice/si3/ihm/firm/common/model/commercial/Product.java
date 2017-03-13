@@ -39,6 +39,13 @@ public class Product {
         this.price = price;
     }
 
+    public Product(String name, String reference, double price, String image) {
+        this.name = name;
+        this.reference = reference;
+        this.price = price;
+        this.image = image;
+    }
+
     /**
      * Constructor for a product
      * @param name the name of the product

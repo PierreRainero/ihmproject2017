@@ -7,10 +7,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import org.json.simple.parser.ParseException;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.managing.content.ReductionPercentage;
 import polytech.unice.si3.ihm.firm.managing.json.JsonGeneratorProduct;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +36,9 @@ public class AddProductController {
 
     @FXML
     private TextField productReduction;
+
+    @FXML
+    private TextField imagePath;
 
     @FXML
     private TextArea productDescriptionTextArea;
@@ -60,8 +68,7 @@ public class AddProductController {
     @FXML
     private Label productReferenceMissing;
 
-    @FXML
-    private Label productImageSelected;
+
 
 
 
@@ -98,7 +105,6 @@ public class AddProductController {
         productNameMissing.setVisible(false);
         productPriceMissing.setVisible(false);
         productReferenceMissing.setVisible(false);
-        productImageSelected.setVisible(false);
         newPriceAfterReduction.setVisible(false);
     }
 
@@ -116,6 +122,13 @@ public class AddProductController {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (!newValue.matches("\\d*")) {
                     productReduction.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+                if(newValue.length()>=3){
+                    String s = newValue.substring(0, 3);
+                    productReduction.setText(s);
+                }
+                if (!newValue.trim().equals("") && Double.parseDouble(newValue)>100.0){
+                    productReduction.setText("100");
                 }
             }
         });
@@ -158,7 +171,20 @@ public class AddProductController {
 
     @FXML
     void searchComputer(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Sélectionner une image");
 
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Images (*.jpg, *.png, *.gif)", "*.jpg", "*.png", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        File tempo = fileChooser.showOpenDialog(new Stage());
+
+        if (tempo==null){
+            imagePath.setText("");
+        }
+        else{
+            imagePath.setText(tempo.getAbsolutePath());
+        }
     }
 
 
@@ -174,8 +200,8 @@ public class AddProductController {
             newPriceAfterReduction.setText("Nouveau prix : " + productPriceTextField.getText());
         }
         else {
-            int price = Integer.parseInt(productPriceTextField.getText());
-            int percentage = Integer.parseInt(productReduction.getText());
+            double price = Double.parseDouble(productPriceTextField.getText());
+            double percentage = Double.parseDouble(productReduction.getText());
             newPriceAfterReduction.setText("Nouveau prix : " + reduction.calculatePrice(price, percentage));
 
         }
@@ -183,24 +209,75 @@ public class AddProductController {
     }
 
     @FXML
-    void validateFormular(MouseEvent event) {
+    void validateFormular(MouseEvent event) throws IOException, ParseException {
+        Product product;
 
-        if (allValidated()){
-            Product product = new Product();
-            if (productReduction.getText().trim().isEmpty() || productReduction.getText().trim().equals("")){
-                product = new Product(productNameTextField.getText(),
-                        productReferenceTextField.getText(),
-                        reduction.calculatePrice(Double.parseDouble(productPriceTextField.getText()),0));
-            }else {
-                product = new Product(productNameTextField.getText(),
-                        productReferenceTextField.getText(),
-                        reduction.calculatePrice(Double.parseDouble(productPriceTextField.getText()), Double.parseDouble(productReduction.getText())));
+        if (allValidated()) {
+            if (hasDescription()) {
+                if (hasReduction()) {
+                    product = new Product(productNameTextField.getText(),
+                            productReferenceTextField.getText(),
+                            productDescriptionTextArea.getText(),
+                            reduction.calculatePrice(Double.parseDouble(productPriceTextField.getText()), Double.parseDouble(productReduction.getText())));
+                    product.markProductAsPromoted();
+                } else {
+                    product = new Product(productNameTextField.getText(),
+                            productReferenceTextField.getText(),
+                            productDescriptionTextArea.getText(),
+                            Double.parseDouble(productPriceTextField.getText()));
+
+                }
+
+            } else if (hasImage()) {
+                if (hasReduction()) {
+                    product = new Product(productNameTextField.getText(),
+                            productReferenceTextField.getText(),
+                            reduction.calculatePrice(Double.parseDouble(productPriceTextField.getText()), Double.parseDouble(productReduction.getText())),
+                            imagePath.getText());
+                    product.markProductAsPromoted();
+                } else {
+                    product = new Product(productNameTextField.getText(),
+                            productReferenceTextField.getText(),
+                            Double.parseDouble(productPriceTextField.getText()),
+                            imagePath.getText());
+                }
+
+            } else if (hasDescription() && hasImage()) {
+                if (hasReduction()) {
+                    product = new Product(productNameTextField.getText(),
+                            imagePath.getText(),
+                            productReferenceTextField.getText(),
+                            productDescriptionTextArea.getText(),
+                            reduction.calculatePrice(Double.parseDouble(productPriceTextField.getText()), Double.parseDouble(productReduction.getText())));
+                    product.markProductAsPromoted();
+                } else {
+                    product = new Product(productNameTextField.getText(),
+                            imagePath.getText(),
+                            productReferenceTextField.getText(),
+                            productDescriptionTextArea.getText(),
+                            Double.parseDouble(productPriceTextField.getText()));
+                }
+            } else {
+                if (hasReduction()) {
+                    product = new Product(productNameTextField.getText(),
+                            productReferenceTextField.getText(),
+                            reduction.calculatePrice(Double.parseDouble(productPriceTextField.getText()), Double.parseDouble(productReduction.getText())));
+                    product.markProductAsPromoted();
+                } else {
+                    product = new Product(productNameTextField.getText(),
+                            productReferenceTextField.getText(),
+                            Double.parseDouble(productPriceTextField.getText()));
+                }
+
+            }
+            if (isWantedPromoted()){
+                product.markProductAsFlagship();
             }
             JsonGeneratorProduct gen = new JsonGeneratorProduct(product);
-        }
-        if (allValidated() && (!productDescriptionTextArea.getText().trim().isEmpty() || !productDescriptionTextArea.getText().trim().equals(""))){
+            gen.generate();
 
         }
+
 
 
 
@@ -238,6 +315,23 @@ public class AddProductController {
     }
 
 
+    private boolean hasReduction(){
+        return !productReduction.getText().trim().isEmpty() || !productReduction.getText().trim().equals("");
+    }
 
+    private boolean hasDescription(){
+        return !productDescriptionTextArea.getText().trim().isEmpty() || !productDescriptionTextArea.getText().trim().equals("");
+    }
 
+    private boolean hasImage(){
+    return !imagePath.getText().trim().isEmpty() || !imagePath.getText().trim().equals("");
+    }
+
+    private boolean isWantedPromoted(){
+        return productPromoteYesButton.isSelected();
+    }
 }
+
+
+
+
