@@ -63,7 +63,7 @@
                         <Insets left="45.0" top="25.0" />
                      </HBox.margin>
                   </Label>
-                  <TextArea fx:id="productDescriptionTextArea" prefHeight="61.0" prefWidth="256.0">
+                  <TextArea fx:id="productDescriptionTextArea" prefHeight="175.0" prefWidth="256.0">
                      <HBox.margin>
                         <Insets left="78.0" top="5.0" />
                      </HBox.margin>

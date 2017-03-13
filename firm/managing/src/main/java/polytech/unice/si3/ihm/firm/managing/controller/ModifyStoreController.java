@@ -82,6 +82,9 @@ public class ModifyStoreController {
             stage.setTitle(modifyStoreListview.getSelectionModel().getSelectedItem().getName());
             stage.setScene(scene);
             stage.show();
+
+            Store store = modifyStoreListview.getSelectionModel().getSelectedItem();
+
         }
 
 
