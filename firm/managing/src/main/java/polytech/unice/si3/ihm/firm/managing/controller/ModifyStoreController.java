@@ -20,7 +20,6 @@ import polytech.unice.si3.ihm.firm.common.exceptions.ContentException;
 import polytech.unice.si3.ihm.firm.common.json.ContentParser;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
-import polytech.unice.si3.ihm.firm.common.model.sorting.shop.SortListViewItemByCity;
 import polytech.unice.si3.ihm.firm.common.model.sorting.shop.SortListViewItemByName;
 import polytech.unice.si3.ihm.firm.common.util.ImageBuilder;
 import polytech.unice.si3.ihm.firm.common.util.Log;
