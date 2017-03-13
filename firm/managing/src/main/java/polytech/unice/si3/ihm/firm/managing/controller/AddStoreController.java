@@ -194,7 +194,7 @@ public class AddStoreController {
     		departShopError.setVisible(true);
     		return false;
     	}
-    	jsonToGenerate.setShopCity(shopDepart.getText());
+    	jsonToGenerate.setShopDepart(shopDepart.getText());
     	departShopError.setVisible(false);
     	return true;
     }
