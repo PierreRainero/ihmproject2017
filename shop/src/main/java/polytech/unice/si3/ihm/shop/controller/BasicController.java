@@ -1,9 +1,8 @@
-package polytech.unice.si3.ihm.shop.view;
+package polytech.unice.si3.ihm.shop.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 public class BasicController {

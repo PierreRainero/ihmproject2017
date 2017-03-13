@@ -5,12 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import polytech.unice.si3.ihm.shop.model.Product;
+import polytech.unice.si3.ihm.shop.model.JsonParser;
 import polytech.unice.si3.ihm.shop.model.Shop;
-import polytech.unice.si3.ihm.shop.view.MainViewController;
-import polytech.unice.si3.ihm.shop.view.ProductViewController;
-
-import java.io.IOException;
+import polytech.unice.si3.ihm.shop.controller.MainViewController;
 
 public class MainApp extends Application {
 
