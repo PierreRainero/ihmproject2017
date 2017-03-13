@@ -28,7 +28,7 @@ public class CityResearch extends GeneralResearch {
         List<Store> result = new ArrayList<>();
 
         for (Store store : getStores())
-            if (store.getCity().toLowerCase().equals(searchValue.toLowerCase()))
+            if (store.getCity().equalsIgnoreCase(searchValue))
             	result.add(store);
 
         return result;

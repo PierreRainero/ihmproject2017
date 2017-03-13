@@ -23,7 +23,7 @@ public class StoreNameResearch extends GeneralResearch {
         List<Store> result = new ArrayList<>();
 
         for (Store store: getStores())
-            if (store.getName().toLowerCase().equals(searchValue.toLowerCase()))
+            if (store.getName().equalsIgnoreCase(searchValue))
                 result.add(store);
 
         return result;
