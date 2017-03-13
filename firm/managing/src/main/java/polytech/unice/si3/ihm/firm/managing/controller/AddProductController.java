@@ -213,19 +213,21 @@ public class AddProductController {
         Product product;
 
         if (allValidated()) {
-            if (hasDescription()) {
+
+            if (hasDescription() && hasImage()) {
                 if (hasReduction()) {
                     product = new Product(productNameTextField.getText(),
+                            imagePath.getText(),
                             productReferenceTextField.getText(),
                             productDescriptionTextArea.getText(),
                             reduction.calculatePrice(Double.parseDouble(productPriceTextField.getText()), Double.parseDouble(productReduction.getText())));
                     product.markProductAsPromoted();
                 } else {
                     product = new Product(productNameTextField.getText(),
+                            imagePath.getText(),
                             productReferenceTextField.getText(),
                             productDescriptionTextArea.getText(),
                             Double.parseDouble(productPriceTextField.getText()));
-
                 }
 
             } else if (hasImage()) {
@@ -242,20 +244,19 @@ public class AddProductController {
                             imagePath.getText());
                 }
 
-            } else if (hasDescription() && hasImage()) {
+            } else if (hasDescription()) {
                 if (hasReduction()) {
                     product = new Product(productNameTextField.getText(),
-                            imagePath.getText(),
                             productReferenceTextField.getText(),
                             productDescriptionTextArea.getText(),
                             reduction.calculatePrice(Double.parseDouble(productPriceTextField.getText()), Double.parseDouble(productReduction.getText())));
                     product.markProductAsPromoted();
                 } else {
                     product = new Product(productNameTextField.getText(),
-                            imagePath.getText(),
                             productReferenceTextField.getText(),
                             productDescriptionTextArea.getText(),
                             Double.parseDouble(productPriceTextField.getText()));
+
                 }
             } else {
                 if (hasReduction()) {
