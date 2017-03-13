@@ -3,9 +3,11 @@ package polytech.unice.si3.ihm.shop.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -64,6 +66,10 @@ public class ManagerViewController extends BasicController {
         openMenuItem.setOnAction(event -> {
             try {
                 loadFile(stage);
+                shopName.setEditable(false);
+                shopName.setOpacity(0.5);
+                shopDescription.setEditable(false);
+                shopDescription.setOpacity(0.5);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -92,11 +98,16 @@ public class ManagerViewController extends BasicController {
     }
 
     private void clearWindow(){
+        this.shop = new Shop("", "", "", "");
         shopName.clear();
+        shopName.setEditable(true);
+        shopName.setOpacity(1);
         shopLogo.clear();
         shopLogoMin.clear();
         shopLogoText.clear();
         shopDescription.clear();
+        shopDescription.setEditable(true);
+        shopDescription.setOpacity(1);
         shopMentions.clear();
         shopAdresse.clear();
         shopTelephone.clear();
