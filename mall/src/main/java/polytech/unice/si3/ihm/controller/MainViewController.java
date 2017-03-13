@@ -73,7 +73,6 @@ public class MainViewController extends MenuController {
 
         GoodDealsViewController controller = loader.getController();
         controller.setMainApp(mainApp);
-
         mainApp.getStage().show();
     }
 

@@ -17,6 +17,7 @@ public class Store {
     private ImageView iv;
     private Category category;
     private Color color;
+    private Info info;
 
     /**
      * Constructs a Store object.

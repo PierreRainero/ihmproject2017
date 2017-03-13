@@ -22,19 +22,24 @@
          <content>
             <VBox prefHeight="547.0" prefWidth="1255.0">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane prefHeight="356.0" prefWidth="1280.0">
                      <children>
-                        <ImageView fx:id="deal1" fitHeight="250.0" fitWidth="1265.0" onMousePressed="#displayStore1" />
+                        <ImageView fx:id="deal1" fitHeight="400.0" fitWidth="1280.0" onMousePressed="#displayStore1" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="300.0" prefWidth="1280.0">
+                     <children>
+                        <ImageView fx:id="deal2" fitHeight="400.0" fitWidth="1280.0" onMousePressed="#displayStore2" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="deal2" fitHeight="250.0" fitWidth="1263.0" onMousePressed="#displayStore2" />
+                        <ImageView fx:id="deal3" fitHeight="400.0" fitWidth="1280.0" onMouseClicked="#displayStore3" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="deal3" fitHeight="250.0" fitWidth="1261.0" onMouseClicked="#displayStore3" />
+                        <ImageView fx:id="deal4" fitHeight="400.0" fitWidth="1280.0" onMousePressed="#displayStore4" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
                </children>

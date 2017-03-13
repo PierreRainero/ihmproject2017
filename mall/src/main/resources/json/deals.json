@@ -1,5 +1,6 @@
 {
-  "0":[{"imageName":"bons_plans_1.jpg","jsonName":"magasin1.json"}],
-  "1":[{"imageName":"bons_plans_2.jpg","jsonName":"magasin2.json"}],
-  "2":[{"imageName":"bons_plans_3.jpg","jsonName":"magasin3.json"}]
+  "0":[{"imageName":"bons_plans_1.jpg","jsonName":"macrogamia.json"}],
+  "1":[{"imageName":"bons_plans_2.jpg","jsonName":"fnac.json"}],
+  "2":[{"imageName":"bons_plans_3.jpg","jsonName":"apple.json"}],
+  "3":[{"imageName":"bons_plans_4.jpg","jsonName":"sfr.json"}]
 }

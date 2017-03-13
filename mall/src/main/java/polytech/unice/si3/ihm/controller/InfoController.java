@@ -60,6 +60,7 @@ public class InfoController extends MenuController {
 
         GoodDealsViewController controller = loader.getController();
         controller.setMainApp(mainApp);
+        mainApp.getStage().setResizable(false);
         mainApp.getStage().show();
     }
 

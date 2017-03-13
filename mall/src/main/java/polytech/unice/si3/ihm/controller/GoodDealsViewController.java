@@ -43,6 +43,7 @@ public class GoodDealsViewController extends MenuController {
         imageDeals.add(deal1);
         imageDeals.add(deal2);
         imageDeals.add(deal3);
+        imageDeals.add(deal4);
         buildDeals();
         printDeals();
         initCursor();
@@ -56,6 +57,9 @@ public class GoodDealsViewController extends MenuController {
 
     @FXML
     private ImageView deal3;
+
+    @FXML
+    private ImageView deal4;
 
     public void displayMain(){
         FXMLLoader loader = new FXMLLoader();
@@ -81,7 +85,7 @@ public class GoodDealsViewController extends MenuController {
             JSONObject js = (JSONObject)parser.parse(new FileReader(getClass().getResource("/json/deals.json").getFile()));
             JSONObject jsStore;
             GoodDeal gd;
-            for(int i = 0 ; i < 3 ; i++){
+            for(int i = 0 ; i < imageDeals.size() ; i++){
                 jsStore = (JSONObject)((JSONArray) js.get(String.valueOf(i))).get(0);
                 gd = new GoodDeal("/images/" + jsStore.get("imageName"),"/json/store/" + jsStore.get("jsonName"));
                 deals.add(gd);
@@ -94,8 +98,8 @@ public class GoodDealsViewController extends MenuController {
 
     public void printDeals(){
         for(int i = 0 ; i<deals.size();i++){
-            imageDeals.get(i).setFitHeight(250);
-            imageDeals.get(i).setFitWidth(1260);
+            imageDeals.get(i).setFitHeight(400);
+            imageDeals.get(i).setFitWidth(1280);
             imageDeals.get(i).setImage(new Image(deals.get(i).getImagePath()));
         }
     }
@@ -111,6 +115,11 @@ public class GoodDealsViewController extends MenuController {
 
     public void displayStore3(){
         Info i = deals.get(2).getInfoStore();
+        displayInfo(i);
+    }
+
+    public void displayStore4(){
+        Info i = deals.get(3).getInfoStore();
         displayInfo(i);
     }
     /*public void displayStore3(){
@@ -146,15 +155,14 @@ public class GoodDealsViewController extends MenuController {
         InfoController controller = loader.getController();
         controller.setMainApp(mainApp);
         controller.initData(info);
-
         mainApp.getStage().show();
     }
 
     @FXML
     public void initCursor(){
-        deal1.setCursor(Cursor.HAND);
-        deal2.setCursor(Cursor.HAND);
-        deal3.setCursor(Cursor.HAND);
+        for(ImageView deal : imageDeals){
+            deal.setCursor(Cursor.HAND);
+        }
     }
 
 }
