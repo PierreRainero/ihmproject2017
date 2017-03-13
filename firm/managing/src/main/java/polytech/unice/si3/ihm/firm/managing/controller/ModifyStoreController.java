@@ -69,7 +69,7 @@ public class ModifyStoreController {
         if (!modifyStoreListview.getSelectionModel().isEmpty()){
             Stage stage = new Stage();
             String fxmlFile = "/fxml/modify_store_window.fxml";
-            Log.debug(this.getClass(), "Loading FXML for oneProduct view from: {}", fxmlFile);
+            Log.debug(this.getClass(), "Loading FXML for one store view from: {}", fxmlFile);
             FXMLLoader fxloader = new FXMLLoader();
             Parent rootNode = fxloader.load(getClass().getResourceAsStream(fxmlFile));
             stage.setMinWidth(600.0);
@@ -81,10 +81,12 @@ public class ModifyStoreController {
             scene.getStylesheets().add("/styles/main.css");
             stage.setTitle(modifyStoreListview.getSelectionModel().getSelectedItem().getName());
             stage.setScene(scene);
-            stage.show();
+
 
             Store store = modifyStoreListview.getSelectionModel().getSelectedItem();
-
+            ModifyStoreWindowController controller = fxloader.getController();
+            controller.setStore(store);
+            stage.show();
         }
 
 
