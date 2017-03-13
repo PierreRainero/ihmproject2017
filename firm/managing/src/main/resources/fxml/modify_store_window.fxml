@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.managing.controller.ModifyProductWindowController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.firm.managing.controller.ModifyStoreWindowController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -21,12 +21,12 @@
                         <Insets left="50.0" top="35.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="storeName">
                      <HBox.margin>
                         <Insets left="80.0" top="31.0" />
                      </HBox.margin>
                   </TextField>
-                  <Label fx:id="productNameMissing" text="Nom manquant" textFill="RED">
+                  <Label fx:id="storeNameMissing" text="Nom manquant" textFill="RED">
                      <HBox.margin>
                         <Insets left="50.0" top="35.0" />
                      </HBox.margin>
@@ -48,30 +48,11 @@
                         <Insets left="50.0" top="32.0" />
                      </HBox.margin>
                   </Label>
-                  <TextArea prefHeight="200.0" prefWidth="200.0">
+                  <TextArea fx:id="storeDescription" prefHeight="200.0" prefWidth="200.0">
                      <HBox.margin>
                         <Insets left="47.0" />
                      </HBox.margin>
                   </TextArea>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Prix*">
-                     <HBox.margin>
-                        <Insets left="50.0" top="32.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField>
-                     <HBox.margin>
-                        <Insets left="83.0" top="28.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Label fx:id="productPriceMissing" text="Prix manquant" textFill="RED">
-                     <HBox.margin>
-                        <Insets left="50.0" top="32.0" />
-                     </HBox.margin>
-                  </Label>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -81,12 +62,12 @@
                         <Insets left="50.0" top="32.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="imagePath">
                      <HBox.margin>
                         <Insets left="77.0" top="28.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" onMouseClicked="#searchComputer" text="Parcourir...">
+                  <Button fx:id="searchComputerButton" mnemonicParsing="false" onMouseClicked="#searchComputer" text="Parcourir...">
                      <HBox.margin>
                         <Insets left="2.0" top="28.0" />
                      </HBox.margin>
