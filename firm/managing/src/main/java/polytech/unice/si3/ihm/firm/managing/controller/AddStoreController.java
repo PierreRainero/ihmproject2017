@@ -133,6 +133,7 @@ public class AddStoreController {
     	jsonToGenerate.setShopRegion(shopRegion.getValue());
     	jsonToGenerate.setShopDescription(shopDescription.getText());
     	jsonToGenerate.generate();
+
     }
     
     private boolean checkMini(){

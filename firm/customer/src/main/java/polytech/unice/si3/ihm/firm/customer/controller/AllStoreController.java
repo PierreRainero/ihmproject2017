@@ -16,10 +16,10 @@ import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 import polytech.unice.si3.ihm.firm.common.util.ImageBuilder;
 import polytech.unice.si3.ihm.firm.common.util.Log;
-import polytech.unice.si3.ihm.firm.customer.model.sorting.shop.SortListViewItemByCity;
-import polytech.unice.si3.ihm.firm.customer.model.sorting.shop.SortListViewItemByDepartment;
-import polytech.unice.si3.ihm.firm.customer.model.sorting.shop.SortListViewItemByRegion;
-import polytech.unice.si3.ihm.firm.customer.model.sorting.shop.SortingEnumShop;
+import polytech.unice.si3.ihm.firm.common.model.sorting.shop.SortListViewItemByCity;
+import polytech.unice.si3.ihm.firm.common.model.sorting.shop.SortListViewItemByDepartment;
+import polytech.unice.si3.ihm.firm.common.model.sorting.shop.SortListViewItemByRegion;
+import polytech.unice.si3.ihm.firm.common.model.sorting.shop.SortingEnumShop;
 
 import java.util.List;
 

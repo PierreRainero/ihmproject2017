@@ -3,7 +3,7 @@ package polytech.unice.si3.ihm.firm.model.sorting.shop;
 import org.junit.Test;
 
 import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
-import polytech.unice.si3.ihm.firm.customer.model.sorting.shop.SortListViewItemByRegion;
+import polytech.unice.si3.ihm.firm.common.model.sorting.shop.SortListViewItemByRegion;
 
 import java.util.ArrayList;
 import java.util.List;

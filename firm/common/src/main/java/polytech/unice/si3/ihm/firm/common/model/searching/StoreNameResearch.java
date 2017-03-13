@@ -1,17 +1,17 @@
-package polytech.unice.si3.ihm.firm.customer.model.searching;
+package polytech.unice.si3.ihm.firm.common.model.searching;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 
-public class MallNameResearch extends GeneralResearch {
+public class StoreNameResearch extends GeneralResearch {
     /**
      * Constructor for the general research
      *
      * @param stores the list of stores
      */
-    public MallNameResearch(List<Store> stores) {
+    public StoreNameResearch(List<Store> stores) {
         super(stores);
     }
 
@@ -23,8 +23,8 @@ public class MallNameResearch extends GeneralResearch {
         List<Store> result = new ArrayList<>();
 
         for (Store store: getStores())
-            if (store.getMallName().toLowerCase().equals(searchValue.toLowerCase()))
-            	result.add(store);
+            if (store.getName().toLowerCase().equals(searchValue.toLowerCase()))
+                result.add(store);
 
         return result;
     }

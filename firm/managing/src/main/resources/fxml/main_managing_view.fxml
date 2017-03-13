@@ -22,11 +22,20 @@
                         </AnchorPane>
                   </content>
                 </Tab>
+                  <Tab text="Modifier un magasin">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <fx:include source="tab_modify_store.fxml"/>
+                        </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
                 <Tab text="Ajouter un produit">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" >
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <fx:include source="tab_add_product.fxml"/>
+                                <fx:include source="tab_add_product.fxml" />
                             </children>
                       </AnchorPane>
 

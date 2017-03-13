@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.customer.json;
+package polytech.unice.si3.ihm.firm.common.json;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,8 +7,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
-import polytech.unice.si3.ihm.firm.customer.exceptions.ContentException;
-import polytech.unice.si3.ihm.firm.common.json.JsonReceiver;
+import polytech.unice.si3.ihm.firm.common.exceptions.ContentException;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Store;

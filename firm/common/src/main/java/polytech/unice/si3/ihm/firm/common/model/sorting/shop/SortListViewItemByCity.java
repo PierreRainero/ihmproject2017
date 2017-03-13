@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.customer.model.sorting.shop;
+package polytech.unice.si3.ihm.firm.common.model.sorting.shop;
 
 
 import java.util.*;
