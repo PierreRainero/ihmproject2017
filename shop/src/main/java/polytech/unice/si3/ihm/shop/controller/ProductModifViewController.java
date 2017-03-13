@@ -1,12 +1,9 @@
-package polytech.unice.si3.ihm.shop.view;
+package polytech.unice.si3.ihm.shop.controller;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import polytech.unice.si3.ihm.shop.model.Product;
+import polytech.unice.si3.ihm.shop.model.Promotion;
 import polytech.unice.si3.ihm.shop.model.Shop;
 import polytech.unice.si3.ihm.shop.model.SuperType;
 
@@ -34,6 +31,8 @@ public class ProductModifViewController extends BasicController{
     private Button returnButton;
     @FXML
     private Button deleteButton;
+    @FXML
+    private TextField promotions;
 
     public void initialiseView(Shop shop, Product product){
         this.product = product;
@@ -54,6 +53,7 @@ public class ProductModifViewController extends BasicController{
 
         types.setText(typesString.toString());
         nbVentes.setText(String.valueOf(product.getSales()));
+        promotions.setText(String.valueOf(product.getPromotion()));
         returnButton.setOnAction(event -> {
                 save();
                 currentStage.close();
@@ -91,5 +91,7 @@ public class ProductModifViewController extends BasicController{
         }
         product.setProductTypes(typesList);
         product.setSales(Integer.valueOf(nbVentes.getText()));
+        double promotion = (promotions.getText().equals(""))? 0 : Double.valueOf(promotions.getText());
+        product.setPromotion(new Promotion(promotion));
     }
 }

@@ -5,10 +5,16 @@
  - [Simon SERRANO](simon.serrano@etu.unice.fr)
 
 ## Historique des features
+### Week 11
+ - [X] RELEASE : Demo 1
+
 ### Week 10
  - [x] Mise en place du CSS
- - [ ] Mise en place des données : images
- - [ ] Vue gestionnaire
+ - [x] Mise en place des données : images
+ - [x] Vue gestionnaire : Ajouter un magasin
+ - [x] Vue gestionnaire : Ajouter un produit
+ - [x] Vue gestionnaire : Modifier un magasin
+ - [x] Vue gestionnaire : Modifier un produit
 
 ### Week 09
  - [ ] Mise en place du CSS

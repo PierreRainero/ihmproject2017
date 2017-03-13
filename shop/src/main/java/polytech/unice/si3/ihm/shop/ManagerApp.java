@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import polytech.unice.si3.ihm.shop.view.ManagerViewController;
+import polytech.unice.si3.ihm.shop.controller.ManagerViewController;
 
 public class ManagerApp extends Application {
 

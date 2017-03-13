@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="backgroundImage" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.shop.view.MainViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="backgroundImage" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="polytech.unice.si3.ihm.shop.controller.MainViewController">
    <children>
       <AnchorPane layoutY="32.0" prefHeight="83.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -40,11 +40,6 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="212.0" prefWidth="1280.0">
                      <children>
-                        <Button fx:id="promoLeftButton" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="&lt;">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </HBox.margin>
-                        </Button>
                         <ImageView fx:id="promoFirstImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@/images/produit.png" />
@@ -85,11 +80,6 @@
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="promoRightButton" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="&gt;">
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                   </HBox>
                </children>
@@ -98,11 +88,6 @@
          <center>
             <HBox fx:id="carouselContainer" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="carouselLeftButton" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="&lt;">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin>
-                  </Button>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <ImageView fx:id="carouselLeftImage" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -160,11 +145,6 @@
                         <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </VBox>
-                  <Button fx:id="carouselRightButton" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="&gt;">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin>
-                  </Button>
                </children>
                <opaqueInsets>
                   <Insets />
