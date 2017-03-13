@@ -34,6 +34,11 @@ public class ModifyStoreWindowController extends ModifyWindowController {
     private Button saveButton;
 
     @FXML
+    public void initialize(){
+        storeNameMissing.setVisible(false);
+    }
+
+    @FXML
     void cancelTheWindow(MouseEvent event) {
 
     }
@@ -45,12 +50,21 @@ public class ModifyStoreWindowController extends ModifyWindowController {
 
     @FXML
     void saveModifications(MouseEvent event) {
+        if (hasAName()){
 
+        }
+        else{
+            storeNameMissing.setVisible(true);
+        }
     }
 
     @FXML
     void searchComputer(MouseEvent event) {
 
+    }
+
+    private boolean hasAName(){
+        return !storeName.getText().trim().isEmpty()|| !storeName.getText().trim().equals("");
     }
 
 
