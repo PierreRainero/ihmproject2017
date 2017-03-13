@@ -19,7 +19,7 @@ import polytech.unice.si3.ihm.firm.common.util.Log;
  *
  */
 public class ContentParser {
-	private static final String PATH = System.getProperties().get("user.dir")+"/src/main/resources/datas/content.json";
+	private static final String PATH = System.getProperties().get("user.dir")+"/../datas/content.json";
 	private static final String INCORRECTJSON = "Incorrect JSONFile - Problem with firm's infos : "+PATH;
 	
 	private static final String NAME = "name";

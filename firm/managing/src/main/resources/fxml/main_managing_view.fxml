@@ -26,7 +26,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                         <children>
-                            <fx:include source="tab_modify_store.fxml"/>
+                            <fx:include source="tab_modify_store.fxml" />
                         </children>
                         </AnchorPane>
                     </content>
@@ -41,6 +41,15 @@
 
                   </content>
                 </Tab>
+                  <Tab text="Modifier un produit">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <children>
+                              <fx:include source="tab_modify_product.fxml"/>
+                          </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
               </tabs>
             </TabPane>
          </children>

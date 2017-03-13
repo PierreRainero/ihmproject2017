@@ -14,18 +14,15 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class JsonGeneratorProduct {
-
-    private static final String PATH = System.getProperties().get("user.dir")+"/../customer/src/main/resources/datas/content.json";
+    private static final String PATH = System.getProperties().get("user.dir")+"/../datas/content.json";
 
     private Product product;
-    private Optional<File> fileSelected;
-
     public JsonGeneratorProduct(Product product){
-        fileSelected = Optional.empty();
+        Optional.empty();
         this.product= product;
     }
 
-
+	@SuppressWarnings("unchecked")
     public void generate() throws IOException, ParseException {
         JSONObject firmJson = JsonReceiver.getJsonFirm(PATH);
         JSONArray products = (JSONArray)firmJson.get("products");
@@ -42,7 +39,7 @@ public class JsonGeneratorProduct {
         Log.info(this.getClass(), "JSON modifie");
     }
 
-
+	@SuppressWarnings("unchecked")
     private JSONObject getProductJson(){
         JSONObject returnValue = new JSONObject();
 
