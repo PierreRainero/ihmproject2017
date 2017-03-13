@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 
 public class ModifyStoreWindowController extends ModifyWindowController {
 
@@ -33,6 +34,16 @@ public class ModifyStoreWindowController extends ModifyWindowController {
     @FXML
     private Button saveButton;
 
+
+    private Store store;
+
+
+    @FXML
+    public void initialize(){
+        storeNameMissing.setVisible(false);
+
+    }
+
     @FXML
     void cancelTheWindow(MouseEvent event) {
 
@@ -45,12 +56,25 @@ public class ModifyStoreWindowController extends ModifyWindowController {
 
     @FXML
     void saveModifications(MouseEvent event) {
+        if (hasAName()){
 
+        }
+        else{
+            storeNameMissing.setVisible(true);
+        }
     }
 
     @FXML
     void searchComputer(MouseEvent event) {
 
+    }
+
+    private boolean hasAName(){
+        return !storeName.getText().trim().isEmpty()|| !storeName.getText().trim().equals("");
+    }
+
+    public void setStore(Store store){
+        this.store=store;
     }
 
 

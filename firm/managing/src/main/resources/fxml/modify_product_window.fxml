@@ -14,21 +14,21 @@
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="51.0" prefWidth="600.0">
                <children>
                   <Label text="Nom*">
                      <HBox.margin>
-                        <Insets left="50.0" top="35.0" />
+                        <Insets left="50.0" top="60.0" />
                      </HBox.margin>
                   </Label>
                   <TextField>
                      <HBox.margin>
-                        <Insets left="80.0" top="31.0" />
+                        <Insets left="80.0" top="56.0" />
                      </HBox.margin>
                   </TextField>
                   <Label fx:id="productNameMissing" text="Nom manquant" textFill="RED">
                      <HBox.margin>
-                        <Insets left="50.0" top="35.0" />
+                        <Insets left="44.0" top="60.0" />
                      </HBox.margin>
                   </Label>
                   <Label text="* indique un champ requis">
@@ -36,7 +36,7 @@
                         <Font name="System Italic" size="10.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="15.0" top="5.0" />
+                        <Insets left="10.0" top="25.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -45,50 +45,50 @@
                <children>
                   <Label text="Description">
                      <HBox.margin>
-                        <Insets left="50.0" top="32.0" />
+                        <Insets left="50.0" top="44.0" />
                      </HBox.margin>
                   </Label>
                   <TextArea prefHeight="200.0" prefWidth="200.0">
                      <HBox.margin>
-                        <Insets left="47.0" />
+                        <Insets left="51.0" top="4.0" />
                      </HBox.margin>
                   </TextArea>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="16.0" prefWidth="600.0">
                <children>
                   <Label text="Prix*">
                      <HBox.margin>
-                        <Insets left="50.0" top="32.0" />
+                        <Insets left="50.0" top="9.0" />
                      </HBox.margin>
                   </Label>
                   <TextField>
                      <HBox.margin>
-                        <Insets left="83.0" top="28.0" />
+                        <Insets left="87.0" top="4.0" />
                      </HBox.margin>
                   </TextField>
                   <Label fx:id="productPriceMissing" text="Prix manquant" textFill="RED">
                      <HBox.margin>
-                        <Insets left="50.0" top="32.0" />
+                        <Insets left="50.0" top="9.0" />
                      </HBox.margin>
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="60.0" prefWidth="600.0">
                <children>
                   <Label text="Image">
                      <HBox.margin>
-                        <Insets left="50.0" top="32.0" />
+                        <Insets left="50.0" top="9.0" />
                      </HBox.margin>
                   </Label>
                   <TextField>
                      <HBox.margin>
-                        <Insets left="77.0" top="28.0" />
+                        <Insets left="79.0" top="4.0" />
                      </HBox.margin>
                   </TextField>
                   <Button fx:id="searchComputerButton" mnemonicParsing="false" onMouseClicked="#searchComputer" text="Parcourir...">
                      <HBox.margin>
-                        <Insets left="2.0" top="28.0" />
+                        <Insets left="2.0" top="4.0" />
                      </HBox.margin>
                   </Button>
                </children>
@@ -102,7 +102,7 @@
                   </Button>
                   <Button fx:id="cancelButton" mnemonicParsing="false" onMouseClicked="#cancelTheWindow" text="Annuler">
                      <HBox.margin>
-                        <Insets left="310.0" top="40.0" />
+                        <Insets left="290.0" top="40.0" />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="saveButton" mnemonicParsing="false" onMouseClicked="#saveModifications" text="Sauvegarder">
