@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import polytech.unice.si3.ihm.shop.model.Product;
 import polytech.unice.si3.ihm.shop.model.Shop;
 import polytech.unice.si3.ihm.shop.view.MainViewController;
+import polytech.unice.si3.ihm.shop.view.ProductViewController;
 
 import java.io.IOException;
 
@@ -19,8 +20,7 @@ public class MainApp extends Application {
     }
 
     public void start(Stage stage) throws Exception {
-
-        JsonParser jsonParser = new JsonParser("src/main/resources/datas/content.json", stage);
+        JsonParser jsonParser = new JsonParser("src/main/resources/datas/content.json");
 
         Shop shop = jsonParser.parseJson();
 
@@ -42,16 +42,6 @@ public class MainApp extends Application {
         jsonParser.createObjects(shop);
 
         controller.initialiseCarousel(shop);
-
-        stage.show();
-    }
-
-    public static void show(Product product) throws Exception {
-        Stage stage = new Stage();
-
-        JsonParser jsonParser = new JsonParser("src/main/resources/datas/content.json", stage);
-
-        jsonParser.productPopup(product);
 
         stage.show();
     }

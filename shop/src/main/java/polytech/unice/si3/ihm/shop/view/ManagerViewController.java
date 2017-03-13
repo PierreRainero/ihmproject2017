@@ -1,7 +1,5 @@
 package polytech.unice.si3.ihm.shop.view;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -58,49 +56,41 @@ public class ManagerViewController extends BasicController {
      * Initialise la vue de base du ManagerViewController
      */
     public void initialiseView(Stage stage){
-        openMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    loadFile(stage);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        openMenuItem.setOnAction(event -> {
+            try {
+                loadFile(stage);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
-        saveMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    saveFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        saveMenuItem.setOnAction(event -> {
+            try {
+                saveFile();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-        saveAsMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    saveAsFile(stage);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        saveAsMenuItem.setOnAction(event -> {
+            try {
+                saveAsFile(stage);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-        newMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                shopName.clear();
-                shopLogo.clear();
-                shopLogoMin.clear();
-                shopLogoText.clear();
-                shopDescription.clear();
-                shopMentions.clear();
-                shopAdresse.clear();
-                shopTelephone.clear();
-            }
+        newMenuItem.setOnAction(event -> {
+            clearWindow();
         });
+    }
+
+    private void clearWindow(){
+        shopName.clear();
+        shopLogo.clear();
+        shopLogoMin.clear();
+        shopLogoText.clear();
+        shopDescription.clear();
+        shopMentions.clear();
+        shopAdresse.clear();
+        shopTelephone.clear();
     }
 
     private void loadFile(Stage stage) throws Exception {
@@ -131,14 +121,11 @@ public class ManagerViewController extends BasicController {
             for(int i = 0; i < shop.getProducts().size(); i++){
                 final Product product = shop.getProducts().get(i);
                 Button button = new Button(product.getName());
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        try {
-                            openModifProduct(product);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                button.setOnAction(event -> {
+                    try {
+                        openModifProduct(product);
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 });
                 vBox.getChildren().add(button);

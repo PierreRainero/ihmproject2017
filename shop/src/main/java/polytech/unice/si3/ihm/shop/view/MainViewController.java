@@ -2,8 +2,6 @@ package polytech.unice.si3.ihm.shop.view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -89,36 +87,27 @@ public class MainViewController extends BasicController {
             event.consume();
         });
 
-        this.about.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    openTextView("Qui sommes nous", shop.getAbout());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        this.about.setOnAction(event -> {
+            try {
+                openTextView("Qui sommes nous", shop.getAbout());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
 
-        this.legalNotice.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    openTextView("Mentions légales", shop.getLegalNotice());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        this.legalNotice.setOnAction(event -> {
+            try {
+                openTextView("Mentions légales", shop.getLegalNotice());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
 
-        this.adress.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    openTextView("Où nous trouver", shop.getAdress());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        this.adress.setOnAction(event -> {
+            try {
+                openTextView("Où nous trouver", shop.getAdress());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
@@ -136,6 +125,22 @@ public class MainViewController extends BasicController {
         TextViewController controller = loader.getController();
         controller.setCurrentStage(stage);
         controller.initialiseView(title, content);
+        stage.show();
+    }
+
+    private void openProductView(Product product) throws IOException {
+        Stage stage = new Stage();
+        String fxmlFile = "/fxml/product_view.fxml";
+        FXMLLoader loader = new FXMLLoader();
+        Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
+
+        Scene scene = new Scene(rootNode, 500,600);
+        scene.getStylesheets().add("/styles/main.css");
+        stage.setScene(scene);
+
+        ProductViewController controller = loader.getController();
+        controller.setCurrentStage(stage);
+        controller.initialiseView(product);
         stage.show();
     }
 
@@ -276,8 +281,8 @@ public class MainViewController extends BasicController {
             Product product = products.get(i);
             hBox.setOnMouseClicked(event -> {
                 try {
-                    MainApp.show(product);
-                } catch (Exception e) {
+                    openProductView(product);
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             });
@@ -421,8 +426,8 @@ public class MainViewController extends BasicController {
 
         carouselCenterImage.setOnMouseClicked(event -> {
             try {
-                MainApp.show(carouselCenter);
-            } catch (Exception e) {
+                openProductView(carouselCenter);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         });
@@ -437,24 +442,20 @@ public class MainViewController extends BasicController {
 
         carouselLeftImage.setOnMouseClicked(event -> {
             try {
-                MainApp.show(carouselLeft);
-            } catch (Exception e) {
+                openProductView(carouselLeft);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         });
 
-        carouselLeftImage.setOnMouseEntered(event -> {
-            mouseEntered(event);
-        });
+        carouselLeftImage.setOnMouseEntered(event -> mouseEntered(event));
 
-        carouselLeftImage.setOnMouseExited(event -> {
-            mouseExited(event);
-        });
+        carouselLeftImage.setOnMouseExited(event -> mouseExited(event));
 
         carouselRightImage.setOnMouseClicked(event -> {
             try {
-                MainApp.show(carouselRight);
-            } catch (Exception e) {
+                openProductView(carouselRight);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         });
