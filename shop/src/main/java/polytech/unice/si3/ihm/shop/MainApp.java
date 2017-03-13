@@ -39,6 +39,7 @@ public class MainApp extends Application {
         jsonParser.createObjects(shop);
 
         controller.initialiseCarousel(shop);
+        controller.initializePromotions(shop);
 
         stage.show();
     }

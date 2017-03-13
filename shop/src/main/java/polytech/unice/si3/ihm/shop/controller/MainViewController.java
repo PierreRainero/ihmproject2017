@@ -66,6 +66,26 @@ public class MainViewController extends BasicController {
     private Button legalNotice;
     @FXML
     private Button adress;
+    @FXML
+    private ImageView promoFirstImage;
+    @FXML
+    private ImageView promoSecondImage;
+    @FXML
+    private ImageView promoThirdImage;
+    @FXML
+    private ImageView promoFourthImage;
+    @FXML
+    private ImageView promoFifthImage;
+    @FXML
+    private Label promoFirstText;
+    @FXML
+    private Label promoSecondText;
+    @FXML
+    private Label promoThirdText;
+    @FXML
+    private Label promoFourthText;
+    @FXML
+    private Label promoFifthText;
 
     /**
      * Initialise la vue de base du MainViewController
@@ -397,7 +417,6 @@ public class MainViewController extends BasicController {
      * @param shop magasin contenant les différents produits
      */
     public void initialiseCarousel(Shop shop){
-
         Product centerProduct = null;
         Product leftProduct = null;
         Product rightProduct = null;
@@ -477,5 +496,71 @@ public class MainViewController extends BasicController {
         nom.setOnMouseEntered(event -> mouseEntered(event));
 
         nom.setOnMouseExited(event -> mouseExited(event));
+    }
+
+    public void initializePromotions(Shop shop){
+        List<Product> productsInPromo = new ArrayList<>();
+
+        List<Product> topSales = shop.getTopSales();
+        for(int i=0;i<topSales.size();i++){
+            if(topSales.get(i).getPromotion() != 0)
+                productsInPromo.add(topSales.get(i));
+        }
+
+        if(productsInPromo.size() > 0) {
+            this.promoFirstImage.setImage(new Image(productsInPromo.get(0).getImageURL()));
+            this.promoFirstText.setText("-" + productsInPromo.get(0).getPromotion() + "%");
+            this.promoFirstImage.setOnMouseClicked(event -> {
+                try {
+                    openProductView(productsInPromo.get(0));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        if(productsInPromo.size() > 1) {
+            this.promoSecondImage.setImage(new Image(productsInPromo.get(1).getImageURL()));
+            this.promoSecondText.setText("-" + productsInPromo.get(1).getPromotion() + "%");
+            this.promoSecondImage.setOnMouseClicked(event -> {
+                try {
+                    openProductView(productsInPromo.get(1));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        if(productsInPromo.size() > 2) {
+            this.promoThirdImage.setImage(new Image(productsInPromo.get(2).getImageURL()));
+            this.promoThirdText.setText("-" + productsInPromo.get(2).getPromotion() + "%");
+            this.promoThirdImage.setOnMouseClicked(event -> {
+                try {
+                    openProductView(productsInPromo.get(2));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        if(productsInPromo.size() > 3) {
+            this.promoFourthImage.setImage(new Image(productsInPromo.get(3).getImageURL()));
+            this.promoFourthText.setText("-" + productsInPromo.get(3).getPromotion() + "%");
+            this.promoFourthImage.setOnMouseClicked(event -> {
+                try {
+                    openProductView(productsInPromo.get(3));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        if(productsInPromo.size() > 4) {
+            this.promoFifthImage.setImage(new Image(productsInPromo.get(4).getImageURL()));
+            this.promoFifthText.setText("-" + productsInPromo.get(4).getPromotion() + "%");
+            this.promoFifthImage.setOnMouseClicked(event -> {
+                try {
+                    openProductView(productsInPromo.get(4));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 }
