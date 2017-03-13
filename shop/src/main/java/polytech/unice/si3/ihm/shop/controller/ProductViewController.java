@@ -1,6 +1,7 @@
 package polytech.unice.si3.ihm.shop.controller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,7 +25,12 @@ public class ProductViewController extends BasicController{
         this.productDescription.setText(product.getDescription().toString());
         productDescription.setWrapText(true);
         this.productPicture.setImage(new Image(product.getImageURL()));
-        this.productPrice.setText(Double.toString(product.getPrice()) + " €");
+        String price = "Prix : " + Double.toString(product.getPrice()) + " €";
+        if(product.getPromotion()!=0){
+            price = "Prix : " + product.getPromotedPrice() + " €" + "\n(-" + product.getPromotion() + "%)";
+        }
+        this.productPrice.setText(price);
+        this.productPrice.setAlignment(Pos.CENTER);
         this.productName.setText(product.getName().toString());
     }
 

@@ -30,12 +30,7 @@
                   <Label />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Prix : ">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="productPrice" prefHeight="30.0" prefWidth="68.0" text="productPrice">
+                        <Label fx:id="productPrice" prefHeight="50.0" prefWidth="200.0" text="productPrice">
                            <font>
                               <Font size="15.0" />
                            </font>
