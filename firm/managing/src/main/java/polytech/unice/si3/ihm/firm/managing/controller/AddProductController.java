@@ -25,14 +25,11 @@ public class AddProductController {
     @FXML
     private TextField productNameTextField;
 
-
     @FXML
     private TextField productReferenceTextField;
 
-
     @FXML
     private TextField productPriceTextField;
-
 
     @FXML
     private TextField productReduction;
@@ -52,7 +49,6 @@ public class AddProductController {
     @FXML
     private RadioButton productPromoteNoButton;
 
-
     @FXML
     private Label newPriceAfterReduction;
 
@@ -67,10 +63,6 @@ public class AddProductController {
 
     @FXML
     private Label productReferenceMissing;
-
-
-
-
 
     private ReductionPercentage reduction = new ReductionPercentage();
 
@@ -92,9 +84,6 @@ public class AddProductController {
         mustBeCompleted.add(productNameTextField);
         mustBeCompleted.add(productPriceTextField);
         mustBeCompleted.add(productReferenceTextField);
-
-
-
     }
 
     /**
