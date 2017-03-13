@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.json.simple.JSONArray;
 import polytech.unice.si3.ihm.MainApp;
 import java.io.*;
 import javafx.scene.image.ImageView;
@@ -91,12 +92,13 @@ public class GoodDealsViewController extends MenuController {
 
         try {
             JSONObject js = (JSONObject)parser.parse(new FileReader(getClass().getResource("/json/deals.json").getFile()));
-            GoodDeal gd1 = new GoodDeal("/images/"+(String)js.get("0"));
-            GoodDeal gd2 = new GoodDeal("/images/"+(String)js.get("1"));
-            GoodDeal gd3 = new GoodDeal("/images/"+(String)js.get("2"));
-            deals.add(gd1);
-            deals.add(gd2);
-            deals.add(gd3);
+            JSONObject jsStore;
+            GoodDeal gd;
+            for(int i = 0 ; i < 3 ; i++){
+                jsStore = (JSONObject)((JSONArray) js.get(String.valueOf(i))).get(0);
+                gd = new GoodDeal("/images/" + jsStore.get("imageName"),"/json/store/" + jsStore.get("jsonName"));
+                deals.add(gd);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,7 +114,7 @@ public class GoodDealsViewController extends MenuController {
     }
 
     public void displayStore1(){
-        Info i = new Info("/json/macrogamia.json");
+        Info i = deals.get(0).getInfoStore();
         displayInfo(i);
     }
 
@@ -121,12 +123,9 @@ public class GoodDealsViewController extends MenuController {
     }
 
     public void displayStore3(){
-        Info i = new Info("/json/saint_val.json");
+        Info i = deals.get(2).getInfoStore();
         displayInfo(i);
     }
-
-
-
     /*public void displayStore3(){
         try{
             Stage stage = new Stage();
@@ -159,7 +158,7 @@ public class GoodDealsViewController extends MenuController {
 
         InfoController controller = loader.getController();
         controller.setMainApp(mainApp);
-        controller.setInfo(info);
+        controller.initData(info);
 
         mainApp.getStage().show();
     }

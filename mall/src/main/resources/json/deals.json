@@ -1,5 +1,5 @@
 {
-  "0":"bons_plans_1.jpg",
-  "1":"bons_plans_2.jpg",
-  "2":"bons_plans_3.jpg"
+  "0":[{"imageName":"bons_plans_1.jpg","jsonName":"magasin1.json"}],
+  "1":[{"imageName":"bons_plans_2.jpg","jsonName":"magasin2.json"}],
+  "2":[{"imageName":"bons_plans_3.jpg","jsonName":"magasin3.json"}]
 }

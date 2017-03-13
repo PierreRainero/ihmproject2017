@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -26,7 +27,6 @@
                 <Menu mnemonicParsing="false" text="Outils">
                   <items>
                     <MenuItem fx:id="exitMenu" mnemonicParsing="false" onAction="#closeWindow" text="Quitter" />
-                        <MenuItem mnemonicParsing="false" text="Réinitialiser" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="En savoir plus">
@@ -84,7 +84,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="100.0" prefWidth="1280.0">
                <children>
-                  <SplitPane dividerPositions="0.25039123630672927" prefHeight="100.0" prefWidth="1280.0">
+                  <SplitPane dividerPositions="0.25039123630672927" prefHeight="143.0" prefWidth="1280.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="507.0">
                            <children>
@@ -93,9 +93,9 @@
                         </AnchorPane>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="939.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="140.0" prefWidth="953.0">
                                  <children>
-                                    <Label fx:id="description" alignment="TOP_LEFT" prefHeight="98.0" prefWidth="935.0" text="Label" textAlignment="JUSTIFY" />
+                                    <Label fx:id="description" alignment="TOP_LEFT" prefHeight="140.0" prefWidth="955.0" text="Label" textAlignment="JUSTIFY" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -115,9 +115,9 @@
                         </AnchorPane>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="68.0" prefWidth="939.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="68.0" prefWidth="954.0">
                                  <children>
-                                    <Label fx:id="type" alignment="TOP_LEFT" prefHeight="72.0" prefWidth="940.0" text="Label" textAlignment="JUSTIFY" />
+                                    <Label fx:id="type" alignment="TOP_LEFT" prefHeight="72.0" prefWidth="955.0" text="Label" textAlignment="JUSTIFY" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -139,7 +139,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="939.0">
                                  <children>
-                                    <Label fx:id="site" alignment="TOP_LEFT" prefHeight="98.0" prefWidth="935.0" text="Label" textAlignment="JUSTIFY" />
+                                    <Hyperlink fx:id="site" layoutY="3.0" onMousePressed="#goToLink" prefHeight="45.0" prefWidth="941.0" text="Hyperlink" />
                                  </children>
                               </AnchorPane>
                            </content>
