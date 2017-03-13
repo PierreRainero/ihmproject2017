@@ -3,17 +3,16 @@ package polytech.unice.si3.ihm.shop.view;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import polytech.unice.si3.ihm.shop.model.Product;
+import polytech.unice.si3.ihm.shop.model.Shop;
 import polytech.unice.si3.ihm.shop.model.SuperType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ProductModifViewController extends BasicController{
 
@@ -33,8 +32,10 @@ public class ProductModifViewController extends BasicController{
     private TextField nbVentes;
     @FXML
     private Button returnButton;
+    @FXML
+    private Button deleteButton;
 
-    public void initialiseView(Product product){
+    public void initialiseView(Shop shop, Product product){
         this.product = product;
         nom.setText(product.getName());
         image.setText(product.getImageURL());
@@ -53,9 +54,19 @@ public class ProductModifViewController extends BasicController{
 
         types.setText(typesString.toString());
         nbVentes.setText(String.valueOf(product.getSales()));
-        returnButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        returnButton.setOnAction(event -> {
+                save();
+                currentStage.close();
+        });
+        deleteButton.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Suppression du produit");
+            alert.setHeaderText("Vous êtes sur le point de supprimer ce produit");
+            alert.setContentText("Etes vous sur de vouloir faire ça ?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                shop.removeProduct(product);
                 save();
                 currentStage.close();
             }
