@@ -13,6 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import polytech.unice.si3.ihm.shop.JsonParser;
 import polytech.unice.si3.ihm.shop.model.Product;
+import polytech.unice.si3.ihm.shop.model.Promotion;
 import polytech.unice.si3.ihm.shop.model.Shop;
 import polytech.unice.si3.ihm.shop.model.SuperType;
 
@@ -86,7 +87,7 @@ public class ManagerViewController extends BasicController {
     }
 
     private void addProductToShop(){
-        this.shop.addProduct(new Product("","",0,"", new ArrayList<SuperType>(), 0));
+        this.shop.addProduct(new Product("","",0,"", new ArrayList<SuperType>(), 0,new Promotion(0)));
         addProductsToWindow();
     }
 

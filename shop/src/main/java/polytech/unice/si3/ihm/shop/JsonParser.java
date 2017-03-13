@@ -3,6 +3,7 @@ package polytech.unice.si3.ihm.shop;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import polytech.unice.si3.ihm.shop.model.Product;
+import polytech.unice.si3.ihm.shop.model.Promotion;
 import polytech.unice.si3.ihm.shop.model.Shop;
 import polytech.unice.si3.ihm.shop.model.SuperType;
 
@@ -86,7 +87,8 @@ public class JsonParser {
                 }
                 itemTypeList.add(superType);
             }
-            shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price"), jsonObject.getString("description"), itemTypeList, jsonObject.getInt("sales")));
+            Promotion promotion = new Promotion(jsonObject.getDouble("promotion"));
+            shop.addProduct(new Product(jsonObject.getString("name"), jsonObject.getString("imageURL"), jsonObject.getDouble("price"), jsonObject.getString("description"), itemTypeList, jsonObject.getInt("sales"), promotion));
         }
     }
 }

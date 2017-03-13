@@ -114,7 +114,7 @@ public class Shop {
      * Retourne la liste contenant les produits, triée par ordre croissant
      * @return List contenant les différents produits contenus dans le magasin triés par ordre croissant
      */
-    public List<Product> getProducstByCroissantPrice(){
+    public void sortByCroissantPrice(){
         this.products.sort((p1, p2) -> {
             if(p1.getPrice()>p2.getPrice())
                 return 1;
@@ -123,14 +123,13 @@ public class Shop {
             else
                 return 0;
         });
-        return products;
     }
 
     /**
      * Retourne la liste contenant les produits, triée par ordre décroissant
      * @return List contenant les différents produits contenus dans le magasin trié par ordre croissant
      */
-    public List<Product> getProducstByDeCroissantPrice(){
+    public void sortByDeCroissantPrice(){
         this.products.sort((p1, p2) -> {
             if(p1.getPrice()<p2.getPrice())
                 return 1;
@@ -139,23 +138,21 @@ public class Shop {
             else
                 return 0;
         });
-        return products;
     }
 
     /**
      * Retourne la liste contenant les produits, triée par nombre de ventes
      * @return List contenant les différents produits contenus dans le magasin trié par nombre de ventes
      */
-    public List<Product> getProductsByPopularity(){
+    public void sortByPopularity(){
         this.products.sort((p1, p2) -> {
-            if(p1.getSales()>p2.getSales())
+            if(p1.getSales()<p2.getSales())
                 return 1;
-            else if(p1.getPrice()<p2.getPrice())
+            else if(p1.getSales()>p2.getSales())
                 return -1;
             else
                 return 0;
         });
-        return products;
     }
 
     /**

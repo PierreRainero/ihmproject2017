@@ -7,8 +7,11 @@ public class Promotion {
         this.percent=value/100;
     }
 
-    public double getPercent(){
+    public double getValue(){
         return this.percent;
     }
 
+    public double getPercent(){
+        return this.percent*100;
+    }
 }
