@@ -36,7 +36,7 @@ public class ProductTest {
         List<SuperType> spl = new ArrayList<>();
 
         spl.add(st);
-        p = new Product(livre, image, 15, description, spl, 1);
+        p = new Product(livre, image, 15, description, spl, 1 ,new Promotion(0));
     }
 
     @Test
@@ -45,15 +45,26 @@ public class ProductTest {
         assertEquals(livre, p.getName());
         assertEquals(image, p.getImageURL());
         assertEquals(15.0, p.getPrice(), 0.01);
-        assertEquals(-1, p.getPromotedPrice(), 0.01);
+        assertEquals(15.0, p.getPromotedPrice(), 0.01);
+        assertEquals(0, p.getPromotion(), 0.01);
         p.setPromotion(promo);
+        assertEquals(50.0, p.getPromotion(), 0.01);
         assertEquals(7.5, p.getPromotedPrice(), 0.01);
-        String disquedur = "disque dur";
-        //assertEquals(spl.get(0).getName(), p.getProductType());
         assertEquals(description, p.getDescription());
         assertEquals(1, p.getSales());
     }
 
-
+    @Test
+    public void productTypesTest() {
+        List<SuperType> mySuperType = new ArrayList<>();
+        SuperType myType = new SuperType("My Type Name");
+        mySuperType.add(myType);
+        myType.addType("Poisson");
+        myType.addType("Légumes");
+        myType.addType("Fruits");
+        p.setProductTypes(mySuperType);
+        assertEquals(p.getProductType(), mySuperType);
+        assertEquals(p.getProductType().get(0).getName(), "My Type Name");
+    }
 }
 
