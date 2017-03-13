@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.customer.exceptions;
+package polytech.unice.si3.ihm.firm.common.exceptions;
 
 /**
  * 

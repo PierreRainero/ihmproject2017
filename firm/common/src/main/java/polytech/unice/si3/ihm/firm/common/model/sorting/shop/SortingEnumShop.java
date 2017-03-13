@@ -1,18 +1,18 @@
-package polytech.unice.si3.ihm.firm.customer.model.sorting.product;
+package polytech.unice.si3.ihm.firm.common.model.sorting.shop;
 
 /**
  * 
- * Enum class for products sortings
+ * Enum class for shops sortings
  *
  */
-public enum SortingEnumProduct {
-    ALL("Tous les produits"),
-    FLAGSHIP("Produits phares"),
-    PROMOTED("Promotions");
-	
+public enum SortingEnumShop {
+    CITY("Trier par villes"),
+    REGION("Trier par régions"),
+    DEPARTMENT("Trier par départements");
+
     private String sortingName;
 
-    SortingEnumProduct(String sortingName) {
+    SortingEnumShop(String sortingName) {
         this.sortingName = sortingName;
     }
 
@@ -23,17 +23,19 @@ public enum SortingEnumProduct {
     public String getSortingName() {
         return sortingName;
     }
+
     
     /**
      * Method that converts a string in a SortingEnum object if the string is corresponding to one of the objects
      * @param selected the string to convert
      * @return the SortingEnum object corresponding to the string
      */
-    public static SortingEnumProduct convertStringToSortingEnum(String selected){
-        for (SortingEnumProduct sortingEnum : SortingEnumProduct.values()){
+    public static SortingEnumShop convertStringToSortingEnum(String selected){
+        for (SortingEnumShop sortingEnum : SortingEnumShop.values()){
             if (selected.equals(sortingEnum.getSortingName())) 
             	return sortingEnum;
         }
-        return SortingEnumProduct.ALL;
+        return SortingEnumShop.CITY;
     }
+
 }

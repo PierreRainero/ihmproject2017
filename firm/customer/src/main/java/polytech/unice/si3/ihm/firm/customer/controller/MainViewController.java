@@ -32,16 +32,16 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
-import polytech.unice.si3.ihm.firm.customer.exceptions.ContentException;
+import polytech.unice.si3.ihm.firm.common.exceptions.ContentException;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Product;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 import polytech.unice.si3.ihm.firm.common.util.ImageBuilder;
 import polytech.unice.si3.ihm.firm.common.util.Log;
-import polytech.unice.si3.ihm.firm.customer.model.searching.*;
-import polytech.unice.si3.ihm.firm.customer.model.sorting.product.SortingEnumProduct;
-import polytech.unice.si3.ihm.firm.customer.model.sorting.product.SortingListByFlagship;
-import polytech.unice.si3.ihm.firm.customer.model.sorting.product.SortingListByPromo;
+import polytech.unice.si3.ihm.firm.common.model.searching.*;
+import polytech.unice.si3.ihm.firm.common.model.sorting.product.SortingEnumProduct;
+import polytech.unice.si3.ihm.firm.common.model.sorting.product.SortingListByFlagship;
+import polytech.unice.si3.ihm.firm.common.model.sorting.product.SortingListByPromo;
 import polytech.unice.si3.ihm.firm.customer.view.Carousel;
 
 /**
