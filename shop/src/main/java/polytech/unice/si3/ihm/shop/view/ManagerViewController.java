@@ -19,6 +19,7 @@ import polytech.unice.si3.ihm.shop.model.SuperType;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ManagerViewController extends BasicController {
 
@@ -51,11 +52,14 @@ public class ManagerViewController extends BasicController {
     private TextField shopTelephone;
     @FXML
     private ScrollPane productsScrollPane;
+    @FXML
+    private Button addProduct;
 
     /**
      * Initialise la vue de base du ManagerViewController
      */
     public void initialiseView(Stage stage){
+        this.shop = new Shop("", "", "", "");
         openMenuItem.setOnAction(event -> {
             try {
                 loadFile(stage);
@@ -77,9 +81,13 @@ public class ManagerViewController extends BasicController {
                 e.printStackTrace();
             }
         });
-        newMenuItem.setOnAction(event -> {
-            clearWindow();
-        });
+        newMenuItem.setOnAction(event -> clearWindow());
+        addProduct.setOnAction(event -> addProductToShop());
+    }
+
+    private void addProductToShop(){
+        this.shop.addProduct(new Product("","",0,"", new ArrayList<SuperType>(), 0));
+        addProductsToWindow();
     }
 
     private void clearWindow(){
@@ -115,22 +123,7 @@ public class ManagerViewController extends BasicController {
             shopMentions.setText(shop.getLegalNotice());
             shopAdresse.setText(shop.getAdress());
             shopTelephone.setText(shop.getPhone());
-            VBox vBox = new VBox();
-            vBox.setAlignment(Pos.CENTER);
-            vBox.setSpacing(10);
-            for(int i = 0; i < shop.getProducts().size(); i++){
-                final Product product = shop.getProducts().get(i);
-                Button button = new Button(product.getName());
-                button.setOnAction(event -> {
-                    try {
-                        openModifProduct(product);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
-                vBox.getChildren().add(button);
-            }
-            productsScrollPane.setContent(vBox);
+            addProductsToWindow();
         }
     }
 
@@ -149,7 +142,10 @@ public class ManagerViewController extends BasicController {
 
         ProductModifViewController controller = loader.getController();
         controller.setCurrentStage(stage);
-        controller.initialiseView(product);
+        controller.initialiseView(shop, product);
+
+        stage.setOnHiding(event -> addProductsToWindow());
+
         stage.show();
     }
 
@@ -199,5 +195,25 @@ public class ManagerViewController extends BasicController {
             array.put(object);
         }
         return array;
+    }
+
+    private void addProductsToWindow(){
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPrefWidth(productsScrollPane.getWidth());
+        vBox.setSpacing(10);
+        for(int i = 0; i < shop.getProducts().size(); i++){
+            final Product product = shop.getProducts().get(i);
+            Button button = new Button(product.getName());
+            button.setOnAction(event -> {
+                try {
+                    openModifProduct(product);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            vBox.getChildren().add(button);
+        }
+        productsScrollPane.setContent(vBox);
     }
 }

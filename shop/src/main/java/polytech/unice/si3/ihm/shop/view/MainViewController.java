@@ -260,7 +260,7 @@ public class MainViewController extends BasicController {
             vBox1.setPrefWidth(500);
 
             ImageView productPicture = new ImageView(products.get(i).getImageURL());
-            productPicture.setFitHeight(200);
+            productPicture.setPreserveRatio(true);
             productPicture.setFitWidth(150);
 
             Label gameDescription = new Label(products.get(i).getDescription());

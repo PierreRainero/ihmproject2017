@@ -18,8 +18,8 @@ public class ManagerApp extends Application {
         String fxmlFile = "/fxml/manager_view.fxml";
         FXMLLoader loader = new FXMLLoader();
         Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
-        stage.setMinHeight(700.0);
-        stage.setMinWidth(1140.0);
+        stage.setResizable(false);
+
 
         Scene scene = new Scene(rootNode, 1280, 720);
         scene.getStylesheets().add("/styles/main.css");

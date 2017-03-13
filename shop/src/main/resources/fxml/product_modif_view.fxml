@@ -51,8 +51,15 @@
             </TextField>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="returnButton" mnemonicParsing="false" text="Retour">
+                  <Button fx:id="deleteButton" mnemonicParsing="false" text="Supprimer ce produit">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
                   </Button>
+                  <Button fx:id="returnButton" mnemonicParsing="false" text="Modifications terminées">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
          </children>
