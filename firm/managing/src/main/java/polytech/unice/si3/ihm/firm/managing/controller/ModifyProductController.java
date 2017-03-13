@@ -68,7 +68,7 @@ public class ModifyProductController {
 
             Scene scene = new Scene(rootNode, 420, 450);
             scene.getStylesheets().add("/styles/main.css");
-            stage.setTitle("Name");
+            stage.setTitle(modifyProductListView.getSelectionModel().getSelectedItem().getName());
             stage.setScene(scene);
             stage.show();
 
