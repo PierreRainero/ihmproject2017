@@ -171,31 +171,47 @@ public class Shop {
      * @return List contenant les trois produits ayant été le plus vendu, trié par nombre de ventes
      */
     public List<Product> getTopSales(){
-        List<Product> toKeep = new ArrayList<>();
-        toKeep.addAll(this.products);
-        while (toKeep.size()>3){
-            Product product = toKeep.get(0);
-            for(Product keep : toKeep){
-                if(keep.getSales() < product.getSales()){
-                    product = keep;
-                }
-            }
-            toKeep.remove(product);
-        }
-
         List<Product> returned = new ArrayList<>();
-        while (toKeep.size()>0){
-            Product product = toKeep.get(0);
-            for(Product keep : toKeep){
-                if(keep.getSales() > product.getSales()){
-                    product = keep;
-                }
-            }
-            returned.add(product);
-            toKeep.remove(product);
-        }
+        sortByPopularity();
+        for(int i=0;i<3;i++)
+            returned.add(products.get(i));
 
         return returned;
+    }
+
+
+    /**
+     * Retourne la liste contenant les produits, triée par nombre de ventes
+     * @return List contenant les différents produits contenus dans le magasin trié par nombre de ventes
+     */
+    public List<Product> sortByPromotion(){
+        List<Product> returned = new ArrayList<>();
+        returned.addAll(this.products);
+        returned.sort((p1, p2) -> {
+            if(p1.getPromotion()<p2.getPromotion())
+                return 1;
+            else if(p1.getPromotion()>p2.getPromotion())
+                return -1;
+            else
+                return 0;
+        });
+        return returned;
+    }
+
+    /**
+     * Permet de récupérer les trois produits les plus vendus dans le magasin.
+     * @return List contenant les trois produits ayant été le plus vendu, trié par nombre de ventes
+     */
+    public List<Product> getTopPromotion(){
+        List<Product> returned = sortByPromotion();
+        List<Product> toReturn = new ArrayList<>();
+
+        for(int i=0;i<returned.size();i++){
+            if(returned.get(i).getPromotion()!=0)
+                toReturn.add(returned.get(i));
+        }
+
+        return toReturn;
     }
 
     /**

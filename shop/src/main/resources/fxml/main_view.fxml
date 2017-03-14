@@ -111,7 +111,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <Label fx:id="promoFouthText" text="Label" textFill="RED">
+                              <Label fx:id="promoFourthText" text="Label" textFill="RED">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>

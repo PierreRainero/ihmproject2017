@@ -240,7 +240,6 @@ public class MainViewController extends BasicController {
         VBox vBox = displayAllShopProducts(shop);
         vBox = deleteNonSearchCorrespondingElements(vBox, shop, searchBar.getCharacters().toString());
         vBox = deleteNonFilteredCorrespondingElements(vBox, shop, filters);
-        /*vBox = *///applySort(vBox, shop);
         ScrollPane sc = new ScrollPane();
         sc.setContent(vBox);
 
@@ -334,7 +333,6 @@ public class MainViewController extends BasicController {
     private VBox deleteNonSearchCorrespondingElements(VBox gamesDisplayed, Shop shop, String searchBar) {
         searchBar = searchBar.toLowerCase();
         List<Product> products = shop.getProducts();
-
         int i = 0;
         for (Product product : products) {
             if (!product.getName().toLowerCase().contains(searchBar)) {
@@ -411,8 +409,6 @@ public class MainViewController extends BasicController {
         }
         return -1;
     }
-
-
 
     /**
      * Permets l'affichage des trois meilleurs produits (ceux le plus vendu dans le magasin)
@@ -501,17 +497,24 @@ public class MainViewController extends BasicController {
     }
 
     public void initializePromotions(Shop shop){
-        List<Product> productsInPromo = new ArrayList<>();
+        List<Product> productsInPromo = shop.getTopPromotion();
 
-        List<Product> products = shop.getProducts();
-        for(int i=0;i<products.size();i++){
-            if(products.get(i).getPromotion() != 0)
-                productsInPromo.add(products.get(i));
-        }
+        promoFirstImage.setVisible(false);
+        promoFirstText.setVisible(false);
+        promoSecondImage.setVisible(false);
+        promoSecondText.setVisible(false);
+        promoThirdImage.setVisible(false);
+        promoThirdText.setVisible(false);
+        promoFourthImage.setVisible(false);
+        promoFourthText.setVisible(false);
+        promoFifthImage.setVisible(false);
+        promoFifthText.setVisible(false);
 
         if(productsInPromo.size() > 0) {
             this.promoFirstImage.setImage(new Image(productsInPromo.get(0).getImageURL()));
             this.promoFirstText.setText("-" + productsInPromo.get(0).getPromotion() + "%");
+            promoFirstImage.setVisible(true);
+            promoFirstText.setVisible(true);
             this.promoFirstImage.setOnMouseClicked(event -> {
                 try {
                     openProductView(productsInPromo.get(0));
@@ -523,6 +526,8 @@ public class MainViewController extends BasicController {
         if(productsInPromo.size() > 1) {
             this.promoSecondImage.setImage(new Image(productsInPromo.get(1).getImageURL()));
             this.promoSecondText.setText("-" + productsInPromo.get(1).getPromotion() + "%");
+            promoSecondImage.setVisible(true);
+            promoSecondText.setVisible(true);
             this.promoSecondImage.setOnMouseClicked(event -> {
                 try {
                     openProductView(productsInPromo.get(1));
@@ -534,6 +539,8 @@ public class MainViewController extends BasicController {
         if(productsInPromo.size() > 2) {
             this.promoThirdImage.setImage(new Image(productsInPromo.get(2).getImageURL()));
             this.promoThirdText.setText("-" + productsInPromo.get(2).getPromotion() + "%");
+            promoThirdImage.setVisible(true);
+            promoThirdText.setVisible(true);
             this.promoThirdImage.setOnMouseClicked(event -> {
                 try {
                     openProductView(productsInPromo.get(2));
@@ -545,6 +552,8 @@ public class MainViewController extends BasicController {
         if(productsInPromo.size() > 3) {
             this.promoFourthImage.setImage(new Image(productsInPromo.get(3).getImageURL()));
             this.promoFourthText.setText("-" + productsInPromo.get(3).getPromotion() + "%");
+            promoFourthImage.setVisible(true);
+            promoFourthText.setVisible(true);
             this.promoFourthImage.setOnMouseClicked(event -> {
                 try {
                     openProductView(productsInPromo.get(3));
@@ -556,6 +565,8 @@ public class MainViewController extends BasicController {
         if(productsInPromo.size() > 4) {
             this.promoFifthImage.setImage(new Image(productsInPromo.get(4).getImageURL()));
             this.promoFifthText.setText("-" + productsInPromo.get(4).getPromotion() + "%");
+            promoFifthImage.setVisible(true);
+            promoFifthText.setVisible(true);
             this.promoFifthImage.setOnMouseClicked(event -> {
                 try {
                     openProductView(productsInPromo.get(4));
