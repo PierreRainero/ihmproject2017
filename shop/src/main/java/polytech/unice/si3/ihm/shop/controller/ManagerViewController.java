@@ -204,6 +204,7 @@ public class ManagerViewController extends BasicController {
                 types.put(superType.getName(), superType.getTypes());
             object.put("types", types);
             object.put("sales", shop.getProducts().get(i).getSales());
+            object.put("promotion", shop.getProducts().get(i).getPromotion());
             array.put(object);
         }
         return array;
