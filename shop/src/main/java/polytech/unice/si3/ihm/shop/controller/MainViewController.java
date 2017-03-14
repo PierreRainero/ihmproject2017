@@ -401,8 +401,10 @@ public class MainViewController extends BasicController {
     private int searchOccurence(List<SuperType> productType, String checkBoxText){
         int i=0;
         for(SuperType st : productType){
+            if(st.getName().equals(checkBoxText))
+                return i;
             for(String str : st.getTypes()){
-                if(str.equals(checkBoxText) || st.getName().equals(checkBoxText))
+                if(str.equals(checkBoxText))
                     return i;
             }
             i++;
