@@ -55,7 +55,6 @@ public class MainViewController extends MenuController {
      */
     @FXML
     private void initialize() {
-        buildGroundFloor();
     }
 
     /**
@@ -110,7 +109,7 @@ public class MainViewController extends MenuController {
         labelFloor.setText(floor);
         currentLevel = i;
 
-        Drawer drawer = new Drawer(canvas);
+        Drawer drawer = new Drawer(canvas,mainApp);
         drawer.displayLevel(mall.getLevel(i));
     }
 
@@ -149,7 +148,7 @@ public class MainViewController extends MenuController {
      */
     private void display(Place place) {
         reset();
-        Drawer drawer = new Drawer(canvas);
+        Drawer drawer = new Drawer(canvas,mainApp);
 
         Level level = mall.getLevel(currentLevel);
         drawer.displayLevel(level);
@@ -163,7 +162,7 @@ public class MainViewController extends MenuController {
     @FXML
     void search() {
         reset();
-        Drawer drawer = new Drawer(canvas);
+        Drawer drawer = new Drawer(canvas,mainApp);
 
         Level level = mall.getLevel(currentLevel);
         String search = searchBar.getText();
@@ -244,7 +243,7 @@ public class MainViewController extends MenuController {
      */
     private void selection(Category category) {
         reset();
-        Drawer drawer = new Drawer(canvas);
+        Drawer drawer = new Drawer(canvas,mainApp);
         drawer.displayCategory(mall.getLevel(currentLevel), category);
     }
 
@@ -254,5 +253,9 @@ public class MainViewController extends MenuController {
     @FXML
     void reset() {
         canvas.getChildren().clear();
+    }
+
+    public void init(){
+        buildGroundFloor();
     }
 }

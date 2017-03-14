@@ -110,7 +110,8 @@ public class GoodDealsViewController extends MenuController {
     }
 
     public void displayStore2(){
-        displayAlert();
+        Info i = deals.get(1).getInfoStore();
+        displayInfo(i);
     }
 
     public void displayStore3(){
@@ -121,23 +122,6 @@ public class GoodDealsViewController extends MenuController {
     public void displayStore4(){
         Info i = deals.get(3).getInfoStore();
         displayInfo(i);
-    }
-    /*public void displayStore3(){
-        try{
-            Stage stage = new Stage();
-            JsonParser js = new JsonParser("src/main/resources/datas/content.json",stage);
-            js.parseJson();
-            stage.show();
-        }
-        catch(Exception e){}
-    }*/
-
-    @FXML
-    public void displayAlert(){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setContentText("La page du magasin que vous souhaitez consulter est en cours de construction.");
-        alert.showAndWait();
     }
 
     @FXML

@@ -45,6 +45,7 @@ public class MainApp extends Application {
         MainViewController controller = loader.getController();
         controller.setMainApp(this);
         stage.setResizable(false);
+        controller.init();
         stage.show();
     }
 

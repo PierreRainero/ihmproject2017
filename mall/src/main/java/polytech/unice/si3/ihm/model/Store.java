@@ -1,9 +1,20 @@
 package polytech.unice.si3.ihm.model;
 
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.input.MouseEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import polytech.unice.si3.ihm.MainApp;
+import polytech.unice.si3.ihm.controller.InfoController;
+
+import java.io.IOException;
 
 /**
  * Stocks the identity and the representation of a shop.
@@ -26,10 +37,11 @@ public class Store {
      * @param webSite The address of the shop on the internet.
      * @param category The product type sold by the shop.
      */
-    Store(String name, String webSite, String category) {
+    Store(String name, String webSite, String category, String infoPath) {
         this.name = name;
         this.webSite = webSite;
         this.category = Category.valueOf(category.toUpperCase());
+        this.info = new Info(infoPath);
     }
 
     /**
@@ -60,7 +72,7 @@ public class Store {
      * @param width The width of the rectangle.
      * @param height The height of the rectangle.
      */
-    void setRectangle(Color color, int x, int y, int width, int height) {
+    void setRectangle(final Color color, int x, int y, int width, int height) {
         rec = new Rectangle(x, y, width, height);
         rec.setStroke(Color.BLACK);
         this.color = color;
@@ -89,4 +101,9 @@ public class Store {
     public Category getCategory() {
         return category;
     }
+
+    public Info getInfo(){
+        return info;
+    }
+
 }

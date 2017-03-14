@@ -68,7 +68,7 @@ public class Mall {
      * @return The store created.
      */
     private Store createStore(JSONObject info) {
-        Store store = new Store((String) info.get("name"), (String) info.get("web"), (String) info.get("category"));
+        Store store = new Store((String) info.get("name"), (String) info.get("web"), (String) info.get("category"),"/json/store/"+info.get("info"));
         store.setPicture((String) info.get("picture"), ((Long) info.get("picX")).intValue(), ((Long) info.get("picY")).intValue(),
                 ((Long) info.get("picWid")).intValue(), ((Long) info.get("picHei")).intValue());
         store.setRectangle(Color.web((String) info.get("color")),((Long) info.get("recX")).intValue(), ((Long) info.get("recY")).intValue(),

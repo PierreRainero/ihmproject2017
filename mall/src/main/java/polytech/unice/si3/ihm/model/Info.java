@@ -1,5 +1,6 @@
 package polytech.unice.si3.ihm.model;
 
+import javafx.stage.Stage;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import polytech.unice.si3.ihm.shop.JsonParser;
@@ -15,7 +16,7 @@ public class Info {
     private String description;
     private String type;
     private String site;
-    private JsonParser jsp;
+    private String jsp;
 
     public Info(String jsPath){
         JSONParser parser = new JSONParser();
@@ -26,14 +27,17 @@ public class Info {
             this.description = (String)js.get("description");
             this.type = (String)js.get("type");
             this.site = (String)js.get("site");
-
+            if(js.get("storePath")!=null){
+                this.jsp = (String)js.get("storePath");
+            }
+            else jsp = null;
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void setJsp(JsonParser jsp){
-        this.jsp = jsp;
+    public String getJsp(){
+        return jsp;
     }
 
     public String getImage() {

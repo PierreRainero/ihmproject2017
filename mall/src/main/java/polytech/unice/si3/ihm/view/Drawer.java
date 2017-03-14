@@ -1,13 +1,22 @@
 package polytech.unice.si3.ihm.view;
 
+
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import polytech.unice.si3.ihm.MainApp;
+import polytech.unice.si3.ihm.controller.InfoController;
 import polytech.unice.si3.ihm.model.Category;
 import polytech.unice.si3.ihm.model.Level;
 import polytech.unice.si3.ihm.model.Place;
 import polytech.unice.si3.ihm.model.Store;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,13 +29,16 @@ public class Drawer {
      * Canvas containing the drawings.
      */
     private Pane canvas;
+    public MainApp mainApp;
 
     /**
      * Builds a Drawer class thanks to the pane of the scene.
      */
-    public Drawer(Pane pane) {
+    public Drawer(Pane pane,MainApp mainApp) {
         this.canvas = pane;
+        this.mainApp = mainApp;
     }
+
 
     /**
      * Displays a level with the parameters by default.
@@ -43,7 +55,26 @@ public class Drawer {
             }
         }
         List<Store> stores = level.getStores();
-        for (Store store : stores) {
+        for (final Store store : stores) {
+            store.getPicture().setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                public void handle(MouseEvent t) {
+                    FXMLLoader loader = new FXMLLoader();
+                    Parent node = null;
+                    try {
+                        node = loader.load(getClass().getResourceAsStream("/fxml/info.fxml"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Scene scene = new Scene(node, 1280, 720);
+                    mainApp.getStage().setScene(scene);
+
+                    InfoController controller = loader.getController();
+                    controller.setMainApp(mainApp);
+                    controller.initData(store.getInfo());
+                    mainApp.getStage().show();
+                }
+            });
             canvas.getChildren().add(store.getRectangle());
             canvas.getChildren().add(store.getPicture());
         }
