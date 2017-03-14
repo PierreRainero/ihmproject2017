@@ -24,6 +24,11 @@ public class JsonGeneratorStore {
 		fileSelected = Optional.empty();
 		store = new Store();
 	}
+	
+	public JsonGeneratorStore(Store store){
+		this.store = store;
+		fileSelected =  Optional.of(new File(store.getImage()));
+	}
 
 	public void setShopName(String shopName) {
 		store.changeStoreName(shopName);
@@ -67,8 +72,6 @@ public class JsonGeneratorStore {
 	
 	@SuppressWarnings("unchecked")
 	public void generate() throws FileNotFoundException, IOException, ParseException{
-		fixImageUrl();
-
 		JSONObject firmJson = JsonReceiver.getJsonFirm(PATH);
 		JSONArray shops = (JSONArray)firmJson.get("shops");
 		shops.add(getStoreJson());
@@ -87,12 +90,14 @@ public class JsonGeneratorStore {
 	private void fixImageUrl(){
 		if(fileSelected.isPresent())
 			store.changeStoreImage(fileSelected.get().getAbsolutePath());
-		else
+		else if(store.getImage().isEmpty())
 			store.changeStoreImage("");
 	}
 	
 	@SuppressWarnings("unchecked")
-	private JSONObject getStoreJson(){
+	public JSONObject getStoreJson(){
+		fixImageUrl();
+		
 		JSONObject returnValue = new JSONObject();
 		
 		returnValue.put("name", store.getName());

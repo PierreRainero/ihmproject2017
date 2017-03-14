@@ -1,4 +1,4 @@
-package polytech.unice.si3.ihm.firm.customer.controller;
+package polytech.unice.si3.ihm.firm.common.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;

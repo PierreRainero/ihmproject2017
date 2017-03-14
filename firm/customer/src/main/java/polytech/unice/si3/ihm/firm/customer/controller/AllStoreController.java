@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
+import polytech.unice.si3.ihm.firm.common.controller.BasicController;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 import polytech.unice.si3.ihm.firm.common.util.ImageBuilder;

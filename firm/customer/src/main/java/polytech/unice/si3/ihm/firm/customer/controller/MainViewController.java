@@ -32,6 +32,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+import polytech.unice.si3.ihm.firm.common.controller.BasicController;
 import polytech.unice.si3.ihm.firm.common.exceptions.ContentException;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Firm;
 import polytech.unice.si3.ihm.firm.common.model.commercial.Product;

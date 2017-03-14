@@ -1,10 +1,7 @@
 package polytech.unice.si3.ihm.firm.managing.controller;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Optional;
-
 import org.json.simple.parser.ParseException;
 
 import javafx.collections.FXCollections;
@@ -16,16 +13,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import polytech.unice.si3.ihm.firm.common.util.Log;
 import polytech.unice.si3.ihm.firm.common.util.Regex;
 import polytech.unice.si3.ihm.firm.managing.content.RegionEnum;
 import polytech.unice.si3.ihm.firm.managing.json.JsonGeneratorStore;
 
-public class AddStoreController {
-	private JsonGeneratorStore jsonToGenerate;
-
+public class AddStoreController extends FileChooserController{
     @FXML
     private TextField shopName;
 
@@ -61,9 +54,6 @@ public class AddStoreController {
 
     @FXML
     private Button shopImage;
-
-    @FXML
-    private Label imageSelected;
 
     @FXML
     private Button validShop;
@@ -106,23 +96,6 @@ public class AddStoreController {
         }
         shopRegion.setItems(regionsName);
         shopRegion.setPromptText(RegionEnum.AUVERGNE_RHONE_ALPES.getRegionName());
-    }
-    
-    @FXML
-    private void choseImage(ActionEvent event) {
-    	FileChooser fileChooser = new FileChooser();
-    	fileChooser.setTitle("Sélectionner une image");
-    	
-    	FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Images (*.jpg, *.png, *.gif)", "*.jpg", "*.png", "*.gif");
-    	fileChooser.getExtensionFilters().add(imageFilter);
-   
-    	File tempo = fileChooser.showOpenDialog(new Stage());
-    	
-    	if(tempo!=null)
-    		jsonToGenerate.setFileSelected(Optional.of(tempo));
-    	
-    	if(jsonToGenerate.getFileSelected().isPresent())
-    		imageSelected.setText(jsonToGenerate.getFileSelected().get().getName());
     }
     
     @FXML

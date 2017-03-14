@@ -21,14 +21,9 @@
                         <Insets left="50.0" top="60.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="storeName">
+                  <Label fx:id="shopName">
                      <HBox.margin>
                         <Insets left="80.0" top="56.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Label fx:id="storeNameMissing" text="Nom manquant" textFill="RED">
-                     <HBox.margin>
-                        <Insets left="44.0" top="60.0" />
                      </HBox.margin>
                   </Label>
                   <Label text="* indique un champ requis">
@@ -67,11 +62,16 @@
                         <Insets left="79.0" top="28.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="searchComputerButton" mnemonicParsing="false" onMouseClicked="#searchComputer" text="Parcourir...">
+                  <Button fx:id="searchComputerButton" mnemonicParsing="false" onAction="#choseImage" onMouseClicked="#searchComputer" text="Parcourir...">
                      <HBox.margin>
                         <Insets left="2.0" top="28.0" />
                      </HBox.margin>
                   </Button>
+                  <Label fx:id="imageSelected" alignment="TOP_LEFT" contentDisplay="CENTER">
+                     <HBox.margin>
+                        <Insets left="4.0" top="28.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
                <VBox.margin>
                   <Insets top="15.0" />
@@ -84,7 +84,7 @@
                         <Insets left="50.0" top="40.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="cancelButton" mnemonicParsing="false" onMouseClicked="#cancelTheWindow" text="Annuler">
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onMouseClicked="#exit" text="Annuler">
                      <HBox.margin>
                         <Insets left="290.0" top="40.0" />
                      </HBox.margin>

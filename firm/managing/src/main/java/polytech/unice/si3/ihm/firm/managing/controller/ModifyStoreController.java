@@ -82,17 +82,18 @@ public class ModifyStoreController {
             stage.setTitle(modifyStoreListview.getSelectionModel().getSelectedItem().getName());
             stage.setScene(scene);
 
-
             Store store = modifyStoreListview.getSelectionModel().getSelectedItem();
             ModifyStoreWindowController controller = fxloader.getController();
-            controller.setStore(store);
+            controller.setCurrentStage(stage);
+            controller.setCaller(this);
+            controller.initContent(store);
             stage.show();
         }
 
 
     }
 
-    private void populateListView() throws ParseException, ContentException, IOException {
+    public void populateListView() throws ParseException, ContentException, IOException {
         List<Store> stores = parseStores();
         changeListViewOrder();
         modifyStoreListview.setPlaceholder(new Label("List is empty"));
