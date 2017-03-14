@@ -501,10 +501,10 @@ public class MainViewController extends BasicController {
     public void initializePromotions(Shop shop){
         List<Product> productsInPromo = new ArrayList<>();
 
-        List<Product> topSales = shop.getTopSales();
-        for(int i=0;i<topSales.size();i++){
-            if(topSales.get(i).getPromotion() != 0)
-                productsInPromo.add(topSales.get(i));
+        List<Product> products = shop.getProducts();
+        for(int i=0;i<products.size();i++){
+            if(products.get(i).getPromotion() != 0)
+                productsInPromo.add(products.get(i));
         }
 
         if(productsInPromo.size() > 0) {
