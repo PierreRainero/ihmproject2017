@@ -51,7 +51,7 @@ public class ModifyStoreController {
     }
 
     @FXML
-    void deleteStore(MouseEvent event) throws ParseException, ContentException, IOException {
+    private void deleteStore(MouseEvent event) throws ParseException, ContentException, IOException {
         List<Store> stores = parseStores();
         Store selectedStore = modifyStoreListview.getSelectionModel().getSelectedItem();
         for (Store store : stores){
@@ -65,7 +65,7 @@ public class ModifyStoreController {
     }
 
     @FXML
-    void openModifyView(MouseEvent event) throws IOException {
+    private void openModifyView(MouseEvent event) throws IOException {
         if (!modifyStoreListview.getSelectionModel().isEmpty()){
             Stage stage = new Stage();
             String fxmlFile = "/fxml/modify_store_window.fxml";
