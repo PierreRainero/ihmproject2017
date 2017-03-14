@@ -37,7 +37,7 @@ public class MainApp extends Application {
 
         log.debug("Showing JFX scene");
         Scene scene = new Scene(rootNode, 1280, 720);
-        //scene.getStylesheets().add("/styles/styles.css");
+        scene.getStylesheets().add("/styles/styles.css");
 
         stage.setTitle("Centre Commercial");
         stage.setScene(scene);
