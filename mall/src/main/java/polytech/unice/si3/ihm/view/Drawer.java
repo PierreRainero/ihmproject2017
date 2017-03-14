@@ -29,7 +29,7 @@ public class Drawer {
      * Canvas containing the drawings.
      */
     private Pane canvas;
-    public MainApp mainApp;
+    private MainApp mainApp;
 
     /**
      * Builds a Drawer class thanks to the pane of the scene.
@@ -68,6 +68,7 @@ public class Drawer {
                     }
                     Scene scene = new Scene(node, 1280, 720);
                     mainApp.getStage().setScene(scene);
+                    scene.getStylesheets().add("/styles/styles.css");
 
                     InfoController controller = loader.getController();
                     controller.setMainApp(mainApp);

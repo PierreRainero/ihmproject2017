@@ -60,6 +60,7 @@ public class InfoController extends MenuController {
             e.printStackTrace();
         }
         Scene scene = new Scene(node, 1280, 720);
+        scene.getStylesheets().add("/styles/styles.css");
         mainApp.getStage().setScene(scene);
 
         GoodDealsViewController controller = loader.getController();
@@ -78,6 +79,7 @@ public class InfoController extends MenuController {
             e.printStackTrace();
         }
         Scene scene = new Scene(node, 1280, 720);
+        scene.getStylesheets().add("/styles/styles.css");
         mainApp.getStage().setScene(scene);
 
         MainViewController controller = loader.getController();
