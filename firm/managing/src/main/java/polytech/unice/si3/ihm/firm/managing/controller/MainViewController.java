@@ -14,7 +14,7 @@ public class MainViewController {
      * {@inheritDoc}
      */
     public void initialize() {
-    	banner.setImage(ImageBuilder.getImage("src/main/resources/images/logo.png"));
+    	banner.setImage(ImageBuilder.getImage("images/logo.png"));
     	Log.info(this.getClass(), "Content charged");
     }  
 }

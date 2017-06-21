@@ -31,7 +31,7 @@ public class MainApp extends Application {
      */
     public void start(Stage stage) throws Exception {
         Log.info(this.getClass(), "Starting firm customer view");
-        Firm firm = (new ContentParser()).getFirm();
+        Firm firm = (new ContentParser(System.getProperties().get("user.dir")+"\\datas\\content.json")).getFirm();
 
         String fxmlFile = "/fxml/main_view.fxml";
         Log.debug(this.getClass(), "Loading FXML for main view from: {}", fxmlFile);

@@ -1,8 +1,10 @@
 package polytech.unice.si3.ihm.firm.common.json;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,7 +30,8 @@ public class JsonReceiver {
     	JSONParser parser = new JSONParser();
     	JSONObject firmJson;
 
-		Object obj = parser.parse(new FileReader(path));
+		Object obj = parser.parse(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
+		
 	    firmJson = (JSONObject) obj;
 
     	return firmJson;

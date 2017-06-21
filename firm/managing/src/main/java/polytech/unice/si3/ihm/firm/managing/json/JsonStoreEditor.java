@@ -9,7 +9,7 @@ import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 import java.io.IOException;
 
 public class JsonStoreEditor {
-    private static final String PATH = System.getProperties().get("user.dir")+"/../customer/src/main/resources/datas/content.json";
+    private static final String PATH = System.getProperties().get("user.dir")+"\\datas\\content.json";
 
     Store store;
 

@@ -19,8 +19,8 @@ import polytech.unice.si3.ihm.firm.common.util.Log;
  *
  */
 public class ContentParser {
-	private static final String PATH = System.getProperties().get("user.dir")+"/../datas/content.json";
-	private static final String INCORRECTJSON = "Incorrect JSONFile - Problem with firm's infos : "+PATH;
+	private static  String path = System.getProperties().get("user.dir")+"/../datas/content.json";
+	private static final String INCORRECTJSON = "Incorrect JSONFile - Problem with firm's infos : "+ path;
 	
 	private static final String NAME = "name";
 	private static final String DESCRIPTION = "description";
@@ -28,15 +28,17 @@ public class ContentParser {
 	
 	private JSONObject firmJson;
 	
-
+	
 	/**
 	 * Normal constructor
+	 * @param datasPath
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws ParseException
 	 */
-	public ContentParser() throws FileNotFoundException, IOException, ParseException{
-		firmJson = JsonReceiver.getJsonFirm(PATH);
+	public ContentParser(String datasPath) throws FileNotFoundException, IOException, ParseException{
+		path = datasPath;
+		firmJson = JsonReceiver.getJsonFirm(path);
 	}
 	
 	/**
@@ -113,7 +115,7 @@ public class ContentParser {
 										(String) tempoShop.get(IMAGE)));
 	    	}
 	    }catch(Exception e){
-	    	String errorMsg = "Incorrect JSONFile - Problem with shops infos : "+PATH;
+	    	String errorMsg = "Incorrect JSONFile - Problem with shops infos : "+path;
 	    	Log.error(ContentParser.class, errorMsg, e);
 	    	throw new ContentException(errorMsg);
 	    }
@@ -154,7 +156,7 @@ public class ContentParser {
 	    		firm.addProduct(productToAdd);		
 	    	}
 	    }catch(Exception e){
-	    	String errorMsg = "Incorrect JSONFile - Problem with products infos : "+PATH;
+	    	String errorMsg = "Incorrect JSONFile - Problem with products infos : "+path;
 	    	Log.error(ContentParser.class, errorMsg, e);
 	    	throw new ContentException(errorMsg);
 	    }

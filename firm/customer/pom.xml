@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-    <artifactId>firm</artifactId>
-    <groupId>polytech.unice.si3.ihm</groupId>
-    <version>1.0.0</version>
-  </parent>
+        <artifactId>firm</artifactId>
+        <groupId>polytech.unice.si3.ihm</groupId>
+        <version>1.0.0</version>
+    </parent>
 
     <groupId>polytech.unice.si3.ihm.customer</groupId>
     <artifactId>customer</artifactId>
@@ -17,14 +17,17 @@
     <version>1.2.0</version>
     
     <organization>
-        <!-- Used as the 'Vendor' for JNLP generation -->
         <name>roux</name>
     </organization>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <compiler.source>1.8</compiler.source>
+        <compiler.target>1.8</compiler.target>
+    </properties>
+
     <build>
-
         <finalName>customer</finalName>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -41,7 +44,6 @@
                 <version>2.0</version>
                 <configuration>
                     <mainClass>polytech.unice.si3.ihm.firm.customer.MainApp</mainClass>
-
                     <!-- only required if signing the jar file -->
                     <keyStoreAlias>example-user</keyStoreAlias>
                     <keyStorePassword>example-password</keyStorePassword>
@@ -49,7 +51,29 @@
 
                 </configuration>
             </plugin>
-
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2-beta-2</version>
+                <executions>
+                    <execution>
+                    <id>create-executable-jar</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                    <configuration>
+                        <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                        </descriptors>
+                        <archive>
+                        <manifest>
+                            <mainClass>polytech.unice.si3.ihm.firm.customer.MainApp</mainClass>
+                        </manifest>
+                        </archive>
+                    </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -99,11 +123,10 @@
 
         <!-- Common dependency-->
         <dependency>
-        <groupId>${parent.groupId}.common</groupId>
+        <groupId>${project.parent.groupId}.common</groupId>
             <artifactId>common</artifactId>
             <version>1.1.0</version>
         </dependency>
-        
     </dependencies>
 
 </project>

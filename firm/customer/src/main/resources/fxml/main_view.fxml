@@ -51,7 +51,7 @@
                               <HBox fx:id="hboxSearch" prefHeight="0.0" prefWidth="196.0" VBox.vgrow="NEVER">
                                  <children>
                                     <TextField fx:id="searchValue" maxHeight="34.0" minHeight="34.0" prefHeight="34.0" promptText="Tapez une ville, une région, une adresse ..." HBox.hgrow="ALWAYS" />
-                                    <Button fx:id="searchButton" mnemonicParsing="false" onMouseClicked="#search" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="26.0" prefWidth="57.0" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="searchButton" mnemonicParsing="false" onMouseClicked="#search" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="26.0" prefWidth="57.0" HBox.hgrow="ALWAYS"/>
                                  </children>
                               </HBox>
                               <AnchorPane prefHeight="365.0" prefWidth="196.0" VBox.vgrow="ALWAYS">

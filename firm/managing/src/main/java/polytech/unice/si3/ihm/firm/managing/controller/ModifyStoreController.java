@@ -170,7 +170,7 @@ public class ModifyStoreController {
     }
 
     private List<Store> parseStores() throws IOException, ParseException, ContentException {
-        ContentParser parser = new ContentParser();
+        ContentParser parser = new ContentParser(System.getProperties().get("user.dir")+"\\datas\\content.json");
         Firm firm = parser.getFirm();
         return firm.getStores();
     }

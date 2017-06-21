@@ -75,7 +75,7 @@ public class ModifyProductController {
     }
 
     private List<Product> parseProducts() throws IOException, ParseException, ContentException {
-        ContentParser parser = new ContentParser();
+        ContentParser parser = new ContentParser(System.getProperties().get("user.dir")+"\\datas\\content.json");
         return parser.getFirm().getProducts();
     }
 

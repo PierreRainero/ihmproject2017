@@ -15,7 +15,7 @@ import polytech.unice.si3.ihm.firm.common.model.commercial.Store;
 import polytech.unice.si3.ihm.firm.common.util.Log;
 
 public class JsonGeneratorStore {
-	private static final String PATH = System.getProperties().get("user.dir")+"/../datas/content.json";
+	private static final String PATH = System.getProperties().get("user.dir")+"\\datas\\content.json";
 	
 	private Store store;
 	private Optional<File> fileSelected;

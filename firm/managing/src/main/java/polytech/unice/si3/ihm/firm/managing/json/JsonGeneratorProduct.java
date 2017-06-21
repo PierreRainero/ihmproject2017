@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class JsonGeneratorProduct {
-    private static final String PATH = System.getProperties().get("user.dir")+"/../datas/content.json";
+    private static final String PATH = System.getProperties().get("user.dir")+"\\datas\\content.json";
 
     private Product product;
     public JsonGeneratorProduct(Product product){

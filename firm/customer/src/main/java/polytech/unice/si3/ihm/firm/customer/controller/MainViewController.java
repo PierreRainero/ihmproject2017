@@ -340,13 +340,13 @@ public class MainViewController extends BasicController {
             }
         });
     	
-    	searchButton.setGraphic(new ImageView(ImageBuilder.getImage("src/main/resources/images/ic_search_black_24dp_2x.png", 25, 25)));
+    	searchButton.setGraphic(new ImageView(ImageBuilder.getImage("images/ic_search_black_24dp_2x.png", 25, 25)));
     	addResizeListener();
 
 		initializeResearchComboBox();
 		initializeResearchListView();
     	
-    	loader.setImage(ImageBuilder.getImage("src/main/resources/images/loader.gif", 25, 25));
+    	loader.setImage(ImageBuilder.getImage("images/loader.gif", 25, 25));
     	loader.setVisible(false);
     	
     	fillAds(firm);
