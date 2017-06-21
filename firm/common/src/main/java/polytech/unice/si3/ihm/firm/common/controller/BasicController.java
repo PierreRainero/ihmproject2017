@@ -69,7 +69,7 @@ public class BasicController {
      * @param object object containing all datas to initialize the controls
      */
     public void initContent(Object object){
-    	mainContainer.setBackground(new Background(new BackgroundImage( ImageBuilder.getImage("src/main/resources/images/bg.png"), 
+    	mainContainer.setBackground(new Background(new BackgroundImage( ImageBuilder.getImage("images/bg.png"), 
     																	BackgroundRepeat.REPEAT, 
     																	BackgroundRepeat.REPEAT, 
     																	BackgroundPosition.DEFAULT,
